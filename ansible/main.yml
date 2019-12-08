@@ -1,0 +1,8 @@
+- hosts: all
+  tasks:
+    - name: Ping
+      ping:
+
+- hosts: casey
+  roles:
+    - ssh-bastion

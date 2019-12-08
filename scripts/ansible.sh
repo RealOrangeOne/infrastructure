@@ -4,4 +4,4 @@ set -e
 
 PATH=env/bin:${PATH}
 
-ansible-playbook -i ansible/hosts ansible/main.yml
+ansible-playbook -i ansible/hosts ansible/main.yml -k -K

@@ -1,0 +1,20 @@
+- name: Define context
+  set_fact:
+    user: jake
+    enable_root: true
+
+- name: SSH config
+  template:
+    src: files/ssh/sshd_config_bastion
+    dest: /etc/ssh/sshd_config
+    validate: /usr/sbin/sshd -t -f %s
+    backup: yes
+  become: true
+  become_user: root
+  register: sshd_config
+
+- name: Restart SSH config
+  service:
+    name: sshd
+    state: reloaded
+  when: sshd_config.changed
