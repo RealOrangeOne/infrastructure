@@ -1,4 +1,4 @@
-- name: Instal OpenSSH
+- name: Install OpenSSH
   apt:
     name: openssh-server
   become: true
