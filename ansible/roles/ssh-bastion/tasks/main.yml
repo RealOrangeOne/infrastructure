@@ -1,3 +1,9 @@
+- name: Instal OpenSSH
+  apt:
+    name: openssh-server
+  become: true
+  become_user: root
+
 - name: Define context
   set_fact:
     user: jake
