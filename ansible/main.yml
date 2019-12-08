@@ -6,3 +6,4 @@
 - hosts: casey
   roles:
     - ssh-bastion
+    - gateway

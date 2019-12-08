@@ -1,0 +1,29 @@
+- name: Install Haproxy
+  apt:
+    name: haproxy
+  become: true
+  become_user: root
+
+- name: Import vault
+  include_vars:
+    file: vault.yml
+
+- name: Define context
+  set_fact:
+    upstream: 10.23.0.2
+
+- name: Haproxy config
+  template:
+    src: files/haproxy.cfg
+    dest: /etc/haproxy/haproxy.cfg
+    validate: /usr/sbin/haproxy -c -- %s
+    backup: yes
+  become: true
+  become_user: root
+  register: haproxy_config
+
+- name: Restart Haproxy
+  service:
+    name: haproxy
+    state: reloaded
+  when: haproxy_config.changed
