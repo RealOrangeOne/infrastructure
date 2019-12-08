@@ -1,7 +1,6 @@
 - hosts: all
-  tasks:
-    - name: Ping
-      ping:
+  roles:
+    - ntp
 
 - hosts: casey
   roles:

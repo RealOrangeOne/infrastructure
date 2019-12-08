@@ -1,0 +1,15 @@
+- name: "Install NTP"
+  apt:
+    name: "ntp"
+  become: true
+  become_user: root
+
+- name: Set timezone
+  timezone:
+    name: Europe/London
+
+- name: Enable NTP service
+  systemd:
+    name: ntp
+    enabled: true
+    state: started
