@@ -1,3 +1,7 @@
+- name: Import wireguard variables
+  include_vars:
+    file: vars/wireguard.yml
+
 - name: Configure HAproxy
   include: haproxy.yml
 

@@ -6,11 +6,7 @@
 
 - name: Import vault
   include_vars:
-    file: vault.yml
-
-- name: Define context
-  set_fact:
-    upstream: 10.23.0.2
+    file: vars/gateway.yml
 
 - name: Haproxy config
   template:

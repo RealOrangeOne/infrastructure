@@ -29,3 +29,21 @@
       - wireguard-tools
   become: true
   become_user: root
+
+- name: Wireguard server config
+  template:
+    src: files/wireguard.conf
+    dest: /etc/wireguard/wg0.conf
+    backup: yes
+  become: true
+  become_user: root
+  register: wireguard_conf
+
+- name: Enable wireguard
+  service:
+    name: wg-quick@wg0
+    state: reloaded
+    enabled: true
+  when: wireguard_conf.changed
+  become: true
+  become_user: root
