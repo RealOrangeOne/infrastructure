@@ -1,0 +1,31 @@
+- name: Add unstable apt repo
+  lineinfile:
+    path: /etc/apt/sources.list.d/unstable.list
+    state: present
+    line: 'deb http://deb.debian.org/debian/ unstable main'
+  register: install_unstable_apt
+  become: true
+  become_user: root
+
+- name: Limit unstable apt repo
+  copy:
+    src: limit-unstable.conf
+    dest: /etc/apt/preferences.d/limit-unstable
+  become: true
+  become_user: root
+  register: limit_unstable_apt
+
+- name: Update apt repos
+  apt:
+    update_cache: true
+  become: true
+  become_user: root
+  when: install_unstable_apt.changed or limit_unstable_apt.changed
+
+- name: Install Wireguard
+  apt:
+    name:
+      - wireguard
+      - wireguard-tools
+  become: true
+  become_user: root
