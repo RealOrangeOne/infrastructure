@@ -1,0 +1,12 @@
+- name: "Install Base Packages"
+  apt:
+    name: "{{ item }}"
+  become: true
+  become_user: root
+  loop:
+    - htop
+    - neofetch
+    - net-tools
+    - speedtest-cli
+    - sudo
+    - vim
