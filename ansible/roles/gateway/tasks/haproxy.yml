@@ -1,21 +1,23 @@
-# - name: Install Haproxy
-#   apt:
-#     name: haproxy
-#   become: true
-#   become_user: root
+- name: Install Haproxy
+  apt:
+    name: haproxy
+  become: true
+  become_user: root
 
-# - name: Haproxy config
-#   template:
-#     src: files/haproxy.cfg
-#     dest: /etc/haproxy/haproxy.cfg
-#     validate: /usr/sbin/haproxy -c -- %s
-#     backup: yes
-#   become: true
-#   become_user: root
-#   register: haproxy_config
+- name: Haproxy config
+  template:
+    src: files/haproxy.cfg
+    dest: /etc/haproxy/haproxy.cfg
+    validate: /usr/sbin/haproxy -c -- %s
+    backup: yes
+  become: true
+  become_user: root
+  register: haproxy_config
 
-# - name: Restart Haproxy
-#   service:
-#     name: haproxy
-#     state: reloaded
-#   when: haproxy_config.changed
+- name: Restart Haproxy
+  service:
+    name: haproxy
+    state: restarted
+  become: true
+  become_user: root
+  when: haproxy_config.changed
