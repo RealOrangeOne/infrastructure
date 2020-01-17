@@ -1,25 +1,21 @@
-- name: Install Haproxy
-  apt:
-    name: haproxy
-  become: true
-  become_user: root
+# - name: Install Haproxy
+#   apt:
+#     name: haproxy
+#   become: true
+#   become_user: root
 
-- name: Import vault
-  include_vars:
-    file: vars/gateway.yml
+# - name: Haproxy config
+#   template:
+#     src: files/haproxy.cfg
+#     dest: /etc/haproxy/haproxy.cfg
+#     validate: /usr/sbin/haproxy -c -- %s
+#     backup: yes
+#   become: true
+#   become_user: root
+#   register: haproxy_config
 
-- name: Haproxy config
-  template:
-    src: files/haproxy.cfg
-    dest: /etc/haproxy/haproxy.cfg
-    validate: /usr/sbin/haproxy -c -- %s
-    backup: yes
-  become: true
-  become_user: root
-  register: haproxy_config
-
-- name: Restart Haproxy
-  service:
-    name: haproxy
-    state: reloaded
-  when: haproxy_config.changed
+# - name: Restart Haproxy
+#   service:
+#     name: haproxy
+#     state: reloaded
+#   when: haproxy_config.changed

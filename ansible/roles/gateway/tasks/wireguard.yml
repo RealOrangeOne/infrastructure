@@ -42,7 +42,7 @@
 - name: Enable wireguard
   service:
     name: wg-quick@wg0
-    state: reloaded
+    state: restarted
     enabled: true
   when: wireguard_conf.changed
   become: true

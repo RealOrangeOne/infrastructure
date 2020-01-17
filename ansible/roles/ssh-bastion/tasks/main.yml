@@ -24,3 +24,5 @@
     name: sshd
     state: reloaded
   when: sshd_config.changed
+  become: true
+  become_user: root
