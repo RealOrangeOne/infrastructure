@@ -48,7 +48,6 @@
   become: true
   become_user: root
 
-
 - name: Create wireguard client directory
   file:
     path: "{{ home }}/wireguard-clients"
