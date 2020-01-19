@@ -32,7 +32,7 @@
 
 - name: Wireguard server config
   template:
-    src: files/wireguard.conf
+    src: files/wireguard-server.conf
     dest: /etc/wireguard/wg0.conf
     backup: yes
   become: true
@@ -47,3 +47,22 @@
   when: wireguard_conf.changed
   become: true
   become_user: root
+
+
+- name: Create wireguard client directory
+  file:
+    path: /etc/wireguard/clients
+    state: directory
+  become: true
+  become_user: root
+
+- name: Wireguard client configuration
+  template:
+    src: files/wireguard-client.conf
+    dest: /etc/wireguard/clients/{{ item.key }}.conf
+    backup: yes
+  become: true
+  become_user: root
+  loop: "{{ wireguard.clients|dict2items }}"
+  loop_control:
+    label: "{{ item.key }}"
