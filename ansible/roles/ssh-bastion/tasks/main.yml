@@ -7,7 +7,7 @@
 - name: Define context
   set_fact:
     user: jake
-    enable_root: true
+    enable_root: false
 
 - name: SSH config
   template:
