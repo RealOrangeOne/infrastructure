@@ -1,1 +1,2 @@
 casey ansible_host=10.23.0.1
+intersect ansible_host=10.23.0.2
