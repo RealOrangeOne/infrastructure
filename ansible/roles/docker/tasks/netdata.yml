@@ -1,0 +1,32 @@
+- name: Create netdata directory
+  file:
+    path: '/opt/netdata'
+    state: directory
+    owner: "{{ docker_user.name }}"
+    mode: 0755
+  become: true
+  become_user: root
+
+- name: Install netdata config
+  template:
+    src: files/netdata/docker-compose.yml
+    dest: "/opt/netdata/docker-compose.yml"
+    mode: 0644
+    owner: "{{ docker_user.name }}"
+    backup: true
+    trim_blocks: false
+  register: compose_file
+  become: true
+  become_user: root
+
+- name: Cycle container
+  docker_compose:
+    project_src: /opt/netdata
+    pull: true
+    remove_orphans: true
+    remove_volumes: true
+    state: "{{ item }}"
+  when: compose_file.changed
+  loop:
+    - absent
+    - present

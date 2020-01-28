@@ -3,3 +3,6 @@
 
 - name: Install Docker
   include: setup-docker.yml
+
+- name: Install netdata
+  include: netdata.yml

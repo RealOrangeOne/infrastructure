@@ -1,0 +1,21 @@
+version: '3'
+services:
+  netdata:
+    image: netdata/netdata:latest
+    container_name: netdata
+    cap_add:
+      - SYS_PTRACE
+    security_opt:
+      - apparmor:unconfined
+    volumes:
+      - /etc/passwd:/host/etc/passwd:ro
+      - /etc/group:/host/etc/group:ro
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.netdata.rule=Host(`netdata.jakehoward.tech`)"
+      - "traefik.http.routers.netdata.tls=true"
+      - "traefik.http.routers.netdata.tls.certresolver=le"
+      - "traefik.http.routers.netdata.middlewares=internal-only@file"
