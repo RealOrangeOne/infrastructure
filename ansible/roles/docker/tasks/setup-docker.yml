@@ -1,4 +1,4 @@
-- name: Add an Apt signing key, uses whichever key is at the URL
+- name: Add docker apt key
   apt_key:
     url: https://download.docker.com/linux/ubuntu/gpg
     state: present
