@@ -7,6 +7,8 @@
 - name: Set timezone
   timezone:
     name: Europe/London
+  become: true
+  become_user: root
 
 - name: Enable NTP service
   systemd:
