@@ -1,25 +1,25 @@
-- name: Create netdata directory
+- name: Create watchtower directory
   file:
-    path: '/opt/netdata'
+    path: '/opt/watchtower'
     state: directory
     owner: "{{ docker_user.name }}"
     mode: "{{ docker_compose_directory_mask }}"
   become: true
   become_user: root
 
-- name: Install netdata config
+- name: Install watchtower config
   template:
-    src: files/netdata/docker-compose.yml
-    dest: "/opt/netdata/docker-compose.yml"
+    src: files/watchtower/docker-compose.yml
+    dest: "/opt/watchtower/docker-compose.yml"
     mode: "{{ docker_compose_file_mask }}"
     owner: "{{ docker_user.name }}"
   register: compose_file
   become: true
   become_user: root
 
-- name: Cycle netdata container
+- name: Cycle watchtower container
   docker_compose:
-    project_src: /opt/netdata
+    project_src: /opt/watchtower
     pull: true
     remove_orphans: true
     remove_volumes: true

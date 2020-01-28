@@ -6,3 +6,6 @@
 
 - name: Install netdata
   include: netdata.yml
+
+- name: Install watchtower
+  include: watchtower.yml
