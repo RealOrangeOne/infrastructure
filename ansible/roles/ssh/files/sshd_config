@@ -58,9 +58,9 @@ Ciphers aes256-ctr,aes128-gcm@openssh.com,aes128-ctr,aes192-ctr,aes256-gcm@opens
 
 # Key Exchange algorithms (Elliptic Curve Diffie-Hellman)
 # DH-SHA-256 included for compat with PuTTY-WinCrypt clients
-KexAlgorithms diffie-hellman-group-exchange-sha256,curve25519-sha256@libssh.org
+KexAlgorithms diffie-hellman-group18-sha512,curve25519-sha256@libssh.org
 
-# Don’t read the user’s ~/.rhosts and ~/.shosts files
+# Donâ€™t read the userâ€™s ~/.rhosts and ~/.shosts files
 IgnoreRhosts yes
 
 # Disable unused authentication schemes
@@ -74,7 +74,7 @@ UsePAM no
 # X11 support
 X11Forwarding no
 
-# Don’t show Message of the Day
+# Donâ€™t show Message of the Day
 PrintMotd yes
 
 # TCPKeepAlive (non-tunneled, disabled)
