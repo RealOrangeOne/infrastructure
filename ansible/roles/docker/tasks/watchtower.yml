@@ -7,7 +7,7 @@
   become: true
   become_user: root
 
-- name: Install watchtower config
+- name: Install watchtower compose file
   template:
     src: files/watchtower/docker-compose.yml
     dest: "/opt/watchtower/docker-compose.yml"

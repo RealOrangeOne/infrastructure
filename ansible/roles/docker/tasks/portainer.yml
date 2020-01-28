@@ -7,7 +7,7 @@
   become: true
   become_user: root
 
-- name: Install portainer config
+- name: Install portainer compose file
   template:
     src: files/portainer/docker-compose.yml
     dest: "/opt/portainer/docker-compose.yml"

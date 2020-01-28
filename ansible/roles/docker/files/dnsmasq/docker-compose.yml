@@ -1,0 +1,11 @@
+version: "3"
+services:
+  vpn-dns:
+    image: programster/dnsmasq:latest
+    container_name: vpn-dns
+    ports:
+      - "{{ wireguard.clients.intersect.ip }}:53:53/udp"
+    volumes:
+      - ./dnsmasq.conf:/etc/dnsmasq.conf:ro
+      - ./vpn-hosts.conf:/etc/dnsmasq-hosts.conf:ro
+    restart: unless-stopped
