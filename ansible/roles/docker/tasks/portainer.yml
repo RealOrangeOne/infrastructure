@@ -1,0 +1,30 @@
+- name: Create portainer directory
+  file:
+    path: '/opt/portainer'
+    state: directory
+    owner: "{{ docker_user.name }}"
+    mode: "{{ docker_compose_directory_mask }}"
+  become: true
+  become_user: root
+
+- name: Install portainer config
+  template:
+    src: files/portainer/docker-compose.yml
+    dest: "/opt/portainer/docker-compose.yml"
+    mode: "{{ docker_compose_file_mask }}"
+    owner: "{{ docker_user.name }}"
+  register: compose_file
+  become: true
+  become_user: root
+
+- name: Cycle portainer container
+  docker_compose:
+    project_src: /opt/portainer
+    pull: true
+    remove_orphans: true
+    remove_volumes: true
+    state: "{{ item }}"
+  when: compose_file.changed
+  loop:
+    - absent
+    - present

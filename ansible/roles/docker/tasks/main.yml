@@ -9,3 +9,6 @@
 
 - name: Install watchtower
   include: watchtower.yml
+
+- name: Install portainer
+  include: portainer.yml
