@@ -1,0 +1,31 @@
+- name: Add an Apt signing key, uses whichever key is at the URL
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+  become: true
+  become_user: root
+
+- name: Add docker repo
+  apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable
+    state: present
+  become: true
+  become_user: root
+
+- name: Install Docker and docker-compose
+  apt:
+    name: "{{ item }}"
+  become: true
+  become_user: root
+  loop:
+    - docker-ce
+    - docker-ce-cli
+    - containerd.io
+    - docker-compose
+
+- name: Create docker user
+  user:
+    name: "{{ docker_user.name }}"
+    uid: "{{ docker_user.id }}"
+    group: "{{ docker_user.name }}"
+    create_home: false

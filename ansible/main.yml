@@ -10,3 +10,4 @@
 - hosts: intersect
   roles:
     - ssh
+    - docker
