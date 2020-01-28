@@ -4,5 +4,9 @@
 
 - hosts: casey
   roles:
-    - ssh-bastion
+    - ssh
     - gateway
+
+- hosts: intersect
+  roles:
+    - ssh

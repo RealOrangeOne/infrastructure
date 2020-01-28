@@ -1,3 +1,0 @@
-[submodule "ansible/files/ssh"]
-	path = ansible/files/ssh
-	url = https://github.com/RealOrangeOne/ansible-ssh-bastion

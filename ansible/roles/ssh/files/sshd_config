@@ -1,0 +1,86 @@
+# TCP port to bind to
+# Change to a high/odd port if this server is exposed to the internet directly
+Port 7743
+
+# Deny all other users besides the following
+AllowUsers {{ user }}
+
+# Bind to all interfaces (change to specific interface if needed)
+ListenAddress 0.0.0.0
+
+# Force SSHv2 Protocol
+Protocol 2
+
+# HostKeys for protocol version 2
+HostKey /etc/ssh/ssh_host_rsa_key
+HostKey /etc/ssh/ssh_host_dsa_key
+HostKey /etc/ssh/ssh_host_ecdsa_key
+
+HostKeyAlgorithms ssh-rsa,rsa-sha2-512,rsa-sha2-256
+
+# Privilege Separation is turned on for security
+UsePrivilegeSeparation yes
+
+# Public key authentication + Password authentication
+# Two-Factor Authentication in OpenSSH v6.2+
+RSAAuthentication yes
+PubkeyAuthentication yes
+AuthenticationMethods publickey
+
+# Disable root SSH access
+PermitRootLogin no
+
+# Client timeout (5 minutes)
+ClientAliveInterval 300
+ClientAliveCountMax 0
+
+# Compression (only after authentication)
+Compression delayed
+
+# Logging
+SyslogFacility AUTH
+LogLevel INFO
+
+# Authentication must happen within 30 seconds
+LoginGraceTime 30
+
+PermitEmptyPasswords no
+
+# Check user folder permissions before allowing access
+StrictModes yes
+
+# Message Authentication Code (Hash, only SHA2-512)
+# SHA-256 included for compat with PuTTY-WinCrypt clients
+MACs hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,umac-128-etm@openssh.com
+
+# Ciphers (only secure AES-256)
+Ciphers aes256-ctr,aes128-gcm@openssh.com,aes128-ctr,aes192-ctr,aes256-gcm@openssh.com,chacha20-poly1305@openssh.com
+
+# Key Exchange algorithms (Elliptic Curve Diffie-Hellman)
+# DH-SHA-256 included for compat with PuTTY-WinCrypt clients
+KexAlgorithms diffie-hellman-group-exchange-sha256,curve25519-sha256@libssh.org
+
+# Don’t read the user’s ~/.rhosts and ~/.shosts files
+IgnoreRhosts yes
+
+# Disable unused authentication schemes
+RhostsRSAAuthentication no
+HostbasedAuthentication no
+ChallengeResponseAuthentication no
+KerberosAuthentication no
+GSSAPIAuthentication no
+UsePAM no
+
+# X11 support
+X11Forwarding no
+
+# Don’t show Message of the Day
+PrintMotd yes
+
+# TCPKeepAlive (non-tunneled, disabled)
+TCPKeepAlive no
+
+# Allow client to pass locale environment variables
+AcceptEnv LANG LC_*
+
+Subsystem sftp internal-sftp
