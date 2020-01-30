@@ -21,3 +21,6 @@
 
 - name: Install emby
   include: emby.yml
+
+- name: Install librespeed
+  include: librespeed.yml
