@@ -15,3 +15,6 @@
 
 - name: Install dnsmasq
   include: dnsmasq.yml
+
+- name: Install whoami
+  include: whoami.yml

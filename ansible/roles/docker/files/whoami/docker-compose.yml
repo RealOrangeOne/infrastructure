@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  whoami:
+    image: containous/whoami:latest
+    container_name: whoami
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.whoami.rule=Host(`whoami.theorangeone.net`)"
+      - "traefik.http.routers.whoami.tls=true"
+      - "traefik.http.routers.whoami.tls.certresolver=le"
