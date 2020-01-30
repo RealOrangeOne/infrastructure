@@ -18,3 +18,6 @@
 
 - name: Install whoami
   include: whoami.yml
+
+- name: Install emby
+  include: emby.yml

@@ -1,0 +1,31 @@
+- name: Create emby directory
+  file:
+    path: '/opt/emby'
+    state: directory
+    owner: "{{ docker_user.name }}"
+    mode: "{{ docker_compose_directory_mask }}"
+  become: true
+  become_user: root
+
+- name: Install emby compose file
+  template:
+    src: files/emby/docker-compose.yml
+    dest: "/opt/emby/docker-compose.yml"
+    mode: "{{ docker_compose_file_mask }}"
+    owner: "{{ docker_user.name }}"
+    validate: /usr/bin/docker-compose -f %s config
+  register: compose_file
+  become: true
+  become_user: root
+
+- name: Cycle emby container
+  docker_compose:
+    project_src: /opt/emby
+    pull: true
+    remove_orphans: true
+    remove_volumes: true
+    state: "{{ item }}"
+  when: compose_file.changed
+  loop:
+    - absent
+    - present

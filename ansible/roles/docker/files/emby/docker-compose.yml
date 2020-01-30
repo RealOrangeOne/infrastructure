@@ -1,0 +1,22 @@
+version: "2.3"
+
+services:
+  emby:
+    image: linuxserver/emby:4.3.1.0-ls26
+    container_name: emby
+    environment:
+      - PUID=3000
+      - PGID=3000
+      - TZ=Europe/London
+    volumes:
+      - ./config:/config
+      - /mnt/media/TV:/mnt/TV
+      - /mnt/media/Movies:/mnt/Movies
+    ports:
+      - 8096:8096
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.emby.rule=Host(`media.jakehoward.tech`)"
+      - "traefik.http.routers.emby.tls=true"
+      - "traefik.http.routers.emby.tls.certresolver=le"
