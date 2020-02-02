@@ -35,3 +35,10 @@
     name: clean up docker containers
     special_time: weekly
     job: "docker system prune"
+
+- name: Install util scripts
+  copy:
+    src: ./files/docker-utils
+    dest: "{{ home }}"
+    mode: 0755
+    directory_mode: 0755
