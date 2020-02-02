@@ -4,8 +4,6 @@ services:
     image: gotify/server:2.0.13
     container_name: gotify
     environment:
-      - PUID=3000
-      - PGID=3000
       - TZ=Europe/London
     volumes:
       - ./data:/app/data

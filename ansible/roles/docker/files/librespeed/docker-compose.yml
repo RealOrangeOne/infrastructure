@@ -4,8 +4,8 @@ services:
     image: linuxserver/librespeed:5.1-ls2
     container_name: librespeed
     environment:
-      - PUID=3000
-      - PGID=3000
+      - PUID={{ docker_user.id }}
+      - PGID={{ docker_user.id }}
       - TZ=Europe/London
     restart: unless-stopped
     labels:

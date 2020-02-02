@@ -5,8 +5,8 @@ services:
     image: linuxserver/emby:4.3.1.0-ls26
     container_name: emby
     environment:
-      - PUID=3000
-      - PGID=3000
+      - PUID={{ docker_user.id }}
+      - PGID={{ docker_user.id }}
       - TZ=Europe/London
     volumes:
       - ./config:/config
