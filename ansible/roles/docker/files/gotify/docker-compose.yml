@@ -1,0 +1,17 @@
+version: "2"
+services:
+  duplicati:
+    image: gotify/server:2.0.13
+    container_name: gotify
+    environment:
+      - PUID=3000
+      - PGID=3000
+      - TZ=Europe/London
+    volumes:
+      - ./data:/app/data
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.gotify.rule=Host(`gotify.jakehoward.tech`)"
+      - "traefik.http.routers.gotify.tls=true"
+      - "traefik.http.routers.gotify.tls.certresolver=le"

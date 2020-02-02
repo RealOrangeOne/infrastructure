@@ -24,3 +24,6 @@
 
 - name: Install librespeed
   include: librespeed.yml
+
+- name: Install gotify
+  include: gotify.yml
