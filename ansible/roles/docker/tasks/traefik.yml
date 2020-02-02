@@ -1,0 +1,59 @@
+- name: Create traefik directory
+  file:
+    path: '/opt/traefik'
+    state: directory
+    owner: "{{ docker_user.name }}"
+    mode: "{{ docker_compose_directory_mask }}"
+  become: true
+  become_user: root
+
+- name: Create traefik config directory
+  file:
+    path: '/opt/traefik/traefik'
+    state: directory
+    mode: "{{ docker_compose_directory_mask }}"
+  become: true
+  become_user: root
+
+- name: Install traefik compose file
+  template:
+    src: files/traefik/docker-compose.yml
+    dest: "/opt/traefik/docker-compose.yml"
+    mode: "{{ docker_compose_file_mask }}"
+    owner: "{{ docker_user.name }}"
+    validate: /usr/bin/docker-compose -f %s config
+  register: compose_file
+  become: true
+  become_user: root
+
+- name: Install traefik config
+  template:
+    src: files/traefik/traefik.yml
+    dest: "/opt/traefik/traefik/traefik.yml"
+    mode: "{{ docker_compose_file_mask }}"
+    owner: "{{ docker_user.name }}"
+  register: config_file
+  become: true
+  become_user: root
+
+- name: Install traefik file provider
+  template:
+    src: files/traefik/file-provider.yml
+    dest: "/opt/traefik/traefik/file-provider.yml"
+    mode: "{{ docker_compose_file_mask }}"
+    owner: "{{ docker_user.name }}"
+  register: file_provider
+  become: true
+  become_user: root
+
+- name: Cycle traefik container
+  docker_compose:
+    project_src: /opt/traefik
+    pull: true
+    remove_orphans: true
+    remove_volumes: true
+    state: "{{ item }}"
+  when: compose_file.changed or config_file.changed or file_provider.changed
+  loop:
+    - absent
+    - present

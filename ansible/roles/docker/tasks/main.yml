@@ -27,3 +27,6 @@
 
 - name: Install gotify
   include: gotify.yml
+
+- name: Install traefik
+  include: traefik.yml

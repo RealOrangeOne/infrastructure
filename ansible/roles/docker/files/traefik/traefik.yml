@@ -1,0 +1,38 @@
+entryPoints:
+  web:
+    address: ":80"
+    proxyProtocol:
+      trustedIPs:
+        - "{{ wireguard.cidr }}"
+  web-secure:
+    address: ":443"
+    proxyProtocol:
+      trustedIPs:
+        - "{{ wireguard.cidr }}"
+  matrix:
+    address: ":8448"
+    proxyProtocol:
+      trustedIPs:
+        - "{{ wireguard.cidr }}"
+
+ping:
+  manualRouting: true
+
+providers:
+  docker:
+    endpoint: "unix:///var/run/docker.sock"
+    watch: true
+    exposedByDefault: false
+  file:
+    filename: /etc/traefik/file-provider.yml
+
+api:
+  dashboard: true
+
+certificatesResolvers:
+  le:
+    acme:
+      email: "hosting@theorangeone.net"
+      storage: "/etc/traefik/acme.json"
+      httpChallenge:
+        entryPoint: web
