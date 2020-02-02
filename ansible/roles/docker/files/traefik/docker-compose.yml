@@ -4,7 +4,7 @@ services:
   traefik:
     container_name: traefik
     image: traefik:v2.1.2
-    #command: "--log.level=DEBUG"
+    # command: "--log.level=DEBUG"
     network_mode: host
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
