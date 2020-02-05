@@ -30,3 +30,6 @@
 
 - name: Install traefik
   include: traefik.yml
+
+- name: Install calibre
+  include: calibre.yml

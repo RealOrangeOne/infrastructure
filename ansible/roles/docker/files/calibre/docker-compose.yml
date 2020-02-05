@@ -1,0 +1,18 @@
+version: "2"
+services:
+  calibre:
+    image: linuxserver/calibre-web:0.6.5-ls47
+    container_name: calibre
+    environment:
+      - PUID={{ docker_user.id }}
+      - PGID={{ docker_user.id }}
+      - TZ=Europe/London
+    restart: unless-stopped
+    volumes:
+      - ./config:/config
+      - /srv/nextcloud-data/data/jake/files/EBooks:/books:ro
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.calibre.rule=Host(`calibre.jakehoward.tech`)"
+      - "traefik.http.routers.calibre.tls=true"
+      - "traefik.http.routers.calibre.tls.certresolver=le"
