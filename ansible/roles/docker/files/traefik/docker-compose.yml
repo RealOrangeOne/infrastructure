@@ -3,7 +3,7 @@ version: "3"
 services:
   traefik:
     container_name: traefik
-    image: traefik:v2.1.2
+    image: traefik:v2.1.4
     # command: "--log.level=DEBUG"
     network_mode: host
     volumes:
