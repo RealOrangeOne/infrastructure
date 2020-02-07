@@ -1,7 +1,7 @@
 version: "2"
 services:
   librespeed:
-    image: linuxserver/librespeed:5.1-ls2
+    image: linuxserver/librespeed:5.1-ls3
     container_name: librespeed
     environment:
       - PUID={{ docker_user.id }}
