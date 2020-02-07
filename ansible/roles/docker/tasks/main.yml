@@ -33,3 +33,6 @@
 
 - name: Install calibre
   include: calibre.yml
+
+- name: Install gitea
+  include: gitea.yml

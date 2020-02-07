@@ -1,0 +1,32 @@
+version: "3"
+
+services:
+  gitea:
+    image: gitea/gitea:1.10.2
+    container_name: gitea
+    restart: unless-stopped
+    environment:
+      - USER_UID={{ docker_user.id }}
+      - USER_GID={{ docker_user.id }}
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.gitea.rule=Host(`git.theorangeone.net`)"
+      - "traefik.http.routers.gitea.tls=true"
+      - "traefik.http.routers.gitea.tls.certresolver=le"
+      - "traefik.http.services.gitea-gitea.loadbalancer.server.port=3000"
+    ports:
+      - "{{ wireguard.clients.intersect.ip }}:3022:3022"
+    volumes:
+      - ./gitea:/data
+      - ./repos:/data/git
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+
+  db:
+    image: postgres:12-alpine
+    restart: unless-stopped
+    volumes:
+      - ./postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=gitea
+      - POSTGRES_USER=gitea
