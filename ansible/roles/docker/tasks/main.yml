@@ -36,3 +36,6 @@
 
 - name: Install gitea
   include: gitea.yml
+
+- name: Install yourls
+  include: yourls.yml

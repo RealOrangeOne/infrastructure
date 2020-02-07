@@ -1,0 +1,35 @@
+version: "3"
+
+services:
+  yourls:
+    image: yourls:1.7.6-apache
+    container_name: yourls
+    restart: unless-stopped
+    depends_on:
+      - mysql
+    environment:
+      - YOURLS_DB_PASS=yourls
+      - YOURLS_DB_USER=yourls
+      - YOURLS_USER=jake
+      - YOURLS_PASS={{ yourls.user_password }}
+      - YOURLS_SITE=https://go.theorangeone.net
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.yourls.rule=Host(`go.theorangeone.net`)"
+      - "traefik.http.routers.yourls.tls=true"
+      - "traefik.http.routers.yourls.tls.certresolver=le"
+
+
+  mysql:
+    image: linuxserver/mariadb:110.4.11mariabionic-ls47
+    environment:
+      - PUID={{ docker_user.id }}
+      - PGID={{ docker_user.id }}
+      - MYSQL_ROOT_PASSWORD=root
+      - TZ=Europe/London
+      - MYSQL_DATABASE=yourls
+      - MYSQL_USER=yourls
+      - MYSQL_PASSWORD=yourls
+    volumes:
+      - ./mariadb:/config
+    restart: unless-stopped
