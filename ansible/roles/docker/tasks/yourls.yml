@@ -21,6 +21,15 @@
   become: true
   become_user: root
 
+- name: Install yourls index
+  template:
+    src: files/yourls/index.html
+    dest: "/opt/yourls/index.html"
+    mode: "{{ docker_compose_file_mask }}"
+  register: config_file
+  become: true
+  become_user: root
+
 - name: Cycle yourls container
   docker_compose:
     project_src: /opt/yourls
@@ -28,7 +37,7 @@
     remove_orphans: true
     remove_volumes: true
     state: "{{ item }}"
-  when: compose_file.changed
+  when: compose_file.changed or config_file.changed
   loop:
     - absent
     - present

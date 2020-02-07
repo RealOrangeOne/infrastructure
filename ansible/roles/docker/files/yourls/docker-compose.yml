@@ -13,12 +13,13 @@ services:
       - YOURLS_USER=jake
       - YOURLS_PASS={{ yourls.user_password }}
       - YOURLS_SITE=https://go.theorangeone.net
+    volumes:
+      - ./index.html:/var/www/html/index.html
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.yourls.rule=Host(`go.theorangeone.net`)"
       - "traefik.http.routers.yourls.tls=true"
       - "traefik.http.routers.yourls.tls.certresolver=le"
-
 
   mysql:
     image: linuxserver/mariadb:110.4.11mariabionic-ls47
