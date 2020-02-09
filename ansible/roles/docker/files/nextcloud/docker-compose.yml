@@ -1,0 +1,60 @@
+version: "3"
+
+services:
+  nextcloud:
+    image: linuxserver/nextcloud:18.0.0-ls58
+    container_name: nextcloud
+    environment:
+      - PUID={{ docker_user.id }}
+      - PGID={{ docker_user.id }}
+      - TZ=Europe/London
+    volumes:
+      - ./nextcloud/config:/config/www/nextcloud/config
+      - ./nextcloud/apps:/config/www/nextcloud/apps
+      - ./config:/config
+      - /srv/nextcloud-data/data:/data
+      - /opt/gitea/repos:/repos:ro
+      - /mnt/media:/content:ro
+    restart: unless-stopped
+    tmpfs:
+      - /config/log
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.nextcloud.rule=Host(`intersect.jakehoward.tech`)"
+      - "traefik.http.routers.nextcloud.tls=true"
+      - "traefik.http.routers.nextcloud.tls.certresolver=le"
+
+  mariadb:
+    image: linuxserver/mariadb:110.4.11mariabionic-ls47
+    environment:
+      - PUID={{ docker_user.id }}
+      - PGID={{ docker_user.id }}
+      - MYSQL_ROOT_PASSWORD=root
+      - TZ=Europe/London
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
+      - MYSQL_PASSWORD=nextcloud
+    volumes:
+      - /srv/nextcloud-mariadb:/config
+    restart: unless-stopped
+
+  redis:
+    image: redis:5-alpine
+    restart: unless-stopped
+    volumes:
+      - ./redis:/data
+
+  onlyoffice:
+    image: onlyoffice/documentserver
+    container_name: onlyoffice
+    restart: unless-stopped
+    environment:
+      - JWT_ENABLED=true
+      - JWT_SECRET={{ nextcloud.onlyoffice_jwt_secret }}
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.onlyoffice.rule=Host(`onlyoffice.jakehoward.tech`)"
+      - "traefik.http.routers.onlyoffice.tls=true"
+      - "traefik.http.routers.onlyoffice.tls.certresolver=le"
+      - "traefik.http.routers.onlyoffice.middlewares=oo-header"
+      - "traefik.http.middlewares.oo-header.headers.customRequestHeaders.X-Forwarded-Proto=https"
