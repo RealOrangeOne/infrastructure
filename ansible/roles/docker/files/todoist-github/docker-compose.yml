@@ -1,0 +1,10 @@
+version: '3'
+services:
+  todoist-github:
+    image: theorangeone/todoist-github:latest
+    container_name: todoist-github
+    restart: unless-stopped
+    command: python3 -m todoist_github --interval 900
+    environment:
+      - TODOIST_TOKEN={{ todoist_github.todoist_token }}
+      - GITHUB_TOKEN={{ todoist_github.github_token }}

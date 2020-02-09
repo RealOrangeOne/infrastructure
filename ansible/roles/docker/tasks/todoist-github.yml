@@ -1,0 +1,34 @@
+- name: Include todoist-github variables
+  include_vars: todoist-github.yml
+
+- name: Create todoist-github directory
+  file:
+    path: '/opt/todoist-github'
+    state: directory
+    owner: "{{ docker_user.name }}"
+    mode: "{{ docker_compose_directory_mask }}"
+  become: true
+  become_user: root
+
+- name: Install todoist-github compose file
+  template:
+    src: files/todoist-github/docker-compose.yml
+    dest: "/opt/todoist-github/docker-compose.yml"
+    mode: "{{ docker_compose_file_mask }}"
+    owner: "{{ docker_user.name }}"
+    validate: /usr/bin/docker-compose -f %s config
+  register: compose_file
+  become: true
+  become_user: root
+
+- name: Cycle todoist-github container
+  docker_compose:
+    project_src: /opt/todoist-github
+    pull: true
+    remove_orphans: true
+    remove_volumes: true
+    state: "{{ item }}"
+  when: compose_file.changed
+  loop:
+    - absent
+    - present

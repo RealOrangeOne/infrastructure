@@ -54,3 +54,6 @@
 
 - name: Install nextcloud
   include: nextcloud.yml
+
+- name: Install todoist-github
+  include: todoist-github.yml
