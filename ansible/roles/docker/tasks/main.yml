@@ -39,3 +39,6 @@
 
 - name: Install yourls
   include: yourls.yml
+
+- name: Install tt-rss
+  include: tt-rss.yml

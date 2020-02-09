@@ -1,0 +1,49 @@
+- name: Create tt-rss directory
+  file:
+    path: '/opt/tt-rss'
+    state: directory
+    owner: "{{ docker_user.name }}"
+    mode: "{{ docker_compose_directory_mask }}"
+  become: true
+  become_user: root
+
+- name: Install tt-rss compose file
+  template:
+    src: files/tt-rss/docker-compose.yml
+    dest: "/opt/tt-rss/docker-compose.yml"
+    mode: "{{ docker_compose_file_mask }}"
+    owner: "{{ docker_user.name }}"
+    validate: /usr/bin/docker-compose -f %s config
+  register: compose_file
+  become: true
+  become_user: root
+
+- name: Create tt-rss config directory
+  file:
+    path: '/opt/tt-rss/config'
+    state: directory
+    mode: "{{ docker_compose_directory_mask }}"
+  become: true
+  become_user: root
+
+- name: Install tt-rss config
+  template:
+    src: files/tt-rss/config.php
+    dest: "/opt/tt-rss/config/config.php"
+    mode: "{{ docker_compose_file_mask }}"
+    owner: "{{ docker_user.name }}"
+  register: config_file
+  become: true
+  become_user: root
+
+- name: Cycle tt-rss container
+  docker_compose:
+    project_src: /opt/tt-rss
+    pull: true
+    remove_orphans: true
+    remove_volumes: true
+    state: "{{ item }}"
+  when: compose_file.changed or config_file.changed
+  loop:
+    - absent
+    - present

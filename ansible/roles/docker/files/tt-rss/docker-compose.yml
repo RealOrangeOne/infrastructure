@@ -1,0 +1,27 @@
+version: "3"
+
+services:
+  tt-rss:
+    image: lunik1/tt-rss:latest
+    container_name: tt-rss
+    environment:
+      - PUID={{ docker_user.id }}
+      - PGID={{ docker_user.id }}
+      - TZ=Europe/London
+    volumes:
+      - ./config:/config
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.tt-rss.rule=Host(`tt-rss.jakehoward.tech`)"
+      - "traefik.http.routers.tt-rss.tls=true"
+      - "traefik.http.routers.tt-rss.tls.certresolver=le"
+
+  db:
+    image: postgres:12-alpine
+    restart: unless-stopped
+    volumes:
+      - ./postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=tt-rss
+      - POSTGRES_USER=tt-rss
