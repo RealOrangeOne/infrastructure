@@ -1,0 +1,34 @@
+version: "3"
+services:
+  quassel-core:
+    image: linuxserver/quassel-core:0.13.1-ls39
+    container_name: quassel
+    environment:
+      - PUID={{ docker_user.id }}
+      - PGID={{ docker_user.id }}
+      - TZ=Europe/London
+      - DB_BACKEND=PostgreSQL
+      - DB_PGSQL_USERNAME=quassel
+      - DB_PGSQL_PASSWORD=quassel
+      - DB_PGSQL_HOSTNAME=db
+      - DB_PGSQL_PORT=5432
+      - AUTH_AUTHENTICATOR=Database
+      - RUN_OPTS=--config-from-environment
+    restart: unless-stopped
+    depends_on:
+      - db
+    ports:
+      - "{{ wireguard.clients.intersect.ip }}:4242:4242"
+
+  db:
+    image: postgres:12-alpine
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=quassel
+      - POSTGRES_PASSWORD=quassel
+    volumes:
+      - ./postgresql:/var/lib/postgresql/data
+
+  tor-socks-proxy:
+    image: peterdavehello/tor-socks-proxy:latest
+    restart: unless-stopped

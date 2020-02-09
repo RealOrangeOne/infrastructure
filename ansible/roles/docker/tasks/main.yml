@@ -45,3 +45,6 @@
 
 - name: Install torrent
   include: torrent.yml
+
+- name: Install quassel
+  include: quassel.yml

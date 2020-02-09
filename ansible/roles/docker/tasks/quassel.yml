@@ -1,0 +1,31 @@
+- name: Create quassel directory
+  file:
+    path: '/opt/quassel'
+    state: directory
+    owner: "{{ docker_user.name }}"
+    mode: "{{ docker_compose_directory_mask }}"
+  become: true
+  become_user: root
+
+- name: Install quassel compose file
+  template:
+    src: files/quassel/docker-compose.yml
+    dest: "/opt/quassel/docker-compose.yml"
+    mode: "{{ docker_compose_file_mask }}"
+    owner: "{{ docker_user.name }}"
+    validate: /usr/bin/docker-compose -f %s config
+  register: compose_file
+  become: true
+  become_user: root
+
+- name: Cycle quassel container
+  docker_compose:
+    project_src: /opt/quassel
+    pull: true
+    remove_orphans: true
+    remove_volumes: true
+    state: "{{ item }}"
+  when: compose_file.changed
+  loop:
+    - absent
+    - present
