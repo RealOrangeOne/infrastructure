@@ -83,9 +83,9 @@
 
   define('DIGEST_SUBJECT', '[tt-rss] New headlines for last 24 hours');
 
-  define('CHECK_FOR_UPDATES', true);
+  define('CHECK_FOR_UPDATES', false);
 
-  define('ENABLE_GZIP_OUTPUT', false);
+  define('ENABLE_GZIP_OUTPUT', true);
 
   define('PLUGINS', 'auth_internal, note');
 
