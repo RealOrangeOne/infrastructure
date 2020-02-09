@@ -42,3 +42,6 @@
 
 - name: Install tt-rss
   include: tt-rss.yml
+
+- name: Install torrent
+  include: torrent.yml

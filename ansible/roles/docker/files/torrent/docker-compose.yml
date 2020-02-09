@@ -1,0 +1,26 @@
+version: "3"
+services:
+  deluge:
+    image: linuxserver/deluge:2.0.3-2201906121747ubuntu18.04.1-ls47
+    container_name: deluge
+    environment:
+      - PUID={{ docker_user.id }}
+      - PGID={{ docker_user.id }}
+      - TZ=Europe/London
+      - DELUGE_LOGLEVEL=debug
+    volumes:
+      - ./deluge:/config
+      - /scratch/deluge:/downloads
+    ports:
+      - 8112:8112
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.deluge.rule=Host(`deluge.jakehoward.tech`)"
+      - "traefik.http.routers.deluge.tls=true"
+      - "traefik.http.routers.deluge.tls.certresolver=le"
+      - "traefik.http.routers.deluge.middlewares=internal-only@file"
+
+  tor-socks-proxy:
+    image: peterdavehello/tor-socks-proxy:latest
+    restart: unless-stopped
