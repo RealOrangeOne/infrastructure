@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+
+  synapse:
+    image: matrixdotorg/synapse:v1.8.0-py3
+    restart: unless-stopped
+    environment:
+      - SYNAPSE_CONFIG_PATH=/etc/homeserver.yaml
+      - SYNAPSE_REPORT_STATS=yes
+      - UID=0
+      - GID=0
+    volumes:
+      - ./homeserver.yaml:/etc/homeserver.yaml
+      - ./files:/data
+    expose:
+      - 8008
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.synapse.rule=Host(`matrix.jakehoward.tech`)"
+      - "traefik.http.routers.synapse.tls=true"
+      - "traefik.http.routers.synapse.tls.certresolver=le"
+      - "traefik.http.routers.synapse.entrypoints=web-secure,matrix"
+
+  db:
+    image: postgres:12-alpine
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=synapse
+      - POSTGRES_PASSWORD=synapse
+    volumes:
+      - ./postgresql:/var/lib/postgresql/data

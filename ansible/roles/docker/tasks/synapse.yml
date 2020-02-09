@@ -1,0 +1,44 @@
+- name: Include synapse variables
+  include_vars: synapse.yml
+
+- name: Create synapse directory
+  file:
+    path: '/opt/synapse'
+    state: directory
+    owner: "{{ docker_user.name }}"
+    mode: "{{ docker_compose_directory_mask }}"
+  become: true
+  become_user: root
+
+- name: Install synapse compose file
+  template:
+    src: files/synapse/docker-compose.yml
+    dest: "/opt/synapse/docker-compose.yml"
+    mode: "{{ docker_compose_file_mask }}"
+    owner: "{{ docker_user.name }}"
+    validate: /usr/bin/docker-compose -f %s config
+  register: compose_file
+  become: true
+  become_user: root
+
+- name: Install synapse config
+  template:
+    src: files/synapse/homeserver.yml
+    dest: "/opt/synapse/homeserver.yaml"
+    mode: "{{ docker_compose_file_mask }}"
+    owner: "{{ docker_user.name }}"
+  register: homeserver_config
+  become: true
+  become_user: root
+
+- name: Cycle synapse container
+  docker_compose:
+    project_src: /opt/synapse
+    pull: true
+    remove_orphans: true
+    remove_volumes: true
+    state: "{{ item }}"
+  when: compose_file.changed or homeserver_config.changed
+  loop:
+    - absent
+    - present

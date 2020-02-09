@@ -48,3 +48,6 @@
 
 - name: Install quassel
   include: quassel.yml
+
+- name: Install synapse
+  include: synapse.yml
