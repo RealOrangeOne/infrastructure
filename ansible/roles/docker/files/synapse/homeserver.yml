@@ -333,15 +333,15 @@ retention:
   # The message retention policies feature is disabled by default. Uncomment the
   # following line to enable it.
   #
-  #enabled: true
+  enabled: true
 
   # Default retention policy. If set, Synapse will apply it to rooms that lack the
   # 'm.room.retention' state event. Currently, the value of 'min_lifetime' doesn't
   # matter much because Synapse doesn't take it into account yet.
   #
-  #default_policy:
-  #  min_lifetime: 1d
-  #  max_lifetime: 1y
+  default_policy:
+    min_lifetime: 1d
+    max_lifetime: 30d
 
   # Retention policy limits. If set, a user won't be able to send a
   # 'm.room.retention' event which features a 'min_lifetime' or a 'max_lifetime'
