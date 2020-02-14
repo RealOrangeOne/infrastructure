@@ -57,3 +57,6 @@
 
 - name: Install todoist-github
   include: todoist-github.yml
+
+- name: Install duplicati
+  include: duplicati.yml

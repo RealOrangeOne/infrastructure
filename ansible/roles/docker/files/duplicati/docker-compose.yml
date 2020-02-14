@@ -1,0 +1,21 @@
+version: "2"
+services:
+  duplicati:
+    image: linuxserver/duplicati:v2.0.5.1-2.0.5.1_beta_2020-01-18-ls52
+    container_name: duplicati
+    environment:
+      - PUID={{ docker_user.id }}
+      - PGID={{ docker_user.id }}
+      - TZ=Europe/London
+    volumes:
+      - ./config:/config
+      - ./backups:/backups
+      - /srv/nextcloud-data/data/:/source/nextcloud:ro
+      - /opt/gitea/repos/repositories:/source/repositories:ro
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.duplicati.rule=Host(`duplicati.jakehoward.tech`)"
+      - "traefik.http.routers.duplicati.tls=true"
+      - "traefik.http.routers.duplicati.tls.certresolver=le"
+      - "traefik.http.routers.duplicati.middlewares=internal-only@file"
