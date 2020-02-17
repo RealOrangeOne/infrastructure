@@ -21,7 +21,7 @@ $CONFIG = array (
     2 => 'onlyoffice.jakehoward.tech',
   ),
   'dbtype' => 'mysql',
-  'version' => '18.0.0.10',
+  'version' => '18.0.1.3',
   'overwrite.cli.url' => 'https://intersect.jakehoward.tech',
   'dbname' => 'nextcloud',
   'dbhost' => 'mariadb:3306',
@@ -45,4 +45,6 @@ $CONFIG = array (
   'twofactor_enforced_excluded_groups' =>
   array (
   ),
+  'theme' => '',
+  'loglevel' => 2,
 );
