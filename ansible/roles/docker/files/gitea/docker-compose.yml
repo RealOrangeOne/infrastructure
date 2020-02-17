@@ -10,10 +10,12 @@ services:
       - USER_GID={{ docker_user.id }}
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.gitea.rule=Host(`git.theorangeone.net`)"
+      - "traefik.http.routers.gitea.rule=Host(`git.theorangeone.net`) && PathPrefix(`/gitea`)"
       - "traefik.http.routers.gitea.tls=true"
       - "traefik.http.routers.gitea.tls.certresolver=le"
       - "traefik.http.services.gitea-gitea.loadbalancer.server.port=3000"
+      - "traefik.http.middlewares.gitea-strip.stripprefix.prefixes=/gitea"
+      - "traefik.http.routers.gitea.middlewares=gitea-strip"
     ports:
       - "{{ wireguard.clients.intersect.ip }}:3022:3022"
     volumes:
@@ -30,3 +32,30 @@ services:
     environment:
       - POSTGRES_PASSWORD=gitea
       - POSTGRES_USER=gitea
+
+  cgit:
+    image: theorangeone/docker-cgit:latest
+    container_name: cgit
+    restart: unless-stopped
+    environment:
+      - USER_UID={{ docker_user.id }}
+      - USER_GID={{ docker_user.id }}
+    volumes:
+      - ./repos:/data/git:ro
+      - ./cgit/cgitrc:/config/cgitrc:ro
+      - ./cgit/repos.txt:/config/repos.txt:ro
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.cgit.rule=Host(`git.theorangeone.net`)"
+      - "traefik.http.routers.cgit.tls=true"
+      - "traefik.http.routers.cgit.tls.certresolver=le"
+
+  gitea-cgit-adapter:
+    image: theorangeone/gitea-cgit-adapter:latest
+    restart: unless-stopped
+    command: "/app/gitea-cgit-adapter /etc/gitea.ini /etc/cgit-repos.txt --interval 600"
+    depends_on:
+      - gitea
+    volumes:
+      - ./gitea/gitea/conf/app.ini:/etc/gitea.ini:ro
+      - ./cgit/repos.txt:/etc/cgit-repos.txt
