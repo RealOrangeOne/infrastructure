@@ -25,7 +25,7 @@ services:
       - "traefik.http.routers.nextcloud.tls.certresolver=le"
 
   mariadb:
-    image: linuxserver/mariadb:110.4.11mariabionic-ls47
+    image: linuxserver/mariadb:110.4.12mariabionic-ls53
     environment:
       - PUID={{ docker_user.id }}
       - PGID={{ docker_user.id }}
