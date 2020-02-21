@@ -17,6 +17,8 @@
 
 The ansible vault password needs setting in `ansible/.vault_pass`.
 
+Terraform configuration needs to be placed in `terraform/secrets.auto.tfvars`.
+
 ## Deploying
 
 `./scripts/deploy.sh`
