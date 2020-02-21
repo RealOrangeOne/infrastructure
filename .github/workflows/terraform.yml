@@ -1,0 +1,17 @@
+name: Terraform
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Install terraform
+      - uses: marocchino/setup-terraform@v1
+        with:
+          version: "0.12.20"
+      - name: Initialize Terraform
+        run: terraform init
+      - name: Lint
+        run: ./scripts/terraform-lint.sh

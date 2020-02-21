@@ -1,6 +1,7 @@
 # Infrastructure
 
 ![Ansible Status](https://github.com/realorangeone/infrastructure/workflows/Ansible/badge.svg)
+![Terraform Status](https://github.com/realorangeone/infrastructure/workflows/Terraform/badge.svg)
 ![Generic Linting](https://github.com/realorangeone/infrastructure/workflows/Lint/badge.svg)
 
 ## Requirements
