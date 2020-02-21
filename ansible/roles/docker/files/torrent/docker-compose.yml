@@ -1,7 +1,7 @@
 version: "3"
 services:
   deluge:
-    image: linuxserver/deluge:2.0.3-2201906121747ubuntu18.04.1-ls51
+    image: linuxserver/deluge:2.0.3-2201906121747ubuntu18.04.1-ls53
     container_name: deluge
     environment:
       - PUID={{ docker_user.id }}
