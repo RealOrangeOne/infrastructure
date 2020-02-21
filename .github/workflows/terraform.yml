@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Install terraform
-      - uses: marocchino/setup-terraform@v1
+        uses: marocchino/setup-terraform@v1
         with:
           version: "0.12.20"
       - name: Initialize Terraform
