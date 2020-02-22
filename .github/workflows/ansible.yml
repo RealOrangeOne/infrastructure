@@ -12,6 +12,6 @@ jobs:
         with:
           python-version: 3.7
       - name: Install dependencies
-        run: ./scripts/setup.sh
+        run: ./scripts/ansible/setup.sh
       - name: Run linters
-        run: ./scripts/ansible-lint.sh
+        run: ./scripts/ansible/lint.sh
