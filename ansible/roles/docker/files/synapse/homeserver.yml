@@ -16,7 +16,7 @@ pid_file: /data/homeserver.pid
 # The path to the web client which will be served at /_matrix/client/
 # if 'webclient' is configured under the 'listeners' configuration.
 #
-#web_client_location: "/path/to/web/root"
+# web_client_location: "/path/to/web/root"
 
 # The public-facing base URL that clients use to access this HS
 # (not including _matrix/...). This is the same URL a user would
@@ -24,17 +24,17 @@ pid_file: /data/homeserver.pid
 # use synapse with a reverse proxy, this should be the URL to reach
 # synapse via the proxy.
 #
-#public_baseurl: https://example.com/
+# public_baseurl: https://example.com/
 
 # Set the soft limit on the number of file descriptors synapse can use
 # Zero is used to indicate synapse should set the soft limit to the
 # hard limit.
 #
-#soft_file_limit: 0
+# soft_file_limit: 0
 
 # Set to false to disable presence tracking on this homeserver.
 #
-#use_presence: false
+# use_presence: false
 
 # Whether to require authentication to retrieve profile data (avatars,
 # display names) of other users through the client API. Defaults to
@@ -42,18 +42,18 @@ pid_file: /data/homeserver.pid
 # API, so this setting is of limited value if federation is enabled on
 # the server.
 #
-#require_auth_for_profile_requests: true
+# require_auth_for_profile_requests: true
 
 # If set to 'true', removes the need for authentication to access the server's
 # public rooms directory through the client API, meaning that anyone can
 # query the room directory. Defaults to 'false'.
 #
-#allow_public_rooms_without_auth: true
+# allow_public_rooms_without_auth: true
 
 # If set to 'true', allows any other homeserver to fetch the server's public
 # rooms directory via federation. Defaults to 'false'.
 #
-#allow_public_rooms_over_federation: true
+# allow_public_rooms_over_federation: true
 
 # The default room version for newly created rooms.
 #
@@ -63,28 +63,28 @@ pid_file: /data/homeserver.pid
 # For example, for room version 1, default_room_version should be set
 # to "1".
 #
-#default_room_version: "5"
+# default_room_version: "5"
 
 # The GC threshold parameters to pass to `gc.set_threshold`, if defined
 #
-#gc_thresholds: [700, 10, 10]
+# gc_thresholds: [700, 10, 10]
 
 # Set the limit on the returned events in the timeline in the get
 # and sync operations. The default value is -1, means no upper limit.
 #
-#filter_timeline_limit: 5000
+# filter_timeline_limit: 5000
 
 # Whether room invites to users on this server should be blocked
 # (except those sent by local server admins). The default is False.
 #
-#block_non_admin_invites: true
+# block_non_admin_invites: true
 
 # Room searching
 #
 # If disabled, new messages will not be indexed for searching and users
 # will receive errors when searching for messages. Defaults to enabled.
 #
-#enable_search: false
+# enable_search: false
 
 # Restrict federation to the following whitelist of domains.
 # N.B. we recommend also firewalling your federation listener to limit
@@ -92,7 +92,7 @@ pid_file: /data/homeserver.pid
 # purely on this application-layer restriction.  If not specified, the
 # default is to whitelist everything.
 #
-#federation_domain_whitelist:
+# federation_domain_whitelist:
 #  - lon.example.com
 #  - nyc.example.com
 #  - syd.example.com
@@ -185,11 +185,11 @@ listeners:
   # will also need to give Synapse a TLS key and certificate: see the TLS section
   # below.)
   #
-  #- port: 8448
-  #  type: http
-  #  tls: true
-  #  resources:
-  #    - names: [client, federation]
+  # - port: 8448
+  #   type: http
+  #   tls: true
+  #   resources:
+  #     - names: [client, federation]
 
   # Unsecure HTTP listener: for when matrix traffic passes through a reverse proxy
   # that unwraps TLS.
@@ -206,31 +206,16 @@ listeners:
       - names: [client, federation]
         compress: false
 
-    # example additional_resources:
-    #
-    #additional_resources:
-    #  "/_matrix/my/custom/endpoint":
-    #    module: my_module.CustomRequestHandler
-    #    config: {}
-
-  # Turn on the twisted ssh manhole service on localhost on the given
-  # port.
-  #
-  #- port: 9000
-  #  bind_addresses: ['::1', '127.0.0.1']
-  #  type: manhole
-
-
 ## Homeserver blocking ##
 
 # How to reach the server admin, used in ResourceLimitError
 #
-#admin_contact: 'mailto:admin@server.com'
+# admin_contact: 'mailto:admin@server.com'
 
 # Global blocking
 #
-#hs_disabled: false
-#hs_disabled_message: 'Human readable reason for why the HS is blocked'
+# hs_disabled: false
+# hs_disabled_message: 'Human readable reason for why the HS is blocked'
 
 # Monthly Active User Blocking
 #
@@ -256,26 +241,26 @@ listeners:
 # interest increasing the mau limit further. Defaults to True, which
 # means that alerting is enabled
 #
-#limit_usage_by_mau: false
-#max_mau_value: 50
-#mau_trial_days: 2
-#mau_limit_alerting: false
+# limit_usage_by_mau: false
+# max_mau_value: 50
+# mau_trial_days: 2
+# mau_limit_alerting: false
 
 # If enabled, the metrics for the number of monthly active users will
 # be populated, however no one will be limited. If limit_usage_by_mau
 # is true, this is implied to be true.
 #
-#mau_stats_only: false
+# mau_stats_only: false
 
 # Sometimes the server admin will want to ensure certain accounts are
 # never blocked by mau checking. These accounts are specified here.
 #
-#mau_limit_reserved_threepids:
+# mau_limit_reserved_threepids:
 #  - medium: 'email'
 #    address: 'reserved_user@example.com'
 
 # Used by phonehome stats to group together related servers.
-#server_context: context
+# server_context: context
 
 # Resource-constrained homeserver Settings
 #
@@ -289,7 +274,7 @@ listeners:
 # its join cancelled.
 #
 # Uncomment the below lines to enable:
-#limit_remote_rooms:
+# limit_remote_rooms:
 #  enabled: true
 #  complexity: 1.0
 #  complexity_error: "This room is too complex."
@@ -297,26 +282,26 @@ listeners:
 # Whether to require a user to be in the room to add an alias to it.
 # Defaults to 'true'.
 #
-#require_membership_for_aliases: false
+# require_membership_for_aliases: false
 
 # Whether to allow per-room membership profiles through the send of membership
 # events with profile information that differ from the target's global profile.
 # Defaults to 'true'.
 #
-#allow_per_room_profiles: false
+# allow_per_room_profiles: false
 
 # How long to keep redacted events in unredacted form in the database. After
 # this period redacted events get replaced with their redacted form in the DB.
 #
 # Defaults to `7d`. Set to `null` to disable.
 #
-#redaction_retention_period: 28d
+# redaction_retention_period: 28d
 
 # How long to track users' last seen time and IPs in the database.
 #
 # Defaults to `28d`. Set to `null` to disable clearing out of old rows.
 #
-#user_ips_max_age: 14d
+# user_ips_max_age: 14d
 
 # Message retention policy at the server level.
 #
@@ -343,43 +328,43 @@ retention:
     min_lifetime: 1d
     max_lifetime: 30d
 
-  # Retention policy limits. If set, a user won't be able to send a
-  # 'm.room.retention' event which features a 'min_lifetime' or a 'max_lifetime'
-  # that's not within this range. This is especially useful in closed federations,
-  # in which server admins can make sure every federating server applies the same
-  # rules.
-  #
-  #allowed_lifetime_min: 1d
-  #allowed_lifetime_max: 1y
+# Retention policy limits. If set, a user won't be able to send a
+# 'm.room.retention' event which features a 'min_lifetime' or a 'max_lifetime'
+# that's not within this range. This is especially useful in closed federations,
+# in which server admins can make sure every federating server applies the same
+# rules.
+#
+# allowed_lifetime_min: 1d
+# allowed_lifetime_max: 1y
 
-  # Server admins can define the settings of the background jobs purging the
-  # events which lifetime has expired under the 'purge_jobs' section.
-  #
-  # If no configuration is provided, a single job will be set up to delete expired
-  # events in every room daily.
-  #
-  # Each job's configuration defines which range of message lifetimes the job
-  # takes care of. For example, if 'shortest_max_lifetime' is '2d' and
-  # 'longest_max_lifetime' is '3d', the job will handle purging expired events in
-  # rooms whose state defines a 'max_lifetime' that's both higher than 2 days, and
-  # lower than or equal to 3 days. Both the minimum and the maximum value of a
-  # range are optional, e.g. a job with no 'shortest_max_lifetime' and a
-  # 'longest_max_lifetime' of '3d' will handle every room with a retention policy
-  # which 'max_lifetime' is lower than or equal to three days.
-  #
-  # The rationale for this per-job configuration is that some rooms might have a
-  # retention policy with a low 'max_lifetime', where history needs to be purged
-  # of outdated messages on a very frequent basis (e.g. every 5min), but not want
-  # that purge to be performed by a job that's iterating over every room it knows,
-  # which would be quite heavy on the server.
-  #
-  #purge_jobs:
-  #  - shortest_max_lifetime: 1d
-  #    longest_max_lifetime: 3d
-  #    interval: 5m:
-  #  - shortest_max_lifetime: 3d
-  #    longest_max_lifetime: 1y
-  #    interval: 24h
+# Server admins can define the settings of the background jobs purging the
+# events which lifetime has expired under the 'purge_jobs' section.
+#
+# If no configuration is provided, a single job will be set up to delete expired
+# events in every room daily.
+#
+# Each job's configuration defines which range of message lifetimes the job
+# takes care of. For example, if 'shortest_max_lifetime' is '2d' and
+# 'longest_max_lifetime' is '3d', the job will handle purging expired events in
+# rooms whose state defines a 'max_lifetime' that's both higher than 2 days, and
+# lower than or equal to 3 days. Both the minimum and the maximum value of a
+# range are optional, e.g. a job with no 'shortest_max_lifetime' and a
+# 'longest_max_lifetime' of '3d' will handle every room with a retention policy
+# which 'max_lifetime' is lower than or equal to three days.
+#
+# The rationale for this per-job configuration is that some rooms might have a
+# retention policy with a low 'max_lifetime', where history needs to be purged
+# of outdated messages on a very frequent basis (e.g. every 5min), but not want
+# that purge to be performed by a job that's iterating over every room it knows,
+# which would be quite heavy on the server.
+#
+# purge_jobs:
+#   - shortest_max_lifetime: 1d
+#     longest_max_lifetime: 3d
+#     interval: 5m:
+#   - shortest_max_lifetime: 3d
+#     longest_max_lifetime: 1y
+#     interval: 24h
 
 
 ## TLS ##
@@ -396,18 +381,18 @@ retention:
 # instance, if using certbot, use `fullchain.pem` as your certificate,
 # not `cert.pem`).
 #
-#tls_certificate_path: "/data/theorangeone.net.tls.crt"
+# tls_certificate_path: "/data/theorangeone.net.tls.crt"
 
 # PEM-encoded private key for TLS
 #
-#tls_private_key_path: "/data/theorangeone.net.tls.key"
+# tls_private_key_path: "/data/theorangeone.net.tls.key"
 
 # Whether to verify TLS server certificates for outbound federation requests.
 #
 # Defaults to `true`. To disable certificate verification, uncomment the
 # following line.
 #
-#federation_verify_certificates: false
+# federation_verify_certificates: false
 
 # The minimum TLS version that will be used for outbound federation requests.
 #
@@ -416,7 +401,7 @@ retention:
 # of the public Matrix network: only configure it to `1.3` if you have an
 # entirely private federation setup and you can ensure TLS 1.3 support.
 #
-#federation_client_minimum_tls_version: 1.2
+# federation_client_minimum_tls_version: 1.2
 
 # Skip federation certificate verification on the following whitelist
 # of domains.
@@ -427,7 +412,7 @@ retention:
 #
 # Only effective if federation_verify_certicates is `true`.
 #
-#federation_certificate_verification_whitelist:
+# federation_certificate_verification_whitelist:
 #  - lon.example.com
 #  - *.domain.com
 #  - *.onion
@@ -440,7 +425,7 @@ retention:
 # Note that this list will replace those that are provided by your
 # operating environment. Certificates must be in PEM format.
 #
-#federation_custom_ca_list:
+# federation_custom_ca_list:
 #  - myCA1.pem
 #  - myCA2.pem
 #  - myCA3.pem
@@ -467,52 +452,46 @@ retention:
 #    permission to listen on port 80.
 #
 acme:
-    # ACME support is disabled by default. Set this to `true` and uncomment
-    # tls_certificate_path and tls_private_key_path above to enable it.
-    #
-    enabled: false
-
-    # Endpoint to use to request certificates. If you only want to test,
-    # use Let's Encrypt's staging url:
-    #     https://acme-staging.api.letsencrypt.org/directory
-    #
-    #url: https://acme-v01.api.letsencrypt.org/directory
-
-    # Port number to listen on for the HTTP-01 challenge. Change this if
-    # you are forwarding connections through Apache/Nginx/etc.
-    #
-    port: 80
-
-    # Local addresses to listen on for incoming connections.
-    # Again, you may want to change this if you are forwarding connections
-    # through Apache/Nginx/etc.
-    #
-    bind_addresses: ['::', '0.0.0.0']
-
-    # How many days remaining on a certificate before it is renewed.
-    #
-    reprovision_threshold: 30
-
-    # The domain that the certificate should be for. Normally this
-    # should be the same as your Matrix domain (i.e., 'server_name'), but,
-    # by putting a file at 'https://<server_name>/.well-known/matrix/server',
-    # you can delegate incoming traffic to another server. If you do that,
-    # you should give the target of the delegation here.
-    #
-    # For example: if your 'server_name' is 'example.com', but
-    # 'https://example.com/.well-known/matrix/server' delegates to
-    # 'matrix.example.com', you should put 'matrix.example.com' here.
-    #
-    # If not set, defaults to your 'server_name'.
-    #
-    domain: matrix.example.com
-
-    # file to use for the account key. This will be generated if it doesn't
-    # exist.
-    #
-    # If unspecified, we will use CONFDIR/client.key.
-    #
-    account_key_file: /data/acme_account.key
+  # ACME support is disabled by default. Set this to `true` and uncomment
+  # tls_certificate_path and tls_private_key_path above to enable it.
+  #
+  enabled: false
+  # Endpoint to use to request certificates. If you only want to test,
+  # use Let's Encrypt's staging url:
+  #     https://acme-staging.api.letsencrypt.org/directory
+  #
+  # url: https://acme-v01.api.letsencrypt.org/directory
+  # Port number to listen on for the HTTP-01 challenge. Change this if
+  # you are forwarding connections through Apache/Nginx/etc.
+  #
+  port: 80
+  # Local addresses to listen on for incoming connections.
+  # Again, you may want to change this if you are forwarding connections
+  # through Apache/Nginx/etc.
+  #
+  bind_addresses: ['::', '0.0.0.0']
+  # How many days remaining on a certificate before it is renewed.
+  #
+  reprovision_threshold: 30
+  # The domain that the certificate should be for. Normally this
+  # should be the same as your Matrix domain (i.e., 'server_name'), but,
+  # by putting a file at 'https://<server_name>/.well-known/matrix/server',
+  # you can delegate incoming traffic to another server. If you do that,
+  # you should give the target of the delegation here.
+  #
+  # For example: if your 'server_name' is 'example.com', but
+  # 'https://example.com/.well-known/matrix/server' delegates to
+  # 'matrix.example.com', you should put 'matrix.example.com' here.
+  #
+  # If not set, defaults to your 'server_name'.
+  #
+  domain: matrix.example.com
+  # file to use for the account key. This will be generated if it doesn't
+  # exist.
+  #
+  # If unspecified, we will use CONFDIR/client.key.
+  #
+  account_key_file: /data/acme_account.key
 
 # List of allowed TLS fingerprints for this server to publish along
 # with the signing keys for this server. Other matrix servers that
@@ -539,9 +518,7 @@ acme:
 #   openssl x509 -outform DER | openssl sha256 -binary | base64 | tr -d '='
 # or by checking matrix.org/federationtester/api/report?server_name=$host
 #
-#tls_fingerprints: [{"sha256": "<base64_encoded_sha256_fingerprint>"}]
-
-
+# tls_fingerprints: [{"sha256": "<base64_encoded_sha256_fingerprint>"}]
 
 ## Database ##
 
@@ -558,8 +535,7 @@ database:
     cp_max: 10
 
 # Number of events to cache in memory.
-#
-#event_cache_size: 10K
+# event_cache_size: 10K
 
 
 ## Logging ##
@@ -596,15 +572,15 @@ log_config: "/data/theorangeone.net.log.config"
 #
 # The defaults are as shown below.
 #
-#rc_message:
+# rc_message:
 #  per_second: 0.2
 #  burst_count: 10
 #
-#rc_registration:
+# rc_registration:
 #  per_second: 0.17
 #  burst_count: 3
 #
-#rc_login:
+# rc_login:
 #  address:
 #    per_second: 0.17
 #    burst_count: 3
@@ -615,7 +591,7 @@ log_config: "/data/theorangeone.net.log.config"
 #    per_second: 0.17
 #    burst_count: 3
 #
-#rc_admin_redaction:
+# rc_admin_redaction:
 #  per_second: 1
 #  burst_count: 50
 
@@ -635,7 +611,7 @@ log_config: "/data/theorangeone.net.log.config"
 #
 # The defaults are as shown below.
 #
-#rc_federation:
+# rc_federation:
 #  window_size: 1000
 #  sleep_limit: 10
 #  sleep_delay: 500
@@ -648,16 +624,14 @@ log_config: "/data/theorangeone.net.log.config"
 # If we end up trying to send out more read-receipts, they will get buffered up
 # into fewer transactions.
 #
-#federation_rr_transactions_per_room_per_second: 50
-
-
+# federation_rr_transactions_per_room_per_second: 50
 
 ## Media Store ##
 
 # Enable the media store service in the Synapse master. Uncomment the
 # following if you are using a separate media store worker.
 #
-#enable_media_repo: false
+# enable_media_repo: false
 
 # Directory where uploaded images and attachments are stored.
 #
@@ -666,7 +640,7 @@ media_store_path: "/data/media_store"
 # Media storage providers allow media to be stored in different
 # locations.
 #
-#media_storage_providers:
+# media_storage_providers:
 #  - module: file_system
 #    # Whether to write new local files.
 #    store_local: false
@@ -684,11 +658,11 @@ uploads_path: "/data/uploads"
 
 # The largest allowed upload size in bytes
 #
-#max_upload_size: 10M
+# max_upload_size: 10M
 
 # Maximum number of pixels that will be thumbnailed
 #
-#max_image_pixels: 32M
+# max_image_pixels: 32M
 
 # Whether to generate new thumbnails on the fly to precisely match
 # the resolution requested by the client. If true then whenever
@@ -696,11 +670,11 @@ uploads_path: "/data/uploads"
 # generate a new thumbnail. If false the server will pick a thumbnail
 # from a precalculated list.
 #
-#dynamic_thumbnails: false
+# dynamic_thumbnails: false
 
 # List of thumbnails to precalculate when an image is uploaded.
 #
-#thumbnail_sizes:
+# thumbnail_sizes:
 #  - width: 32
 #    height: 32
 #    method: crop
@@ -722,7 +696,7 @@ uploads_path: "/data/uploads"
 # 'false' by default: uncomment the following to enable it (and specify a
 # url_preview_ip_range_blacklist blacklist).
 #
-#url_preview_enabled: true
+# url_preview_enabled: true
 
 # List of IP address CIDR ranges that the URL preview spider is denied
 # from accessing.  There are no defaults: you must explicitly
@@ -738,7 +712,7 @@ uploads_path: "/data/uploads"
 # This must be specified if url_preview_enabled is set. It is recommended that
 # you uncomment the following list as a starting point.
 #
-#url_preview_ip_range_blacklist:
+# url_preview_ip_range_blacklist:
 #  - '127.0.0.0/8'
 #  - '10.0.0.0/8'
 #  - '172.16.0.0/12'
@@ -755,7 +729,7 @@ uploads_path: "/data/uploads"
 # target IP ranges - e.g. for enabling URL previews for a specific private
 # website only visible in your network.
 #
-#url_preview_ip_range_whitelist:
+# url_preview_ip_range_whitelist:
 #   - '192.168.1.1'
 
 # Optional list of URL matches that the URL preview spider is
@@ -774,7 +748,7 @@ uploads_path: "/data/uploads"
 # specified component matches for a given list item succeed, the URL is
 # blacklisted.
 #
-#url_preview_url_blacklist:
+# url_preview_url_blacklist:
 #  # blacklist any URL with a username in its URI
 #  - username: '*'
 #
@@ -794,54 +768,52 @@ uploads_path: "/data/uploads"
 
 # The largest allowed URL preview spidering size in bytes
 #
-#max_spider_size: 10M
-
+# max_spider_size: 10M
 
 ## Captcha ##
 # See docs/CAPTCHA_SETUP for full details of configuring this.
 
 # This homeserver's ReCAPTCHA public key.
 #
-#recaptcha_public_key: "YOUR_PUBLIC_KEY"
+# recaptcha_public_key: "YOUR_PUBLIC_KEY"
 
 # This homeserver's ReCAPTCHA private key.
 #
-#recaptcha_private_key: "YOUR_PRIVATE_KEY"
+# recaptcha_private_key: "YOUR_PRIVATE_KEY"
 
 # Enables ReCaptcha checks when registering, preventing signup
 # unless a captcha is answered. Requires a valid ReCaptcha
 # public/private key.
 #
-#enable_registration_captcha: false
+# enable_registration_captcha: false
 
 # A secret key used to bypass the captcha test entirely.
 #
-#captcha_bypass_secret: "YOUR_SECRET_HERE"
+# captcha_bypass_secret: "YOUR_SECRET_HERE"
 
 # The API endpoint to use for verifying m.login.recaptcha responses.
 #
-#recaptcha_siteverify_api: "https://www.recaptcha.net/recaptcha/api/siteverify"
-
+# recaptcha_siteverify_api: "https://www.recaptcha.net/recaptcha/api/siteverify"
 
 ## TURN ##
 
 # The public URIs of the TURN server to give to clients
 #
-#turn_uris: []
+# turn_uris: []
 
 # The shared secret used to compute passwords for the TURN server
 #
-#turn_shared_secret: "YOUR_SHARED_SECRET"
+# turn_shared_secret: "YOUR_SHARED_SECRET"
 
 # The Username and password if the TURN server needs them and
 # does not use a token
 #
-#turn_username: "TURNSERVER_USERNAME"
-#turn_password: "TURNSERVER_PASSWORD"
+# turn_username: "TURNSERVER_USERNAME"
+# turn_password: "TURNSERVER_PASSWORD"
 
 # How long generated TURN credentials last
 #
-#turn_user_lifetime: 1h
+# turn_user_lifetime: 1h
 
 # Whether guests should be allowed to use the TURN server.
 # This defaults to True, otherwise VoIP will be unreliable for guests.
@@ -849,7 +821,7 @@ uploads_path: "/data/uploads"
 # connect to arbitrary endpoints without having first signed up for a
 # valid account (e.g. by passing a CAPTCHA).
 #
-#turn_allow_guests: true
+# turn_allow_guests: true
 
 
 ## Registration ##
@@ -859,7 +831,7 @@ uploads_path: "/data/uploads"
 
 # Enable registration for new users.
 #
-#enable_registration: false
+# enable_registration: false
 
 # Optional account validity configuration. This allows for accounts to be denied
 # any request after a given period.
@@ -891,7 +863,7 @@ uploads_path: "/data/uploads"
 # date will be randomly selected within a range [now + period - d ; now + period],
 # where d is equal to 10% of the validity period.
 #
-#account_validity:
+# account_validity:
 #  enabled: true
 #  period: 6w
 #  renew_at: 1w
@@ -916,23 +888,23 @@ uploads_path: "/data/uploads"
 #
 # By default, this is infinite.
 #
-#session_lifetime: 24h
+# session_lifetime: 24h
 
 # The user must provide all of the below types of 3PID when registering.
 #
-#registrations_require_3pid:
+# registrations_require_3pid:
 #  - email
 #  - msisdn
 
 # Explicitly disable asking for MSISDNs from the registration
 # flow (overrides registrations_require_3pid if MSISDNs are set as required)
 #
-#disable_msisdn_registration: true
+# disable_msisdn_registration: true
 
 # Mandate that users are only allowed to associate certain formats of
 # 3PIDs with accounts on this server.
 #
-#allowed_local_3pids:
+# allowed_local_3pids:
 #  - medium: email
 #    pattern: '.*@matrix\.org'
 #  - medium: email
@@ -942,7 +914,7 @@ uploads_path: "/data/uploads"
 
 # Enable 3PIDs lookup requests to identity servers from this server.
 #
-#enable_3pid_lookup: true
+# enable_3pid_lookup: true
 
 # If set, allows registration of standard or admin accounts by anyone who
 # has the shared secret, even if registration is otherwise disabled.
@@ -955,13 +927,13 @@ registration_shared_secret: "{{ synapse.registration_shared_secret }}"
 # N.B. that increasing this will exponentially increase the time required
 # to register or login - e.g. 24 => 2^24 rounds which will take >20 mins.
 #
-#bcrypt_rounds: 12
+# bcrypt_rounds: 12
 
 # Allows users to register as guests without a password/email/etc, and
 # participate in rooms hosted on this server which have been made
 # accessible to anonymous users.
 #
-#allow_guest_access: false
+# allow_guest_access: false
 
 # The identity server which we suggest that clients should use when users log
 # in on this server.
@@ -969,7 +941,7 @@ registration_shared_secret: "{{ synapse.registration_shared_secret }}"
 # (By default, no suggestion is made, so it is left up to the client.
 # This setting is ignored unless public_baseurl is also set.)
 #
-#default_identity_server: https://matrix.org
+# default_identity_server: https://matrix.org
 
 # The list of identity servers trusted to verify third party
 # identifiers by this server.
@@ -985,7 +957,7 @@ registration_shared_secret: "{{ synapse.registration_shared_secret }}"
 # As of Synapse v1.4.0, all other functionality of this option has been deprecated, and
 # it is now solely used for the purposes of the background migration script, and can be
 # removed once it has run.
-#trusted_third_party_id_servers:
+# trusted_third_party_id_servers:
 #  - matrix.org
 #  - vector.im
 
@@ -1012,13 +984,13 @@ registration_shared_secret: "{{ synapse.registration_shared_secret }}"
 # If a delegate is specified, the config option public_baseurl must also be filled out.
 #
 account_threepid_delegates:
-    #email: https://example.com     # Delegate email sending to example.com
-    #msisdn: http://localhost:8090  # Delegate SMS sending to this local process
+# email: https://example.com     # Delegate email sending to example.com
+# msisdn: http://localhost:8090  # Delegate SMS sending to this local process
 
 # Users who register on this homeserver will automatically be joined
 # to these rooms
 #
-#auto_join_rooms:
+# auto_join_rooms:
 #  - "#example:example.com"
 
 # Where auto_join_rooms are specified, setting this flag ensures that the
@@ -1027,14 +999,13 @@ account_threepid_delegates:
 # Setting to false means that if the rooms are not manually created,
 # users cannot be auto-joined since they do not exist.
 #
-#autocreate_auto_join_rooms: true
-
+# autocreate_auto_join_rooms: true
 
 ## Metrics ###
 
 # Enable collection and rendering of performance metrics
 #
-#enable_metrics: false
+# enable_metrics: false
 
 # Enable sentry integration
 # NOTE: While attempts are made to ensure that the logs don't contain
@@ -1043,18 +1014,18 @@ account_threepid_delegates:
 # information, and it in turn may then diseminate sensitive information
 # through insecure notification channels if so configured.
 #
-#sentry:
+# sentry:
 #    dsn: "..."
 
 # Flags to enable Prometheus metrics which are not suitable to be
 # enabled by default, either for performance reasons or limited use.
 #
 metrics_flags:
-    # Publish synapse_federation_known_servers, a g auge of the number of
-    # servers this homeserver knows about, including itself. May cause
-    # performance problems on large homeservers.
-    #
-    #known_servers: true
+# Publish synapse_federation_known_servers, a g auge of the number of
+# servers this homeserver knows about, including itself. May cause
+# performance problems on large homeservers.
+#
+# known_servers: true
 
 # Whether or not to report anonymized homeserver usage statistics.
 report_stats: true
@@ -1062,14 +1033,14 @@ report_stats: true
 # The endpoint to report the anonymized homeserver usage statistics to.
 # Defaults to https://matrix.org/report-usage-stats/push
 #
-#report_stats_endpoint: https://example.com/report-usage-stats/push
+# report_stats_endpoint: https://example.com/report-usage-stats/push
 
 
 ## API Configuration ##
 
 # A list of event types that will be included in the room_invite_state
 #
-#room_invite_state_types:
+# room_invite_state_types:
 #  - "m.room.join_rules"
 #  - "m.room.canonical_alias"
 #  - "m.room.avatar"
@@ -1079,14 +1050,14 @@ report_stats: true
 
 # A list of application service config files to use
 #
-#app_service_config_files:
+# app_service_config_files:
 #  - app_service_1.yaml
 #  - app_service_2.yaml
 
 # Uncomment to enable tracking of application service IP addresses. Implicitly
 # enables MAU tracking for application service users.
 #
-#track_appservice_user_ips: true
+# track_appservice_user_ips: true
 
 
 # a secret which is used to sign access tokens. If none is specified,
@@ -1110,7 +1081,7 @@ signing_key_path: "/data/theorangeone.net.signing.key"
 # The keys that the server used to sign messages with but won't use
 # to sign new messages. E.g. it has lost its private key
 #
-#old_signing_keys:
+# old_signing_keys:
 #  "ed25519:auto":
 #    # Base64 encoded public key
 #    key: "The public part of your old signing key."
@@ -1122,7 +1093,7 @@ signing_key_path: "/data/theorangeone.net.signing.key"
 # Determines how quickly servers will query to check which keys
 # are still valid.
 #
-#key_refresh_interval: 1d
+# key_refresh_interval: 1d
 
 # The trusted servers to download signing keys from.
 #
@@ -1157,7 +1128,7 @@ signing_key_path: "/data/theorangeone.net.signing.key"
 #
 # An example configuration might look like:
 #
-#trusted_key_servers:
+# trusted_key_servers:
 #  - server_name: "my_trusted_server.example.com"
 #    verify_keys:
 #      "ed25519:auto": "abcdefghijklmnopqrstuvwxyzabcdefghijklmopqr"
@@ -1176,7 +1147,7 @@ suppress_key_server_warning: true
 #
 # Can contain multiple keys, one per line.
 #
-#key_server_signing_keys_path: "key_server_signing_keys.key"
+# key_server_signing_keys_path: "key_server_signing_keys.key"
 
 
 # Enable SAML2 for registration and login. Uses pysaml2.
@@ -1196,90 +1167,89 @@ suppress_key_server_warning: true
 # https://<server>:<port>/_matrix/saml2/authn_response.
 #
 saml2_config:
-  # `sp_config` is the configuration for the pysaml2 Service Provider.
-  # See pysaml2 docs for format of config.
-  #
-  # Default values will be used for the 'entityid' and 'service' settings,
-  # so it is not normally necessary to specify them unless you need to
-  # override them.
-  #
-  #sp_config:
-  #  # point this to the IdP's metadata. You can use either a local file or
-  #  # (preferably) a URL.
-  #  metadata:
-  #    #local: ["saml2/idp.xml"]
-  #    remote:
-  #      - url: https://our_idp/metadata.xml
-  #
-  #    # By default, the user has to go to our login page first. If you'd like
-  #    # to allow IdP-initiated login, set 'allow_unsolicited: true' in a
-  #    # 'service.sp' section:
-  #    #
-  #    #service:
-  #    #  sp:
-  #    #    allow_unsolicited: true
-  #
-  #    # The examples below are just used to generate our metadata xml, and you
-  #    # may well not need them, depending on your setup. Alternatively you
-  #    # may need a whole lot more detail - see the pysaml2 docs!
-  #
-  #    description: ["My awesome SP", "en"]
-  #    name: ["Test SP", "en"]
-  #
-  #    organization:
-  #      name: Example com
-  #      display_name:
-  #        - ["Example co", "en"]
-  #      url: "http://example.com"
-  #
-  #    contact_person:
-  #      - given_name: Bob
-  #        sur_name: "the Sysadmin"
-  #        email_address": ["admin@example.com"]
-  #        contact_type": technical
+# `sp_config` is the configuration for the pysaml2 Service Provider.
+# See pysaml2 docs for format of config.
+#
+# Default values will be used for the 'entityid' and 'service' settings,
+# so it is not normally necessary to specify them unless you need to
+# override them.
+#
+# sp_config:
+#  # point this to the IdP's metadata. You can use either a local file or
+#  # (preferably) a URL.
+#  metadata:
+#    #local: ["saml2/idp.xml"]
+#    remote:
+#      - url: https://our_idp/metadata.xml
+#
+#    # By default, the user has to go to our login page first. If you'd like
+#    # to allow IdP-initiated login, set 'allow_unsolicited: true' in a
+#    # 'service.sp' section:
+#    #
+#    #service:
+#    #  sp:
+#    #    allow_unsolicited: true
+#
+#    # The examples below are just used to generate our metadata xml, and you
+#    # may well not need them, depending on your setup. Alternatively you
+#    # may need a whole lot more detail - see the pysaml2 docs!
+#
+#    description: ["My awesome SP", "en"]
+#    name: ["Test SP", "en"]
+#
+#    organization:
+#      name: Example com
+#      display_name:
+#        - ["Example co", "en"]
+#      url: "http://example.com"
+#
+#    contact_person:
+#      - given_name: Bob
+#        sur_name: "the Sysadmin"
+#        email_address": ["admin@example.com"]
+#        contact_type": technical
 
-  # Instead of putting the config inline as above, you can specify a
-  # separate pysaml2 configuration file:
-  #
-  #config_path: "/data/sp_conf.py"
+# Instead of putting the config inline as above, you can specify a
+# separate pysaml2 configuration file:
+#
+# config_path: "/data/sp_conf.py"
 
-  # the lifetime of a SAML session. This defines how long a user has to
-  # complete the authentication process, if allow_unsolicited is unset.
-  # The default is 5 minutes.
-  #
-  #saml_session_lifetime: 5m
+# the lifetime of a SAML session. This defines how long a user has to
+# complete the authentication process, if allow_unsolicited is unset.
+# The default is 5 minutes.
+#
+# saml_session_lifetime: 5m
 
-  # The SAML attribute (after mapping via the attribute maps) to use to derive
-  # the Matrix ID from. 'uid' by default.
-  #
-  #mxid_source_attribute: displayName
+# The SAML attribute (after mapping via the attribute maps) to use to derive
+# the Matrix ID from. 'uid' by default.
+#
+# mxid_source_attribute: displayName
 
-  # The mapping system to use for mapping the saml attribute onto a matrix ID.
-  # Options include:
-  #  * 'hexencode' (which maps unpermitted characters to '=xx')
-  #  * 'dotreplace' (which replaces unpermitted characters with '.').
-  # The default is 'hexencode'.
-  #
-  #mxid_mapping: dotreplace
+# The mapping system to use for mapping the saml attribute onto a matrix ID.
+# Options include:
+#  * 'hexencode' (which maps unpermitted characters to '=xx')
+#  * 'dotreplace' (which replaces unpermitted characters with '.').
+# The default is 'hexencode'.
+#
+# mxid_mapping: dotreplace
 
-  # In previous versions of synapse, the mapping from SAML attribute to MXID was
-  # always calculated dynamically rather than stored in a table. For backwards-
-  # compatibility, we will look for user_ids matching such a pattern before
-  # creating a new account.
-  #
-  # This setting controls the SAML attribute which will be used for this
-  # backwards-compatibility lookup. Typically it should be 'uid', but if the
-  # attribute maps are changed, it may be necessary to change it.
-  #
-  # The default is 'uid'.
-  #
-  #grandfathered_mxid_source_attribute: upn
-
+# In previous versions of synapse, the mapping from SAML attribute to MXID was
+# always calculated dynamically rather than stored in a table. For backwards-
+# compatibility, we will look for user_ids matching such a pattern before
+# creating a new account.
+#
+# This setting controls the SAML attribute which will be used for this
+# backwards-compatibility lookup. Typically it should be 'uid', but if the
+# attribute maps are changed, it may be necessary to change it.
+#
+# The default is 'uid'.
+#
+# grandfathered_mxid_source_attribute: upn
 
 
 # Enable CAS for registration and login.
 #
-#cas_config:
+# cas_config:
 #   enabled: true
 #   server_url: "https://cas-server.com"
 #   service_url: "https://homeserver.domain.com:8448"
@@ -1290,28 +1260,26 @@ saml2_config:
 
 # The JWT needs to contain a globally unique "sub" (subject) claim.
 #
-#jwt_config:
+# jwt_config:
 #   enabled: true
 #   secret: "a secret"
 #   algorithm: "HS256"
 
-
 password_config:
-   # Uncomment to disable password login
-   #
-   #enabled: false
+# Uncomment to disable password login
+#
+# enabled: false
 
-   # Uncomment to disable authentication against the local password
-   # database. This is ignored if `enabled` is false, and is only useful
-   # if you have other password_providers.
-   #
-   #localdb_enabled: false
+# Uncomment to disable authentication against the local password
+# database. This is ignored if `enabled` is false, and is only useful
+# if you have other password_providers.
+#
+# localdb_enabled: false
 
-   # Uncomment and change to a secret random string for extra security.
-   # DO NOT CHANGE THIS AFTER INITIAL SETUP!
-   #
-   #pepper: "EVEN_MORE_SECRET"
-
+# Uncomment and change to a secret random string for extra security.
+# DO NOT CHANGE THIS AFTER INITIAL SETUP!
+#
+# pepper: "EVEN_MORE_SECRET"
 
 
 # Enable sending emails for password resets, notification events or
@@ -1320,7 +1288,7 @@ password_config:
 # If your SMTP server requires authentication, the optional smtp_user &
 # smtp_pass variables should be used
 #
-#email:
+# email:
 #   enable_notifs: false
 #   smtp_host: "localhost"
 #   smtp_port: 25 # SSL: 465, STARTTLS: 587
@@ -1416,7 +1384,7 @@ password_config:
 #   #add_threepid_failure_html: add_threepid_failure.html
 
 
-#password_providers:
+# password_providers:
 #    - module: "ldap_auth_provider.LdapAuthProvider"
 #      config:
 #        enabled: true
@@ -1432,7 +1400,6 @@ password_config:
 #        #filter: "(objectClass=posixAccount)"
 
 
-
 # Clients requesting push notifications can either have the body of
 # the message sent in the notification poke along with other details
 # like the sender, or just the event ID and room ID (`event_id_only`).
@@ -1445,11 +1412,11 @@ password_config:
 # because it is loaded by the app. iPhone, however will send a
 # notification saying only that a message arrived and who it came from.
 #
-#push:
+# push:
 #  include_content: true
 
 
-#spam_checker:
+# spam_checker:
 #  module: "my_custom_project.SuperSpamChecker"
 #  config:
 #    example_option: 'things'
@@ -1457,13 +1424,12 @@ password_config:
 
 # Uncomment to allow non-server-admin users to create groups on this server
 #
-#enable_group_creation: true
+# enable_group_creation: true
 
 # If enabled, non server admins can only create groups with local parts
 # starting with this prefix
 #
-#group_creation_prefix: "unofficial/"
-
+# group_creation_prefix: "unofficial/"
 
 
 # User Directory configuration
@@ -1478,7 +1444,7 @@ password_config:
 # rebuild the user_directory search indexes, see
 # https://github.com/matrix-org/synapse/blob/master/docs/user_directory.md
 #
-#user_directory:
+# user_directory:
 #  enabled: true
 #  search_all_users: false
 
@@ -1517,7 +1483,7 @@ password_config:
 # for an account. Has no effect unless `require_at_registration` is enabled.
 # Defaults to "Privacy Policy".
 #
-#user_consent:
+# user_consent:
 #  template_dir: res/templates/privacy
 #  version: 1.0
 #  server_notice_content:
@@ -1533,8 +1499,6 @@ password_config:
 #  policy_name: Privacy Policy
 #
 
-
-
 # Local statistics collection. Used in populating the room directory.
 #
 # 'bucket_size' controls how large each statistics timeslice is. It can
@@ -1544,7 +1508,7 @@ password_config:
 # It can be defined in a human readable short form -- e.g. "1d", "1y".
 #
 #
-#stats:
+# stats:
 #   enabled: true
 #   bucket_size: 1d
 #   retention: 1y
@@ -1563,19 +1527,17 @@ password_config:
 # It's also possible to override the room name, the display name of the
 # "notices" user, and the avatar for the user.
 #
-#server_notices:
+# server_notices:
 #  system_mxid_localpart: notices
 #  system_mxid_display_name: "Server Notices"
 #  system_mxid_avatar_url: "mxc://server.com/oumMVlgDnLYFaPVkExemNVVZ"
 #  room_name: "Server Notices"
 
-
-
 # Uncomment to disable searching the public room list. When disabled
 # blocks searching local and remote room lists for local and remote
 # users by always returning an empty list for all queries.
 #
-#enable_room_list_search: false
+# enable_room_list_search: false
 
 # The `alias_creation` option controls who's allowed to create aliases
 # on this server.
@@ -1599,7 +1561,7 @@ password_config:
 #
 # The default is:
 #
-#alias_creation_rules:
+# alias_creation_rules:
 #  - user_id: "*"
 #    alias: "*"
 #    room_id: "*"
@@ -1628,7 +1590,7 @@ password_config:
 #
 # The default is:
 #
-#room_list_publication_rules:
+# room_list_publication_rules:
 #  - user_id: "*"
 #    alias: "*"
 #    room_id: "*"
@@ -1642,7 +1604,7 @@ password_config:
 # This feature is designed to be used in closed federations only, where each
 # participating server enforces the same rules.
 #
-#third_party_event_rules:
+# third_party_event_rules:
 #  module: "my_custom_project.SuperRulesSet"
 #  config:
 #    example_option: 'things'
@@ -1657,32 +1619,32 @@ password_config:
 # (specifically those implemented with Jaeger).
 #
 opentracing:
-    # tracing is disabled by default. Uncomment the following line to enable it.
-    #
-    #enabled: true
+# tracing is disabled by default. Uncomment the following line to enable it.
+#
+# enabled: true
 
-    # The list of homeservers we wish to send and receive span contexts and span baggage.
-    # See docs/opentracing.rst
-    # This is a list of regexes which are matched against the server_name of the
-    # homeserver.
-    #
-    # By defult, it is empty, so no servers are matched.
-    #
-    #homeserver_whitelist:
-    #  - ".*"
+# The list of homeservers we wish to send and receive span contexts and span baggage.
+# See docs/opentracing.rst
+# This is a list of regexes which are matched against the server_name of the
+# homeserver.
+#
+# By defult, it is empty, so no servers are matched.
+#
+# homeserver_whitelist:
+#  - ".*"
 
-    # Jaeger can be configured to sample traces at different rates.
-    # All configuration options provided by Jaeger can be set here.
-    # Jaeger's configuration mostly related to trace sampling which
-    # is documented here:
-    # https://www.jaegertracing.io/docs/1.13/sampling/.
-    #
-    #jaeger_config:
-    #  sampler:
-    #    type: const
-    #    param: 1
+# Jaeger can be configured to sample traces at different rates.
+# All configuration options provided by Jaeger can be set here.
+# Jaeger's configuration mostly related to trace sampling which
+# is documented here:
+# https://www.jaegertracing.io/docs/1.13/sampling/.
+#
+# jaeger_config:
+#  sampler:
+#    type: const
+#    param: 1
 
-    #  Logging whether spans were started and reported
-    #
-    #  logging:
-    #    false
+#  Logging whether spans were started and reported
+#
+#  logging:
+#    false
