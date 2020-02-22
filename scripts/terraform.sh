@@ -6,4 +6,4 @@ cd terraform/
 
 source secrets.sh
 
-terraform plan
+terraform $@
