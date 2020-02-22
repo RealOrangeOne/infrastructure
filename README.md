@@ -10,7 +10,8 @@
 
 ## Installation
 
-`./scripts/setup.sh`
+- `./scripts/ansible/setup.sh`
+- `cd terraform/ && ./scripts/terraform/terraform.sh init`
 
 ### Private Settings
 
@@ -22,8 +23,5 @@ Terraform backend secrets need to be placed in `terraform/secrets.sh`.
 
 ## Deploying
 
-`./scripts/deploy.sh`
-
-Alternatively, each component can be deployed separately:
-
-- `./scripts/ansible.sh`
+- `./scripts/ansible/deploy.sh`
+- `./scripts/terraform/terraform.sh apply`
