@@ -8,3 +8,7 @@ provider "cloudflare" {
   email   = "hosting+cloudflare@theorangeone.net"
   api_key = var.cloudflare_api_key
 }
+
+provider "aws" {
+  region = "eu-west-2"
+}
