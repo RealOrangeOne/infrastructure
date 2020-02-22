@@ -4,6 +4,6 @@ set -ex
 
 cd terraform/
 
-source secrets.sh
+source secrets.sh || true
 
 terraform $@
