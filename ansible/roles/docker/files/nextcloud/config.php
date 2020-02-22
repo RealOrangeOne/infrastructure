@@ -17,8 +17,6 @@ $CONFIG = array (
   'trusted_domains' =>
   array (
     0 => 'intersect.jakehoward.tech',
-    1 => '192.168.1.200',
-    2 => 'onlyoffice.jakehoward.tech',
   ),
   'dbtype' => 'mysql',
   'version' => '18.0.1.3',
@@ -34,17 +32,8 @@ $CONFIG = array (
   'trusted_proxies' =>
   array (
     0 => '10.23.0.1/24',
-    1 => '172.0.0.1/8',
-    2 => '192.168.0.0/16',
   ),
   'maintenance' => false,
-  'twofactor_enforced' => 'false',
-  'twofactor_enforced_groups' =>
-  array (
-  ),
-  'twofactor_enforced_excluded_groups' =>
-  array (
-  ),
   'theme' => '',
   'loglevel' => 2,
 );
