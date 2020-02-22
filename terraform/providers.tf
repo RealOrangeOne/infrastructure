@@ -3,3 +3,8 @@ provider "vultr" {
   rate_limit  = 700
   retry_limit = 3
 }
+
+provider "cloudflare" {
+  email   = "hosting+cloudflare@theorangeone.net"
+  api_key = var.cloudflare_api_key
+}
