@@ -3,15 +3,15 @@ resource "aws_iam_user" "terraform" {
 }
 
 resource "aws_s3_bucket" "tfstate" {
-    bucket = "0rng-terraform"
-    acl = "private"
+  bucket = "0rng-terraform"
+  acl    = "private"
 }
 
 resource "aws_iam_user_policy" "terraform" {
-    name = "terraform"
-    user = aws_iam_user.terraform.name
+  name = "terraform"
+  user = aws_iam_user.terraform.name
 
-    policy = <<EOF
+  policy = <<EOF
 {
     "Version": "2012-10-17",
     "Statement": [
