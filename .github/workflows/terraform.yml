@@ -12,6 +12,6 @@ jobs:
         with:
           version: "0.12.20"
       - name: Initialize Terraform
-        run: ./scripts/terraform/terraform.sh init
+        run: ./scripts/terraform/terraform.sh init -backend=false
       - name: Lint
         run: ./scripts/terraform/lint.sh
