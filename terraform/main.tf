@@ -1,0 +1,3 @@
+module "domains" {
+  source = "./domains"
+}
