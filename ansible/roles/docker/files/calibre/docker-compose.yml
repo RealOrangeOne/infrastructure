@@ -1,7 +1,7 @@
 version: "2"
 services:
   calibre:
-    image: linuxserver/calibre-web:0.6.5-ls47
+    image: linuxserver/calibre-web:0.6.6-ls51
     container_name: calibre
     environment:
       - PUID={{ docker_user.id }}
