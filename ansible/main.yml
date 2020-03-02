@@ -1,6 +1,10 @@
 - hosts: all
   roles:
     - base
+    - role: geerlingguy.ntp
+      become: true
+      vars:
+        ntp_timezone: Europe/London
 
 - hosts: casey
   roles:

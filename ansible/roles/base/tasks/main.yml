@@ -1,5 +1,2 @@
-- name: NTP
-  include: ntp.yml
-
 - name: Packages
   include: packages.yml
