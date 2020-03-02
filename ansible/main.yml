@@ -10,4 +10,10 @@
 - hosts: intersect
   roles:
     - ssh
+    - role: geerlingguy.docker
+      become: true
+      vars:
+        docker_install_compose: false  # This role installs the binary directly, which is kinda nasty
+        docker_users:
+          - "{{ user }}"
     - docker
