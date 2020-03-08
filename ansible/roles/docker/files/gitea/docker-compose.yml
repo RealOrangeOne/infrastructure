@@ -2,7 +2,7 @@ version: "2.3"
 
 services:
   gitea:
-    image: gitea/gitea:1.11.1
+    image: gitea/gitea:1.11.2
     container_name: gitea
     restart: unless-stopped
     environment:
