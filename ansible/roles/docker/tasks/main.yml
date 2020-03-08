@@ -60,3 +60,6 @@
 
 - name: Install duplicati
   include: duplicati.yml
+
+- name: Install folding-at-home
+  include: folding-at-home.yml

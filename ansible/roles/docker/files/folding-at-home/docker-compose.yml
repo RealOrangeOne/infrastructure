@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  folding-at-home:
+    image: yurinnick/folding-at-home:latest
+    container_name: folding-at-home
+    command: --allow 0/0 --web-allow 0/0 --power light --cpu-usage 35
+    environment:
+      - USER=TheOrangeOne
+      - TEAM=223518
+      - PASSKEY={{ foh_token }}
+      - ENABLE_GPU=false
+      - ENABLE_SMP=true
+    ports:
+      - 7396:7396
+      - 36330:36330
+    restart: unless-stopped
