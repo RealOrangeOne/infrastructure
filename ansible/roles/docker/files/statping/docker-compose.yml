@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  statping:
+    image: hunterlong/statping:v0.80.70
+    container_name: statping
+    restart: unless-stopped
+    volumes:
+      - ./statping:/app
+    dns: "{{ wireguard.clients.intersect.ip }}"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.statping.rule=Host(`stats.theorangeone.net`)"
+      - "traefik.http.routers.statping.tls=true"
+      - "traefik.http.routers.statping.tls.certresolver=le"
+
+  db:
+    image: postgres:12-alpine
+    restart: unless-stopped
+    volumes:
+      - ./postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=statping
+      - POSTGRES_USER=statping

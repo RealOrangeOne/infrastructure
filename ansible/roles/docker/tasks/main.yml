@@ -63,3 +63,6 @@
 
 - name: Install folding-at-home
   include: folding-at-home.yml
+
+- name: Install statping
+  include: statping.yml
