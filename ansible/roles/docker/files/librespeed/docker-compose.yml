@@ -1,4 +1,4 @@
-version: "2"
+version: "2.3"
 services:
   librespeed:
     image: linuxserver/librespeed:5.1-ls3

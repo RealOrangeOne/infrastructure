@@ -1,4 +1,5 @@
-version: '3'
+version: '2.3'
+
 services:
   netdata:
     image: netdata/netdata:latest

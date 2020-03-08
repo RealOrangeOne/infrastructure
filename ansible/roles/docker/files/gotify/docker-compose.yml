@@ -1,4 +1,4 @@
-version: "2"
+version: "2.3"
 services:
   duplicati:
     image: gotify/server:2.0.14

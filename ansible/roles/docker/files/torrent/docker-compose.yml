@@ -1,4 +1,4 @@
-version: "3"
+version: "2.3"
 services:
   deluge:
     image: linuxserver/deluge:2.0.3-2201906121747ubuntu18.04.1-ls53
