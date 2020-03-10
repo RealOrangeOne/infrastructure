@@ -22,12 +22,9 @@ services:
       - "traefik.http.routers.yourls.tls.certresolver=le"
 
   mysql:
-    image: linuxserver/mariadb:110.4.12mariabionic-ls53
+    image: mariadb:10.4
     environment:
-      - PUID={{ docker_user.id }}
-      - PGID={{ docker_user.id }}
       - MYSQL_ROOT_PASSWORD=root
-      - TZ=Europe/London
       - MYSQL_DATABASE=yourls
       - MYSQL_USER=yourls
       - MYSQL_PASSWORD=yourls
