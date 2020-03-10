@@ -42,3 +42,9 @@
   loop:
     - absent
     - present
+
+- name: Install helper scripts
+  git:
+    repo: "https://github.com/xwiki-labs/synapse_scripts"
+    dest: /opt/synapse/synapse_scripts
+    force: true
