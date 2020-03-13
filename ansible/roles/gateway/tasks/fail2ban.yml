@@ -1,0 +1,29 @@
+- name: Install fail2ban
+  apt:
+    name: fail2ban
+  become: true
+  become_user: root
+
+- name: fail2ban filter
+  template:
+    src: files/haproxy-fail2ban-filter.conf
+    dest: /etc/fail2ban/filter.d/haproxy-basic.conf
+  become: true
+  become_user: root
+  register: fail2ban_filter
+
+- name: fail2ban jail
+  template:
+    src: files/haproxy-fail2ban-jail.conf
+    dest: /etc/fail2ban/jail.d/haproxy.conf
+  become: true
+  become_user: root
+  register: fail2ban_jail
+
+- name: Restart fail2ban
+  service:
+    name: haproxy
+    state: restarted
+  become: true
+  become_user: root
+  when: fail2ban_filter.changed or fail2ban_jail.changed
