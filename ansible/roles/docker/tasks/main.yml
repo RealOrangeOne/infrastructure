@@ -66,3 +66,6 @@
 
 - name: Install statping
   include: statping.yml
+
+- name: Install wallabag
+  include: wallabag.yml
