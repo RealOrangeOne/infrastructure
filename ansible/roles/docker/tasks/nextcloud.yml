@@ -42,7 +42,7 @@
 - name: Install nextcloud custom nginx config
   template:
     src: files/nextcloud/default.conf
-    dest: "/opt/nextcloud/config/nginx/site-confs/default"
+    dest: "/opt/nextcloud/nginx-default.conf"
     mode: "{{ docker_compose_file_mask }}"
     owner: "{{ docker_user.name }}"
   register: nginx_config
