@@ -11,7 +11,7 @@ services:
     volumes:
       - ./nextcloud/config:/config/www/nextcloud/config
       - ./nextcloud/apps:/config/www/nextcloud/apps
-      - ./nginx-default.conf:/config/nginx/site-confs/default
+      - ./nextcloud/nginx-default.conf:/config/nginx/site-confs/default
       - /srv/nextcloud-data/data:/data
       - /opt/gitea/repos:/repos:ro
       - /mnt/media:/content:ro
