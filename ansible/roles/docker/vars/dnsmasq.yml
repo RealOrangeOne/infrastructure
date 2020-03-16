@@ -5,3 +5,4 @@ internal_hostnames:
   - netdata.jakehoward.tech
   - deluge.jakehoward.tech
   - speed.jakehoward.tech
+  - pihole.jakehoward.tech
