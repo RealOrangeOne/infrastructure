@@ -69,3 +69,6 @@
 
 - name: Install wallabag
   include: wallabag.yml
+
+- name: Install pihole
+  include: pihole.yml
