@@ -8,7 +8,7 @@ services:
       - "{{ wireguard.clients.intersect.ip }}:5353:53/tcp"
       - "{{ wireguard.clients.intersect.ip }}:5353:53/udp"
     environment:
-      - TZ=Europe/London'
+      - TZ=Europe/London
       - VIRTUAL_HOST=pihole.jakehoward.tech
       - WEBPASSWORD={{ pihole_password }}
     volumes:
