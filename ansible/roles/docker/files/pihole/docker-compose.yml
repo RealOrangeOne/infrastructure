@@ -5,14 +5,14 @@ services:
     container_name: pihole
     image: pihole/pihole:v4.4
     ports:
-      - "{{ wireguard.clients.intersect.ip }}:5353:53/tcp"
-      - "{{ wireguard.clients.intersect.ip }}:5353:53/udp"
+      - "{{ wireguard.clients.intersect.ip }}:53:53/tcp"
+      - "{{ wireguard.clients.intersect.ip }}:53:53/udp"
     environment:
       - TZ=Europe/London
       - VIRTUAL_HOST=pihole.jakehoward.tech
     volumes:
-      - ./etc-pihole/:/etc/pihole/
-      - ./etc-dnsmasq.d/:/etc/dnsmasq.d/
+      - ./pihole/:/etc/pihole/
+      - ./dnsmasq.d/:/etc/dnsmasq.d/
     restart: unless-stopped
     labels:
       - "traefik.enable=true"

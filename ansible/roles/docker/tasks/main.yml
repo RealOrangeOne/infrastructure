@@ -13,9 +13,6 @@
 - name: Install portainer
   include: portainer.yml
 
-- name: Install dnsmasq
-  include: dnsmasq.yml
-
 - name: Install whoami
   include: whoami.yml
 

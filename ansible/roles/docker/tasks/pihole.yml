@@ -1,3 +1,6 @@
+- name: Include pihole variables
+  include_vars: pihole.yml
+
 - name: Create pihole directory
   file:
     path: '/opt/pihole'
@@ -18,6 +21,24 @@
   become: true
   become_user: root
 
+- name: Create dnsmasq directory
+  file:
+    path: '/opt/pihole/dnsmasq.d/'
+    state: directory
+    mode: "{{ docker_compose_directory_mask }}"
+  become: true
+  become_user: root
+
+- name: Install dnsmasq hosts config
+  template:
+    src: files/pihole/dnsmasq-vpn.conf
+    dest: "/opt/pihole/dnsmasq.d/02-vpn.conf"
+    mode: "{{ docker_compose_file_mask }}"
+    owner: "{{ docker_user.name }}"
+  register: dnsmasq_vpn_hosts
+  become: true
+  become_user: root
+
 - name: Cycle pihole container
   docker_compose:
     project_src: /opt/pihole
@@ -25,7 +46,7 @@
     remove_orphans: true
     remove_volumes: true
     state: "{{ item }}"
-  when: compose_file.changed
+  when: compose_file.changed or dnsmasq_vpn_hosts.changed
   loop:
     - absent
     - present
