@@ -2,7 +2,6 @@
   apt:
     name: openssh-server
   become: true
-  become_user: root
 
 - name: Define context
   set_fact:
@@ -16,7 +15,6 @@
     validate: /usr/sbin/sshd -t -f %s
     backup: yes
   become: true
-  become_user: root
   register: sshd_config
 
 - name: Restart SSH config
@@ -25,4 +23,3 @@
     state: reloaded
   when: sshd_config.changed
   become: true
-  become_user: root

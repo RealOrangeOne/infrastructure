@@ -5,21 +5,18 @@
     line: 'deb http://deb.debian.org/debian/ unstable main'
   register: install_unstable_apt
   become: true
-  become_user: root
 
 - name: Limit unstable apt repo
   copy:
     src: limit-unstable.conf
     dest: /etc/apt/preferences.d/limit-unstable
   become: true
-  become_user: root
   register: limit_unstable_apt
 
 - name: Update apt repos
   apt:
     update_cache: true
   become: true
-  become_user: root
   when: install_unstable_apt.changed or limit_unstable_apt.changed
 
 - name: Install Wireguard
@@ -28,7 +25,6 @@
       - wireguard
       - wireguard-tools
   become: true
-  become_user: root
 
 - name: Wireguard server config
   template:
@@ -36,7 +32,6 @@
     dest: /etc/wireguard/wg0.conf
     backup: yes
   become: true
-  become_user: root
   register: wireguard_conf
 
 - name: Enable wireguard
@@ -46,7 +41,6 @@
     enabled: true
   when: wireguard_conf.changed
   become: true
-  become_user: root
 
 - name: Create wireguard client directory
   file:

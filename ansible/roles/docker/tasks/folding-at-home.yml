@@ -8,7 +8,6 @@
     owner: "{{ docker_user.name }}"
     mode: "{{ docker_compose_directory_mask }}"
   become: true
-  become_user: root
 
 - name: Install foh compose file
   template:
@@ -19,7 +18,6 @@
     validate: /usr/bin/docker-compose -f %s config
   register: compose_file
   become: true
-  become_user: root
 
 - name: Cycle foh container
   docker_compose:

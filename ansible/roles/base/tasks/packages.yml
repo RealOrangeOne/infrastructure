@@ -2,7 +2,6 @@
   apt:
     name: "{{ item }}"
   become: true
-  become_user: root
   loop:
     - htop
     - neofetch

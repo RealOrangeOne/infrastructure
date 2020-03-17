@@ -8,7 +8,6 @@
     owner: "{{ docker_user.name }}"
     mode: "{{ docker_compose_directory_mask }}"
   become: true
-  become_user: root
 
 - name: Install nextcloud compose file
   template:
@@ -19,7 +18,6 @@
     validate: /usr/bin/docker-compose -f %s config
   register: compose_file
   become: true
-  become_user: root
 
 - name: Create nextcloud config directory
   file:
@@ -27,7 +25,6 @@
     state: directory
     mode: "{{ docker_compose_directory_mask }}"
   become: true
-  become_user: root
 
 - name: Install nextcloud config
   template:
@@ -37,7 +34,6 @@
     owner: "{{ docker_user.name }}"
   register: config_file
   become: true
-  become_user: root
 
 - name: Install nextcloud custom nginx config
   template:
@@ -47,7 +43,6 @@
     owner: "{{ docker_user.name }}"
   register: nginx_config
   become: true
-  become_user: root
 
 - name: Cycle nextcloud container
   docker_compose:

@@ -2,7 +2,6 @@
   apt:
     name: haproxy
   become: true
-  become_user: root
 
 - name: Haproxy config
   template:
@@ -11,7 +10,6 @@
     validate: /usr/sbin/haproxy -c -- %s
     backup: yes
   become: true
-  become_user: root
   register: haproxy_config
 
 - name: Restart Haproxy
@@ -19,5 +17,4 @@
     name: haproxy
     state: restarted
   become: true
-  become_user: root
   when: haproxy_config.changed

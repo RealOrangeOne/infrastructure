@@ -8,7 +8,6 @@
     owner: "{{ docker_user.name }}"
     mode: "{{ docker_compose_directory_mask }}"
   become: true
-  become_user: root
 
 - name: Install yourls compose file
   template:
@@ -19,7 +18,6 @@
     validate: /usr/bin/docker-compose -f %s config
   register: compose_file
   become: true
-  become_user: root
 
 - name: Install yourls index
   template:
@@ -28,7 +26,6 @@
     mode: "{{ docker_compose_file_mask }}"
   register: config_file
   become: true
-  become_user: root
 
 - name: Cycle yourls container
   docker_compose:

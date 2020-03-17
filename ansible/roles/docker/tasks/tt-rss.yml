@@ -5,7 +5,6 @@
     owner: "{{ docker_user.name }}"
     mode: "{{ docker_compose_directory_mask }}"
   become: true
-  become_user: root
 
 - name: Install tt-rss compose file
   template:
@@ -16,7 +15,6 @@
     validate: /usr/bin/docker-compose -f %s config
   register: compose_file
   become: true
-  become_user: root
 
 - name: Create tt-rss config directory
   file:
@@ -24,7 +22,6 @@
     state: directory
     mode: "{{ docker_compose_directory_mask }}"
   become: true
-  become_user: root
 
 - name: Install tt-rss config
   template:
@@ -34,7 +31,6 @@
     owner: "{{ docker_user.name }}"
   register: config_file
   become: true
-  become_user: root
 
 - name: Cycle tt-rss container
   docker_compose:

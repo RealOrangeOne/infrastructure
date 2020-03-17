@@ -8,7 +8,6 @@
     owner: "{{ docker_user.name }}"
     mode: "{{ docker_compose_directory_mask }}"
   become: true
-  become_user: root
 
 - name: Create gitea config directory
   file:
@@ -16,7 +15,6 @@
     state: directory
     mode: "{{ docker_compose_directory_mask }}"
   become: true
-  become_user: root
 
 - name: Create cgit config directory
   file:
@@ -24,7 +22,6 @@
     state: directory
     mode: "{{ docker_compose_directory_mask }}"
   become: true
-  become_user: root
 
 - name: Install gitea compose file
   template:
@@ -35,7 +32,6 @@
     validate: /usr/bin/docker-compose -f %s config
   register: compose_file
   become: true
-  become_user: root
 
 - name: Install gitea config file
   template:
@@ -45,7 +41,6 @@
     owner: "{{ docker_user.name }}"
   register: gitea_config_file
   become: true
-  become_user: root
 
 - name: Install cgit config file
   template:
@@ -55,14 +50,12 @@
     owner: "{{ docker_user.name }}"
   register: cgit_config_file
   become: true
-  become_user: root
 
 - name: Touch public repos file
   file:
     path: /opt/gitea/cgit/repos.txt
     state: file
   become: true
-  become_user: root
 
 - name: Cycle gitea container
   docker_compose:

@@ -2,7 +2,6 @@
   apt:
     name: "docker-compose"
   become: true
-  become_user: root
 
 - name: Create docker user
   user:
