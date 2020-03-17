@@ -1,6 +1,3 @@
-- name: Include pihole variables
-  include_vars: pihole.yml
-
 - name: Create pihole directory
   file:
     path: '/opt/pihole'

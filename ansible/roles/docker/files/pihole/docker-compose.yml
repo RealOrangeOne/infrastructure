@@ -10,7 +10,6 @@ services:
     environment:
       - TZ=Europe/London
       - VIRTUAL_HOST=pihole.jakehoward.tech
-      - WEBPASSWORD={{ pihole_password }}
     volumes:
       - ./etc-pihole/:/etc/pihole/
       - ./etc-dnsmasq.d/:/etc/dnsmasq.d/
