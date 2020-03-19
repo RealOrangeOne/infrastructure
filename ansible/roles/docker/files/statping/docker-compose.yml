@@ -7,7 +7,6 @@ services:
     restart: unless-stopped
     volumes:
       - ./statping:/app
-    dns: "{{ wireguard.clients.intersect.ip }}"
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.statping.rule=Host(`stats.theorangeone.net`)"
