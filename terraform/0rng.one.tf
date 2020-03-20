@@ -9,11 +9,3 @@ resource "cloudflare_record" "orngone_git" {
   type    = "A"
   ttl     = 1
 }
-
-resource "cloudflare_record" "orngone_website" {
-  zone_id = cloudflare_zone.orngone.id
-  name    = "the"
-  value   = "theorangeone-net.netlify.com"
-  type    = "CNAME"
-  ttl     = 1
-}
