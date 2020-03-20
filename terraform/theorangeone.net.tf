@@ -83,3 +83,27 @@ resource "cloudflare_record" "theorangeonenet_dkim_fm3" {
   type    = "CNAME"
   ttl     = 1
 }
+
+resource "cloudflare_record" "theorangeonenet_www" {
+  zone_id = cloudflare_zone.theorangeonenet.id
+  name    = "www"
+  value   = "theorangeone-net.netlify.com"
+  type    = "CNAME"
+  ttl     = 1
+}
+
+resource "cloudflare_record" "theorangeonenet_apex" {
+  zone_id = cloudflare_zone.theorangeonenet.id
+  name    = "@"
+  value   = "theorangeone-net.netlify.com"
+  type    = "CNAME"
+  ttl     = 1
+}
+
+resource "cloudflare_record" "theorangeonenet_snippets" {
+  zone_id = cloudflare_zone.theorangeonenet.id
+  name    = "snippets"
+  value   = "too-snippets.netlify.com"
+  type    = "CNAME"
+  ttl     = 1
+}
