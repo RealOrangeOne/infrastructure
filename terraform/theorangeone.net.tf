@@ -33,3 +33,53 @@ resource "cloudflare_record" "theorangeonenet_whoami" {
   type    = "A"
   ttl     = 1
 }
+
+resource "cloudflare_record" "theorangeonenet_mx1" {
+  zone_id  = cloudflare_zone.theorangeonenet.id
+  name     = "@"
+  value    = "in1-smtp.messagingengine.com"
+  type     = "MX"
+  priority = 10
+  ttl      = 1
+}
+
+resource "cloudflare_record" "theorangeonenet_mx2" {
+  zone_id  = cloudflare_zone.theorangeonenet.id
+  name     = "@"
+  value    = "in2-smtp.messagingengine.com"
+  type     = "MX"
+  priority = 20
+  ttl      = 1
+}
+
+resource "cloudflare_record" "theorangeonenet_txt" {
+  zone_id = cloudflare_zone.theorangeonenet.id
+  name    = "@"
+  value   = "v=spf1 include:spf.messagingengine.com ?all"
+  type    = "TXT"
+  ttl     = 1
+}
+
+resource "cloudflare_record" "theorangeonenet_dkim_fm1" {
+  zone_id = cloudflare_zone.theorangeonenet.id
+  name    = "fm1._domainkey"
+  value   = "fm1.theorangeone.net.dkim.fmhosted.com"
+  type    = "CNAME"
+  ttl     = 1
+}
+
+resource "cloudflare_record" "theorangeonenet_dkim_fm2" {
+  zone_id = cloudflare_zone.theorangeonenet.id
+  name    = "fm2._domainkey"
+  value   = "fm2.theorangeone.net.dkim.fmhosted.com"
+  type    = "CNAME"
+  ttl     = 1
+}
+
+resource "cloudflare_record" "theorangeonenet_dkim_fm3" {
+  zone_id = cloudflare_zone.theorangeonenet.id
+  name    = "fm3._domainkey"
+  value   = "fm3.theorangeone.net.dkim.fmhosted.com"
+  type    = "CNAME"
+  ttl     = 1
+}
