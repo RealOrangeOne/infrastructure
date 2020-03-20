@@ -10,7 +10,7 @@ services:
       - USER_GID={{ docker_user.id }}
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.gitea.rule=Host(`git.theorangeone.net`) && PathPrefix(`/gitea`)"
+      - "traefik.http.routers.gitea.rule=(Host(`git.theorangeone.net`) || Host(`git.0rng.one`)) && PathPrefix(`/gitea`)"
       - "traefik.http.routers.gitea.tls=true"
       - "traefik.http.routers.gitea.tls.certresolver=le"
       - "traefik.http.services.gitea-gitea.loadbalancer.server.port=3000"
@@ -46,7 +46,7 @@ services:
       - ./cgit/repos.txt:/config/repos.txt:ro
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.cgit.rule=Host(`git.theorangeone.net`)"
+      - "traefik.http.routers.cgit.rule=Host(`git.theorangeone.net`) || Host(`git.0rng.one`)"
       - "traefik.http.routers.cgit.tls=true"
       - "traefik.http.routers.cgit.tls.certresolver=le"
 
