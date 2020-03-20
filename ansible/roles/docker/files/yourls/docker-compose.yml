@@ -12,12 +12,12 @@ services:
       - YOURLS_DB_USER=yourls
       - YOURLS_USER=jake
       - YOURLS_PASS={{ yourls.user_password }}
-      - YOURLS_SITE=https://go.theorangeone.net
+      - YOURLS_SITE=https://0rng.one
     volumes:
       - ./index.html:/var/www/html/index.html
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.yourls.rule=Host(`go.theorangeone.net`)"
+      - "traefik.http.routers.yourls.rule=Host(`go.theorangeone.net`) || Host(`0rng.one`)"
       - "traefik.http.routers.yourls.tls=true"
       - "traefik.http.routers.yourls.tls.certresolver=le"
 
