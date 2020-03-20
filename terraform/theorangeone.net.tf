@@ -107,3 +107,20 @@ resource "cloudflare_record" "theorangeonenet_snippets" {
   type    = "CNAME"
   ttl     = 1
 }
+
+resource "cloudflare_record" "theorangeonenet_srv_matrix" {
+  zone_id = cloudflare_zone.theorangeonenet.id
+  name    = "_matrix._tcp"
+  type    = "SRV"
+  ttl     = 1
+
+  data = {
+    service  = "_matrix"
+    proto    = "_tcp"
+    name     = "theorangeone.net"
+    priority = 10
+    weight   = 0
+    port     = 8448
+    target   = cloudflare_record.jakehowardtech_matrix.hostname
+  }
+}
