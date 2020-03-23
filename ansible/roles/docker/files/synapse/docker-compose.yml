@@ -3,7 +3,7 @@ version: '2.3'
 services:
 
   synapse:
-    image: matrixdotorg/synapse:v1.11.1-py3
+    image: matrixdotorg/synapse:v1.12.0-py3
     restart: unless-stopped
     environment:
       - SYNAPSE_CONFIG_PATH=/etc/homeserver.yaml
