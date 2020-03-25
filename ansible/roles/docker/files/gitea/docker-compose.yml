@@ -53,7 +53,7 @@ services:
   gitea-cgit-adapter:
     image: theorangeone/gitea-cgit-adapter:latest
     restart: unless-stopped
-    command: "/app/gitea-cgit-adapter /etc/gitea.ini /etc/cgit-repos.txt --interval 600"
+    command: /app/gitea-cgit-adapter /etc/gitea.ini /etc/cgit-repos.txt --interval 600
     depends_on:
       - gitea
     volumes:

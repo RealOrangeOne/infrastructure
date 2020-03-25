@@ -1,4 +1,4 @@
-- name: "Install Base Packages"
+- name: Install Base Packages
   apt:
     name: "{{ item }}"
   become: true

@@ -1,6 +1,6 @@
 - name: Create watchtower directory
   file:
-    path: '/opt/watchtower'
+    path: /opt/watchtower
     state: directory
     owner: "{{ docker_user.name }}"
     mode: "{{ docker_compose_directory_mask }}"
@@ -9,7 +9,7 @@
 - name: Install watchtower compose file
   template:
     src: files/watchtower/docker-compose.yml
-    dest: "/opt/watchtower/docker-compose.yml"
+    dest: /opt/watchtower/docker-compose.yml
     mode: "{{ docker_compose_file_mask }}"
     owner: "{{ docker_user.name }}"
     validate: /usr/bin/docker-compose -f %s config

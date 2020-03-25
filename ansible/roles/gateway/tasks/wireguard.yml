@@ -2,7 +2,7 @@
   lineinfile:
     path: /etc/apt/sources.list.d/unstable.list
     state: present
-    line: 'deb http://deb.debian.org/debian/ unstable main'
+    line: deb http://deb.debian.org/debian/ unstable main
   register: install_unstable_apt
   become: true
 

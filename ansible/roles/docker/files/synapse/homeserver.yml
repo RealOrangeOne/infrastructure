@@ -7,7 +7,7 @@
 # e.g. matrix.org, localhost:8080, etc.
 # This is also the last part of your UserID.
 #
-server_name: "theorangeone.net"
+server_name: theorangeone.net
 
 # When running as a daemon, the file to store the pid in
 #
@@ -524,7 +524,7 @@ acme:
 
 database:
   # The database engine name
-  name: "psycopg2"
+  name: psycopg2
   # Arguments to pass to the engine
   args:
     user: synapse
@@ -543,7 +543,7 @@ database:
 # A yaml python logging config file as described by
 # https://docs.python.org/3.7/library/logging.config.html#configuration-dictionary-schema
 #
-log_config: "/data/theorangeone.net.log.config"
+log_config: /data/theorangeone.net.log.config
 
 
 ## Ratelimiting ##
@@ -635,7 +635,7 @@ log_config: "/data/theorangeone.net.log.config"
 
 # Directory where uploaded images and attachments are stored.
 #
-media_store_path: "/data/media_store"
+media_store_path: /data/media_store
 
 # Media storage providers allow media to be stored in different
 # locations.
@@ -654,7 +654,7 @@ media_store_path: "/data/media_store"
 
 # Directory where in-progress uploads are stored.
 #
-uploads_path: "/data/uploads"
+uploads_path: /data/uploads
 
 # The largest allowed upload size in bytes
 #
@@ -1076,7 +1076,7 @@ form_secret: "{{ synapse.form_secret }}"
 
 # Path to the signing key to sign messages with
 #
-signing_key_path: "/data/theorangeone.net.signing.key"
+signing_key_path: /data/theorangeone.net.signing.key
 
 # The keys that the server used to sign messages with but won't use
 # to sign new messages. E.g. it has lost its private key
@@ -1135,7 +1135,7 @@ signing_key_path: "/data/theorangeone.net.signing.key"
 #  - server_name: "my_other_trusted_server.example.com"
 #
 trusted_key_servers:
-  - server_name: "matrix.org"
+  - server_name: matrix.org
 
 # Uncomment the following to disable the warning that is emitted when the
 # trusted_key_servers include 'matrix.org'. See above.

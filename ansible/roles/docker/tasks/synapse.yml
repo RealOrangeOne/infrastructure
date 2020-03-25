@@ -3,7 +3,7 @@
 
 - name: Create synapse directory
   file:
-    path: '/opt/synapse'
+    path: /opt/synapse
     state: directory
     owner: "{{ docker_user.name }}"
     mode: "{{ docker_compose_directory_mask }}"
@@ -12,7 +12,7 @@
 - name: Install synapse compose file
   template:
     src: files/synapse/docker-compose.yml
-    dest: "/opt/synapse/docker-compose.yml"
+    dest: /opt/synapse/docker-compose.yml
     mode: "{{ docker_compose_file_mask }}"
     owner: "{{ docker_user.name }}"
     validate: /usr/bin/docker-compose -f %s config
@@ -22,7 +22,7 @@
 - name: Install synapse config
   template:
     src: files/synapse/homeserver.yml
-    dest: "/opt/synapse/homeserver.yaml"
+    dest: /opt/synapse/homeserver.yaml
     mode: "{{ docker_compose_file_mask }}"
     owner: "{{ docker_user.name }}"
   register: homeserver_config
@@ -42,6 +42,6 @@
 
 - name: Install helper scripts
   git:
-    repo: "https://github.com/xwiki-labs/synapse_scripts"
+    repo: https://github.com/xwiki-labs/synapse_scripts
     dest: /opt/synapse/synapse_scripts
     force: true

@@ -3,7 +3,7 @@
 
 - name: Create gitea directory
   file:
-    path: '/opt/gitea'
+    path: /opt/gitea
     state: directory
     owner: "{{ docker_user.name }}"
     mode: "{{ docker_compose_directory_mask }}"
@@ -11,14 +11,14 @@
 
 - name: Create gitea config directory
   file:
-    path: '/opt/gitea/gitea/gitea/conf'
+    path: /opt/gitea/gitea/gitea/conf
     state: directory
     mode: "{{ docker_compose_directory_mask }}"
   become: true
 
 - name: Create cgit config directory
   file:
-    path: '/opt/gitea/cgit'
+    path: /opt/gitea/cgit
     state: directory
     mode: "{{ docker_compose_directory_mask }}"
   become: true
@@ -26,7 +26,7 @@
 - name: Install gitea compose file
   template:
     src: files/gitea/docker-compose.yml
-    dest: "/opt/gitea/docker-compose.yml"
+    dest: /opt/gitea/docker-compose.yml
     mode: "{{ docker_compose_file_mask }}"
     owner: "{{ docker_user.name }}"
     validate: /usr/bin/docker-compose -f %s config
@@ -36,7 +36,7 @@
 - name: Install gitea config file
   template:
     src: files/gitea/app.ini
-    dest: "/opt/gitea/gitea/gitea/conf/app.ini"
+    dest: /opt/gitea/gitea/gitea/conf/app.ini
     mode: "{{ docker_compose_file_mask }}"
     owner: "{{ docker_user.name }}"
   register: gitea_config_file
@@ -45,7 +45,7 @@
 - name: Install cgit config file
   template:
     src: files/gitea/cgitrc
-    dest: "/opt/gitea/cgit/cgitrc"
+    dest: /opt/gitea/cgit/cgitrc
     mode: "{{ docker_compose_file_mask }}"
     owner: "{{ docker_user.name }}"
   register: cgit_config_file

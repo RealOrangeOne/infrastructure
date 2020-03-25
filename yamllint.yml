@@ -2,9 +2,13 @@ extends: default
 
 ignore: |
   galaxy_roles
+  ansible/group_vars/all/hosts.yml
 
 rules:
   document-start: "disable"
   truthy: "disable"
+  quoted-strings:
+    quote-type: double
+    required: only-when-needed
   line-length:
     max: 150

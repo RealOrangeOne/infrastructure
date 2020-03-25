@@ -1,6 +1,6 @@
 - name: Create portainer directory
   file:
-    path: '/opt/portainer'
+    path: /opt/portainer
     state: directory
     owner: "{{ docker_user.name }}"
     mode: "{{ docker_compose_directory_mask }}"
@@ -9,7 +9,7 @@
 - name: Install portainer compose file
   template:
     src: files/portainer/docker-compose.yml
-    dest: "/opt/portainer/docker-compose.yml"
+    dest: /opt/portainer/docker-compose.yml
     mode: "{{ docker_compose_file_mask }}"
     owner: "{{ docker_user.name }}"
     validate: /usr/bin/docker-compose -f %s config

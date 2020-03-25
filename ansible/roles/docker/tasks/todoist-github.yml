@@ -3,7 +3,7 @@
 
 - name: Create todoist-github directory
   file:
-    path: '/opt/todoist-github'
+    path: /opt/todoist-github
     state: directory
     owner: "{{ docker_user.name }}"
     mode: "{{ docker_compose_directory_mask }}"
@@ -12,7 +12,7 @@
 - name: Install todoist-github compose file
   template:
     src: files/todoist-github/docker-compose.yml
-    dest: "/opt/todoist-github/docker-compose.yml"
+    dest: /opt/todoist-github/docker-compose.yml
     mode: "{{ docker_compose_file_mask }}"
     owner: "{{ docker_user.name }}"
     validate: /usr/bin/docker-compose -f %s config

@@ -1,6 +1,6 @@
 - name: Create torrent directory
   file:
-    path: '/opt/torrent'
+    path: /opt/torrent
     state: directory
     owner: "{{ docker_user.name }}"
     mode: "{{ docker_compose_directory_mask }}"
@@ -9,7 +9,7 @@
 - name: Install torrent compose file
   template:
     src: files/torrent/docker-compose.yml
-    dest: "/opt/torrent/docker-compose.yml"
+    dest: /opt/torrent/docker-compose.yml
     mode: "{{ docker_compose_file_mask }}"
     owner: "{{ docker_user.name }}"
     validate: /usr/bin/docker-compose -f %s config

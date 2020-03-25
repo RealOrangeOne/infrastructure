@@ -1,6 +1,6 @@
 - name: Create emby directory
   file:
-    path: '/opt/emby'
+    path: /opt/emby
     state: directory
     owner: "{{ docker_user.name }}"
     mode: "{{ docker_compose_directory_mask }}"
@@ -9,7 +9,7 @@
 - name: Install emby compose file
   template:
     src: files/emby/docker-compose.yml
-    dest: "/opt/emby/docker-compose.yml"
+    dest: /opt/emby/docker-compose.yml
     mode: "{{ docker_compose_file_mask }}"
     owner: "{{ docker_user.name }}"
     validate: /usr/bin/docker-compose -f %s config

@@ -20,7 +20,7 @@ ping:
 
 providers:
   docker:
-    endpoint: "unix:///var/run/docker.sock"
+    endpoint: unix:///var/run/docker.sock
     watch: true
     exposedByDefault: false
   file:
@@ -32,7 +32,7 @@ api:
 certificatesResolvers:
   le:
     acme:
-      email: "hosting@theorangeone.net"
-      storage: "/etc/traefik/acme.json"
+      email: hosting@theorangeone.net
+      storage: /etc/traefik/acme.json
       httpChallenge:
         entryPoint: web

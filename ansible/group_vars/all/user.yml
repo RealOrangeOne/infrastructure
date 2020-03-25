@@ -1,2 +1,2 @@
 user: jake
-home: "/home/{{ user }}"
+home: /home/{{ user }}

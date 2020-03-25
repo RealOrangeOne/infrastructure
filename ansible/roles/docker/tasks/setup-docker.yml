@@ -1,6 +1,6 @@
 - name: Install docker-compose
   apt:
-    name: "docker-compose"
+    name: docker-compose
   become: true
 
 - name: Create docker user
@@ -14,7 +14,7 @@
   cron:
     name: clean up docker containers
     special_time: weekly
-    job: "docker system prune"
+    job: docker system prune
 
 - name: Install util scripts
   copy:
