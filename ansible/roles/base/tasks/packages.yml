@@ -6,6 +6,7 @@
     - htop
     - neofetch
     - net-tools
+    - pv
     - speedtest-cli
     - sudo
     - vim
