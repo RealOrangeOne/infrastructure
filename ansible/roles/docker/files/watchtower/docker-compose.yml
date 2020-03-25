@@ -4,4 +4,4 @@ services:
     image: containrrr/watchtower:latest
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-    command: --cleanup --schedule "0 23 * * *"
+    command: --cleanup --interval 300
