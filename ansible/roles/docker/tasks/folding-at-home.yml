@@ -1,27 +1,24 @@
-- name: Include foh variables
-  include_vars: folding-at-home.yml
-
-- name: Create foh directory
+- name: Create folding-at-home directory
   file:
-    path: /opt/foh
+    path: /opt/folding-at-home
     state: directory
     owner: "{{ docker_user.name }}"
     mode: "{{ docker_compose_directory_mask }}"
   become: true
 
-- name: Install foh compose file
+- name: Install folding@home compose file
   template:
     src: files/folding-at-home/docker-compose.yml
-    dest: /opt/foh/docker-compose.yml
+    dest: /opt/folding-at-home/docker-compose.yml
     mode: "{{ docker_compose_file_mask }}"
     owner: "{{ docker_user.name }}"
     validate: /usr/bin/docker-compose -f %s config
   register: compose_file
   become: true
 
-- name: Cycle foh container
+- name: Cycle folding@home container
   docker_compose:
-    project_src: /opt/foh
+    project_src: /opt/folding-at-home
     pull: true
     remove_orphans: true
     remove_volumes: true
