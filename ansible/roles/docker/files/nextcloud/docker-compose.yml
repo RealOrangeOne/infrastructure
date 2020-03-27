@@ -33,6 +33,21 @@ services:
       - POSTGRES_PASSWORD=nextcloud
       - POSTGRES_USER=nextcloud
 
+  db-backups:
+    image: prodrigestivill/postgres-backup-local:12-alpine
+    restart: unless-stopped
+    volumes:
+      - /scratch/db-backups:/backups
+    depends_on:
+      - db
+    environment:
+      - POSTGRES_HOST=db
+      - POSTGRES_PASSWORD=nextcloud
+      - POSTGRES_USER=nextcloud
+      - POSTGRES_DB=nextcloud
+      - BACKUP_KEEP_MONTHS=1
+      - BACKUP_KEEP_WEEKS=1
+
   redis:
     image: redis:5-alpine
     restart: unless-stopped

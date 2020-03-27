@@ -12,6 +12,7 @@ services:
       - ./backups:/backups
       - /srv/nextcloud-data/data/:/source/nextcloud:ro
       - /opt/gitea/repos/repositories:/source/repositories:ro
+      - /scratch/db-backups:/source/db-backups:ro
     restart: unless-stopped
     labels:
       - "traefik.enable=true"
