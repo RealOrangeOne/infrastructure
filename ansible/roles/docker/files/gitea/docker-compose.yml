@@ -33,6 +33,21 @@ services:
       - POSTGRES_PASSWORD=gitea
       - POSTGRES_USER=gitea
 
+  db-backups:
+    image: prodrigestivill/postgres-backup-local:12-alpine
+    restart: unless-stopped
+    volumes:
+      - /scratch/db-backups:/backups
+    depends_on:
+      - db
+    environment:
+      - POSTGRES_HOST=db
+      - POSTGRES_PASSWORD=gitea
+      - POSTGRES_USER=gitea
+      - POSTGRES_DB=gitea
+      - BACKUP_KEEP_MONTHS=1
+      - BACKUP_KEEP_WEEKS=1
+
   cgit:
     image: theorangeone/docker-cgit:latest
     container_name: cgit
