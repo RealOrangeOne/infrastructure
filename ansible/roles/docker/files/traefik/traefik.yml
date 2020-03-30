@@ -1,6 +1,11 @@
 entryPoints:
   web:
     address: ":80"
+    http:
+      redirections:
+        entryPoint:
+          to: web-secure
+          scheme: https
     proxyProtocol:
       trustedIPs:
         - "{{ wireguard.cidr }}"
