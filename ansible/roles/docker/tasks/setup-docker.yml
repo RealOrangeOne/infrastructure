@@ -14,7 +14,7 @@
   cron:
     name: clean up docker containers
     special_time: daily
-    job: docker system prune
+    job: docker system prune -af --volumes
 
 - name: Install util scripts
   copy:
