@@ -6,6 +6,9 @@ http:
           - "10.0.0.0/8"
           - "172.16.0.0/12"
           - "192.168.0.0/16"
+    hsts:
+      redirectScheme:
+        scheme: https
 
   routers:
     hsts:
@@ -13,15 +16,20 @@ http:
       rule: PathPrefix(`/`)
       entryPoints:
         - web
+      middlewares:
+        - hsts
     ping:
       service: ping@internal
       rule: Host(`traefik.jakehoward.tech`) && Path(`/ping/`)
+      middlewares:
+        - hsts
       tls:
         certResolver: le
     dashboard:
       service: dashboard@internal
       rule: Host(`traefik.jakehoward.tech`)
       middlewares:
+        - hsts
         - internal-only
       tls:
         certResolver: le
@@ -29,6 +37,7 @@ http:
       service: api@internal
       rule: Host(`traefik.jakehoward.tech`) && PathPrefix(`/api`)
       middlewares:
+        - hsts
         - internal-only
       tls:
         certResolver: le
