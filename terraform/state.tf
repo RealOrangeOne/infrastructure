@@ -5,6 +5,19 @@ resource "aws_iam_user" "terraform" {
 resource "aws_s3_bucket" "tfstate" {
   bucket = "0rng-terraform"
   acl    = "private"
+
+  versioning {
+    enabled = true
+  }
+
+  lifecycle_rule {
+    enabled = true
+
+    noncurrent_version_expiration {
+      days = 30
+    }
+  }
+
 }
 
 resource "aws_iam_user_policy" "terraform" {
