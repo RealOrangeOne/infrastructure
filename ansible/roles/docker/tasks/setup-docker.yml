@@ -10,6 +10,12 @@
     group: "{{ docker_user.name }}"
     create_home: false
 
+- name: Add user to docker user group
+  user:
+    name: "{{ user }}"
+    groups: "{{ docker_user.name }}"
+    append: true
+
 - name: Clean up docker containers
   cron:
     name: clean up docker containers
