@@ -7,6 +7,6 @@ services:
     restart: unless-stopped
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.whoami.rule=Host(`whoami.theorangeone.net`)"
+      - "traefik.http.routers.whoami.rule=Host(`whoami.theorangeone.net`) || Host(`who.0rng.one`)"
       - "traefik.http.routers.whoami.tls=true"
       - "traefik.http.routers.whoami.tls.certresolver=le"
