@@ -50,3 +50,10 @@ resource "vultr_firewall_rule" "casey_matrix" {
   from_port         = 8448
   network           = "0.0.0.0/0"
 }
+
+resource "vultr_firewall_rule" "casey_mc" {
+  firewall_group_id = vultr_firewall_group.casey.id
+  protocol          = "tcp"
+  from_port         = 25566
+  network           = "0.0.0.0/0"
+}
