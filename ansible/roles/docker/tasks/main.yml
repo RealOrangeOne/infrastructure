@@ -69,3 +69,6 @@
 
 - name: Install pihole
   include: pihole.yml
+
+- name: Install theorangeone.net
+  include: theorangeone.net.yml

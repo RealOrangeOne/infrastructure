@@ -1,0 +1,13 @@
+version: "2.3"
+services:
+  website:
+    image: docker.pkg.github.com/realorangeone/theorangeone.net/theorangeone.net:latest
+    container_name: theorangeone.net
+    environment:
+      - TZ=Europe/London
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.website.rule=Host(`theorangeone.net`) || Host(`www.theorangeone.net`)"
+      - "traefik.http.routers.website.tls=true"
+      - "traefik.http.routers.website.tls.certresolver=le"

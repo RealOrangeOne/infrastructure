@@ -87,16 +87,16 @@ resource "cloudflare_record" "theorangeonenet_dkim_fm3" {
 resource "cloudflare_record" "theorangeonenet_www" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "www"
-  value   = "theorangeone-net.netlify.com"
-  type    = "CNAME"
+  value   = vultr_server.casey.main_ip
+  type    = "A"
   ttl     = 1
 }
 
 resource "cloudflare_record" "theorangeonenet_apex" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "@"
-  value   = "theorangeone-net.netlify.com"
-  type    = "CNAME"
+  value   = vultr_server.casey.main_ip
+  type    = "A"
   ttl     = 1
 }
 
