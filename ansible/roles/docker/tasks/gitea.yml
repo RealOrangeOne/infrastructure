@@ -16,13 +16,6 @@
     mode: "{{ docker_compose_directory_mask }}"
   become: true
 
-- name: Create cgit config directory
-  file:
-    path: /opt/gitea/cgit
-    state: directory
-    mode: "{{ docker_compose_directory_mask }}"
-  become: true
-
 - name: Install gitea compose file
   template:
     src: files/gitea/docker-compose.yml
@@ -42,21 +35,6 @@
   register: gitea_config_file
   become: true
 
-- name: Install cgit config file
-  template:
-    src: files/gitea/cgitrc
-    dest: /opt/gitea/cgit/cgitrc
-    mode: "{{ docker_compose_file_mask }}"
-    owner: "{{ docker_user.name }}"
-  register: cgit_config_file
-  become: true
-
-- name: Touch public repos file
-  file:
-    path: /opt/gitea/cgit/repos.txt
-    state: file
-  become: true
-
 - name: Cycle gitea container
   docker_compose:
     project_src: /opt/gitea
@@ -64,7 +42,7 @@
     remove_orphans: true
     remove_volumes: true
     state: "{{ item }}"
-  when: compose_file.changed or gitea_config_file.changed or cgit_config_file.changed
+  when: compose_file.changed or gitea_config_file.changed
   loop:
     - absent
     - present
