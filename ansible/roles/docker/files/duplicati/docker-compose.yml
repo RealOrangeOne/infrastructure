@@ -1,7 +1,7 @@
 version: "2.3"
 services:
   duplicati:
-    image: linuxserver/duplicati:v2.0.5.1-2.0.5.1_beta_2020-01-18-ls52
+    image: linuxserver/duplicati:v2.0.5.1-2.0.5.1_beta_2020-01-18-ls56
     container_name: duplicati
     environment:
       - PUID={{ docker_user.id }}
