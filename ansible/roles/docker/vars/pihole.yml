@@ -1,7 +1,6 @@
 internal_hostnames:
   - duplicati.jakehoward.tech
   - traefik.jakehoward.tech
-  - portainer.jakehoward.tech
   - netdata.jakehoward.tech
   - deluge.jakehoward.tech
   - speed.jakehoward.tech

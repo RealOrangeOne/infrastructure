@@ -92,14 +92,6 @@ resource "cloudflare_record" "jakehowardtech_quassel" {
   ttl     = 1
 }
 
-resource "cloudflare_record" "jakehowardtech_portainer" {
-  zone_id = cloudflare_zone.jakehowardtech.id
-  name    = "portainer"
-  value   = vultr_server.casey.main_ip
-  type    = "A"
-  ttl     = 1
-}
-
 resource "cloudflare_record" "jakehowardtech_pihole" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "pihole"

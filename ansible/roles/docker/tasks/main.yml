@@ -36,9 +36,6 @@
 - name: Install pihole
   include: pihole.yml
 
-- name: Install portainer
-  include: portainer.yml
-
 - name: Install quassel
   include: quassel.yml
 
