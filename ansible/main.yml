@@ -21,4 +21,5 @@
         docker_users:
           - "{{ user }}"
     - docker-cleanup
+    - traefik
     - docker

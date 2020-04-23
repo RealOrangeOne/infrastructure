@@ -1,8 +1,3 @@
-- name: Include docker variables
-  include_vars: docker.yml
-
-# Applications
-
 - name: Install calibre
   include: calibre.yml
 
@@ -50,9 +45,6 @@
 
 - name: Install theorangeone.net
   include: theorangeone.net.yml
-
-- name: Install traefik
-  include: traefik.yml
 
 - name: Install tt-rss
   include: tt-rss.yml

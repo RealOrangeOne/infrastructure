@@ -1,4 +1,4 @@
-- name: Create traefik directory
+- name: Create install directory
   file:
     path: /opt/traefik
     state: directory
@@ -6,16 +6,16 @@
     mode: "{{ docker_compose_directory_mask }}"
   become: true
 
-- name: Create traefik config directory
+- name: Create config directory
   file:
     path: /opt/traefik/traefik
     state: directory
     mode: "{{ docker_compose_directory_mask }}"
   become: true
 
-- name: Install traefik compose file
+- name: Install compose file
   template:
-    src: files/traefik/docker-compose.yml
+    src: files/docker-compose.yml
     dest: /opt/traefik/docker-compose.yml
     mode: "{{ docker_compose_file_mask }}"
     owner: "{{ docker_user.name }}"
@@ -23,25 +23,25 @@
   register: compose_file
   become: true
 
-- name: Install traefik config
+- name: Install config
   template:
-    src: files/traefik/traefik.yml
+    src: files/traefik.yml
     dest: /opt/traefik/traefik/traefik.yml
     mode: "{{ docker_compose_file_mask }}"
     owner: "{{ docker_user.name }}"
   register: config_file
   become: true
 
-- name: Install traefik file provider
+- name: Install file provider
   template:
-    src: files/traefik/file-provider.yml
+    src: files/file-provider.yml
     dest: /opt/traefik/traefik/file-provider.yml
     mode: "{{ docker_compose_file_mask }}"
     owner: "{{ docker_user.name }}"
   register: file_provider
   become: true
 
-- name: Cycle traefik container
+- name: Cycle container
   docker_compose:
     project_src: /opt/traefik
     pull: true
