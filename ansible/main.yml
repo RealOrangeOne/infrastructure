@@ -1,6 +1,6 @@
 - hosts: all
   roles:
-    - base
+    - common
     - role: geerlingguy.ntp
       become: true
       vars:
