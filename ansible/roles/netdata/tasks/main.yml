@@ -1,4 +1,4 @@
-- name: Create netdata directory
+- name: Create install directory
   file:
     path: /opt/netdata
     state: directory
@@ -6,7 +6,7 @@
     mode: "{{ docker_compose_directory_mask }}"
   become: true
 
-- name: Install netdata compose file
+- name: Install compose file
   template:
     src: files/docker-compose.yml
     dest: /opt/netdata/docker-compose.yml
@@ -16,7 +16,7 @@
   register: compose_file
   become: true
 
-- name: Cycle netdata container
+- name: Cycle container
   docker_compose:
     project_src: /opt/netdata
     pull: true

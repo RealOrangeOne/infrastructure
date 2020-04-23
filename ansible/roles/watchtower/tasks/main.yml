@@ -1,4 +1,4 @@
-- name: Create directory
+- name: Create install directory
   file:
     path: /opt/watchtower
     state: directory
