@@ -14,9 +14,5 @@ services:
       - /proc:/host/proc:ro
       - /sys:/host/sys:ro
     restart: unless-stopped
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.netdata.rule=Host(`netdata.jakehoward.tech`)"
-      - "traefik.http.routers.netdata.tls=true"
-      - "traefik.http.routers.netdata.tls.certresolver=le"
-      - "traefik.http.routers.netdata.middlewares=internal-only@file"
+    ports:
+      - 19999:19999

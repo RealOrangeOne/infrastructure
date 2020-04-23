@@ -108,14 +108,6 @@ resource "cloudflare_record" "jakehowardtech_onlyoffice" {
   ttl     = 1
 }
 
-resource "cloudflare_record" "jakehowardtech_netdata" {
-  zone_id = cloudflare_zone.jakehowardtech.id
-  name    = "netdata"
-  value   = vultr_server.casey.main_ip
-  type    = "A"
-  ttl     = 1
-}
-
 resource "cloudflare_record" "jakehowardtech_media" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "media"
