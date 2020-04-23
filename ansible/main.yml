@@ -22,4 +22,5 @@
           - "{{ user }}"
     - docker-cleanup
     - traefik
+    - netdata
     - docker

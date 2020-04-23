@@ -19,9 +19,6 @@
 - name: Install librespeed
   include: librespeed.yml
 
-- name: Install netdata
-  include: netdata.yml
-
 - name: Install nextcloud
   include: nextcloud.yml
 
