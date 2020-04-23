@@ -2,7 +2,7 @@ version: "2.3"
 
 services:
   yourls:
-    image: yourls:1.7.6-apache
+    image: yourls:1.7.9-apache
     container_name: yourls
     restart: unless-stopped
     depends_on:
