@@ -1,9 +1,6 @@
 - name: Include docker variables
   include_vars: docker.yml
 
-- name: Install Docker
-  include: setup-docker.yml
-
 # Applications
 
 - name: Install calibre

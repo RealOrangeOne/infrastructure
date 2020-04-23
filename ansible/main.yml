@@ -20,4 +20,5 @@
         docker_install_compose: false  # This role installs the binary directly, which is kinda nasty
         docker_users:
           - "{{ user }}"
+    - docker-cleanup
     - docker

@@ -1,6 +1,2 @@
-docker_user:
-  id: 3000
-  name: dockeruser
-
 docker_compose_file_mask: 0664
 docker_compose_directory_mask: 0775

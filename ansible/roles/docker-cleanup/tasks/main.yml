@@ -1,3 +1,6 @@
+- name: Include docker variables
+  include_vars: docker.yml
+
 - name: Install docker-compose
   apt:
     name: docker-compose
