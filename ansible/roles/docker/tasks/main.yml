@@ -49,9 +49,6 @@
 - name: Install wallabag
   include: wallabag.yml
 
-- name: Install watchtower
-  include: watchtower.yml
-
 - name: Install whoami
   include: whoami.yml
 

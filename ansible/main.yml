@@ -21,6 +21,7 @@
         docker_users:
           - "{{ user }}"
     - docker-cleanup
-    - traefik
     - netdata
+    - traefik
+    - watchtower
     - docker
