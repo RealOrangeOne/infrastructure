@@ -6,3 +6,4 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
       - "{{ home }}/.docker/config.json:/config.json:ro"
     command: --cleanup --interval 300
+    restart: unless-stopped
