@@ -15,8 +15,7 @@ entryPoints:
       trustedIPs:
         - "{{ wireguard.cidr }}"
 
-ping:
-  manualRouting: true
+ping: {}
 
 providers:
   docker:
@@ -28,6 +27,7 @@ providers:
 
 api:
   dashboard: true
+  insecure: true
 
 certificatesResolvers:
   le:

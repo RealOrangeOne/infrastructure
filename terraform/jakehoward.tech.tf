@@ -68,14 +68,6 @@ resource "cloudflare_record" "jakehowardtech_ttrss" {
   ttl     = 1
 }
 
-resource "cloudflare_record" "jakehowardtech_traefik" {
-  zone_id = cloudflare_zone.jakehowardtech.id
-  name    = "traefik"
-  value   = vultr_server.casey.main_ip
-  type    = "A"
-  ttl     = 1
-}
-
 resource "cloudflare_record" "jakehowardtech_speed" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "speed"
