@@ -1,5 +1,5 @@
 - name: Install OpenSSH
-  apt:
+  package:
     name: openssh-server
   become: true
 

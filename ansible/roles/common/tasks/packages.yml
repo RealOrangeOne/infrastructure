@@ -1,5 +1,5 @@
 - name: Install Base Packages
-  apt:
+  package:
     name: "{{ item }}"
   become: true
   loop:

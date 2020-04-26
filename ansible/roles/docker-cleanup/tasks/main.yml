@@ -1,5 +1,5 @@
 - name: Install docker-compose
-  apt:
+  package:
     name: docker-compose
   become: true
 
