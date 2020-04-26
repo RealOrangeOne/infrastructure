@@ -1,4 +1,4 @@
-- name: Create statping directory
+- name: Create install directory
   file:
     path: /opt/statping
     state: directory
@@ -6,9 +6,9 @@
     mode: "{{ docker_compose_directory_mask }}"
   become: true
 
-- name: Install statping compose file
+- name: Install compose file
   template:
-    src: files/statping/docker-compose.yml
+    src: files/docker-compose.yml
     dest: /opt/statping/docker-compose.yml
     mode: "{{ docker_compose_file_mask }}"
     owner: "{{ docker_user.name }}"
@@ -16,7 +16,7 @@
   register: compose_file
   become: true
 
-- name: Cycle statping container
+- name: Cycle container
   docker_compose:
     project_src: /opt/statping
     pull: true

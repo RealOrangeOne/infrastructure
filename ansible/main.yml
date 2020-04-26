@@ -34,3 +34,4 @@
 - hosts: grimes
   roles:
     - website
+    - statping
