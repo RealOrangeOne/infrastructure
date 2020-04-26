@@ -29,7 +29,7 @@
     - netdata
     - traefik
     - watchtower
-    - docker
+    - intersect-docker
 
 - hosts: grimes
   roles:
