@@ -17,7 +17,7 @@ services:
       - ./index.html:/var/www/html/index.html
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.yourls.rule=Host(`go.theorangeone.net`) || Host(`0rng.one`)"
+      - "traefik.http.routers.yourls.rule=Host(`0rng.one`)"
       - "traefik.http.routers.yourls.tls=true"
       - "traefik.http.routers.yourls.tls.certresolver=le"
 
