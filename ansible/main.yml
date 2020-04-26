@@ -5,15 +5,14 @@
       become: true
       vars:
         ntp_timezone: Europe/London
+    - ssh
 
 - hosts: casey
   roles:
-    - ssh
     - gateway
 
 - hosts: intersect
   roles:
-    - ssh
     - role: geerlingguy.docker
       become: true
       vars:
