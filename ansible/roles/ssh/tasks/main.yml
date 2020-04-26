@@ -1,7 +1,14 @@
-- name: Install OpenSSH
+- name: Install OpenSSH for Debian
   package:
     name: openssh-server
   become: true
+  when: ansible_os_family == 'Debian'
+
+- name: Install OpenSSH for Arch
+  package:
+    name: openssh
+  become: true
+  when: ansible_os_family == 'ArchLinux'
 
 - name: Define context
   set_fact:
