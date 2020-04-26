@@ -87,7 +87,7 @@ resource "cloudflare_record" "theorangeonenet_dkim_fm3" {
 resource "cloudflare_record" "theorangeonenet_www" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "www"
-  value   = vultr_server.casey.main_ip
+  value   = vultr_server.grimes.main_ip
   type    = "A"
   ttl     = 1
 }
@@ -95,7 +95,7 @@ resource "cloudflare_record" "theorangeonenet_www" {
 resource "cloudflare_record" "theorangeonenet_apex" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "@"
-  value   = vultr_server.casey.main_ip
+  value   = vultr_server.grimes.main_ip
   type    = "A"
   ttl     = 1
 }

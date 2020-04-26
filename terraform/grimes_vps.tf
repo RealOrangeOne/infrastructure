@@ -15,3 +15,17 @@ resource "vultr_firewall_rule" "grimes_ping" {
   protocol          = "icmp"
   network           = "0.0.0.0/0"
 }
+
+resource "vultr_firewall_rule" "grimes_web" {
+  firewall_group_id = vultr_firewall_group.grimes.id
+  protocol          = "tcp"
+  from_port         = 80
+  network           = "0.0.0.0/0"
+}
+
+resource "vultr_firewall_rule" "grimes_web_secure" {
+  firewall_group_id = vultr_firewall_group.grimes.id
+  protocol          = "tcp"
+  from_port         = 443
+  network           = "0.0.0.0/0"
+}

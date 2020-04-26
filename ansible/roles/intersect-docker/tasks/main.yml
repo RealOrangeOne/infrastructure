@@ -40,9 +40,6 @@
 - name: Install torrent
   include: torrent.yml
 
-- name: Install theorangeone.net
-  include: theorangeone.net.yml
-
 - name: Install tt-rss
   include: tt-rss.yml
 

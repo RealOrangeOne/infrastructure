@@ -1,4 +1,4 @@
-- name: Create theorangeone.net directory
+- name: Create install directory
   file:
     path: /opt/theorangeone.net
     state: directory
@@ -6,9 +6,9 @@
     mode: "{{ docker_compose_directory_mask }}"
   become: true
 
-- name: Install theorangeone.net compose file
+- name: Install compose file
   template:
-    src: files/theorangeone.net/docker-compose.yml
+    src: files/docker-compose.yml
     dest: /opt/theorangeone.net/docker-compose.yml
     mode: "{{ docker_compose_file_mask }}"
     owner: "{{ docker_user.name }}"
@@ -16,7 +16,7 @@
   register: compose_file
   become: true
 
-- name: Cycle theorangeone.net container
+- name: Cycle container
   docker_compose:
     project_src: /opt/theorangeone.net
     pull: true
