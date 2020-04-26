@@ -23,14 +23,10 @@
         docker_users:
           - "{{ user }}"
     - docker-cleanup
+    - watchtower
+    - netdata
+    - traefik
 
 - hosts: intersect
   roles:
-    - netdata
-    - traefik
-    - watchtower
     - intersect-docker
-
-- hosts: grimes
-  roles:
-    - netdata
