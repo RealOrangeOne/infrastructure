@@ -11,16 +11,26 @@
   roles:
     - gateway
 
-- hosts: intersect
+- hosts:
+    - intersect
+    - grimes
   roles:
     - role: geerlingguy.docker
       become: true
       vars:
         docker_install_compose: false  # This role installs the binary directly, which is kinda nasty
+        docker_package: "{{ 'docker-ce' if ansible_os_family == 'Debian' else 'docker' }}"
         docker_users:
           - "{{ user }}"
     - docker-cleanup
+
+- hosts: intersect
+  roles:
     - netdata
     - traefik
     - watchtower
     - docker
+
+- hosts: grimes
+  roles:
+    - netdata

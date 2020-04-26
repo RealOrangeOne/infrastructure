@@ -3,18 +3,27 @@
     name: docker-compose
   become: true
 
+- name: Ensure group "somegroup" exists
+  group:
+    name: "{{ docker_user.name }}"
+    state: present
+    gid: "{{ docker_user.id }}"
+  become: true
+
 - name: Create docker user
   user:
     name: "{{ docker_user.name }}"
     uid: "{{ docker_user.id }}"
     group: "{{ docker_user.name }}"
     create_home: false
+  become: true
 
 - name: Add user to docker user group
   user:
     name: "{{ user }}"
     groups: "{{ docker_user.name }}"
     append: true
+  become: true
 
 - name: Clean up docker containers
   cron:
