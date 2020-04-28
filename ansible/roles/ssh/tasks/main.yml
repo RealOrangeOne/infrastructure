@@ -24,7 +24,13 @@
   become: true
   register: sshd_config
 
-- name: Restart SSH config
+- name: Enable SSH
+  service:
+    name: sshd
+    enabled: true
+  become: true
+
+- name: Restart SSH Daemon
   service:
     name: sshd
     state: reloaded

@@ -9,8 +9,13 @@
 - name: Enable wireguard
   service:
     name: wg-quick@wg0
-    state: restarted
     enabled: true
+  become: true
+
+- name: Restart wireguard
+  service:
+    name: wg-quick@wg0
+    state: restarted
   when: wireguard_conf.changed
   become: true
 

@@ -12,6 +12,12 @@
   become: true
   register: haproxy_config
 
+- name: Enable Haproxy
+  service:
+    name: haproxy
+    enabled: true
+  become: true
+
 - name: Restart Haproxy
   service:
     name: haproxy
