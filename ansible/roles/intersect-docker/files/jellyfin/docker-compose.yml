@@ -1,0 +1,28 @@
+version: "2.3"
+
+services:
+  jellyfin:
+    image: linuxserver/jellyfin:v10.5.5-ls52
+    container_name: jellyfin
+    environment:
+      - PUID={{ docker_user.id }}
+      - PGID={{ docker_user.id }}
+      - TZ=Europe/London
+    volumes:
+      - ./config:/config
+      - /mnt/media/TV:/mnt/TV
+      - /mnt/media/Movies:/mnt/Movies
+    tmpfs:
+      - /config/cache
+      - /config/log
+    ports:
+      - 8096:8096
+    restart: unless-stopped
+    devices:
+      - /dev/dri/card0:/dev/dri/card0
+      - /dev/dri/renderD128:/dev/dri/renderD128
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.jellyfin.rule=Host(`media.jakehoward.tech`)"
+      - "traefik.http.routers.jellyfin.tls=true"
+      - "traefik.http.routers.jellyfin.tls.certresolver=le"
