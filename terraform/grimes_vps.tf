@@ -29,3 +29,10 @@ resource "vultr_firewall_rule" "grimes_web_secure" {
   from_port         = 443
   network           = "0.0.0.0/0"
 }
+
+resource "vultr_firewall_rule" "grimes_proxy" {
+  firewall_group_id = vultr_firewall_group.grimes.id
+  protocol          = "tcp"
+  from_port         = 1080
+  network           = "0.0.0.0/0"
+}
