@@ -1,3 +1,6 @@
+- name: Include librespeed variables
+  include_vars: librespeed.yml
+
 - name: Create librespeed directory
   file:
     path: /opt/librespeed
