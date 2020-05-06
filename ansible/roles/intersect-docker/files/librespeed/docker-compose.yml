@@ -7,6 +7,8 @@ services:
       - PUID={{ docker_user.id }}
       - PGID={{ docker_user.id }}
       - TZ=Europe/London
+    ports:
+      - 33377:80
     restart: unless-stopped
     labels:
       - "traefik.enable=true"
