@@ -14,5 +14,4 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.calibre.rule=Host(`calibre.jakehoward.tech`)"
-      - "traefik.http.routers.calibre.tls=true"
       - "traefik.http.routers.calibre.tls.certresolver=le"

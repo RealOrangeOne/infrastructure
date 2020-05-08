@@ -18,7 +18,6 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.synapse.rule=Host(`matrix.jakehoward.tech`)"
-      - "traefik.http.routers.synapse.tls=true"
       - "traefik.http.routers.synapse.tls.certresolver=le"
       - "traefik.http.routers.synapse.entrypoints=web-secure,matrix"
 

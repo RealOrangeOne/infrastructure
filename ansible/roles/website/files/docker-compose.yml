@@ -12,7 +12,6 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.website.rule=Host(`theorangeone.net`) || Host(`www.theorangeone.net`)"
-      - "traefik.http.routers.website.tls=true"
       - "traefik.http.routers.website.tls.certresolver=le"
 
   stats:

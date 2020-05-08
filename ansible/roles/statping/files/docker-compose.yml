@@ -10,7 +10,6 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.statping.rule=Host(`stats.theorangeone.net`)"
-      - "traefik.http.routers.statping.tls=true"
       - "traefik.http.routers.statping.tls.certresolver=le"
 
   db:

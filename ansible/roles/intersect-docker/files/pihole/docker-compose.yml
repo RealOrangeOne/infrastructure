@@ -17,7 +17,6 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.pihole.rule=Host(`pihole.jakehoward.tech`)"
-      - "traefik.http.routers.pihole.tls=true"
       - "traefik.http.routers.pihole.tls.certresolver=le"
       - "traefik.http.routers.pihole.middlewares=internal-only@file"
       - "traefik.http.services.pihole-pihole.loadbalancer.server.port=80"

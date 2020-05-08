@@ -17,6 +17,5 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.duplicati.rule=Host(`duplicati.jakehoward.tech`)"
-      - "traefik.http.routers.duplicati.tls=true"
       - "traefik.http.routers.duplicati.tls.certresolver=le"
       - "traefik.http.routers.duplicati.middlewares=internal-only@file"

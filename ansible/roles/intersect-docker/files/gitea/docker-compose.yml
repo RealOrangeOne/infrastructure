@@ -11,7 +11,6 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.gitea.rule=(Host(`git.theorangeone.net`) || Host(`git.0rng.one`))"
-      - "traefik.http.routers.gitea.tls=true"
       - "traefik.http.routers.gitea.tls.certresolver=le"
       - "traefik.http.services.gitea-gitea.loadbalancer.server.port=3000"
     ports:

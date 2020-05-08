@@ -17,7 +17,6 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.deluge.rule=Host(`deluge.jakehoward.tech`)"
-      - "traefik.http.routers.deluge.tls=true"
       - "traefik.http.routers.deluge.tls.certresolver=le"
       - "traefik.http.routers.deluge.middlewares=internal-only@file"
 

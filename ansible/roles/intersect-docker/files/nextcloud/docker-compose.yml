@@ -21,7 +21,6 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.nextcloud.rule=Host(`intersect.jakehoward.tech`)"
-      - "traefik.http.routers.nextcloud.tls=true"
       - "traefik.http.routers.nextcloud.tls.certresolver=le"
 
   db:
@@ -64,7 +63,6 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.onlyoffice.rule=Host(`onlyoffice.jakehoward.tech`)"
-      - "traefik.http.routers.onlyoffice.tls=true"
       - "traefik.http.routers.onlyoffice.tls.certresolver=le"
       - "traefik.http.routers.onlyoffice.middlewares=oo-header"
       - "traefik.http.middlewares.oo-header.headers.customRequestHeaders.X-Forwarded-Proto=https"

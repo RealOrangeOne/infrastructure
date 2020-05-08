@@ -14,7 +14,6 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.wallabag.rule=Host(`wallabag.jakehoward.tech`)"
-      - "traefik.http.routers.wallabag.tls=true"
       - "traefik.http.routers.wallabag.tls.certresolver=le"
 
   redis:

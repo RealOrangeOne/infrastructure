@@ -18,5 +18,4 @@ services:
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.emby.rule=Host(`media.jakehoward.tech`)"
-      - "traefik.http.routers.emby.tls=true"
       - "traefik.http.routers.emby.tls.certresolver=le"
