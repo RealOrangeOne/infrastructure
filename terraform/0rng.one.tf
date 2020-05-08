@@ -25,3 +25,19 @@ resource "cloudflare_record" "orngone_who" {
   type    = "A"
   ttl     = 1
 }
+
+resource "cloudflare_record" "orngone_img" {
+  zone_id = cloudflare_zone.orngone.id
+  name    = "img"
+  value   = vultr_server.grimes.main_ip
+  type    = "A"
+  ttl     = 1
+}
+
+resource "cloudflare_record" "orngone_dl" {
+  zone_id = cloudflare_zone.orngone.id
+  name    = "dl"
+  value   = vultr_server.grimes.main_ip
+  type    = "A"
+  ttl     = 1
+}

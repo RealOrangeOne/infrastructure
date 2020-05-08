@@ -23,7 +23,7 @@ services:
       - ./data/img:/usr/share/nginx/html:ro
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.img.rule=Host(`img.theorangeone.net`)"
+      - "traefik.http.routers.img.rule=Host(`img.theorangeone.net`) || Host(`img.0rng.one`)"
       - "traefik.http.routers.img.tls=true"
       - "traefik.http.routers.img.tls.certresolver=le"
 
@@ -45,6 +45,6 @@ services:
       - ./data/download:/usr/share/nginx/html:ro
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.dl.rule=Host(`dl.theorangeone.net`)"
+      - "traefik.http.routers.dl.rule=Host(`dl.theorangeone.net`) || Host(`dl.0rng.one`)"
       - "traefik.http.routers.dl.tls=true"
       - "traefik.http.routers.dl.tls.certresolver=le"
