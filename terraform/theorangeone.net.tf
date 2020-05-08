@@ -116,3 +116,35 @@ resource "cloudflare_record" "theorangeonenet_srv_matrix" {
     target   = cloudflare_record.jakehowardtech_matrix.hostname
   }
 }
+
+resource "cloudflare_record" "theorangeonenet_img" {
+  zone_id = cloudflare_zone.theorangeonenet.id
+  name    = "img"
+  value   = vultr_server.grimes.main_ip
+  type    = "A"
+  ttl     = 1
+}
+
+resource "cloudflare_record" "theorangeonenet_dl" {
+  zone_id = cloudflare_zone.theorangeonenet.id
+  name    = "dl"
+  value   = vultr_server.grimes.main_ip
+  type    = "A"
+  ttl     = 1
+}
+
+resource "cloudflare_record" "theorangeonenet_bg" {
+  zone_id = cloudflare_zone.theorangeonenet.id
+  name    = "bg"
+  value   = vultr_server.grimes.main_ip
+  type    = "A"
+  ttl     = 1
+}
+
+resource "cloudflare_record" "theorangeonenet_upload" {
+  zone_id = cloudflare_zone.theorangeonenet.id
+  name    = "upload"
+  value   = vultr_server.grimes.main_ip
+  type    = "A"
+  ttl     = 1
+}

@@ -1,0 +1,50 @@
+version: "2.3"
+
+services:
+  upload:
+    image: minio/minio:latest
+    restart: unless-stopped
+    volumes:
+      - ./data:/data
+    command: server /data --quiet
+    environment:
+      - MINIO_ACCESS_KEY={{ minio_access_key }}
+      - MINIO_SECRET_KEY={{ minio_secret_key }}
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.upload.rule=Host(`upload.theorangeone.net`)"
+      - "traefik.http.routers.upload.tls=true"
+      - "traefik.http.routers.upload.tls.certresolver=le"
+
+  img:
+    image: nginx:latest
+    restart: unless-stopped
+    volumes:
+      - ./data/img:/usr/share/nginx/html:ro
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.img.rule=Host(`img.theorangeone.net`)"
+      - "traefik.http.routers.img.tls=true"
+      - "traefik.http.routers.img.tls.certresolver=le"
+
+  bg:
+    image: nginx:latest
+    restart: unless-stopped
+    volumes:
+      - ./data/background:/usr/share/nginx/html:ro
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.bg.rule=Host(`bg.theorangeone.net`)"
+      - "traefik.http.routers.bg.tls=true"
+      - "traefik.http.routers.bg.tls.certresolver=le"
+
+  dl:
+    image: nginx:latest
+    restart: unless-stopped
+    volumes:
+      - ./data/download:/usr/share/nginx/html:ro
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.dl.rule=Host(`dl.theorangeone.net`)"
+      - "traefik.http.routers.dl.tls=true"
+      - "traefik.http.routers.dl.tls.certresolver=le"
