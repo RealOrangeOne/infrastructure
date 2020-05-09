@@ -3,7 +3,7 @@
     name: "{{ user }}"
     home: "{{ home }}"
     comment: Jake Howard
-    shell: /usr/bin/bash
+    shell: "{{ lookup('pipe','which bash') }}"
     system: true
   become: true
 
