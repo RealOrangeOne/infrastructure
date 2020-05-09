@@ -3,6 +3,3 @@
 
 - name: Configure wireguard
   include: wireguard.yml
-
-- name: Configure fail2ban
-  include: fail2ban.yml
