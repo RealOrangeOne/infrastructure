@@ -16,30 +16,32 @@ services:
       - "traefik.http.routers.upload.tls.certresolver=le"
 
   img:
-    image: nginx:latest
+    image: theorangeone/static-server:latest
     restart: unless-stopped
     volumes:
-      - ./data/img:/usr/share/nginx/html:ro
+      - ./data/img:/srv:ro
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.img.rule=Host(`img.theorangeone.net`) || Host(`img.0rng.one`)"
       - "traefik.http.routers.img.tls.certresolver=le"
 
   bg:
-    image: nginx:latest
+    image: theorangeone/static-server:latest
     restart: unless-stopped
     volumes:
-      - ./data/background:/usr/share/nginx/html:ro
+      - ./data/background:/srv:ro
+    environment:
+      - INDEX=on
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.bg.rule=Host(`bg.theorangeone.net`)"
       - "traefik.http.routers.bg.tls.certresolver=le"
 
   dl:
-    image: nginx:latest
+    image: theorangeone/static-server:latest
     restart: unless-stopped
     volumes:
-      - ./data/download:/usr/share/nginx/html:ro
+      - ./data/download:/srv:ro
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.dl.rule=Host(`dl.theorangeone.net`) || Host(`dl.0rng.one`)"
