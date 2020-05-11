@@ -44,3 +44,11 @@
     state: present
     reload: yes
   become: true
+
+- name: Install wireguard tools
+  package:
+    name: "{{ item }}"
+  become: true
+  loop:
+    - wireguard-tools
+    - qrencode
