@@ -28,7 +28,3 @@ services:
       - POSTGRES_PASSWORD=quassel
     volumes:
       - ./postgresql:/var/lib/postgresql/data
-
-  tor-socks-proxy:
-    image: peterdavehello/tor-socks-proxy:latest
-    restart: unless-stopped
