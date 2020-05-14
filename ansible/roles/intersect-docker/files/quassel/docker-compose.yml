@@ -1,7 +1,7 @@
 version: "2.3"
 services:
   quassel-core:
-    image: linuxserver/quassel-core:0.13.1-ls53
+    image: linuxserver/quassel-core:0.13.1-ls54
     container_name: quassel
     environment:
       - PUID={{ docker_user.id }}
