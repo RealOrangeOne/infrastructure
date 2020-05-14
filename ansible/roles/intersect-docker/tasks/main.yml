@@ -45,6 +45,3 @@
 
 - name: Install whoami
   include: whoami.yml
-
-- name: Install yourls
-  include: yourls.yml
