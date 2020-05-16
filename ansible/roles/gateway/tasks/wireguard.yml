@@ -43,6 +43,7 @@
     sysctl_set: yes
     state: present
     reload: yes
+    sysctl_file: /etc/sysctl.d/99-sysctl.conf
   become: true
 
 - name: Install wireguard tools
