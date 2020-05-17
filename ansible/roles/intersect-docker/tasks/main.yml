@@ -43,5 +43,8 @@
 - name: Install wallabag
   include: wallabag.yml
 
+- name: Install web-rng
+  include: web-rng.yml
+
 - name: Install whoami
   include: whoami.yml
