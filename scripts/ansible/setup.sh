@@ -8,4 +8,4 @@ env/bin/pip install -r dev-requirements.txt
 
 cd ansible/
 
-../env/bin/ansible-galaxy install -r requirements.yaml
+../env/bin/ansible-galaxy install -r galaxy-requirements.yml
