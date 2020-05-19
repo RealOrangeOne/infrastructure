@@ -21,6 +21,12 @@ services:
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
 
+  redis:
+    image: redis:5-alpine
+    restart: unless-stopped
+    volumes:
+      - ./redis:/data
+
   db:
     image: postgres:12-alpine
     restart: unless-stopped
