@@ -31,7 +31,7 @@ $CONFIG = array (
   'installed' => true,
   'trusted_proxies' =>
   array (
-    0 => '10.23.0.1/24',
+    0 => '172.17.0.1',
   ),
   'maintenance' => false,
   'theme' => '',
