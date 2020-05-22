@@ -1,3 +1,6 @@
+- name: Include upload variables
+  include_vars: ../upload/vars/upload.yml
+
 - name: Create duplicati directory
   file:
     path: /opt/duplicati
@@ -16,6 +19,24 @@
   register: compose_file
   become: true
 
+- name: Install rclone config
+  template:
+    src: files/duplicati/rclone.conf
+    dest: /opt/duplicati/rclone.conf
+    mode: "{{ docker_compose_file_mask }}"
+    owner: "{{ docker_user.name }}"
+  register: rclone_config
+  become: true
+
+- name: Install rclone mounts
+  template:
+    src: files/duplicati/rclone-mounts.txt
+    dest: /opt/duplicati/rclone-mounts.txt
+    mode: "{{ docker_compose_file_mask }}"
+    owner: "{{ docker_user.name }}"
+  register: rclone_mounts
+  become: true
+
 - name: Cycle duplicati container
   docker_compose:
     project_src: /opt/duplicati
@@ -23,7 +44,7 @@
     remove_orphans: true
     remove_volumes: true
     state: "{{ item }}"
-  when: compose_file.changed
+  when: compose_file.changed or rclone_config.changed or rclone_mounts.changed
   loop:
     - absent
     - present
