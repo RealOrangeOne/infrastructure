@@ -13,9 +13,27 @@ services:
       - /srv/nextcloud-data/data/:/source/nextcloud:ro
       - /opt/gitea/repos/repositories:/source/repositories:ro
       - /scratch/db-backups:/source/db-backups:ro
+      - ./mounts:/source/mounts:shared
     restart: unless-stopped
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.duplicati.rule=Host(`duplicati.jakehoward.tech`)"
       - "traefik.http.routers.duplicati.tls.certresolver=le"
       - "traefik.http.routers.duplicati.middlewares=internal-only@file"
+
+  rclone:
+    image: theorangeone/rclone-mount:latest
+    restart: unless-stopped
+    cap_add:
+      - SYS_ADMIN
+    security_opt:
+      - apparmor:unconfined
+    environment:
+      - PUID={{ docker_user.id }}
+      - PGID={{ docker_user.id }}
+    devices:
+      - "/dev/fuse:/dev/fuse"
+    volumes:
+      - ./mounts:/mnt:shared
+      - ./rclone-mounts.txt:/config/config.txt:ro
+      - ./rclone.conf:/config/rclone.conf:ro
