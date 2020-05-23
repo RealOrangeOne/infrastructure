@@ -28,8 +28,8 @@
   authorized_key:
     user: "{{ user }}"
     state: present
-    key: "{{ item }}"
-  with_file:
+    key: "{{ lookup('file', item) }}"
+  loop:
     - ssh-keys/ps.pub
 
 - name: Enable SSH
