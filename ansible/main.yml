@@ -1,11 +1,10 @@
 - hosts: all
   roles:
-    - common
+    - base
     - role: geerlingguy.ntp
       become: true
       vars:
         ntp_timezone: Europe/London
-    - ssh
 
 - hosts: casey
   roles:

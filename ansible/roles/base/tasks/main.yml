@@ -3,3 +3,6 @@
 
 - name: User
   include: user.yml
+
+- name: SSH
+  include: ssh.yml
