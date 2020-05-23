@@ -24,6 +24,14 @@
   become: true
   register: sshd_config
 
+- name: Set up authorized keys
+  authorized_key:
+    user: "{{ user }}"
+    state: present
+    key: "{{ item }}"
+  with_file:
+    - ssh-keys/ps.pub
+
 - name: Enable SSH
   service:
     name: sshd
