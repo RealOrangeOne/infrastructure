@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+set -e
+
+exec docker-compose -f "/opt/$1/docker-compose.yml" "${@:2}"
