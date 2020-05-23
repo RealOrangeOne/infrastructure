@@ -13,12 +13,8 @@ Protocol 2
 
 HostKey /etc/ssh/ssh_host_ed25519_key
 
-# Privilege Separation is turned on for security
-UsePrivilegeSeparation yes
-
 # Public key authentication + Password authentication
 # Two-Factor Authentication in OpenSSH v6.2+
-RSAAuthentication yes
 PubkeyAuthentication yes
 AuthenticationMethods publickey
 
@@ -59,7 +55,6 @@ KexAlgorithms diffie-hellman-group18-sha512,curve25519-sha256,curve25519-sha256@
 IgnoreRhosts yes
 
 # Disable unused authentication schemes
-RhostsRSAAuthentication no
 HostbasedAuthentication no
 ChallengeResponseAuthentication no
 KerberosAuthentication no
