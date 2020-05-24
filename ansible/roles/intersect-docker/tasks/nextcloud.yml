@@ -35,15 +35,6 @@
   register: config_file
   become: true
 
-- name: Install nextcloud custom nginx config
-  template:
-    src: files/nextcloud/default.conf
-    dest: /opt/nextcloud/nextcloud/nginx-default.conf
-    mode: "{{ docker_compose_file_mask }}"
-    owner: "{{ docker_user.name }}"
-  register: nginx_config
-  become: true
-
 - name: Cycle nextcloud container
   docker_compose:
     project_src: /opt/nextcloud
@@ -51,7 +42,7 @@
     remove_orphans: true
     remove_volumes: true
     state: "{{ item }}"
-  when: compose_file.changed or config_file.changed or nginx_config.changed
+  when: compose_file.changed or config_file.changed
   loop:
     - absent
     - present

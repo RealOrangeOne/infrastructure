@@ -11,7 +11,6 @@ services:
     volumes:
       - ./nextcloud/config:/config/www/nextcloud/config
       - ./nextcloud/apps:/config/www/nextcloud/apps
-      - ./nextcloud/nginx-default.conf:/config/nginx/site-confs/default
       - /srv/nextcloud-data/data:/data
       - /opt/gitea/repos:/repos:ro
       - /mnt/media:/content:ro
@@ -22,6 +21,8 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.nextcloud.rule=Host(`intersect.jakehoward.tech`)"
       - "traefik.http.routers.nextcloud.tls.certresolver=le"
+      - "traefik.http.services.nextcloud-nextcloud.loadbalancer.server.port=443"
+      - "traefik.http.services.nextcloud-nextcloud.loadbalancer.server.scheme=https"
 
   db:
     image: postgres:12-alpine

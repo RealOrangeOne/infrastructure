@@ -36,3 +36,6 @@ certificatesResolvers:
       storage: /etc/traefik/acme.json
       httpChallenge:
         entryPoint: web
+
+serversTransport:
+  insecureSkipVerify: true
