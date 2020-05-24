@@ -4,7 +4,7 @@ services:
   folding-at-home:
     image: linuxserver/foldingathome:latest
     container_name: folding-at-home
-    cpus: 1.5
+    cpus: 0.75
     environment:
       - TZ=Europe/London
       - PUID={{ docker_user.id }}
