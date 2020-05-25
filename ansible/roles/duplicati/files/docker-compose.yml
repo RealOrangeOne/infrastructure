@@ -3,6 +3,7 @@ services:
   duplicati:
     image: linuxserver/duplicati:v2.0.5.1-2.0.5.1_beta_2020-01-18-ls60
     container_name: duplicati
+    hostname: "{{ ansible_fqdn }}"
     environment:
       - PUID={{ docker_user.id }}
       - PGID={{ docker_user.id }}
