@@ -8,4 +8,4 @@ set -x
 
 cd ansible/
 
-ansible-playbook main.yml -K --vault-password-file .vault_pass
+time ansible-playbook main.yml -K --vault-password-file .vault_pass
