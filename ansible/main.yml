@@ -25,6 +25,7 @@
     - watchtower
     - netdata
     - traefik
+    - duplicati
 
 - hosts: intersect
   roles:

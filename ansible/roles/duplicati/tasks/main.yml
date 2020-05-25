@@ -8,7 +8,7 @@
 
 - name: Install duplicati compose file
   template:
-    src: files/duplicati/docker-compose.yml
+    src: files/docker-compose.yml
     dest: /opt/duplicati/docker-compose.yml
     mode: "{{ docker_compose_file_mask }}"
     owner: "{{ docker_user.name }}"
