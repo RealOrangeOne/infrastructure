@@ -28,7 +28,7 @@ services:
     image: postgres:12-alpine
     restart: unless-stopped
     volumes:
-      - ./postgres:/var/lib/postgresql/data
+      - /srv/nextcloud-postgres:/var/lib/postgresql/data
     environment:
       - POSTGRES_PASSWORD=nextcloud
       - POSTGRES_USER=nextcloud
