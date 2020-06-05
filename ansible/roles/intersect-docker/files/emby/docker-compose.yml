@@ -2,7 +2,7 @@ version: "2.3"
 
 services:
   emby:
-    image: linuxserver/emby:4.4.2.0-ls41
+    image: linuxserver/emby:4.4.3.0-ls47
     container_name: emby
     environment:
       - PUID={{ docker_user.id }}
