@@ -92,9 +92,9 @@ resource "cloudflare_record" "jakehowardtech_pihole" {
   ttl     = 1
 }
 
-resource "cloudflare_record" "jakehowardtech_onlyoffice" {
+resource "cloudflare_record" "jakehowardtech_collabora" {
   zone_id = cloudflare_zone.jakehowardtech.id
-  name    = "onlyoffice"
+  name    = "collabora"
   value   = vultr_server.casey.main_ip
   type    = "A"
   ttl     = 1

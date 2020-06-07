@@ -54,16 +54,16 @@ services:
     volumes:
       - ./redis:/data
 
-  onlyoffice:
-    image: onlyoffice/documentserver
-    container_name: onlyoffice
+  collabora:
+    image: collabora/code:latest
+    container_name: collabora
     restart: unless-stopped
+    cap_add:
+      - MKNOD
     environment:
-      - JWT_ENABLED=true
-      - JWT_SECRET={{ nextcloud.onlyoffice_jwt_secret }}
+      - "domain=intersect\\.jakehoward\\.tech"
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.onlyoffice.rule=Host(`onlyoffice.jakehoward.tech`)"
-      - "traefik.http.routers.onlyoffice.tls.certresolver=le"
-      - "traefik.http.routers.onlyoffice.middlewares=oo-header"
-      - "traefik.http.middlewares.oo-header.headers.customRequestHeaders.X-Forwarded-Proto=https"
+      - "traefik.http.routers.collabora.rule=Host(`collabora.jakehoward.tech`)"
+      - "traefik.http.routers.collabora.tls.certresolver=le"
+      - "traefik.http.services.collabora-nextcloud.loadbalancer.server.scheme=https"
