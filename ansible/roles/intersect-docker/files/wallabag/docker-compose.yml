@@ -17,7 +17,7 @@ services:
       - "traefik.http.routers.wallabag.tls.certresolver=le"
 
   redis:
-    image: redis:5-alpine
+    image: redis:6-alpine
     restart: unless-stopped
     volumes:
       - ./redis:/data
