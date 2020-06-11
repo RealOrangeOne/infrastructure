@@ -23,12 +23,12 @@
           - "{{ user }}"
     - docker-cleanup
     - watchtower
-    - netdata
     - traefik
     - duplicati
 
 - hosts: intersect
   roles:
+    - netdata
     - intersect-docker
 
 - hosts: grimes
