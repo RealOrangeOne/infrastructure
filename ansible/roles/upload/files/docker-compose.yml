@@ -31,7 +31,7 @@ services:
     volumes:
       - ./data/background:/srv:ro
     environment:
-      - INDEX=on
+      - FANCY_INDEX=on
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.bg.rule=Host(`bg.theorangeone.net`)"
