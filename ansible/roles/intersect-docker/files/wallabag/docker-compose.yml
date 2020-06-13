@@ -2,7 +2,7 @@ version: "2.3"
 
 services:
   wallabag:
-    image: wallabag/wallabag:2.3.8
+    image: wallabag/wallabag:latest
     container_name: wallabag
     restart: unless-stopped
     environment:
