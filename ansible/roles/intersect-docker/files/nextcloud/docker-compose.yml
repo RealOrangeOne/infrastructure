@@ -2,7 +2,7 @@ version: "2.3"
 
 services:
   nextcloud:
-    image: linuxserver/nextcloud:18.0.4-ls81
+    image: linuxserver/nextcloud:19.0.0-ls85
     container_name: nextcloud
     environment:
       - PUID={{ docker_user.id }}
