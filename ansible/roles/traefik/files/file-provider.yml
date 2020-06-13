@@ -6,15 +6,15 @@ http:
           - "10.0.0.0/8"
           - "172.16.0.0/12"
           - "192.168.0.0/16"
-    hsts:
+    tls-redirect:
       redirectScheme:
         scheme: https
 
   routers:
-    hsts:
+    tls-redirect:
       service: ping@internal
       rule: PathPrefix(`/`)
       entryPoints:
         - web
       middlewares:
-        - hsts
+        - tls-redirect
