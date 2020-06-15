@@ -4,10 +4,12 @@ set -e
 
 PATH=${PWD}/env/bin:${PATH}
 
+cd ansible/
+
 set -x
 
-yamllint -sc yamllint.yml ansible/
+yamllint -sc yamllint.yml .
 
-ansible-lint ansible/main.yml -p -c ansible/.ansible-lint
+ansible-lint main.yml -p -c .ansible-lint --exclude galaxy_roles/
 
-cd ansible/ && ansible-playbook main.yml --syntax-check
+ansible-playbook main.yml --syntax-check
