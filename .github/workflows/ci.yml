@@ -14,7 +14,7 @@ jobs:
       - uses: actions/cache@v1
         with:
           path: ~/.cache/pip
-          key: pip-${{ hashFiles('requirements.txt') }}-${{ hashFiles('dev-requirements.txt') }}
+          key: pip-${{ hashFiles('ansible/requirements.txt') }}-${{ hashFiles('ansible/dev-requirements.txt') }}
       - name: Install dependencies
         run: ./scripts/ansible/setup.sh
       - name: Run linters
