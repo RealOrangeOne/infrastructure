@@ -1,8 +1,8 @@
 extends: default
 
 ignore: |
-  galaxy_roles
-  group_vars/all/hosts.yml
+  ansible/galaxy_roles
+  ansible/group_vars/all/hosts.yml
 
 rules:
   document-start: disable

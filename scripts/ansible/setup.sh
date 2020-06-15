@@ -8,8 +8,6 @@ set -x
 
 python -m venv env
 
-cd ansible/
+pip install -r ansible/dev-requirements.txt
 
-pip install -r dev-requirements.txt
-
-ansible-galaxy install -r galaxy-requirements.yml
+cd ansible/ && ansible-galaxy install -r galaxy-requirements.yml
