@@ -1,9 +1,9 @@
-name: Ansible
+name: CI
 
 on: [push]
 
 jobs:
-  build:
+  ansible:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -19,3 +19,16 @@ jobs:
         run: ./scripts/ansible/setup.sh
       - name: Run linters
         run: ./scripts/ansible/lint.sh
+
+  terraform:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Install terraform
+        uses: marocchino/setup-terraform@v1
+        with:
+          version: "0.12.20"
+      - name: Initialize Terraform
+        run: ./scripts/terraform/terraform.sh init -backend=false
+      - name: Lint
+        run: ./scripts/terraform/lint.sh

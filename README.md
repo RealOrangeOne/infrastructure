@@ -1,7 +1,6 @@
 # Infrastructure
 
-![Ansible Status](https://github.com/realorangeone/infrastructure/workflows/Ansible/badge.svg)
-![Terraform Status](https://github.com/realorangeone/infrastructure/workflows/Terraform/badge.svg)
+![CI Status](https://github.com/realorangeone/infrastructure/workflows/CI/badge.svg)
 
 ## Requirements
 
