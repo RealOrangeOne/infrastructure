@@ -1,16 +1,16 @@
 entryPoints:
   web:
-    address: ":80"
+    address: :80
     proxyProtocol:
       trustedIPs:
         - "{{ wireguard.cidr }}"
   web-secure:
-    address: ":443"
+    address: :443
     proxyProtocol:
       trustedIPs:
         - "{{ wireguard.cidr }}"
   matrix:
-    address: ":8448"
+    address: :8448
     proxyProtocol:
       trustedIPs:
         - "{{ wireguard.cidr }}"

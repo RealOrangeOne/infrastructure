@@ -9,10 +9,10 @@ services:
       - USER_UID={{ docker_user.id }}
       - USER_GID={{ docker_user.id }}
     labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.gitea.rule=(Host(`git.theorangeone.net`) || Host(`git.0rng.one`))"
-      - "traefik.http.routers.gitea.tls.certresolver=le"
-      - "traefik.http.services.gitea-gitea.loadbalancer.server.port=3000"
+      - traefik.enable=true
+      - traefik.http.routers.gitea.rule=(Host(`git.theorangeone.net`) || Host(`git.0rng.one`))
+      - traefik.http.routers.gitea.tls.certresolver=le
+      - traefik.http.services.gitea-gitea.loadbalancer.server.port=3000
     ports:
       - "{{ wireguard.clients.intersect.ip }}:3022:3022"
     volumes:

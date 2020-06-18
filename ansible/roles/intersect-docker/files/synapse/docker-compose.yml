@@ -16,10 +16,10 @@ services:
     expose:
       - 8008
     labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.synapse.rule=Host(`matrix.jakehoward.tech`)"
-      - "traefik.http.routers.synapse.tls.certresolver=le"
-      - "traefik.http.routers.synapse.entrypoints=web-secure,matrix"
+      - traefik.enable=true
+      - traefik.http.routers.synapse.rule=Host(`matrix.jakehoward.tech`)
+      - traefik.http.routers.synapse.tls.certresolver=le
+      - traefik.http.routers.synapse.entrypoints=web-secure,matrix
 
   db:
     image: postgres:12-alpine

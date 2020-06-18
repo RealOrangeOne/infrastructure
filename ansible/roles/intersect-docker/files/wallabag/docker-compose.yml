@@ -12,9 +12,9 @@ services:
       - ./data:/var/www/wallabag/data
       - ./images:/var/www/wallabag/images
     labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.wallabag.rule=Host(`wallabag.jakehoward.tech`)"
-      - "traefik.http.routers.wallabag.tls.certresolver=le"
+      - traefik.enable=true
+      - traefik.http.routers.wallabag.rule=Host(`wallabag.jakehoward.tech`)
+      - traefik.http.routers.wallabag.tls.certresolver=le
 
   redis:
     image: redis:6-alpine

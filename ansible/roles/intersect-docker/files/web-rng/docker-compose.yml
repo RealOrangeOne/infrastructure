@@ -6,6 +6,6 @@ services:
     container_name: web-rng
     restart: unless-stopped
     labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.web-rng.rule=Host(`rng.theorangeone.net`)"
-      - "traefik.http.routers.web-rng.tls.certresolver=le"
+      - traefik.enable=true
+      - traefik.http.routers.web-rng.rule=Host(`rng.theorangeone.net`)
+      - traefik.http.routers.web-rng.tls.certresolver=le

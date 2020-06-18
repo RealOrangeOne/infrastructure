@@ -108,15 +108,15 @@ pid_file: /data/homeserver.pid
 # listed here, since they correspond to unroutable addresses.)
 #
 federation_ip_range_blacklist:
-  - '127.0.0.0/8'
-  - '10.0.0.0/8'
-  - '172.16.0.0/12'
-  - '192.168.0.0/16'
-  - '100.64.0.0/10'
-  - '169.254.0.0/16'
-  - '::1/128'
-  - 'fe80::/64'
-  - 'fc00::/7'
+  - 127.0.0.0/8
+  - 10.0.0.0/8
+  - 172.16.0.0/12
+  - 192.168.0.0/16
+  - 100.64.0.0/10
+  - 169.254.0.0/16
+  - ::1/128
+  - fe80::/64
+  - fc00::/7
 
 # List of ports that Synapse should listen on, their purpose and their
 # configuration.
@@ -469,7 +469,7 @@ acme:
   # Again, you may want to change this if you are forwarding connections
   # through Apache/Nginx/etc.
   #
-  bind_addresses: ['::', '0.0.0.0']
+  bind_addresses: ["::", 0.0.0.0]
   # How many days remaining on a certificate before it is renewed.
   #
   reprovision_threshold: 30

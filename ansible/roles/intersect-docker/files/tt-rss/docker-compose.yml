@@ -12,9 +12,9 @@ services:
       - ./config:/config
     restart: unless-stopped
     labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.tt-rss.rule=Host(`tt-rss.jakehoward.tech`)"
-      - "traefik.http.routers.tt-rss.tls.certresolver=le"
+      - traefik.enable=true
+      - traefik.http.routers.tt-rss.rule=Host(`tt-rss.jakehoward.tech`)
+      - traefik.http.routers.tt-rss.tls.certresolver=le
 
   db:
     image: postgres:12-alpine

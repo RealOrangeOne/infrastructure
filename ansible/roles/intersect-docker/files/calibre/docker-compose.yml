@@ -12,6 +12,6 @@ services:
       - ./config:/config
       - /srv/nextcloud-data/data/jake/files/EBooks:/books:ro
     labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.calibre.rule=Host(`calibre.jakehoward.tech`)"
-      - "traefik.http.routers.calibre.tls.certresolver=le"
+      - traefik.enable=true
+      - traefik.http.routers.calibre.rule=Host(`calibre.jakehoward.tech`)
+      - traefik.http.routers.calibre.tls.certresolver=le

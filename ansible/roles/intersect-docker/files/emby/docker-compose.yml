@@ -16,6 +16,6 @@ services:
       - 8096:8096
     restart: unless-stopped
     labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.emby.rule=Host(`media.jakehoward.tech`)"
-      - "traefik.http.routers.emby.tls.certresolver=le"
+      - traefik.enable=true
+      - traefik.http.routers.emby.rule=Host(`media.jakehoward.tech`)
+      - traefik.http.routers.emby.tls.certresolver=le

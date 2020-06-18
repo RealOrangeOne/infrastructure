@@ -18,13 +18,13 @@ services:
     tmpfs:
       - /config/log
     labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.nextcloud.rule=Host(`intersect.jakehoward.tech`)"
-      - "traefik.http.routers.nextcloud.tls.certresolver=le"
-      - "traefik.http.services.nextcloud-nextcloud.loadbalancer.server.port=443"
-      - "traefik.http.services.nextcloud-nextcloud.loadbalancer.server.scheme=https"
-      - "traefik.http.middlewares.nextcloud-hsts.headers.stsseconds=15552000"
-      - "traefik.http.routers.nextcloud.middlewares=nextcloud-hsts@docker"
+      - traefik.enable=true
+      - traefik.http.routers.nextcloud.rule=Host(`intersect.jakehoward.tech`)
+      - traefik.http.routers.nextcloud.tls.certresolver=le
+      - traefik.http.services.nextcloud-nextcloud.loadbalancer.server.port=443
+      - traefik.http.services.nextcloud-nextcloud.loadbalancer.server.scheme=https
+      - traefik.http.middlewares.nextcloud-hsts.headers.stsseconds=15552000
+      - traefik.http.routers.nextcloud.middlewares=nextcloud-hsts@docker
 
   db:
     image: postgres:12-alpine
@@ -63,9 +63,9 @@ services:
     cap_add:
       - MKNOD
     environment:
-      - "domain=intersect\\.jakehoward\\.tech"
+      - domain=intersect\\.jakehoward\\.tech
     labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.collabora.rule=Host(`collabora.jakehoward.tech`)"
-      - "traefik.http.routers.collabora.tls.certresolver=le"
-      - "traefik.http.services.collabora-nextcloud.loadbalancer.server.scheme=https"
+      - traefik.enable=true
+      - traefik.http.routers.collabora.rule=Host(`collabora.jakehoward.tech`)
+      - traefik.http.routers.collabora.tls.certresolver=le
+      - traefik.http.services.collabora-nextcloud.loadbalancer.server.scheme=https

@@ -15,10 +15,10 @@ services:
       - 8112:8112
     restart: unless-stopped
     labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.deluge.rule=Host(`deluge.jakehoward.tech`)"
-      - "traefik.http.routers.deluge.tls.certresolver=le"
-      - "traefik.http.routers.deluge.middlewares=internal-only@file"
+      - traefik.enable=true
+      - traefik.http.routers.deluge.rule=Host(`deluge.jakehoward.tech`)
+      - traefik.http.routers.deluge.tls.certresolver=le
+      - traefik.http.routers.deluge.middlewares=internal-only@file
 
   tor-socks-proxy:
     image: peterdavehello/tor-socks-proxy:latest

@@ -10,9 +10,9 @@ services:
       - ./access.log:/var/log/nginx/access.log
       - ./report.html:/usr/share/nginx/html/stats/index.html:ro
     labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.website.rule=Host(`theorangeone.net`) || Host(`www.theorangeone.net`)"
-      - "traefik.http.routers.website.tls.certresolver=le"
+      - traefik.enable=true
+      - traefik.http.routers.website.rule=Host(`theorangeone.net`) || Host(`www.theorangeone.net`)
+      - traefik.http.routers.website.tls.certresolver=le
 
   stats:
     image: theorangeone/goaccess-static:latest

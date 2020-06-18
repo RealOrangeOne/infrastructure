@@ -11,9 +11,9 @@ services:
       - MINIO_ACCESS_KEY={{ minio_access_key }}
       - MINIO_SECRET_KEY={{ minio_secret_key }}
     labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.upload.rule=Host(`upload.theorangeone.net`)"
-      - "traefik.http.routers.upload.tls.certresolver=le"
+      - traefik.enable=true
+      - traefik.http.routers.upload.rule=Host(`upload.theorangeone.net`)
+      - traefik.http.routers.upload.tls.certresolver=le
 
   img:
     image: theorangeone/static-server:latest
@@ -21,9 +21,9 @@ services:
     volumes:
       - ./data/img:/srv:ro
     labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.img.rule=Host(`img.theorangeone.net`) || Host(`img.0rng.one`)"
-      - "traefik.http.routers.img.tls.certresolver=le"
+      - traefik.enable=true
+      - traefik.http.routers.img.rule=Host(`img.theorangeone.net`) || Host(`img.0rng.one`)
+      - traefik.http.routers.img.tls.certresolver=le
 
   bg:
     image: theorangeone/static-server:latest
@@ -33,9 +33,9 @@ services:
     environment:
       - FANCY_INDEX=on
     labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.bg.rule=Host(`bg.theorangeone.net`)"
-      - "traefik.http.routers.bg.tls.certresolver=le"
+      - traefik.enable=true
+      - traefik.http.routers.bg.rule=Host(`bg.theorangeone.net`)
+      - traefik.http.routers.bg.tls.certresolver=le
 
   dl:
     image: theorangeone/static-server:latest
@@ -43,6 +43,6 @@ services:
     volumes:
       - ./data/download:/srv:ro
     labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.dl.rule=Host(`dl.theorangeone.net`) || Host(`dl.0rng.one`)"
-      - "traefik.http.routers.dl.tls.certresolver=le"
+      - traefik.enable=true
+      - traefik.http.routers.dl.rule=Host(`dl.theorangeone.net`) || Host(`dl.0rng.one`)
+      - traefik.http.routers.dl.tls.certresolver=le

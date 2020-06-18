@@ -8,9 +8,9 @@ services:
     volumes:
       - ./statping:/app
     labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.statping.rule=Host(`stats.theorangeone.net`)"
-      - "traefik.http.routers.statping.tls.certresolver=le"
+      - traefik.enable=true
+      - traefik.http.routers.statping.rule=Host(`stats.theorangeone.net`)
+      - traefik.http.routers.statping.tls.certresolver=le
 
   db:
     image: postgres:12-alpine

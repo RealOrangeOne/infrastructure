@@ -9,6 +9,6 @@ services:
       - ./data:/app/data
     restart: unless-stopped
     labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.gotify.rule=Host(`gotify.jakehoward.tech`)"
-      - "traefik.http.routers.gotify.tls.certresolver=le"
+      - traefik.enable=true
+      - traefik.http.routers.gotify.rule=Host(`gotify.jakehoward.tech`)
+      - traefik.http.routers.gotify.tls.certresolver=le
