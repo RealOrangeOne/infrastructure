@@ -7,7 +7,6 @@ services:
       - PUID={{ docker_user.id }}
       - PGID={{ docker_user.id }}
       - TZ=Europe/London
-      - DELUGE_LOGLEVEL=debug
     volumes:
       - ./deluge:/config
       - /scratch/deluge:/downloads
