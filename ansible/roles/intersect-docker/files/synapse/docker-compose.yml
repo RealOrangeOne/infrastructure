@@ -13,6 +13,8 @@ services:
     volumes:
       - ./homeserver.yaml:/etc/homeserver.yaml
       - ./files:/data
+    depends_on:
+      - db
     expose:
       - 8008
     labels:

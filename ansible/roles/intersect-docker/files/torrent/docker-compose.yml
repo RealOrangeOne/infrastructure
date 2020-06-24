@@ -13,6 +13,8 @@ services:
     ports:
       - 8112:8112
     restart: unless-stopped
+    depends_on:
+      - tor-socks-proxy
     labels:
       - traefik.enable=true
       - traefik.http.routers.deluge.rule=Host(`deluge.jakehoward.tech`)

@@ -15,6 +15,10 @@ services:
       - /opt/gitea/repos:/repos:ro
       - /mnt/media:/content:ro
     restart: unless-stopped
+    depends_on:
+      - db
+      - redis
+      - collabora
     tmpfs:
       - /config/log
     labels:

@@ -11,6 +11,8 @@ services:
       - traefik.enable=true
       - traefik.http.routers.statping.rule=Host(`stats.theorangeone.net`)
       - traefik.http.routers.statping.tls.certresolver=le
+    depends_on:
+      - db
 
   db:
     image: postgres:12-alpine
