@@ -132,14 +132,6 @@ resource "cloudflare_record" "jakehowardtech_fah" {
   ttl     = 1
 }
 
-resource "cloudflare_record" "jakehowardtech_deluge" {
-  zone_id = cloudflare_zone.jakehowardtech.id
-  name    = "deluge"
-  value   = vultr_server.casey.main_ip
-  type    = "A"
-  ttl     = 1
-}
-
 resource "cloudflare_record" "jakehowardtech_calibre" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "calibre"

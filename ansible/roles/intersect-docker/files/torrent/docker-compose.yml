@@ -15,11 +15,6 @@ services:
     restart: unless-stopped
     depends_on:
       - tor-socks-proxy
-    labels:
-      - traefik.enable=true
-      - traefik.http.routers.deluge.rule=Host(`deluge.jakehoward.tech`)
-      - traefik.http.routers.deluge.tls.certresolver=le
-      - traefik.http.routers.deluge.middlewares=internal-only@file
 
   tor-socks-proxy:
     image: peterdavehello/tor-socks-proxy:latest
