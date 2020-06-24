@@ -124,25 +124,9 @@ resource "cloudflare_record" "jakehowardtech_gotify" {
   ttl     = 1
 }
 
-resource "cloudflare_record" "jakehowardtech_fah" {
-  zone_id = cloudflare_zone.jakehowardtech.id
-  name    = "fah"
-  value   = vultr_server.casey.main_ip
-  type    = "A"
-  ttl     = 1
-}
-
 resource "cloudflare_record" "jakehowardtech_calibre" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "calibre"
-  value   = vultr_server.casey.main_ip
-  type    = "A"
-  ttl     = 1
-}
-
-resource "cloudflare_record" "jakehowardtech_mc" {
-  zone_id = cloudflare_zone.jakehowardtech.id
-  name    = "mc"
   value   = vultr_server.casey.main_ip
   type    = "A"
   ttl     = 1
