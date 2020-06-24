@@ -1,0 +1,3 @@
+[[repository]]
+source = "https://git.theorangeone.net/r/infrastructure"
+destination = "https://$GITHUB_TOKEN@github.com/RealOrangeOne/infrastructure"

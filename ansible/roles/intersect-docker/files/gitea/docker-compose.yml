@@ -44,3 +44,13 @@ services:
       - POSTGRES_DB=gitea
       - BACKUP_KEEP_MONTHS=1
       - BACKUP_KEEP_WEEKS=1
+
+  git-mirror:
+    image: theorangeone/git-mirror:latest
+    restart: unless-stopped
+    volumes:
+      - ./repositories.toml:/app/repositories.toml
+    environment:
+      - GITHUB_TOKEN={{ gitea.git_mirror_github_token }}
+    depends_on:
+      - gitea
