@@ -19,9 +19,6 @@
 - name: Install nextcloud
   include: nextcloud.yml
 
-- name: Install pihole
-  include: pihole.yml
-
 - name: Install quassel
   include: quassel.yml
 
