@@ -1,24 +1,24 @@
-- name: Create emby directory
+- name: Create jellyfin directory
   file:
-    path: /opt/emby
+    path: /opt/jellyfin
     state: directory
     owner: "{{ docker_user.name }}"
     mode: "{{ docker_compose_directory_mask }}"
   become: true
 
-- name: Install emby compose file
+- name: Install jellyfin compose file
   template:
-    src: files/emby/docker-compose.yml
-    dest: /opt/emby/docker-compose.yml
+    src: files/jellyfin/docker-compose.yml
+    dest: /opt/jellyfin/docker-compose.yml
     mode: "{{ docker_compose_file_mask }}"
     owner: "{{ docker_user.name }}"
     validate: /usr/bin/docker-compose -f %s config
   register: compose_file
   become: true
 
-- name: Cycle emby container
+- name: Cycle jellyfin container
   docker_compose:
-    project_src: /opt/emby
+    project_src: /opt/jellyfin
     pull: true
     remove_orphans: true
     remove_volumes: true

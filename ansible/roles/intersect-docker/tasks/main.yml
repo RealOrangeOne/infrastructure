@@ -1,9 +1,6 @@
 - name: Install calibre
   include: calibre.yml
 
-- name: Install emby
-  include: emby.yml
-
 - name: Install folding-at-home
   include: folding-at-home.yml
 
@@ -12,6 +9,9 @@
 
 - name: Install gotify
   include: gotify.yml
+
+- name: Install jellyfin
+  include: jellyfin.yml
 
 - name: Install librespeed
   include: librespeed.yml
