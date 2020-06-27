@@ -16,3 +16,9 @@ homeassistant:
 
 influxdb:
   host: influxdb
+
+person:
+  - name: Jake
+    id: 0f9914e2a9c547adac98db4501b3067b
+    device_trackers:
+      - device_tracker.gm1913
