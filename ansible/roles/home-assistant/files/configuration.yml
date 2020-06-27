@@ -13,3 +13,6 @@ scene: !include scenes.yaml
 homeassistant:
   auth_mfa_modules:
     - type: totp
+
+influxdb:
+  host: influxdb

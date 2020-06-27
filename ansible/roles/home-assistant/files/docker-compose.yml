@@ -10,8 +10,18 @@ services:
     environment:
       - TZ=Europe/London
     restart: unless-stopped
+    depends_on:
+      - influxdb
     labels:
       - traefik.enable=true
       - traefik.http.routers.homeassistant.rule=Host(`homeassistant.jakehoward.tech`)
       - traefik.http.routers.homeassistant.tls.certresolver=le
       - traefik.http.services.home-assistant-homeassistant.loadbalancer.server.port=8123
+
+  influxdb:
+    image: influxdb:1.8-alpine
+    restart: unless-stopped
+    volumes:
+      - ./influxdb:/var/lib/influxdb
+    environment:
+      - INFLUXDB_DB=home_assistant
