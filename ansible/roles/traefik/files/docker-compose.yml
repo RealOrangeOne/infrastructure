@@ -2,7 +2,6 @@ version: "2.3"
 
 services:
   traefik:
-    container_name: traefik
     image: traefik:v2.2.1
     network_mode: host
     volumes:

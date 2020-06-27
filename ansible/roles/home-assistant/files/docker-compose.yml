@@ -3,7 +3,6 @@ version: "2.3"
 services:
   homeassistant:
     image: homeassistant/home-assistant:stable
-    container_name: home-assistant
     network_mode: host
     volumes:
       - ./config:/config

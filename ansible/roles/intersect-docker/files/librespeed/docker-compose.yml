@@ -2,7 +2,6 @@ version: "2.3"
 services:
   librespeed:
     image: linuxserver/librespeed:latest
-    container_name: librespeed
     environment:
       - PUID={{ docker_user.id }}
       - PGID={{ docker_user.id }}

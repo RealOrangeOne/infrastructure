@@ -3,7 +3,6 @@ version: "2.3"
 services:
   nextcloud:
     image: linuxserver/nextcloud:19.0.0-ls87
-    container_name: nextcloud
     environment:
       - PUID={{ docker_user.id }}
       - PGID={{ docker_user.id }}
@@ -62,7 +61,6 @@ services:
 
   collabora:
     image: collabora/code:latest
-    container_name: collabora
     restart: unless-stopped
     cap_add:
       - MKNOD

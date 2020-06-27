@@ -3,7 +3,6 @@ version: "2.3"
 services:
   tt-rss:
     image: lunik1/tt-rss:latest
-    container_name: tt-rss
     environment:
       - PUID={{ docker_user.id }}
       - PGID={{ docker_user.id }}

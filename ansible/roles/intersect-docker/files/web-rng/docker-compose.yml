@@ -3,7 +3,6 @@ version: "2.3"
 services:
   web-rng:
     image: docker.pkg.github.com/realorangeone/web-rng/web-rng:latest
-    container_name: web-rng
     restart: unless-stopped
     labels:
       - traefik.enable=true

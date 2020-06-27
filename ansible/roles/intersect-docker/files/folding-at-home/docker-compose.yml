@@ -3,7 +3,6 @@ version: "2.3"
 services:
   folding-at-home:
     image: linuxserver/foldingathome:latest
-    container_name: folding-at-home
     cpus: 0.75
     environment:
       - TZ=Europe/London
@@ -13,5 +12,4 @@ services:
       - ./config:/config
     ports:
       - 7396:7396
-      - 36330:36330
     restart: unless-stopped

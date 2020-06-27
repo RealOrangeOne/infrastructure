@@ -2,7 +2,6 @@ version: "2.3"
 services:
   duplicati:
     image: gotify/server:2.0.16
-    container_name: gotify
     environment:
       - TZ=Europe/London
     volumes:

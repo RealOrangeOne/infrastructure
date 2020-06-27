@@ -3,7 +3,6 @@ version: "2.3"
 services:
   whoami:
     image: containous/whoami:latest
-    container_name: whoami
     restart: unless-stopped
     labels:
       - traefik.enable=true

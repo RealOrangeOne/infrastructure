@@ -3,7 +3,6 @@ version: "2.3"
 services:
   3proxy:
     image: riftbit/3proxy:latest
-    container_name: 3proxy
     restart: unless-stopped
     ports:
       - 1080:1080

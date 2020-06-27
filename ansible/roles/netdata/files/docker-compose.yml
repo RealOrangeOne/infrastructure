@@ -3,7 +3,6 @@ version: "2.3"
 services:
   netdata:
     image: netdata/netdata:latest
-    container_name: netdata
     cap_add:
       - SYS_PTRACE
     security_opt:

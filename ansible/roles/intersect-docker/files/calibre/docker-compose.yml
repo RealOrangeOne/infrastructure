@@ -2,7 +2,6 @@ version: "2.3"
 services:
   calibre:
     image: linuxserver/calibre-web:latest
-    container_name: calibre
     environment:
       - PUID={{ docker_user.id }}
       - PGID={{ docker_user.id }}

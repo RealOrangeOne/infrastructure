@@ -2,7 +2,6 @@ version: "2.3"
 services:
   deluge:
     image: linuxserver/deluge:latest
-    container_name: deluge
     environment:
       - PUID={{ docker_user.id }}
       - PGID={{ docker_user.id }}
