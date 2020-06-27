@@ -11,6 +11,8 @@ services:
     restart: unless-stopped
     depends_on:
       - influxdb
+    extra_hosts:
+      - host.docker.internal:172.17.0.1
     labels:
       - traefik.enable=true
       - traefik.http.routers.homeassistant.rule=Host(`homeassistant.jakehoward.tech`)
@@ -22,8 +24,11 @@ services:
     restart: unless-stopped
     volumes:
       - ./influxdb:/var/lib/influxdb
+    ports:
+      - 127.0.0.1:48086:8086
     environment:
       - INFLUXDB_DB=home_assistant
+      - INFLUXDB_HTTP_AUTH_ENABLED=
 
   esphome:
     image: esphome/esphome:latest

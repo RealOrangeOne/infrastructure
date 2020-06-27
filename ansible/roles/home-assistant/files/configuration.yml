@@ -15,7 +15,8 @@ homeassistant:
     - type: totp
 
 influxdb:
-  host: influxdb
+  host: host.docker.internal
+  port: 48086
 
 person:
   - name: Jake
