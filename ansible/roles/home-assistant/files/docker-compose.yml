@@ -25,3 +25,10 @@ services:
       - ./influxdb:/var/lib/influxdb
     environment:
       - INFLUXDB_DB=home_assistant
+
+  esphome:
+    image: esphome/esphome:latest
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - ./esphome:/config
