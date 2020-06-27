@@ -29,6 +29,7 @@
 - hosts: intersect
   roles:
     - netdata
+    - home-assistant
     - intersect-docker
 
 - hosts: grimes

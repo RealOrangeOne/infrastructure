@@ -1,0 +1,17 @@
+version: "2.3"
+
+services:
+  homeassistant:
+    image: homeassistant/home-assistant:stable
+    container_name: home-assistant
+    network_mode: host
+    volumes:
+      - ./config:/config
+    environment:
+      - TZ=Europe/London
+    restart: unless-stopped
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.homeassistant.rule=Host(`homeassistant.jakehoward.tech`)
+      - traefik.http.routers.homeassistant.tls.certresolver=le
+      - traefik.http.services.home-assistant-homeassistant.loadbalancer.server.port=8123

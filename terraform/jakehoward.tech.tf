@@ -131,3 +131,11 @@ resource "cloudflare_record" "jakehowardtech_calibre" {
   type    = "A"
   ttl     = 1
 }
+
+resource "cloudflare_record" "jakehowardtech_homeassistant" {
+  zone_id = cloudflare_zone.jakehowardtech.id
+  name    = "homeassistant"
+  value   = vultr_server.casey.main_ip
+  type    = "A"
+  ttl     = 1
+}
