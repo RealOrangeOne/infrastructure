@@ -32,6 +32,26 @@
   register: config_file
   become: true
 
+- name: Bump IGMP max memberships
+  sysctl:
+    name: net.ipv4.igmp_max_memberships
+    value: "40"
+    sysctl_set: yes
+    state: present
+    reload: yes
+    sysctl_file: /etc/sysctl.d/99-sysctl.conf
+  become: true
+
+- name: Bump IGMP max MSF
+  sysctl:
+    name: net.ipv4.igmp_max_msf
+    value: "20"
+    sysctl_set: yes
+    state: present
+    reload: yes
+    sysctl_file: /etc/sysctl.d/99-sysctl.conf
+  become: true
+
 - name: Cycle home-assistant container
   docker_compose:
     project_src: /opt/home-assistant
