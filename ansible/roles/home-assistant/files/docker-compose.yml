@@ -11,8 +11,6 @@ services:
     restart: unless-stopped
     depends_on:
       - influxdb
-    extra_hosts:
-      - host.docker.internal:172.17.0.1
     labels:
       - traefik.enable=true
       - traefik.http.routers.homeassistant.rule=Host(`homeassistant.jakehoward.tech`)
