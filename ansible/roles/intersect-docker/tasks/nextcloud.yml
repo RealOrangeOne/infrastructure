@@ -35,14 +35,8 @@
   register: config_file
   become: true
 
-- name: Cycle nextcloud container
-  docker_compose:
-    project_src: /opt/nextcloud
-    pull: true
-    remove_orphans: true
-    remove_volumes: true
-    state: "{{ item }}"
+- name: restart nextcloud
+  shell:
+    chdir: /opt/nextcloud
+    cmd: "{{ docker_update_command }}"
   when: compose_file.changed or config_file.changed
-  loop:
-    - absent
-    - present

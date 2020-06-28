@@ -16,14 +16,9 @@
   register: compose_file
   become: true
 
-- name: Cycle gotify container
-  docker_compose:
-    project_src: /opt/gotify
-    pull: true
-    remove_orphans: true
-    remove_volumes: true
-    state: "{{ item }}"
+
+- name: restart gotify
+  shell:
+    chdir: /opt/gotify
+    cmd: "{{ docker_update_command }}"
   when: compose_file.changed
-  loop:
-    - absent
-    - present

@@ -4,3 +4,5 @@ docker_user:
 
 docker_compose_file_mask: 0664
 docker_compose_directory_mask: 0775
+
+docker_update_command: docker-compose down --remove-orphans && docker-compose rm && docker-compose pull && docker-compose up -d

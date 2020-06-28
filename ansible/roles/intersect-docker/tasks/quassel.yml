@@ -16,14 +16,8 @@
   register: compose_file
   become: true
 
-- name: Cycle quassel container
-  docker_compose:
-    project_src: /opt/quassel
-    pull: true
-    remove_orphans: true
-    remove_volumes: true
-    state: "{{ item }}"
+- name: restart quassel
+  shell:
+    chdir: /opt/quassel
+    cmd: "{{ docker_update_command }}"
   when: compose_file.changed
-  loop:
-    - absent
-    - present

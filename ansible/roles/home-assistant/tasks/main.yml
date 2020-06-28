@@ -20,7 +20,7 @@
     mode: "{{ docker_compose_file_mask }}"
     owner: "{{ docker_user.name }}"
     validate: /usr/bin/docker-compose -f %s config
-  register: compose_file
+  notify: restart homeassistant
   become: true
 
 - name: Install config
@@ -29,7 +29,7 @@
     dest: /opt/home-assistant/config/configuration.yaml
     mode: "{{ docker_compose_file_mask }}"
     owner: "{{ docker_user.name }}"
-  register: config_file
+  notify: restart homeassistant
   become: true
 
 - name: Bump IGMP max memberships
@@ -51,15 +51,3 @@
     reload: yes
     sysctl_file: /etc/sysctl.d/99-sysctl.conf
   become: true
-
-- name: Cycle home-assistant container
-  docker_compose:
-    project_src: /opt/home-assistant
-    pull: true
-    remove_orphans: true
-    remove_volumes: true
-    state: "{{ item }}"
-  when: compose_file.changed or config_file.changed
-  loop:
-    - absent
-    - present

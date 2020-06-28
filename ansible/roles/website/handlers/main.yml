@@ -1,0 +1,4 @@
+- name: restart website
+  shell:
+    chdir: /opt/website
+    cmd: "{{ docker_update_command }}"

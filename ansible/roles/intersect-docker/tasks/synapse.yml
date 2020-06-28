@@ -28,17 +28,11 @@
   register: homeserver_config
   become: true
 
-- name: Cycle synapse container
-  docker_compose:
-    project_src: /opt/synapse
-    pull: true
-    remove_orphans: true
-    remove_volumes: true
-    state: "{{ item }}"
+- name: restart synapse
+  shell:
+    chdir: /opt/synapse
+    cmd: "{{ docker_update_command }}"
   when: compose_file.changed or homeserver_config.changed
-  loop:
-    - absent
-    - present
 
 - name: Install helper scripts
   git:

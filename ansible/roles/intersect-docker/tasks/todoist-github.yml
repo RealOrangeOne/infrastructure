@@ -19,14 +19,8 @@
   register: compose_file
   become: true
 
-- name: Cycle todoist-github container
-  docker_compose:
-    project_src: /opt/todoist-github
-    pull: true
-    remove_orphans: true
-    remove_volumes: true
-    state: "{{ item }}"
+- name: restart todoist-github
+  shell:
+    chdir: /opt/todoist-github
+    cmd: "{{ docker_update_command }}"
   when: compose_file.changed
-  loop:
-    - absent
-    - present

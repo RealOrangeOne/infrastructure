@@ -1,0 +1,4 @@
+- name: restart duplicati
+  shell:
+    chdir: /opt/duplicati
+    cmd: "{{ docker_update_command }}"

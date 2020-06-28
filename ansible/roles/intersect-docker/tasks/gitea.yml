@@ -44,14 +44,8 @@
   register: git_mirror_config_file
   become: true
 
-- name: Cycle gitea container
-  docker_compose:
-    project_src: /opt/gitea
-    pull: true
-    remove_orphans: true
-    remove_volumes: true
-    state: "{{ item }}"
+- name: restart gitea
+  shell:
+    chdir: /opt/gitea
+    cmd: "{{ docker_update_command }}"
   when: compose_file.changed or gitea_config_file.changed or git_mirror_config_file.changed
-  loop:
-    - absent
-    - present

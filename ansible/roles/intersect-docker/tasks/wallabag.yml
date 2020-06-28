@@ -19,14 +19,8 @@
   register: compose_file
   become: true
 
-- name: Cycle wallabag container
-  docker_compose:
-    project_src: /opt/wallabag
-    pull: true
-    remove_orphans: true
-    remove_volumes: true
-    state: "{{ item }}"
+- name: restart wallabag
+  shell:
+    chdir: /opt/wallabag
+    cmd: "{{ docker_update_command }}"
   when: compose_file.changed
-  loop:
-    - absent
-    - present

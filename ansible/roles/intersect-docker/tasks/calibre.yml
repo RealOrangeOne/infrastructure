@@ -16,14 +16,8 @@
   register: compose_file
   become: true
 
-- name: Cycle calibre container
-  docker_compose:
-    project_src: /opt/calibre
-    pull: true
-    remove_orphans: true
-    remove_volumes: true
-    state: "{{ item }}"
+- name: restart calibre
+  shell:
+    chdir: /opt/calibre
+    cmd: "{{ docker_update_command }}"
   when: compose_file.changed
-  loop:
-    - absent
-    - present

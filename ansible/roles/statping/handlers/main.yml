@@ -1,0 +1,4 @@
+- name: restart statping
+  shell:
+    chdir: /opt/statping
+    cmd: "{{ docker_update_command }}"
