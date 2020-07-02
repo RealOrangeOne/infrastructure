@@ -8,8 +8,8 @@ services:
       - PGID={{ docker_user.id }}
       - TZ=Europe/London
     volumes:
-      - ./nextcloud/config:/config/www/nextcloud/config
-      - ./nextcloud/apps:/config/www/nextcloud/apps
+      - ./apps:/config/www/nextcloud/apps
+      - ./config.php:/config/www/nextcloud/config/config.php
       - /srv/nextcloud-data/data:/data
       - /opt/gitea/repos:/repos:ro
       - /mnt/media:/content:ro

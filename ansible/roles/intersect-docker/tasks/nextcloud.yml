@@ -19,17 +19,10 @@
   register: compose_file
   become: true
 
-- name: Create nextcloud config directory
-  file:
-    path: /opt/nextcloud/nextcloud/config
-    state: directory
-    mode: "{{ docker_compose_directory_mask }}"
-  become: true
-
 - name: Install nextcloud config
   template:
     src: files/nextcloud/config.php
-    dest: /opt/nextcloud/nextcloud/config/config.php
+    dest: /opt/nextcloud/config.php
     mode: "{{ docker_compose_file_mask }}"
     owner: "{{ docker_user.name }}"
   register: config_file
