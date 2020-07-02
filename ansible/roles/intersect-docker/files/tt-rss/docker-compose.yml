@@ -8,7 +8,8 @@ services:
       - PGID={{ docker_user.id }}
       - TZ=Europe/London
     volumes:
-      - ./config:/config
+      - ./config.php:/config/config.php:ro
+      - ./feed-icons:/config/feed-icons
     restart: unless-stopped
     labels:
       - traefik.enable=true
@@ -16,6 +17,8 @@ services:
       - traefik.http.routers.tt-rss.tls.certresolver=le
     depends_on:
       - db
+    tmpfs:
+      - /config/log
 
   db:
     image: postgres:12-alpine
