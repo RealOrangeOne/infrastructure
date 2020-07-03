@@ -1,0 +1,44 @@
+- name: Install firewalld
+  package:
+    name: firewalld
+  become: true
+
+- name: Enable firewalld
+  systemd:
+    name: firewalld
+    enabled: true
+    state: started
+  become: true
+
+- name: Mark wireguard as internal traffic
+  firewalld:
+    source: "{{ wireguard.cidr }}"
+    zone: trusted
+    state: enabled
+    permanent: true
+    immediate: true
+  become: true
+
+- name: Get firewall ports
+  shell: firewall-cmd --list-ports --zone public
+  become: true
+  register: firewall_ports
+
+- name: Open firewall ports
+  firewalld:
+    port: "{{ item }}"
+    permanent: true
+    immediate: true
+    state: enabled
+  loop: "{{ requested_firewall_ports }}"
+  become: true
+
+- name: Close firewall ports
+  firewalld:
+    port: "{{ item }}"
+    permanent: true
+    immediate: true
+    state: disabled
+  when: item and item not in requested_firewall_ports
+  loop: "{{ firewall_ports.stdout.split(' ') }}"
+  become: true
