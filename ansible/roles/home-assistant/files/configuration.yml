@@ -25,3 +25,7 @@ tado:
 arlo:
   username: !secret arlo_username
   password: !secret arlo_password
+
+light:
+  - platform: flux_led
+    automatic_add: true
