@@ -13,6 +13,7 @@
 - hosts:
     - intersect
     - grimes
+    - walker
   roles:
     - role: geerlingguy.docker
       become: true
@@ -24,6 +25,11 @@
     - docker-cleanup
     - watchtower
     - traefik
+
+- hosts:
+    - intersect
+    - grimes
+  roles:
     - duplicati
 
 - hosts: intersect
