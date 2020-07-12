@@ -14,6 +14,8 @@ entryPoints:
     proxyProtocol:
       trustedIPs:
         - "{{ wireguard.cidr }}"
+  traefik:
+    address: "{{ wireguard.clients[ansible_fqdn].ip }}:8080"
 
 ping: {}
 
