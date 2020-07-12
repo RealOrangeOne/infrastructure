@@ -2,8 +2,11 @@
 # Change to a high/odd port if this server is exposed to the internet directly
 Port 7743
 
-# Deny all other users besides the following
+{% if expose_ssh %}
 AllowUsers {{ user }}
+{% else %}
+AllowUsers {{ user }}@{{ wireguard.cidr }}
+{% endif %}
 
 # Bind to all interfaces (change to specific interface if needed)
 ListenAddress 0.0.0.0
