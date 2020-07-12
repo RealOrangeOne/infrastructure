@@ -1,0 +1,4 @@
+- name: restart contessa
+  shell:
+    chdir: /opt/contessa
+    cmd: "{{ docker_update_command }}"

@@ -1,0 +1,20 @@
+- name: Include variables
+  include_vars: main.yml
+
+- name: Create install directory
+  file:
+    path: /opt/contessa
+    state: directory
+    owner: "{{ docker_user.name }}"
+    mode: "{{ docker_compose_directory_mask }}"
+  become: true
+
+- name: Install compose file
+  template:
+    src: files/docker-compose.yml
+    dest: /opt/contessa/docker-compose.yml
+    mode: "{{ docker_compose_file_mask }}"
+    owner: "{{ docker_user.name }}"
+    validate: /usr/bin/docker-compose -f %s config
+  notify: restart contessa
+  become: true

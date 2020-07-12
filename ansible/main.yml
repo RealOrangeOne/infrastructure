@@ -44,3 +44,7 @@
     - statping
     - socks-proxy
     - upload
+
+- hosts: walker
+  roles:
+    - contessa
