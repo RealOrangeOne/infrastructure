@@ -1,4 +1,0 @@
-requested_firewall_ports:
-  - 80/tcp
-  - 443/tcp
-  - 1080/tcp
