@@ -2,7 +2,7 @@ version: "2.3"
 
 services:
   jellyfin:
-    image: linuxserver/jellyfin:v10.5.5-ls58
+    image: linuxserver/jellyfin:latest
     environment:
       - PUID={{ docker_user.id }}
       - PGID={{ docker_user.id }}
