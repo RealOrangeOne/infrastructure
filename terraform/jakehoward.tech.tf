@@ -143,7 +143,7 @@ resource "cloudflare_record" "jakehowardtech_homeassistant" {
 resource "cloudflare_record" "jakehowardtech_contessa" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "contessa"
-  value   = "5.39.79.153"
+  value   = var.walker_ip
   type    = "A"
   ttl     = 1
 }
