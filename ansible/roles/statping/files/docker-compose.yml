@@ -2,7 +2,7 @@ version: "2.3"
 
 services:
   statping:
-    image: hunterlong/statping:v0.80.70
+    image: statping/statping:latest
     restart: unless-stopped
     volumes:
       - ./statping:/app
