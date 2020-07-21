@@ -37,6 +37,7 @@
     - netdata
     - home-assistant
     - intersect-docker
+    - plausible
 
 - hosts: grimes
   roles:

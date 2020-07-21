@@ -1,0 +1,4 @@
+- name: restart plausible
+  shell:
+    chdir: /opt/plausible
+    cmd: "{{ docker_update_command }}"

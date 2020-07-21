@@ -1,0 +1,43 @@
+version: "2.3"
+
+services:
+  plausible:
+    image: plausible/analytics:latest
+    depends_on:
+      - db
+      - clickhouse
+    expose:
+      - 8080  # https://github.com/plausible/analytics/pull/237
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.plausible.rule=Host(`plausible.theorangeone.net`)
+      - traefik.http.routers.plausible.tls.certresolver=le
+    environment:
+      - PORT=8080
+      - SECRET_KEY_BASE={{ secret_key }}
+      - SIGNING_SALT={{ signing_salt }}
+      - DATABASE_URL=postgres://plausible:plausible@db:5432/plausible
+      - DISABLE_REGISTRATION=true
+      - DISABLE_SUBSCRIPTION=true
+      - CLICKHOUSE_DATABASE_HOST=clickhouse
+      - CLICKHOUSE_DATABASE_NAME=plausible
+      - HOST=plausible.theorangeone.net
+      - SCHEME=https
+
+  clickhouse:
+    image: yandex/clickhouse-server:latest
+    volumes:
+      - ./clickhouse:/var/lib/clickhouse
+    ulimits:
+      nofile:
+        soft: 262144
+        hard: 262144
+
+  db:
+    image: postgres:12-alpine
+    restart: unless-stopped
+    volumes:
+      - ./postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=plausible
+      - POSTGRES_USER=plausible
