@@ -3,6 +3,8 @@ http:
     tls-redirect:
       redirectScheme:
         scheme: https
+    compress:
+      compress: {}
 
   routers:
     tls-redirect:
