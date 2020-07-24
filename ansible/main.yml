@@ -43,9 +43,9 @@
   roles:
     - website
     - socks-proxy
-    - upload
 
 - hosts: walker
   roles:
     - contessa
     - statping
+    - upload

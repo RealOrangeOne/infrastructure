@@ -5,7 +5,7 @@ services:
     image: minio/minio:latest
     restart: unless-stopped
     volumes:
-      - ./data:/data
+      - /mnt/tank/upload:/data
     command: server /data --quiet
     environment:
       - MINIO_ACCESS_KEY={{ minio_access_key }}
@@ -19,7 +19,7 @@ services:
     image: theorangeone/static-server:latest
     restart: unless-stopped
     volumes:
-      - ./data/img:/srv:ro
+      - /mnt/tank/upload/img:/srv:ro
     labels:
       - traefik.enable=true
       - traefik.http.routers.img.rule=Host(`img.theorangeone.net`) || Host(`img.0rng.one`)
@@ -29,7 +29,7 @@ services:
     image: theorangeone/static-server:latest
     restart: unless-stopped
     volumes:
-      - ./data/background:/srv:ro
+      - /mnt/tank/upload/background:/srv:ro
     environment:
       - FANCY_INDEX=on
     labels:
@@ -41,7 +41,7 @@ services:
     image: theorangeone/static-server:latest
     restart: unless-stopped
     volumes:
-      - ./data/download:/srv:ro
+      - /mnt/tank/upload/download:/srv:ro
     labels:
       - traefik.enable=true
       - traefik.http.routers.dl.rule=Host(`dl.theorangeone.net`) || Host(`dl.0rng.one`)
