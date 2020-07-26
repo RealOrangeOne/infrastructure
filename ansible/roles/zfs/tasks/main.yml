@@ -8,5 +8,11 @@
     state: present
     params: zfs_arc_max={{ zfs_arc_size }}
 
+- name: ZFS Scrub
+  cron:
+    name: zfs scrub
+    special_time: weekly
+    job: zpool scrub tank
+
 - name: Sanoid
   include: sanoid.yml
