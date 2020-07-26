@@ -6,7 +6,7 @@
   modprobe:
     name: zfs
     state: present
-    params: 'zfs_arc_max={{ zfs_arc_size }}'
+    params: zfs_arc_max={{ zfs_arc_size }}
 
 - name: Sanoid
   include: sanoid.yml
