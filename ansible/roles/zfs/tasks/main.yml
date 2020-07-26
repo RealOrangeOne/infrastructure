@@ -1,0 +1,12 @@
+- name: Calculate ZFS ARC size
+  set_fact:
+    zfs_arc_size: "{{ (ansible_memtotal_mb * 1024 * 1024) * 0.15 }}"
+
+- name: Enable zfs module
+  modprobe:
+    name: zfs
+    state: present
+    params: 'zfs_arc_max={{ zfs_arc_size }}'
+
+- name: Sanoid
+  include: sanoid.yml

@@ -1,0 +1,16 @@
+- name: Install Sanoid
+  package:
+    name: sanoid
+  become: true
+
+- name: Sanoid config
+  template:
+    src: files/sanoid.conf
+    dest: /etc/sanoid/sanoid.conf
+  become: true
+
+- name: Install sanoid cron job
+  cron:
+    name: sanoid
+    special_time: hourly
+    job: TZ=UTC sanoid
