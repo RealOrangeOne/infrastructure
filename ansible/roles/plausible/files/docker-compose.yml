@@ -7,14 +7,13 @@ services:
       - db
       - clickhouse
     expose:
-      - 8080  # https://github.com/plausible/analytics/pull/237
+      - 8000  # https://github.com/plausible/analytics/pull/237
     labels:
       - traefik.enable=true
       - traefik.http.routers.plausible.rule=Host(`plausible.theorangeone.net`)
       - traefik.http.routers.plausible.tls.certresolver=le
       - traefik.http.routers.plausible.middlewares=compress@file
     environment:
-      - PORT=8080
       - SECRET_KEY_BASE={{ secret_key }}
       - SIGNING_SALT={{ signing_salt }}
       - DATABASE_URL=postgres://plausible:plausible@db:5432/plausible
