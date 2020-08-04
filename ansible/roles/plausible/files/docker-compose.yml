@@ -4,6 +4,7 @@ services:
   plausible:
     image: plausible/analytics:latest
     restart: unless-stopped
+    command: sh -c "/entrypoint.sh db migrate && /entrypoint.sh run"
     depends_on:
       - db
       - clickhouse
