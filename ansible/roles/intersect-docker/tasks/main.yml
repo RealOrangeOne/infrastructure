@@ -1,9 +1,6 @@
 - name: Install calibre
   include: calibre.yml
 
-- name: Install folding-at-home
-  include: folding-at-home.yml
-
 - name: Install gitea
   include: gitea.yml
 
