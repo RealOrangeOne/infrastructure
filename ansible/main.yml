@@ -26,18 +26,13 @@
     - watchtower
     - traefik
 
-- hosts:
-    - intersect
-    - grimes
-  roles:
-    - duplicati
-
 - hosts: intersect
   roles:
     - netdata
     - home-assistant
     - intersect-docker
     - plausible
+    - duplicati
 
 - hosts: grimes
   roles:
