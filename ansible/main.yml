@@ -41,7 +41,6 @@
 
 - hosts: grimes
   roles:
-    - website
     - socks-proxy
 
 - hosts: walker
@@ -49,4 +48,5 @@
     - contessa
     - statping
     - upload
+    - website
     - zfs
