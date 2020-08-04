@@ -3,6 +3,7 @@ version: "2.3"
 services:
   plausible:
     image: plausible/analytics:latest
+    restart: unless-stopped
     depends_on:
       - db
       - clickhouse
@@ -28,6 +29,7 @@ services:
 
   clickhouse:
     image: yandex/clickhouse-server:latest
+    restart: unless-stopped
     volumes:
       - ./clickhouse:/var/lib/clickhouse
     ulimits:
