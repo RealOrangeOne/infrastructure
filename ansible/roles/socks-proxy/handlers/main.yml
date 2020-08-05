@@ -1,4 +1,0 @@
-- name: restart socks proxy
-  shell:
-    chdir: /opt/3proxy
-    cmd: "{{ docker_update_command }}"
