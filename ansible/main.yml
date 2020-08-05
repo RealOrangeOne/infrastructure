@@ -38,6 +38,14 @@
   roles:
     - socks-proxy
 
+# Arch boxes
+- hosts:
+    - grimes
+    - casey
+    - walker
+  roles:
+    - realorangeone.reflector
+
 - hosts: walker
   roles:
     - contessa
