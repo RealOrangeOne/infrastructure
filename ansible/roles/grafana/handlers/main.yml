@@ -1,0 +1,4 @@
+- name: restart grafana
+  shell:
+    chdir: /opt/grafana
+    cmd: "{{ docker_update_command }}"

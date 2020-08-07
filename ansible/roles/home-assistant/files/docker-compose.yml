@@ -24,6 +24,11 @@ services:
       - ./influxdb:/var/lib/influxdb
     ports:
       - 127.0.0.1:48086:8086
+    networks:
+      default:
+      grafana:
+        aliases:
+          - ha-influxdb
     environment:
       - INFLUXDB_DB=home_assistant
       - INFLUXDB_HTTP_AUTH_ENABLED=
@@ -34,3 +39,7 @@ services:
     network_mode: host
     volumes:
       - ./esphome:/config
+
+networks:
+  grafana:
+    external: true

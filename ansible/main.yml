@@ -33,6 +33,7 @@
     - intersect-docker
     - plausible
     - duplicati
+    - grafana
 
 # Arch boxes
 - hosts:

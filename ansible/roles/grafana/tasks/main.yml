@@ -1,0 +1,30 @@
+- name: Create install directory
+  file:
+    path: /opt/grafana
+    state: directory
+    owner: "{{ docker_user.name }}"
+    mode: "{{ docker_compose_directory_mask }}"
+  become: true
+
+- name: Create grafana network
+  docker_network:
+    name: grafana
+
+- name: Create config directory
+  file:
+    path: /opt/grafana/grafana
+    state: directory
+    mode: "{{ docker_compose_directory_mask }}"
+    owner: "472"
+    group: "472"
+  become: true
+
+- name: Install compose file
+  template:
+    src: files/docker-compose.yml
+    dest: /opt/grafana/docker-compose.yml
+    mode: "{{ docker_compose_file_mask }}"
+    owner: "{{ docker_user.name }}"
+    validate: /usr/bin/docker-compose -f %s config
+  notify: restart grafana
+  become: true
