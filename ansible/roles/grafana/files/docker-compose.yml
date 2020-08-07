@@ -5,14 +5,16 @@ services:
     image: grafana/grafana:latest
     environment:
       - TZ=Europe/London
-    ports:
-      - 3000:3000
     volumes:
       - ./grafana:/var/lib/grafana
     restart: unless-stopped
     networks:
       - default
       - grafana
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.grafana.rule=Host(`grafana.jakehoward.tech`)
+      - traefik.http.routers.grafana.tls.certresolver=le
 
 networks:
   grafana:
