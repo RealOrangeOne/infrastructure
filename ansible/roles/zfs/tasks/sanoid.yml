@@ -13,4 +13,4 @@
   cron:
     name: sanoid
     special_time: hourly
-    job: TZ=UTC sanoid
+    job: TZ=UTC sanoid --cron
