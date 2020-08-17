@@ -39,3 +39,4 @@
     name: Set nextcloud data permissions
     special_time: daily
     job: chown -R {{ docker_user.name }}:{{ docker_user.name }} /srv/nextcloud-data/data/*
+  become: true

@@ -13,6 +13,7 @@
     name: zfs scrub
     special_time: weekly
     job: zpool scrub tank
+  become: true
 
 - name: Sanoid
   include: sanoid.yml

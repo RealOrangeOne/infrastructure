@@ -14,3 +14,4 @@
     name: sanoid
     special_time: hourly
     job: TZ=UTC sanoid --cron
+  become: true

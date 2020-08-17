@@ -27,3 +27,4 @@
     name: Set media permissions
     special_time: daily
     job: chown -R {{ docker_user.name }}:{{ docker_user.name }} /mnt/media/*
+  become: true
