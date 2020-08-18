@@ -1,6 +1,6 @@
 - name: Calculate ZFS ARC size
   set_fact:
-    zfs_arc_size: "{{ (ansible_memtotal_mb * 1024 * 1024) * 0.15 }}"
+    zfs_arc_size: "{{ (ansible_memtotal_mb * 1024 * 1024) * 0.2 }}"
 
 - name: Enable zfs module
   modprobe:
