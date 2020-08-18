@@ -33,9 +33,3 @@
     chdir: /opt/synapse
     cmd: "{{ docker_update_command }}"
   when: compose_file.changed or homeserver_config.changed
-
-- name: Install helper scripts
-  git:
-    repo: https://github.com/xwiki-labs/synapse_scripts
-    dest: /opt/synapse/synapse_scripts
-    force: true

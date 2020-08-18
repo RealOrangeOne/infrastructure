@@ -31,4 +31,3 @@ services:
       - POSTGRES_PASSWORD=synapse
     volumes:
       - ./postgresql:/var/lib/postgresql/data
-      - ./synapse_scripts:/opt/synapse_scripts:ro
