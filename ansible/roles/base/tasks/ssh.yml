@@ -8,7 +8,7 @@
   package:
     name: openssh
   become: true
-  when: ansible_os_family == 'ArchLinux'
+  when: ansible_os_family == 'Archlinux'
 
 - name: Define context
   set_fact:
