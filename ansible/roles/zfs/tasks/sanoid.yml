@@ -1,17 +1,63 @@
-- name: Install Sanoid
+- name: Install dependencies for Arch
   package:
-    name: sanoid
+    name:
+  loop:
+    - perl
+    - perl-capture-tiny
+    - perl-config-inifiles
+    - pv
+    - lzop
+  when: ansible_os_family == 'Archlinux'
   become: true
 
-- name: Sanoid config
+- name: Download
+  git:
+    repo: https://github.com/jimsalterjrs/sanoid.git
+    dest: /opt/sanoid
+    version: v2.0.3
+  become: true
+
+- name: Create config directory
+  file:
+    path: /etc/sanoid
+    state: directory
+  become: true
+
+- name: Install default config
+  file:
+    src: /opt/sanoid/sanoid.defaults.conf
+    dest: /etc/sanoid/sanoid.defaults.conf
+    state: link
+  become: true
+
+- name: Install executables
+  file:
+    src: /opt/sanoid/{{ item }}
+    dest: /usr/local/sbin/{{ item }}
+    state: link
+  loop:
+    - sanoid
+    - syncoid
+    - findoid
+    - sleepymutex
+  become: true
+
+- name: Install config
   template:
     src: files/sanoid.conf
     dest: /etc/sanoid/sanoid.conf
   become: true
 
-- name: Install sanoid cron job
+- name: Install snapshot job
   cron:
-    name: sanoid
+    name: sanoid snapshot
     special_time: hourly
-    job: TZ=UTC sanoid --cron
+    job: TZ=UTC sanoid --take-snapshots --verbose
+  become: true
+
+- name: Install prune job
+  cron:
+    name: sanoid prune
+    special_time: hourly
+    job: TZ=UTC sanoid --prune-snapshots --verbose
   become: true
