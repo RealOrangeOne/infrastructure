@@ -5,6 +5,8 @@
       become: true
       vars:
         ntp_timezone: Europe/London
+    - role: realorangeone.reflector
+      when: ansible_os_family == 'Archlinux'
 
 - hosts: casey
   roles:
@@ -34,14 +36,6 @@
     - plausible
     - duplicati
     - grafana
-
-# Arch boxes
-- hosts:
-    - grimes
-    - casey
-    - walker
-  roles:
-    - realorangeone.reflector
 
 - hosts: walker
   roles:
