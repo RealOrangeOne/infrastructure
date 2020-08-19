@@ -1,6 +1,6 @@
 - name: Install dependencies for Arch
   package:
-    name:
+    name: "{{ item }}"
   loop:
     - perl
     - perl-capture-tiny
@@ -8,6 +8,18 @@
     - pv
     - lzop
   when: ansible_os_family == 'Archlinux'
+  become: true
+
+- name: Install dependencies for Debian-based distros
+  package:
+    name: "{{ item }}"
+  loop:
+    - libcapture-tiny-perl
+    - libconfig-inifiles-perl
+    - pv
+    - lzop
+    - mbuffer
+  when: ansible_os_family == 'Debian'
   become: true
 
 - name: Download

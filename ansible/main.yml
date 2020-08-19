@@ -28,6 +28,13 @@
     - watchtower
     - traefik
 
+# ZFS Hosts
+- hosts:
+    - walker
+    - intersect
+  roles:
+    - zfs
+
 - hosts: intersect
   roles:
     - netdata
@@ -43,5 +50,4 @@
     - statping
     - upload
     - website
-    - zfs
     - duplicati
