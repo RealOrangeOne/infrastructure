@@ -1,0 +1,13 @@
+sanoid_datasets:
+  tank:
+    use_template: production
+    recursive: true
+sanoid_templates:
+  production:
+    frequently: 0
+    hourly: 36
+    daily: 30
+    monthly: 3
+    yearly: 0
+    autosnap: true
+    autoprune: true
