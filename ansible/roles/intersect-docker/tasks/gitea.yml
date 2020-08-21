@@ -9,13 +9,6 @@
     mode: "{{ docker_compose_directory_mask }}"
   become: true
 
-- name: Create gitea config directory
-  file:
-    path: /opt/gitea/gitea/gitea/conf
-    state: directory
-    mode: "{{ docker_compose_directory_mask }}"
-  become: true
-
 - name: Install gitea compose file
   template:
     src: files/gitea/docker-compose.yml
@@ -29,7 +22,7 @@
 - name: Install gitea config file
   template:
     src: files/gitea/app.ini
-    dest: /opt/gitea/gitea/gitea/conf/app.ini
+    dest: /mnt/tank/app-data/gitea/gitea/conf/app.ini
     mode: "{{ docker_compose_file_mask }}"
     owner: "{{ docker_user.name }}"
   register: gitea_config_file
@@ -38,7 +31,7 @@
 - name: Install git-mirror config file
   template:
     src: files/gitea/git-mirror-repositories.toml
-    dest: /opt/gitea/repositories.toml
+    dest: /mnt/tank/app-data/git-mirror/repositories.toml
     mode: "{{ docker_compose_file_mask }}"
     owner: "{{ docker_user.name }}"
   register: git_mirror_config_file

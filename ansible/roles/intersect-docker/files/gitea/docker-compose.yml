@@ -17,8 +17,8 @@ services:
     depends_on:
       - db
     volumes:
-      - ./gitea:/data
-      - ./repos:/data/git
+      - /mnt/tank/app-data/gitea:/data
+      - /mnt/tank/files/repositories:/data/git
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
 
@@ -26,7 +26,7 @@ services:
     image: postgres:12-alpine
     restart: unless-stopped
     volumes:
-      - ./postgres:/var/lib/postgresql/data
+      - /mnt/tank/dbs/postgres/gitea:/var/lib/postgresql/data
     environment:
       - POSTGRES_PASSWORD=gitea
       - POSTGRES_USER=gitea
@@ -50,7 +50,7 @@ services:
     image: theorangeone/git-mirror:latest
     restart: unless-stopped
     volumes:
-      - ./repositories.toml:/app/repositories.toml:ro
+      - /mnt/tank/app-data/git-mirror/repositories.toml:/app/repositories.toml:ro
       - /scratch/git-mirror:/app/repos
     environment:
       - GITHUB_TOKEN={{ gitea.git_mirror_github_token }}
