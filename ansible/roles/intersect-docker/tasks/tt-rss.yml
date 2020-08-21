@@ -19,7 +19,7 @@
 - name: Install tt-rss config
   template:
     src: files/tt-rss/config.php
-    dest: /opt/tt-rss/config.php
+    dest: /mnt/tank/app-data/tt-rss/config.php
     mode: "{{ docker_compose_file_mask }}"
     owner: "{{ docker_user.name }}"
   register: config_file
