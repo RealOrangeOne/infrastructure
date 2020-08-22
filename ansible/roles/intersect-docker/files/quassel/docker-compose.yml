@@ -26,4 +26,4 @@ services:
       - POSTGRES_USER=quassel
       - POSTGRES_PASSWORD=quassel
     volumes:
-      - ./postgresql:/var/lib/postgresql/data
+      - /mnt/tank/dbs/postgres/quassel:/var/lib/postgresql/data
