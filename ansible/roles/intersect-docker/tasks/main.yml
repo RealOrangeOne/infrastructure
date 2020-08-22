@@ -22,9 +22,6 @@
 - name: Install synapse
   include: synapse.yml
 
-- name: Install todoist-github
-  include: todoist-github.yml
-
 - name: Install torrent
   include: torrent.yml
 
