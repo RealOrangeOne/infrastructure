@@ -11,8 +11,8 @@ services:
       - UID=0
       - GID=0
     volumes:
-      - ./homeserver.yaml:/etc/homeserver.yaml
-      - ./files:/data
+      - /mnt/tank/app-data/synapse/homeserver.yaml:/etc/homeserver.yaml
+      - /mnt/tank/app-data/synapse:/data
     depends_on:
       - db
     expose:
@@ -30,4 +30,4 @@ services:
       - POSTGRES_USER=synapse
       - POSTGRES_PASSWORD=synapse
     volumes:
-      - ./postgresql:/var/lib/postgresql/data
+      - /mnt/tank/dbs/postgres/synapse:/var/lib/postgresql/data
