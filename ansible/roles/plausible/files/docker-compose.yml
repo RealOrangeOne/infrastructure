@@ -32,7 +32,7 @@ services:
     image: yandex/clickhouse-server:latest
     restart: unless-stopped
     volumes:
-      - ./clickhouse:/var/lib/clickhouse
+      - /mnt/tank/dbs/clickhouse/plausible:/var/lib/clickhouse
     ulimits:
       nofile:
         soft: 262144
@@ -42,7 +42,7 @@ services:
     image: postgres:12-alpine
     restart: unless-stopped
     volumes:
-      - ./postgres:/var/lib/postgresql/data
+      - /mnt/tank/dbs/postgres/plausible:/var/lib/postgresql/data
     environment:
       - POSTGRES_PASSWORD=plausible
       - POSTGRES_USER=plausible
