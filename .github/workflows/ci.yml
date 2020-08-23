@@ -27,7 +27,7 @@ jobs:
       - name: Install terraform
         uses: marocchino/setup-terraform@v1
         with:
-          version: "0.12.20"
+          version: "0.13.0"
       - name: Initialize Terraform
         run: ./scripts/terraform/terraform.sh init -backend=false
       - name: Lint
