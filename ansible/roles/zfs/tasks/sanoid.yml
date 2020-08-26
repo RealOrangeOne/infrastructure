@@ -60,16 +60,9 @@
     dest: /etc/sanoid/sanoid.conf
   become: true
 
-- name: Install snapshot job
+- name: Install cron job
   cron:
-    name: sanoid snapshot
+    name: sanoid
     special_time: hourly
-    job: TZ=UTC /usr/local/sbin/sanoid --take-snapshots --verbose
-  become: true
-
-- name: Install prune job
-  cron:
-    name: sanoid prune
-    special_time: hourly
-    job: TZ=UTC /usr/local/sbin/sanoid --prune-snapshots --verbose
+    job: TZ=UTC /usr/local/sbin/sanoid --cron --verbose
   become: true
