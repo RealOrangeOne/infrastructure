@@ -6,6 +6,13 @@
     mode: "{{ docker_compose_directory_mask }}"
   become: true
 
+- name: Install clickhouse config
+  template:
+    src: files/clickhouse-docker.xml
+    dest: /mnt/tank/dbs/clickhouse/docker_related_config.xml
+  notify: restart plausible
+  become: true
+
 - name: Install compose file
   template:
     src: files/docker-compose.yml

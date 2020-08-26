@@ -33,6 +33,7 @@ services:
     restart: unless-stopped
     volumes:
       - /mnt/tank/dbs/clickhouse/plausible:/var/lib/clickhouse
+      - /mnt/tank/dbs/clickhouse/docker_related_config.xml:/etc/clickhouse-server/config.d/docker_related_config.xml:ro
     tmpfs:
       - /var/log/clickhouse-server
     ulimits:
