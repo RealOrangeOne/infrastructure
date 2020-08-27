@@ -29,7 +29,7 @@ resource "cloudflare_record" "orngone_img" {
 resource "cloudflare_record" "orngone_dl" {
   zone_id = cloudflare_zone.orngone.id
   name    = "dl"
-  value   =  var.walker_ip
+  value   = var.walker_ip
   type    = "A"
   ttl     = 1
 }
