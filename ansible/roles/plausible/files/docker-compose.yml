@@ -32,8 +32,9 @@ services:
     image: yandex/clickhouse-server:latest
     restart: unless-stopped
     volumes:
-      - ./clickhouse:/var/lib/clickhouse
+      - /mnt/tank/dbs/clickhouse/plausible:/var/lib/clickhouse
       - /mnt/tank/dbs/clickhouse/docker_related_config.xml:/etc/clickhouse-server/config.d/docker_related_config.xml:ro
+      - /mnt/tank/dbs/clickhouse/docker_related_user_config.xml:/etc/clickhouse-server/users.d/docker_related_user_config.xml:ro
     tmpfs:
       - /var/log/clickhouse-server
     ulimits:
