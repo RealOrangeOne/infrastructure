@@ -43,6 +43,7 @@
     - plausible
     - duplicati
     - grafana
+    - gitlab
 
 - hosts: walker
   roles:

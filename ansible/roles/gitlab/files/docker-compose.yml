@@ -1,0 +1,45 @@
+version: "2.3"
+
+services:
+  gitlab:
+    image: gitlab/gitlab-ce:latest
+    hostname: gitlab.theorangeone.net
+    environment:
+      TZ: Europe/London
+      GITLAB_OMNIBUS_CONFIG: |
+        {% filter indent(width=8) %}
+        {%- include "gitlab.rb" %}
+        {% endfilter %}
+
+    volumes:
+      - ./config:/etc/gitlab
+      - ./data:/var/opt/gitlab
+    tmpfs:
+      - /var/log/gitlab
+    restart: unless-stopped
+    depends_on:
+      - db
+      - redis
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.gitlab.rule=Host(`gitlab.theorangeone.net`)
+      - traefik.http.routers.gitlab.tls.certresolver=le
+      - traefik.http.services.gitlab-gitlab.loadbalancer.server.port=80
+      - traefik.http.services.gitlab-gitlab.loadbalancer.server.scheme=http
+      - traefik.http.routers.gitlab.middlewares=compress@file
+
+  db:
+    image: postgres:12-alpine
+    restart: unless-stopped
+    volumes:
+      - ./postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=gitlab
+      - POSTGRES_USER=gitlab
+      - POSTGRES_DB=gitlabhq_production
+
+  redis:
+    image: redis:6-alpine
+    restart: unless-stopped
+    volumes:
+      - ./redis:/data
