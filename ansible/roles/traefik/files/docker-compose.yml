@@ -8,3 +8,19 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - ./traefik:/etc/traefik
     restart: unless-stopped
+    depends_on:
+      - influxdb
+
+  influxdb:
+    image: influxdb:1.8-alpine
+    restart: unless-stopped
+    volumes:
+      - "{{ traefik_influx_db_dir }}:/var/lib/influxdb"
+    ports:
+      - "{{ wireguard.clients[ansible_fqdn].ip }}:38089:8089/udp"
+      - "{{ wireguard.clients[ansible_fqdn].ip }}:38086:8086"
+    environment:
+      - INFLUXDB_DB=traefik
+      - INFLUXDB_HTTP_AUTH_ENABLED=
+      - INFLUXDB_UDP_ENABLED=true
+      - INFLUXDB_UDP_DATABASE=traefik
