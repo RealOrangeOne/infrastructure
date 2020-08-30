@@ -21,3 +21,6 @@ influxdb:
 light:
   - platform: flux_led
     automatic_add: true
+
+recorder:
+  db_url: postgres://home-assistant:home-assistant@127.0.0.1:45432/home-assistant

@@ -11,6 +11,7 @@ services:
     restart: unless-stopped
     depends_on:
       - influxdb
+      - db
     labels:
       - traefik.enable=true
       - traefik.http.routers.homeassistant.rule=Host(`homeassistant.jakehoward.tech`)
@@ -39,6 +40,17 @@ services:
     network_mode: host
     volumes:
       - ./esphome:/config
+
+  db:
+    image: postgres:12-alpine
+    restart: unless-stopped
+    ports:
+      - 127.0.0.1:45432:5432
+    volumes:
+      - /mnt/tank/dbs/postgres/home-assistant:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=home-assistant
+      - POSTGRES_USER=home-assistant
 
 networks:
   grafana:
