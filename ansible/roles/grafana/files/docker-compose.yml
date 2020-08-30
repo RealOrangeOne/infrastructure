@@ -5,9 +5,12 @@ services:
     image: grafana/grafana:latest
     environment:
       - TZ=Europe/London
+      - GF_DATABASE_URL=postgres://grafana:grafana@db/grafana
     volumes:
       - /mnt/tank/app-data/grafana:/var/lib/grafana
     restart: unless-stopped
+    depends_on:
+      - db
     networks:
       - default
       - grafana
@@ -15,6 +18,15 @@ services:
       - traefik.enable=true
       - traefik.http.routers.grafana.rule=Host(`grafana.jakehoward.tech`)
       - traefik.http.routers.grafana.tls.certresolver=le
+
+  db:
+    image: postgres:12-alpine
+    restart: unless-stopped
+    volumes:
+      - /mnt/tank/dbs/postgres/grafana:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=grafana
+      - POSTGRES_USER=grafana
 
 networks:
   grafana:
