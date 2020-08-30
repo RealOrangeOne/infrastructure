@@ -164,3 +164,11 @@ resource "cloudflare_record" "theorangeonenet_plausible" {
   type    = "A"
   ttl     = 1
 }
+
+resource "cloudflare_record" "theorangeonenet_gitlab" {
+  zone_id = cloudflare_zone.theorangeonenet.id
+  name    = "gitlab"
+  value   = vultr_server.casey.main_ip
+  type    = "A"
+  ttl     = 1
+}
