@@ -12,8 +12,8 @@ services:
         {% endfilter %}
 
     volumes:
-      - ./config:/etc/gitlab
-      - ./data:/var/opt/gitlab
+      - /mnt/tank/app-data/gitlab/config:/etc/gitlab
+      - /mnt/tank/app-data/gitlab/data:/var/opt/gitlab
     tmpfs:
       - /var/log/gitlab
     restart: unless-stopped
@@ -32,7 +32,7 @@ services:
     image: postgres:12-alpine
     restart: unless-stopped
     volumes:
-      - ./postgres:/var/lib/postgresql/data
+      - /mnt/tank/dbs/postgres/gitlab:/var/lib/postgresql/data
     environment:
       - POSTGRES_PASSWORD=gitlab
       - POSTGRES_USER=gitlab
@@ -42,4 +42,4 @@ services:
     image: redis:6-alpine
     restart: unless-stopped
     volumes:
-      - ./redis:/data
+      - /mnt/tank/dbs/redis/gitlab:/data
