@@ -4,8 +4,8 @@ services:
     image: linuxserver/duplicati:v2.0.5.1-2.0.5.1_beta_2020-01-18-ls66
     hostname: "{{ ansible_fqdn }}"
     environment:
-      - PUID={{ docker_user.id }}
-      - PGID={{ docker_user.id }}
+      - PUID=0
+      - PGID=0
       - TZ=Europe/London
     volumes:
       - ./config:/config
