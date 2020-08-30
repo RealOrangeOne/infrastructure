@@ -21,7 +21,7 @@ services:
       - db
       - redis
     ports:
-      - "{{ wireguard.clients.intersect.ip }}:8022:8022"
+      - "{{ wireguard.clients.intersect.ip }}:8022:22"
     labels:
       - traefik.enable=true
       - traefik.http.routers.gitlab.rule=Host(`gitlab.theorangeone.net`)
