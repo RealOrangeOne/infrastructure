@@ -24,7 +24,7 @@ services:
       - "{{ wireguard.clients.intersect.ip }}:8022:22"
     labels:
       - traefik.enable=true
-      - traefik.http.routers.gitlab.rule=Host(`gitlab.theorangeone.net`)
+      - traefik.http.routers.gitlab.rule=Host(`git.theorangeone.net`) || Host(`git.0rng.one`)
       - traefik.http.routers.gitlab.tls.certresolver=le
       - traefik.http.services.gitlab-gitlab.loadbalancer.server.port=80
       - traefik.http.services.gitlab-gitlab.loadbalancer.server.scheme=http

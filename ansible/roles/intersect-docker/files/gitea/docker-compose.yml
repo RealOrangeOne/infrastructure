@@ -7,11 +7,6 @@ services:
     environment:
       - USER_UID={{ docker_user.id }}
       - USER_GID={{ docker_user.id }}
-    labels:
-      - traefik.enable=true
-      - traefik.http.routers.gitea.rule=(Host(`git.theorangeone.net`) || Host(`git.0rng.one`))
-      - traefik.http.routers.gitea.tls.certresolver=le
-      - traefik.http.services.gitea-gitea.loadbalancer.server.port=3000
     ports:
       - "{{ wireguard.clients.intersect.ip }}:3022:3022"
     depends_on:
@@ -45,14 +40,3 @@ services:
       - POSTGRES_DB=gitea
       - BACKUP_KEEP_MONTHS=1
       - BACKUP_KEEP_WEEKS=1
-
-  git-mirror:
-    image: theorangeone/git-mirror:latest
-    restart: unless-stopped
-    volumes:
-      - /mnt/tank/app-data/git-mirror/repositories.toml:/app/repositories.toml:ro
-      - /scratch/git-mirror:/app/repos
-    environment:
-      - GITHUB_TOKEN={{ gitea.git_mirror_github_token }}
-    depends_on:
-      - gitea

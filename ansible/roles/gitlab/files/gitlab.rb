@@ -1,4 +1,4 @@
-external_url 'https://gitlab.theorangeone.net'
+external_url 'https://git.theorangeone.net'
 nginx['redirect_http_to_https'] = false
 nginx['listen_https'] = false
 nginx['listen_port'] = 80
