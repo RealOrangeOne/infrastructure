@@ -20,8 +20,6 @@ services:
     depends_on:
       - db
       - redis
-    healthcheck:
-      disable: true
     ports:
       - "{{ wireguard.clients.intersect.ip }}:8022:22"
     labels:
