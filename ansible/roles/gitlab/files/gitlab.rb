@@ -25,4 +25,6 @@ gitlab_rails['redis_host'] = 'redis'
 gitlab_rails['redis_port'] = 6379
 
 gitlab_rails['gitlab_default_theme'] = 2
-gitlab_rails['trusted_proxies'] = ['172.17.0.1']
+
+nginx['real_ip_trusted_addresses'] = ['0.0.0.0/0']
+nginx['real_ip_header'] = 'X-Forwarded-For'
