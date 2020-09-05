@@ -1,9 +1,6 @@
 - name: Install calibre
   include: calibre.yml
 
-- name: Install gitea
-  include: gitea.yml
-
 - name: Install gotify
   include: gotify.yml
 
