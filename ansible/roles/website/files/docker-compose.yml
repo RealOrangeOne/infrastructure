@@ -2,20 +2,8 @@ version: "2.3"
 services:
   website:
     image: docker.pkg.github.com/realorangeone/theorangeone.net/theorangeone.net:latest
-    environment:
-      - TZ=Europe/London
     restart: unless-stopped
-    volumes:
-      - ./access.log:/var/log/nginx/access.log
-      - ./report.html:/usr/share/nginx/html/stats/index.html:ro
     labels:
       - traefik.enable=true
       - traefik.http.routers.website.rule=Host(`theorangeone.net`) || Host(`www.theorangeone.net`)
       - traefik.http.routers.website.tls.certresolver=le
-
-  stats:
-    image: theorangeone/goaccess-static:latest
-    restart: unless-stopped
-    volumes:
-      - ./report.html:/var/www/goaccess/report.html
-      - ./access.log:/goaccess/access.log:ro
