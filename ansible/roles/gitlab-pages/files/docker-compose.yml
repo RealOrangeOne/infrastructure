@@ -1,0 +1,38 @@
+version: "2.3"
+
+services:
+  gitlab-pages:
+    image: gitlab/gitlab-ce:latest
+    hostname: pages.theorangeone.net
+    environment:
+      TZ: Europe/London
+      GITLAB_OMNIBUS_CONFIG: |
+        {% filter indent(width=8) %}
+        {%- include "gitlab.rb" %}
+        {% endfilter %}
+
+    volumes:
+      - ./config:/etc/gitlab
+      - ./data:/var/opt/gitlab
+      - ./pages:/var/opt/gitlab/gitlab-rails/shared/pages
+    tmpfs:
+      - /var/log/gitlab
+    restart: unless-stopped
+
+  ssh-server:
+    image: linuxserver/openssh-server:latest
+    environment:
+      - TZ=Europe/London
+      - USER_NAME=user
+      - PUBLIC_KEY_FILE=/id_ed25519.pub
+      - PUID=998
+      - PGID=998
+    volumes:
+      - ./ssh:/config
+      - ./pages:/config/pages
+      - ./id_ed25519.pub:/id_ed25519.pub:ro
+      - ./install-rsync.sh:/config/custom-cont-init.d/install-rsync.sh:ro
+    tmpfs:
+      - /config/logs
+    ports:
+      - "{{ wireguard.clients.walker.ip }}:8222:2222"
