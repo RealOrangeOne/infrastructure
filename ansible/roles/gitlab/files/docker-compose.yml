@@ -29,7 +29,6 @@ services:
       - traefik.http.routers.gitlab.tls.certresolver=le
       - traefik.http.services.gitlab-gitlab.loadbalancer.server.port=80
       - traefik.http.services.gitlab-gitlab.loadbalancer.server.scheme=http
-      - traefik.http.routers.gitlab.middlewares=compress@file
 
   db:
     image: postgres:12-alpine
