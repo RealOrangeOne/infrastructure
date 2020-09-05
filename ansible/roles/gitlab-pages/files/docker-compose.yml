@@ -26,6 +26,7 @@ services:
       - traefik.http.routers.gitlab-pages.tls.domains[0].sans=*.pages.theorangeone.net
       - traefik.http.services.gitlab-pages-gitlab-pages.loadbalancer.server.port=8080
       - traefik.http.services.gitlab-pages-gitlab-pages.loadbalancer.server.scheme=http
+      - traefik.http.routers.plausible.middlewares=compress@file
 
   ssh-server:
     image: linuxserver/openssh-server:latest
