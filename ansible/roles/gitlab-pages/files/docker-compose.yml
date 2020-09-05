@@ -17,6 +17,8 @@ services:
       - ./pages:/var/opt/gitlab/gitlab-rails/shared/pages
     tmpfs:
       - /var/log/gitlab
+    healthcheck:
+      disable: true
     restart: unless-stopped
     labels:
       - traefik.enable=true
