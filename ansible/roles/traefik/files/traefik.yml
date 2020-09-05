@@ -36,8 +36,8 @@ certificatesResolvers:
     acme:
       email: hosting@theorangeone.net
       storage: /etc/traefik/acme.json
-      httpChallenge:
-        entryPoint: web
+      dnsChallenge:
+        provider: cloudflare
 
 serversTransport:
   insecureSkipVerify: true

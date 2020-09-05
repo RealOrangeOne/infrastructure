@@ -4,6 +4,8 @@ services:
   traefik:
     image: traefik:v2.2.8
     network_mode: host
+    environment:
+      - CF_DNS_API_TOKEN={{ cloudflare_api_token }}
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - ./traefik:/etc/traefik
