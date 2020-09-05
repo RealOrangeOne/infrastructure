@@ -172,3 +172,11 @@ resource "cloudflare_record" "theorangeonenet_gitlab_pages" {
   type    = "A"
   ttl     = 1
 }
+
+resource "cloudflare_record" "theorangeonenet_gitlab_pages_wildcard" {
+  zone_id = cloudflare_zone.theorangeonenet.id
+  name    = "*.pages"
+  value   = var.walker_ip
+  type    = "A"
+  ttl     = 1
+}
