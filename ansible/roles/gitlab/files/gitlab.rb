@@ -28,3 +28,9 @@ gitlab_rails['gitlab_default_theme'] = 2
 
 nginx['real_ip_trusted_addresses'] = ['0.0.0.0/0']
 nginx['real_ip_header'] = 'X-Forwarded-For'
+
+gitlab_pages['enable'] = false
+pages_external_url "https://pages.theorangeone.net"
+pages_nginx['enable'] = false
+gitlab_rails['pages_path'] = "/mnt/pages"
+gitlab_pages['external_http'] = ['0.0.0.0:8808']

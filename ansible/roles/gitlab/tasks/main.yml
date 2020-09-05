@@ -15,3 +15,12 @@
     validate: /usr/bin/docker-compose -f %s config
   notify: restart gitlab
   become: true
+
+- name: Install lsyncd config
+  template:
+    src: files/lsyncd.lua
+    dest: /mnt/tank/app-data/gitlab/lsyncd/lsyncd.lua
+    mode: "{{ docker_compose_file_mask }}"
+    owner: "998"
+  notify: restart gitlab
+  become: true
