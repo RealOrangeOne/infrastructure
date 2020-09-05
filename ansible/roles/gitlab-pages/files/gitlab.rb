@@ -12,6 +12,7 @@ alertmanager['enable'] = false
 node_exporter['enable'] = false
 gitlab_rails['auto_migrate'] = false
 nginx['enabled'] = false
+logrotate['enable'] = false
 
 pages_external_url "https://pages.theorangeone.net"
 pages_nginx['enable'] = false
