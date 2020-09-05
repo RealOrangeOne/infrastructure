@@ -1,5 +1,7 @@
 provider "vultr" {
   api_key = var.vultr_api_key
+  rate_limit = 1500
+  retry_limit = 5
 }
 
 provider "cloudflare" {
