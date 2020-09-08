@@ -8,7 +8,7 @@ services:
       - TZ=Europe/London
     volumes:
       - /mnt/tank/app-data/deluge:/config
-      - /scratch/deluge:/downloads
+      - /mnt/scratch/deluge:/downloads
     ports:
       - 8112:8112
     restart: unless-stopped

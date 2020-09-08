@@ -41,7 +41,7 @@ services:
     image: prodrigestivill/postgres-backup-local:12-alpine
     restart: unless-stopped
     volumes:
-      - /scratch/db-backups:/backups
+      - /mnt/scratch/db-backups:/backups
     depends_on:
       - db
     environment:
