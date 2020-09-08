@@ -28,18 +28,3 @@ services:
     environment:
       - POSTGRES_PASSWORD=tt-rss
       - POSTGRES_USER=tt-rss
-
-  db-backups:
-    image: prodrigestivill/postgres-backup-local:12-alpine
-    restart: unless-stopped
-    volumes:
-      - /scratch/db-backups:/backups
-    depends_on:
-      - db
-    environment:
-      - POSTGRES_HOST=db
-      - POSTGRES_PASSWORD=tt-rss
-      - POSTGRES_USER=tt-rss
-      - POSTGRES_DB=tt-rss
-      - BACKUP_KEEP_MONTHS=1
-      - BACKUP_KEEP_WEEKS=1
