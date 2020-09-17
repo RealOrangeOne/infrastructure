@@ -21,8 +21,7 @@ services:
       - DATABASE_URL=postgres://plausible:plausible@db:5432/plausible
       - DISABLE_REGISTRATION=true
       - DISABLE_SUBSCRIPTION=true
-      - CLICKHOUSE_DATABASE_HOST=clickhouse
-      - CLICKHOUSE_DATABASE_NAME=plausible
+      - CLICKHOUSE_DATABASE_URL=http://clickhouse:8123/plausible
       - DATABASE_POOL_SIZE=20
       - CLICKHOUSE_DATABASE_POOLSIZE=20
       - HOST=plausible.theorangeone.net
