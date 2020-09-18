@@ -11,3 +11,4 @@ services:
       - traefik.enable=true
       - traefik.http.routers.gotify.rule=Host(`gotify.jakehoward.tech`)
       - traefik.http.routers.gotify.tls.certresolver=le
+      - traefik.http.routers.gotify.middlewares=compress@file

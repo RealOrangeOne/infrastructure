@@ -17,6 +17,7 @@ services:
       - traefik.http.routers.homeassistant.rule=Host(`homeassistant.jakehoward.tech`)
       - traefik.http.routers.homeassistant.tls.certresolver=le
       - traefik.http.services.home-assistant-homeassistant.loadbalancer.server.port=8123
+      - traefik.http.routers.homeassistant.middlewares=compress@file
 
   influxdb:
     image: influxdb:1.8-alpine

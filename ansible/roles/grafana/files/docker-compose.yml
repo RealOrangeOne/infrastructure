@@ -21,6 +21,7 @@ services:
       - traefik.enable=true
       - traefik.http.routers.grafana.rule=Host(`grafana.jakehoward.tech`)
       - traefik.http.routers.grafana.tls.certresolver=le
+      - traefik.http.routers.grafana.middlewares=compress@file
 
   db:
     image: postgres:12-alpine
