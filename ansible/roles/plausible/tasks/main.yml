@@ -9,7 +9,7 @@
 - name: Install clickhouse config
   template:
     src: files/clickhouse-config.xml
-    dest: /mnt/tank/dbs/clickhouse/docker_related_user_config.xml
+    dest: /mnt/tank/dbs/clickhouse/docker_related_config.xml
   notify: restart plausible
   become: true
 
