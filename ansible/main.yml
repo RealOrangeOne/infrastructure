@@ -43,6 +43,7 @@
     - duplicati
     - grafana
     - gitlab
+    - scrutiny
 
 - hosts: walker
   roles:

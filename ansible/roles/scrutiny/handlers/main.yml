@@ -1,0 +1,4 @@
+- name: restart scrutiny
+  shell:
+    chdir: /opt/scrutiny
+    cmd: "{{ docker_update_command }}"

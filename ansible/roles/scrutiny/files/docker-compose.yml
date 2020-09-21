@@ -1,0 +1,30 @@
+version: "2.3"
+
+services:
+  web:
+    image: linuxserver/scrutiny:latest
+    ports:
+      - "{{ wireguard.clients[ansible_fqdn].ip }}:7278:8080"
+    volumes:
+      - /dev/disk:/dev/disk
+      - /run/udev:/run/udev:ro
+      - /mnt/tank/app-data/scrutiny/:/config
+    environment:
+      - SCRUTINY_COLLECTOR=false
+      - SCRUTINY_WEB=true
+      - PUID={{ docker_user.id }}
+      - PGID={{ docker_user.id }}
+    restart: unless-stopped
+
+  collector:
+    image: linuxserver/scrutiny:latest
+    privileged: True
+    volumes:
+      - /dev/disk:/dev/disk
+      - /run/udev:/run/udev:ro
+      - /mnt/tank/app-data/scrutiny/:/config
+    environment:
+      - SCRUTINY_COLLECTOR=true
+      - SCRUTINY_WEB=false
+      - SCRUTINY_API_ENDPOINT=http://web:8080
+    restart: unless-stopped
