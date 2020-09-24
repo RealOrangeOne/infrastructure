@@ -27,4 +27,6 @@ services:
       - SCRUTINY_COLLECTOR=true
       - SCRUTINY_WEB=false
       - SCRUTINY_API_ENDPOINT=http://web:8080
+      - PUID={{ docker_user.id }}
+      - PGID={{ docker_user.id }}
     restart: unless-stopped
