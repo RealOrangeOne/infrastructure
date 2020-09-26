@@ -12,9 +12,9 @@ services:
         {% endfilter %}
 
     volumes:
-      - /mnt/tank/app-data/gitlab/config:/etc/gitlab
-      - /mnt/tank/app-data/gitlab/data:/var/opt/gitlab
-      - /mnt/tank/app-data/gitlab/pages:/mnt/pages
+      - "{{ app_data_dir }}/gitlab/config:/etc/gitlab"
+      - "{{ app_data_dir }}/gitlab/data:/var/opt/gitlab"
+      - "{{ app_data_dir }}/gitlab/pages:/mnt/pages"
     tmpfs:
       - /var/log/gitlab
     restart: unless-stopped
@@ -53,8 +53,8 @@ services:
       - PGID=998
     restart: unless-stopped
     volumes:
-      - /mnt/tank/app-data/gitlab/pages:/mnt/pages:ro
-      - /mnt/tank/app-data/gitlab/lsyncd/lsyncd.lua:/config/lsyncd.lua:ro
-      - /mnt/tank/app-data/gitlab/lsyncd/id_ed25519.pub:/config/.ssh/id_ed25519.pub
-      - /mnt/tank/app-data/gitlab/lsyncd/id_ed25519:/config/.ssh/id_ed25519
-      - /mnt/tank/app-data/gitlab/lsyncd/known_hosts:/config/.ssh/known_hosts
+      - "{{ app_data_dir }}/gitlab/pages:/mnt/pages:ro"
+      - "{{ app_data_dir }}/gitlab/lsyncd/lsyncd.lua:/config/lsyncd.lua:ro"
+      - "{{ app_data_dir }}/gitlab/lsyncd/id_ed25519.pub:/config/.ssh/id_ed25519.pub"
+      - "{{ app_data_dir }}/gitlab/lsyncd/id_ed25519:/config/.ssh/id_ed25519"
+      - "{{ app_data_dir }}/gitlab/lsyncd/known_hosts:/config/.ssh/known_hosts"

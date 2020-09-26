@@ -8,8 +8,8 @@ services:
       - PGID={{ docker_user.id }}
       - TZ=Europe/London
     volumes:
-      - /mnt/tank/app-data/tt-rss/config.php:/config/config.php:ro
-      - /mnt/tank/app-data/tt-rss/feed-icons:/config/feed-icons
+      - "{{ app_data_dir }}/tt-rss/config.php:/config/config.php:ro"
+      - "{{ app_data_dir }}/tt-rss/feed-icons:/config/feed-icons"
     restart: unless-stopped
     labels:
       - traefik.enable=true

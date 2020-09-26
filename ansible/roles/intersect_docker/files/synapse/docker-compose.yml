@@ -11,8 +11,8 @@ services:
       - UID=0
       - GID=0
     volumes:
-      - /mnt/tank/app-data/synapse/homeserver.yaml:/etc/homeserver.yaml
-      - /mnt/tank/app-data/synapse:/data
+      - "{{ app_data_dir }}/synapse/homeserver.yaml:/etc/homeserver.yaml"
+      - "{{ app_data_dir }}/synapse:/data"
     depends_on:
       - db
     expose:

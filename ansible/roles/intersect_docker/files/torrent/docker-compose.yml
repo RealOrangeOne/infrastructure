@@ -7,7 +7,7 @@ services:
       - PGID={{ docker_user.id }}
       - TZ=Europe/London
     volumes:
-      - /mnt/tank/app-data/deluge:/config
+      - "{{ app_data_dir }}/deluge:/config"
       - /mnt/scratch/deluge:/downloads
     ports:
       - 8112:8112

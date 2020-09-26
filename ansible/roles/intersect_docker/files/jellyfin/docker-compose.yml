@@ -8,7 +8,7 @@ services:
       - PGID={{ docker_user.id }}
       - TZ=Europe/London
     volumes:
-      - /mnt/tank/app-data/jellyfin:/config
+      - "{{ app_data_dir }}/jellyfin:/config"
       - /mnt/media/TV:/mnt/TV
       - /mnt/media/Movies:/mnt/Movies
       - /mnt/scratch/transcodes:/config/data/transcodes
