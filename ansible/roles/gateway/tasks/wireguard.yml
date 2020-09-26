@@ -2,6 +2,7 @@
   template:
     src: files/wireguard-server.conf
     dest: /etc/wireguard/wg0.conf
+    mode: "0600"
     backup: yes
   become: true
   register: wireguard_conf

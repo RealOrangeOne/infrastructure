@@ -10,6 +10,7 @@
   template:
     src: files/clickhouse-config.xml
     dest: /mnt/tank/dbs/clickhouse/docker_related_config.xml
+    mode: "0644"
   notify: restart plausible
   become: true
 
@@ -17,6 +18,7 @@
   template:
     src: files/clickhouse-user-config.xml
     dest: /mnt/tank/dbs/clickhouse/docker_related_user_config.xml
+    mode: "0644"
   notify: restart plausible
   become: true
 

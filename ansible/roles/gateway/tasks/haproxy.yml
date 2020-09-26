@@ -8,6 +8,7 @@
     src: files/haproxy.cfg
     dest: /etc/haproxy/haproxy.cfg
     validate: /usr/sbin/haproxy -c -- %s
+    mode: "0644"
     backup: yes
   become: true
   register: haproxy_config

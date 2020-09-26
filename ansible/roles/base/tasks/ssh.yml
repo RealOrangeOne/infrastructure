@@ -21,6 +21,7 @@
     dest: /etc/ssh/sshd_config
     validate: /usr/sbin/sshd -t -f %s
     backup: yes
+    mode: 0644
   become: true
   register: sshd_config
 

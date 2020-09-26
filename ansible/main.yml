@@ -23,7 +23,7 @@
         docker_package: "{{ 'docker-ce' if ansible_os_family == 'Debian' else 'docker' }}"
         docker_users:
           - "{{ user }}"
-    - docker-cleanup
+    - docker_cleanup
     - watchtower
     - traefik
 
@@ -37,8 +37,8 @@
 - hosts: intersect
   roles:
     - netdata
-    - home-assistant
-    - intersect-docker
+    - home_assistant
+    - intersect_docker
     - plausible
     - duplicati
     - grafana
@@ -52,4 +52,4 @@
     - upload
     - website
     - duplicati
-    - gitlab-pages
+    - gitlab_pages
