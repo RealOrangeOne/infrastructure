@@ -14,7 +14,7 @@ services:
       - /mnt/media:/content:ro
     restart: unless-stopped
     depends_on:
-      - db
+      - mariadb
       - redis
       - collabora
     tmpfs:
@@ -28,29 +28,16 @@ services:
       - traefik.http.middlewares.nextcloud-hsts.headers.stsseconds=15552000
       - traefik.http.routers.nextcloud.middlewares=nextcloud-hsts@docker
 
-  db:
-    image: postgres:12-alpine
+  mariadb:
+    image: mariadb:10.5
     restart: unless-stopped
     volumes:
-      - /srv/nextcloud-postgres:/var/lib/postgresql/data
+      - /mnt/tank/dbs/mariadb/nextcloud:/var/lib/mysql
     environment:
-      - POSTGRES_PASSWORD=nextcloud
-      - POSTGRES_USER=nextcloud
-
-  db-backups:
-    image: prodrigestivill/postgres-backup-local:12-alpine
-    restart: unless-stopped
-    volumes:
-      - /mnt/scratch/db-backups:/backups
-    depends_on:
-      - db
-    environment:
-      - POSTGRES_HOST=db
-      - POSTGRES_PASSWORD=nextcloud
-      - POSTGRES_USER=nextcloud
-      - POSTGRES_DB=nextcloud
-      - BACKUP_KEEP_MONTHS=1
-      - BACKUP_KEEP_WEEKS=1
+      - MYSQL_ROOT_PASSWORD=nextcloud
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
+      - MYSQL_PASSWORD=nextcloud
 
   redis:
     image: redis:6-alpine
