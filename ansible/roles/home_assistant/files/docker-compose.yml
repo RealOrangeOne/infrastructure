@@ -5,7 +5,7 @@ services:
     image: homeassistant/home-assistant:stable
     network_mode: host
     volumes:
-      - ./config:/config
+      - "{{ app_data_dir }}/home-assistant:/config"
     environment:
       - TZ=Europe/London
     restart: unless-stopped
@@ -23,7 +23,7 @@ services:
     image: influxdb:1.8-alpine
     restart: unless-stopped
     volumes:
-      - ./influxdb:/var/lib/influxdb
+      - /mnt/tank/dbs/influx/home-assistant:/var/lib/influxdb
     ports:
       - 127.0.0.1:48086:8086
     networks:
@@ -40,7 +40,7 @@ services:
     restart: unless-stopped
     network_mode: host
     volumes:
-      - ./esphome:/config
+      - "{{ app_data_dir }}/esphome:/config"
 
   db:
     image: postgres:12-alpine
