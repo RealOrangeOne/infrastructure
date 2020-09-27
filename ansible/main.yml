@@ -48,7 +48,6 @@
 - hosts: walker
   roles:
     - contessa
-    - statping
     - upload
     - website
     - duplicati

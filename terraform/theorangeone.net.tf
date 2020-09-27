@@ -10,14 +10,6 @@ resource "cloudflare_record" "theorangeonenet_git" {
   ttl     = 1
 }
 
-resource "cloudflare_record" "theorangeonenet_stats" {
-  zone_id = cloudflare_zone.theorangeonenet.id
-  name    = "stats"
-  value   = var.walker_ip
-  type    = "A"
-  ttl     = 1
-}
-
 resource "cloudflare_record" "theorangeonenet_whoami" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "whoami"
