@@ -51,3 +51,8 @@ metrics:
     address: "{{ wireguard.clients[ansible_fqdn].ip }}:38089"
     database: traefik
     pushInterval: 30s
+
+tls:
+  options:
+    default:
+      minVersion: VersionTLS12
