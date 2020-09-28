@@ -7,6 +7,7 @@ services:
       - PUID={{ docker_user.id }}
       - PGID={{ docker_user.id }}
       - TZ=Europe/London
+      - DOCKER_MODS=theorangeone/docker-mod-nginx-auto:latest
     volumes:
       - ./apps:/config/www/nextcloud/apps
       - ./config.php:/config/www/nextcloud/config/config.php
