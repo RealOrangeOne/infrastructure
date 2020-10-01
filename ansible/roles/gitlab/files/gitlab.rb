@@ -7,8 +7,7 @@ nginx['status'] = {
     'enable' => false
 }
 letsencrypt['enable'] = false
-puma['worker_processes'] = 2
-puma['max_threads'] = 6
+puma['worker_processes'] = 4
 gitlab_rails['time_zone'] = 'Europe/London'
 
 alertmanager['enable'] = false
