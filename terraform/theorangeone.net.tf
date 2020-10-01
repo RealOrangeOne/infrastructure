@@ -84,14 +84,6 @@ resource "cloudflare_record" "theorangeonenet_apex" {
   ttl     = 1
 }
 
-resource "cloudflare_record" "theorangeonenet_snippets" {
-  zone_id = cloudflare_zone.theorangeonenet.id
-  name    = "snippets"
-  value   = "too-snippets.netlify.com"
-  type    = "CNAME"
-  ttl     = 1
-}
-
 resource "cloudflare_record" "theorangeonenet_srv_matrix" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "_matrix._tcp"
