@@ -1,0 +1,4 @@
+- name: restart deluge
+  shell:
+    chdir: /opt/deluge
+    cmd: "{{ docker_update_command }}"

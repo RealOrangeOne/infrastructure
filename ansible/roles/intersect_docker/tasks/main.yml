@@ -19,9 +19,6 @@
 - name: Install synapse
   include: synapse.yml
 
-- name: Install torrent
-  include: torrent.yml
-
 - name: Install tt-rss
   include: tt-rss.yml
 

@@ -8,9 +8,9 @@ services:
       - TZ=Europe/London
     volumes:
       - "{{ app_data_dir }}/deluge:/config"
-      - /mnt/scratch/deluge:/downloads
+      - /mnt/tank/downloads:/downloads
     ports:
-      - 8112:8112
+      - "{{ wireguard.clients[ansible_fqdn].ip }}:8112:8112"
     restart: unless-stopped
     depends_on:
       - tor-socks-proxy
