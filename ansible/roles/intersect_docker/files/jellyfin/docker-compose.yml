@@ -11,10 +11,10 @@ services:
       - "{{ app_data_dir }}/jellyfin:/config"
       - /mnt/media/TV:/mnt/TV
       - /mnt/media/Movies:/mnt/Movies
-      - /mnt/scratch/transcodes:/config/data/transcodes
     tmpfs:
       - /config/cache
       - /config/log
+      - /config/data/transcodes
     restart: unless-stopped
     devices:
       - /dev/dri/card0:/dev/dri/card0
