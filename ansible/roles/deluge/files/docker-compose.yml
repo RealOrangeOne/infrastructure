@@ -1,4 +1,5 @@
 version: "2.3"
+
 services:
   deluge:
     image: linuxserver/deluge:latest
@@ -18,3 +19,13 @@ services:
   tor-socks-proxy:
     image: peterdavehello/tor-socks-proxy:latest
     restart: unless-stopped
+
+  egress:
+    image: theorangeone/static-server:latest
+    restart: unless-stopped
+    environment:
+      - INDEX=on
+    volumes:
+      - /mnt/tank/downloads:/srv:ro
+    ports:
+      - "{{ wireguard.clients[ansible_fqdn].ip }}:8180:80"
