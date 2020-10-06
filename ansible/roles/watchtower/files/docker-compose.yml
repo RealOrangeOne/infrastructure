@@ -5,5 +5,8 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - "{{ home }}/.docker/config.json:/config.json:ro"
-    command: --cleanup --interval 600
+      - /etc/timezone:/etc/timezone:ro
+    environment:
+      - WATCHTOWER_CLEANUP=true
+      - WATCHTOWER_POLL_INTERVAL=600
     restart: unless-stopped
