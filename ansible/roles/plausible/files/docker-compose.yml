@@ -22,10 +22,7 @@ services:
       - DISABLE_REGISTRATION=true
       - DISABLE_SUBSCRIPTION=true
       - CLICKHOUSE_DATABASE_URL=http://clickhouse:8123/plausible
-      - DATABASE_POOL_SIZE=20
-      - CLICKHOUSE_DATABASE_POOLSIZE=20
-      - HOST=plausible.theorangeone.net
-      - SCHEME=https
+      - BASE_URL=https://plausible.theorangeone.net
 
   clickhouse:
     image: yandex/clickhouse-server:latest
