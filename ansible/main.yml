@@ -44,6 +44,7 @@
     - grafana
     - gitlab
     - scrutiny
+    - heimdall
 
 - hosts: walker
   roles:

@@ -1,0 +1,4 @@
+- name: restart heimdall
+  shell:
+    chdir: /opt/heimdall
+    cmd: "{{ docker_update_command }}"
