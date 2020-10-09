@@ -36,7 +36,6 @@
 
 - hosts: intersect
   roles:
-    - netdata
     - home_assistant
     - intersect_docker
     - plausible

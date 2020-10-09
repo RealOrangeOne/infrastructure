@@ -1,4 +1,0 @@
-- name: restart netdata
-  shell:
-    chdir: /opt/netdata
-    cmd: "{{ docker_update_command }}"
