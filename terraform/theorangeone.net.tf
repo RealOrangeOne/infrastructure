@@ -133,14 +133,6 @@ resource "cloudflare_record" "theorangeonenet_upload" {
   ttl     = 1
 }
 
-resource "cloudflare_record" "theorangeonenet_rng" {
-  zone_id = cloudflare_zone.theorangeonenet.id
-  name    = "rng"
-  value   = vultr_server.casey.main_ip
-  type    = "A"
-  ttl     = 1
-}
-
 resource "cloudflare_record" "theorangeonenet_plausible" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "plausible"
