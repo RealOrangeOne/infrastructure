@@ -1,4 +1,0 @@
-- name: restart website
-  shell:
-    chdir: /opt/theorangeone.net
-    cmd: "{{ docker_update_command }}"

@@ -50,7 +50,6 @@
   roles:
     - contessa
     - upload
-    - website
     - duplicati
     - gitlab_pages
     - deluge

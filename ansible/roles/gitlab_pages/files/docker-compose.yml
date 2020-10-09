@@ -35,6 +35,10 @@ services:
       - traefik.http.routers.gitlab-pages-notes.tls.certresolver=le
       - traefik.http.routers.gitlab-pages-notes.service=gitlab-pages-gitlab-pages
 
+      - traefik.http.routers.gitlab-pages-website.rule=Host(`theorangeone.net`) || Host(`www.theorangeone.net`)
+      - traefik.http.routers.gitlab-pages-website.tls.certresolver=le
+      - traefik.http.routers.gitlab-pages-website.service=gitlab-pages-gitlab-pages
+
   ssh-server:
     image: linuxserver/openssh-server:latest
     environment:
