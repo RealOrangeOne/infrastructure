@@ -8,5 +8,5 @@ services:
       - /etc/timezone:/etc/timezone:ro
     environment:
       - WATCHTOWER_CLEANUP=true
-      - WATCHTOWER_POLL_INTERVAL=600
+      - WATCHTOWER_SCHEDULE=0 12 * * *
     restart: unless-stopped
