@@ -13,6 +13,7 @@ services:
       - ./config.php:/config/www/nextcloud/config/config.php
       - /srv/nextcloud-data/data:/data
       - /mnt/media:/content:ro
+      - /mnt/tank/files:/mnt/files
     restart: unless-stopped
     depends_on:
       - mariadb
