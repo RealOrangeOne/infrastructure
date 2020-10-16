@@ -19,7 +19,7 @@
 
 - name: Restart fail2ban
   service:
-    name: haproxy
+    name: fail2ban
     state: restarted
   become: true
   when: fail2ban_filter.changed or fail2ban_jail.changed
