@@ -2,6 +2,7 @@ sanoid_datasets:
   tank:
     use_template: production
     recursive: true
+    process_children_only: true
 
   tank/downloads:
     use_template: replaceable
