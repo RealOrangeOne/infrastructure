@@ -9,8 +9,8 @@ services:
       - TZ=Europe/London
       - DOCKER_MODS=theorangeone/docker-mod-nginx-auto:latest
     volumes:
-      - ./apps:/config/www/nextcloud/apps
-      - ./config.php:/config/www/nextcloud/config/config.php
+      - "{{ app_data_dir }}/nextcloud/apps:/config/www/nextcloud/apps"
+      - "{{ app_data_dir }}/nextcloud/config.php:/config/www/nextcloud/config/config.php"
       - /srv/nextcloud-data/data:/data
       - /mnt/media:/content:ro
       - /mnt/tank/files:/mnt/files
@@ -45,7 +45,7 @@ services:
     image: redis:6-alpine
     restart: unless-stopped
     volumes:
-      - ./redis:/data
+      - /mnt/tank/dbs/redis/nextcloud:/data
 
   collabora:
     image: collabora/code:latest
