@@ -2,7 +2,7 @@ version: "2.3"
 
 services:
   whoami:
-    image: containous/whoami:latest
+    image: traefik/whoami:latest
     restart: unless-stopped
     labels:
       - traefik.enable=true
