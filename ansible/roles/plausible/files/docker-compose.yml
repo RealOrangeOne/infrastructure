@@ -2,7 +2,7 @@ version: "2.3"
 
 services:
   plausible:
-    image: plausible/analytics:v1
+    image: plausible/analytics:v1.1
     restart: unless-stopped
     command: sh -c "/entrypoint.sh db migrate && /entrypoint.sh run"
     depends_on:
@@ -28,7 +28,7 @@ services:
       - GEOLITE2_COUNTRY_DB=/mnt/geoip/GeoLite2-Country.mmdb
 
   clickhouse:
-    image: yandex/clickhouse-server:latest
+    image: yandex/clickhouse-server:20.6
     restart: unless-stopped
     volumes:
       - ./clickhouse:/var/lib/clickhouse
