@@ -1,4 +1,0 @@
-- name: restart watchtower
-  shell:
-    chdir: /opt/watchtower
-    cmd: "{{ docker_update_command }}"

@@ -24,7 +24,6 @@
         docker_users:
           - "{{ user }}"
     - docker_cleanup
-    - watchtower
     - traefik
 
 # ZFS Hosts
