@@ -9,7 +9,7 @@ services:
     restart: unless-stopped
     volumes:
       - "{{ app_data_dir }}/calibre:/config"
-      - /srv/nextcloud-data/data/jake/files/EBooks:/books:ro
+      - /mnt/tank/files/ebooks:/books:ro
     labels:
       - traefik.enable=true
       - traefik.http.routers.calibre.rule=Host(`calibre.jakehoward.tech`)

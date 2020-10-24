@@ -38,5 +38,5 @@
   cron:
     name: Set nextcloud data permissions
     special_time: daily
-    job: chown -R {{ docker_user.name }}:{{ docker_user.name }} /srv/nextcloud-data/data/*
+    job: chown -R {{ docker_user.name }}:{{ docker_user.name }} /mnt/tank/files/nextcloud
   become: true

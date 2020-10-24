@@ -11,7 +11,7 @@ services:
     volumes:
       - "{{ app_data_dir }}/nextcloud/apps:/config/www/nextcloud/apps"
       - "{{ app_data_dir }}/nextcloud/config.php:/config/www/nextcloud/config/config.php"
-      - /srv/nextcloud-data/data:/data
+      - /mnt/tank/files/nextcloud:/data
       - /mnt/media:/content:ro
       - /mnt/tank/files:/mnt/files
     restart: unless-stopped
