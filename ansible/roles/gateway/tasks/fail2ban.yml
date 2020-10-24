@@ -7,6 +7,7 @@
   template:
     src: files/haproxy-fail2ban-filter.conf
     dest: /etc/fail2ban/filter.d/haproxy-basic.conf
+    mode: "0600"
   become: true
   register: fail2ban_filter
 
@@ -14,6 +15,7 @@
   template:
     src: files/haproxy-fail2ban-jail.conf
     dest: /etc/fail2ban/jail.d/haproxy.conf
+    mode: "0600"
   become: true
   register: fail2ban_jail
 
