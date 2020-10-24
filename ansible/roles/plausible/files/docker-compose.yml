@@ -8,6 +8,9 @@ services:
     depends_on:
       - db
       - clickhouse
+      - geoip
+    volumes:
+      - ./geoip:/mnt/geoip:ro
     labels:
       - traefik.enable=true
       - traefik.http.routers.plausible.rule=Host(`plausible.theorangeone.net`)
@@ -22,6 +25,7 @@ services:
       - DISABLE_SUBSCRIPTION=true
       - CLICKHOUSE_DATABASE_URL=http://clickhouse:8123/plausible
       - BASE_URL=https://plausible.theorangeone.net
+      - GEOLITE2_COUNTRY_DB=/mnt/geoip/GeoLite2-Country.mmdb
 
   clickhouse:
     image: yandex/clickhouse-server:latest
@@ -45,3 +49,13 @@ services:
     environment:
       - POSTGRES_PASSWORD=plausible
       - POSTGRES_USER=plausible
+
+  geoip:
+    image: maxmindinc/geoipupdate:latest
+    environment:
+      - GEOIPUPDATE_FREQUENCY=168
+      - GEOIPUPDATE_EDITION_IDS=GeoLite2-Country
+      - GEOIPUPDATE_ACCOUNT_ID={{ geoip_account_id }}
+      - GEOIPUPDATE_LICENSE_KEY={{ geoip_license_key }}
+    volumes:
+      - ./geoip:/usr/share/GeoIP
