@@ -5,6 +5,7 @@
       become: true
       vars:
         ntp_timezone: Europe/London
+        ntp_manage_config: true
     - role: realorangeone.reflector
       when: ansible_os_family == 'Archlinux'
 
