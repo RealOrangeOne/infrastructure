@@ -25,8 +25,8 @@ AuthenticationMethods publickey
 PermitRootLogin no
 
 # Client timeout
-ClientAliveInterval 600
-ClientAliveCountMax 0
+ClientAliveInterval 60
+ClientAliveCountMax 100
 
 # Compression (only after authentication)
 Compression delayed
