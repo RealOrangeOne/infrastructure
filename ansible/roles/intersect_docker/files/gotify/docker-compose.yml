@@ -1,6 +1,6 @@
 version: "2.3"
 services:
-  duplicati:
+  gotify:
     image: gotify/server:2.0.19
     environment:
       - TZ=Europe/London
