@@ -1,5 +1,4 @@
 <yandex>
-    <!-- Listen wildcard address to allow accepting connections from other containers and host network. -->
     <listen_host>::</listen_host>
     <listen_host>0.0.0.0</listen_host>
     <listen_try>1</listen_try>
@@ -7,11 +6,10 @@
         <level>warning</level>
         <console>true</console>
     </logger>
-    <text_log>
-        <level>warning</level>
-    </text_log>
-    <metric_log>
-        <level>warning</level>
-    </metric_log>
-    <trace_log></trace_log>
+    <query_thread_log remove="remove"/>
+    <query_log remove="remove"/>
+    <text_log remove="remove"/>
+    <trace_log remove="remove"/>
+    <metric_log remove="remove"/>
+    <asynchronous_metric_log remove="remove"/>
 </yandex>
