@@ -8,8 +8,8 @@ services:
     environment:
       - SYNAPSE_CONFIG_PATH=/etc/homeserver.yaml
       - SYNAPSE_REPORT_STATS=yes
-      - UID=0
-      - GID=0
+      - UID={{ docker_user.id }}
+      - GID={{ docker_user.id }}
     volumes:
       - "{{ app_data_dir }}/synapse/homeserver.yaml:/etc/homeserver.yaml"
       - "{{ app_data_dir }}/synapse:/data"
