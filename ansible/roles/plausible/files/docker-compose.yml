@@ -34,7 +34,7 @@ services:
       - DISABLE_REGISTRATION=true
       - DISABLE_SUBSCRIPTION=true
       - CLICKHOUSE_DATABASE_URL=http://clickhouse:8123/plausible
-      - BASE_URL=https://plausible.theorangeone.net
+      - BASE_URL=https://elbisualp.theorangeone.net
       - GEOLITE2_COUNTRY_DB=/mnt/geoip/GeoLite2-Country.mmdb
 
   clickhouse:
