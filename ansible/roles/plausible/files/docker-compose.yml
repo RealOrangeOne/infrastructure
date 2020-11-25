@@ -23,7 +23,7 @@ services:
       - traefik.http.routers.plausible-bare.service=plausible-plausible
 
       # https://github.com/plausible/analytics/pull/340
-      - "traefik.http.middlewares.plausible-index.replacepathregex.regex=/js/index.js"
+      - traefik.http.middlewares.plausible-index.replacepathregex.regex=/js/index.js
       - traefik.http.middlewares.plausible-index.replacepathregex.replacement=/js/plausible.js
       - traefik.http.routers.plausible-bare.middlewares=compress@file,plausible-index
 
