@@ -6,6 +6,15 @@
     mode: "{{ docker_compose_directory_mask }}"
   become: true
 
+- name: Create tt-rss plugins directory
+  file:
+    path: /opt/tt-rss/plugins
+    state: directory
+    owner: "{{ docker_user.name }}"
+    mode: "{{ docker_compose_directory_mask }}"
+  register: plugins_dir
+  become: true
+
 - name: Install tt-rss compose file
   template:
     src: files/tt-rss/docker-compose.yml
@@ -25,8 +34,24 @@
   register: config_file
   become: true
 
+- name: Install fever plugin
+  git:
+    repo: https://github.com/DigitalDJ/tinytinyrss-fever-plugin
+    dest: "{{ plugins_dir.path }}/fever"
+    depth: 1
+  register: fever_plugin
+  become: true
+
+- name: Ensure plugins are owned by {{ docker_user.name }}
+  file:
+    path: "{{ plugins_dir.path }}"
+    state: directory
+    owner: "{{ docker_user.name }}"
+    recurse: true
+  become: true
+
 - name: restart tt-rss
   shell:
     chdir: /opt/tt-rss
     cmd: "{{ docker_update_command }}"
-  when: compose_file.changed or config_file.changed
+  when: compose_file.changed or config_file.changed or fever_plugin.changed

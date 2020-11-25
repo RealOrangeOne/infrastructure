@@ -10,6 +10,7 @@ services:
     volumes:
       - "{{ app_data_dir }}/tt-rss/config.php:/config/config.php:ro"
       - "{{ app_data_dir }}/tt-rss/feed-icons:/config/feed-icons"
+      - ./plugins:/config/plugins.local
     restart: unless-stopped
     labels:
       - traefik.enable=true
