@@ -21,8 +21,12 @@ services:
       - traefik.http.routers.plausible-bare.rule=Host(`elbisualp.theorangeone.net`)
       - traefik.http.routers.plausible-bare.tls.certresolver=le
       - traefik.http.routers.plausible-bare.service=plausible-plausible
-      - traefik.http.middlewares.plausible-bare.replacepath.path=/js/plausible.js  # https://github.com/plausible/analytics/pull/340
-      - traefik.http.routers.plausible-bare.middlewares=compress@file,plausible-bare
+
+      # https://github.com/plausible/analytics/pull/340
+      - "traefik.http.middlewares.plausible-index.replacepathregex.regex=/js/index.js"
+      - traefik.http.middlewares.plausible-index.replacepathregex.replacement=/js/plausible.js
+      - traefik.http.routers.plausible-bare.middlewares=compress@file,plausible-index
+
     environment:
       - SECRET_KEY_BASE={{ secret_key }}
       - SIGNING_SALT={{ signing_salt }}
