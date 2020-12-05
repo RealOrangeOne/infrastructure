@@ -12,5 +12,9 @@ terraform {
       source  = "hashicorp/aws"
       version = "3.8.0"
     }
+    linode = {
+      source  = "linode/linode"
+      version = "1.13.4"
+    }
   }
 }

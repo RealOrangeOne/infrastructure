@@ -152,3 +152,4 @@ override.tf.json
 
 terraform/secrets.auto.tfvars
 terraform/secrets.sh
+terraform/.terraform.lock.hcl
