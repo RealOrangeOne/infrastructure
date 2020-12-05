@@ -35,11 +35,15 @@
   roles:
     - zfs
 
+- hosts:
+    - grimes
+  roles:
+    - plausible
+
 - hosts: intersect
   roles:
     - home_assistant
     - intersect_docker
-    - plausible
     - duplicati
     - grafana
     - gitlab
