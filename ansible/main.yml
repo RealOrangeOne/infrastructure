@@ -39,6 +39,7 @@
     - grimes
   roles:
     - plausible
+    - duplicati
 
 - hosts: intersect
   roles:
