@@ -36,4 +36,7 @@ $CONFIG = array (
   'maintenance' => false,
   'theme' => '',
   'loglevel' => 2,
+  'preview_max_x' => '2048',
+  'preview_max_y' => '2048',
+  'jpeg_quality' => '60',
 );
