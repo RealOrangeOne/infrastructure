@@ -58,3 +58,7 @@
     - duplicati
     - gitlab_pages
     - deluge
+
+- hosts: ingress
+  roles:
+    - ingress
