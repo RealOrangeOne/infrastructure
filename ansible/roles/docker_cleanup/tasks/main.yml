@@ -44,3 +44,7 @@
     dest: "{{ home }}"
     mode: 0755
     directory_mode: 0755
+
+- name: override docker service for zfs dependencies
+  include: zfs-override.yml
+  when: docker_zfs_override

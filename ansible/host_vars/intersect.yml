@@ -1,3 +1,5 @@
 expose_ssh: true
 
 traefik_influx_db_dir: /mnt/tank/dbs/influx/traefik
+
+docker_zfs_override: true
