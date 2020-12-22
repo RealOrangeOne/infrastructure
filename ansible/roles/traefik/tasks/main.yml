@@ -8,7 +8,14 @@
 
 - name: Create config directory
   file:
-    path: /opt/traefik/traefik
+    path: /opt/traefik/traefik/
+    state: directory
+    mode: "{{ docker_compose_directory_mask }}"
+  become: true
+
+- name: Create file provider directory
+  file:
+    path: /opt/traefik/traefik/conf
     state: directory
     mode: "{{ docker_compose_directory_mask }}"
   become: true
@@ -34,8 +41,8 @@
 
 - name: Install file provider
   template:
-    src: files/file-provider.yml
-    dest: /opt/traefik/traefik/file-provider.yml
+    src: files/file-provider-main.yml
+    dest: /opt/traefik/traefik/conf/main.yml
     mode: "{{ docker_compose_file_mask }}"
     owner: "{{ docker_user.name }}"
   notify: restart traefik

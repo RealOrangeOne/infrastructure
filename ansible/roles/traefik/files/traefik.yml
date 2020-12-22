@@ -25,7 +25,7 @@ providers:
     watch: true
     exposedByDefault: false
   file:
-    filename: /etc/traefik/file-provider.yml
+    directory: /etc/traefik/conf
 
 api:
   dashboard: true
