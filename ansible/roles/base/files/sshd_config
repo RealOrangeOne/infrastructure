@@ -1,6 +1,6 @@
 # TCP port to bind to
 # Change to a high/odd port if this server is exposed to the internet directly
-Port 7743
+Port {{ ssh_port }}
 
 {% if expose_ssh %}
 AllowUsers {{ user }}

@@ -1,0 +1,18 @@
+- name: Install logrotate
+  package:
+    name: logrotate
+  become: true
+
+- name: Enable logrotate timer
+  service:
+    name: logrotate.timer
+  become: true
+  when: ansible_os_family == 'Archlinux'
+
+- name: logrotate fail2ban config
+  template:
+    src: files/fail2ban-logrotate
+    dest: /etc/logrotate.d/fail2ban
+    mode: "0600"
+  become: true
+  register: fail2ban_jail

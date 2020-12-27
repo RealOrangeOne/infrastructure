@@ -6,3 +6,9 @@
 
 - name: SSH
   include: ssh.yml
+
+- name: fail2ban
+  include: fail2ban.yml
+
+- name: logrotate
+  include: logrotate.yml

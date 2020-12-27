@@ -1,0 +1,25 @@
+- name: Install fail2ban
+  package:
+    name: fail2ban
+  become: true
+
+- name: Enable fail2ban
+  service:
+    name: fail2ban
+    enabled: true
+  become: true
+
+- name: fail2ban SSH jail
+  template:
+    src: files/ssh-jail.conf
+    dest: /etc/fail2ban/jail.d/ssh.conf
+    mode: "0600"
+  become: true
+  register: fail2ban_jail
+
+- name: Restart fail2ban
+  service:
+    name: fail2ban
+    state: restarted
+  become: true
+  when: fail2ban_jail.changed
