@@ -55,6 +55,7 @@
     path: "{{ plugins_dir.path }}"
     state: directory
     owner: "{{ docker_user.name }}"
+    mode: u=rwX,g=rX,o=rX
     recurse: true
   become: true
 
