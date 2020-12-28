@@ -17,6 +17,7 @@
     - intersect
     - walker
     - grimes
+    - pve-docker
   roles:
     - role: geerlingguy.docker
       become: true
