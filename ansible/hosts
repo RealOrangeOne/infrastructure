@@ -8,3 +8,4 @@ pve
 # PVE VMs
 ingress
 pve-docker
+jellyfin
