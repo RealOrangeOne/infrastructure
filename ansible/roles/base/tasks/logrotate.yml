@@ -6,6 +6,7 @@
 - name: Enable logrotate timer
   service:
     name: logrotate.timer
+    enabled: true
   become: true
   when: ansible_os_family == 'Archlinux'
 
@@ -15,4 +16,3 @@
     dest: /etc/logrotate.d/fail2ban
     mode: "0600"
   become: true
-  register: fail2ban_jail
