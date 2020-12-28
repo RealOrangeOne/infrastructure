@@ -19,8 +19,8 @@ services:
     volumes:
       - "{{ traefik_influx_db_dir }}:/var/lib/influxdb"
     ports:
-      - "{{ wireguard.clients[ansible_fqdn].ip }}:38089:8089/udp"
-      - "{{ wireguard.clients[ansible_fqdn].ip }}:38086:8086"
+      - "{{ traefik_private_ip }}:38089:8089/udp"
+      - "{{ traefik_private_ip }}:38086:8086"
     environment:
       - INFLUXDB_DB=traefik
       - INFLUXDB_HTTP_AUTH_ENABLED=

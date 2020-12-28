@@ -1,0 +1,1 @@
+traefik_private_ip: "{{ wireguard.clients[ansible_fqdn].ip }}"

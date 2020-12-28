@@ -15,7 +15,7 @@ entryPoints:
       trustedIPs:
         - "{{ wireguard.cidr }}"
   traefik:
-    address: "{{ wireguard.clients[ansible_fqdn].ip }}:8080"
+    address: "{{ traefik_private_ip }}:8080"
 
 ping: {}
 
@@ -48,7 +48,7 @@ serversTransport:
 
 metrics:
   influxDB:
-    address: "{{ wireguard.clients[ansible_fqdn].ip }}:38089"
+    address: "{{ traefik_private_ip }}:38089"
     database: traefik
     pushInterval: 30s
 
