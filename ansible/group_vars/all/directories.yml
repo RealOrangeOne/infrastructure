@@ -1,2 +1,1 @@
-traefik_influx_db_dir: ./influxdb
 app_data_dir: /mnt/tank/app-data

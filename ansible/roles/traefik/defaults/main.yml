@@ -1,1 +1,2 @@
 traefik_private_ip: "{{ wireguard.clients[ansible_fqdn].ip }}"
+traefik_influx_db_dir: ./influxdb
