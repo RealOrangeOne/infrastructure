@@ -12,5 +12,11 @@
   become: true
   loop: "{{ zpools_to_scrub }}"
 
+- name: Give user passwordless access to ZFS commands
+  lineinfile:
+    path: /etc/sudoers
+    line: "{{ user }} ALL=(ALL) NOPASSWD: /usr/sbin/zfs,/usr/sbin/zpool"
+  become: true
+
 - name: Sanoid
   include: sanoid.yml
