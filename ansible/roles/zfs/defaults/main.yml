@@ -1,0 +1,2 @@
+# Cap ARC size to 50% RAM
+zfs_arc_size: "{{ (ansible_memtotal_mb * 1024 * 1024) * 0.5 }}"
