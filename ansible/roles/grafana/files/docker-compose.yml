@@ -9,7 +9,7 @@ services:
       - GF_RENDERING_SERVER_URL=http://renderer:8081/render
       - GF_RENDERING_CALLBACK_URL=http://grafana:3000/
     volumes:
-      - "./grafana:/var/lib/grafana"
+      - ./grafana:/var/lib/grafana
     restart: unless-stopped
     depends_on:
       - db

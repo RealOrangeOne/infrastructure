@@ -8,8 +8,8 @@ services:
       - SYMFONY__ENV__SECRET={{ wallabag_secret }}
       - SYMFONY__ENV__DOMAIN_NAME=https://wallabag.jakehoward.tech
     volumes:
-      - "./wallabag/data:/var/www/wallabag/data"
-      - "./wallabag/images:/var/www/wallabag/images"
+      - ./wallabag/data:/var/www/wallabag/data
+      - ./wallabag/images:/var/www/wallabag/images
     labels:
       - traefik.enable=true
       - traefik.http.routers.wallabag.rule=Host(`wallabag.jakehoward.tech`)

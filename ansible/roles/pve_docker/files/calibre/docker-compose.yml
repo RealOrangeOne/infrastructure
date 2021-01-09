@@ -8,7 +8,7 @@ services:
       - TZ=Europe/London
     restart: unless-stopped
     volumes:
-      - "./calibre:/config"
+      - ./calibre:/config
       - /mnt/tank/files/ebooks:/books:ro
     labels:
       - traefik.enable=true

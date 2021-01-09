@@ -1,4 +1,4 @@
 expose_ssh: true
 traefik_private_ip: "{{ ansible_default_ipv4.address }}"
 
-traefik_proxy_protocol_trusted_ips: "10.23.0.0/16"
+traefik_proxy_protocol_trusted_ips: 10.23.0.0/16

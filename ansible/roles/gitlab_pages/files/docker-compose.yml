@@ -55,4 +55,4 @@ services:
     tmpfs:
       - /config/logs
     ports:
-      - "8222:2222"
+      - 8222:2222

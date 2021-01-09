@@ -17,7 +17,7 @@ services:
     depends_on:
       - db
     ports:
-      - "4242:4242"
+      - 4242:4242
 
   db:
     image: postgres:12-alpine

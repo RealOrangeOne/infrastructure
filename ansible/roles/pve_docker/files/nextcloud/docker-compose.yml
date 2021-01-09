@@ -9,8 +9,8 @@ services:
       - TZ=Europe/London
       - DOCKER_MODS=theorangeone/lsio-mod-more-processes:latest
     volumes:
-      - "./nextcloud/apps:/config/www/nextcloud/apps"
-      - "./nextcloud/config.php:/config/www/nextcloud/config/config.php"
+      - ./nextcloud/apps:/config/www/nextcloud/apps
+      - ./nextcloud/config.php:/config/www/nextcloud/config/config.php
       - /mnt/tank/files/nextcloud:/data
       - /mnt/tank/files:/mnt/files
     restart: unless-stopped
