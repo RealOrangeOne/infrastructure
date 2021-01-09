@@ -62,9 +62,17 @@
     mode: "0755"
   become: true
 
-- name: Install cron job
-  cron:
-    name: sanoid
-    special_time: hourly
-    job: TZ=UTC /usr/local/sbin/sanoid --cron --verbose
+- name: Install systemd services
+  file:
+    src: /opt/sanoid/packages/debian/{{ item }}
+    dest: /lib/systemd/system/{{ item }}
+    state: link
+  loop: "{{ sanoid_services }}"
+  become: true
+
+- name: Enable systemd services
+  service:
+    name: "{{ item }}"
+    enabled: true
+  loop: "{{ sanoid_services }}"
   become: true

@@ -1,0 +1,4 @@
+sanoid_services:
+  - sanoid.timer
+  - sanoid.service
+  - sanoid-prune.service
