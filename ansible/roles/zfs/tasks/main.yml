@@ -6,10 +6,11 @@
 
 - name: ZFS Scrub
   cron:
-    name: zfs scrub
+    name: zfs scrub {{ item }}
     special_time: weekly
-    job: zpool scrub tank
+    job: zpool scrub {{ item }}
   become: true
+  loop: "{{ zpools_to_scrub }}"
 
 - name: Sanoid
   include: sanoid.yml
