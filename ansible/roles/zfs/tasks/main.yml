@@ -1,8 +1,9 @@
-- name: Enable zfs module
-  modprobe:
-    name: zfs
-    state: present
-    params: zfs_arc_max={{ zfs_arc_size }}
+- name: Set module options
+  template:
+    src: files/zfs-modprobe.conf
+    dest: /etc/modprobe.d/zfs.conf
+    mode: "0644"
+  become: true
 
 - name: ZFS Scrub
   cron:
