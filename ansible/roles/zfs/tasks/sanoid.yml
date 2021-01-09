@@ -46,7 +46,7 @@
 - name: Install executables
   file:
     src: /opt/sanoid/{{ item }}
-    dest: /usr/local/sbin/{{ item }}
+    dest: /usr/sbin/{{ item }}
     state: link
   loop:
     - sanoid
@@ -71,8 +71,15 @@
   become: true
 
 - name: Enable systemd services
-  service:
+  systemd:
     name: "{{ item }}"
     enabled: true
+    masked: false
   loop: "{{ sanoid_services }}"
+  become: true
+
+- name: Start sanoid timer
+  systemd:
+    name: sanoid.timer
+    state: started
   become: true
