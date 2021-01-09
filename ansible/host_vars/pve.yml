@@ -3,3 +3,6 @@ expose_ssh: true
 zpools_to_scrub:
   - tank
   - rpool
+
+# 5GB, or so
+zfs_arc_size: 5000000000
