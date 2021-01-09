@@ -9,10 +9,9 @@ services:
       - TZ=Europe/London
       - DOCKER_MODS=theorangeone/lsio-mod-more-processes:latest
     volumes:
-      - "{{ app_data_dir }}/nextcloud/apps:/config/www/nextcloud/apps"
-      - "{{ app_data_dir }}/nextcloud/config.php:/config/www/nextcloud/config/config.php"
+      - "./nextcloud/apps:/config/www/nextcloud/apps"
+      - "./nextcloud/config.php:/config/www/nextcloud/config/config.php"
       - /mnt/tank/files/nextcloud:/data
-      - /mnt/media:/content:ro
       - /mnt/tank/files:/mnt/files
     restart: unless-stopped
     depends_on:
@@ -34,7 +33,7 @@ services:
     image: mariadb:10.5
     restart: unless-stopped
     volumes:
-      - /mnt/tank/dbs/mariadb/nextcloud:/var/lib/mysql
+      - ./mariadb:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=nextcloud
       - MYSQL_DATABASE=nextcloud
@@ -45,7 +44,7 @@ services:
     image: redis:6-alpine
     restart: unless-stopped
     volumes:
-      - /mnt/tank/dbs/redis/nextcloud:/data
+      - ./redis:/data
 
   collabora:
     image: collabora/code:latest

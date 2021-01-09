@@ -14,7 +14,6 @@
     - gateway
 
 - hosts:
-    - intersect
     - walker
     - grimes
     - pve-docker
@@ -32,7 +31,6 @@
 # ZFS Hosts
 - hosts:
     - walker
-    - intersect
   roles:
     - zfs
 
@@ -42,14 +40,11 @@
     - plausible
     - duplicati
 
-- hosts: intersect
+- hosts: pve-docker
   roles:
-    - home_assistant
-    - intersect_docker
-    - duplicati
+    - pve_docker
     - grafana
     - gitlab
-    - scrutiny
     - heimdall
 
 - hosts: walker

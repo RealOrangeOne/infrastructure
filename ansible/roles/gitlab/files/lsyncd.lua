@@ -6,7 +6,7 @@ settings {
 sync {
     default.rsyncssh,
     source    = "/mnt/pages",
-    host      = "user@{{ wireguard.clients.walker.ip }}",
+    host      = "user@5.39.79.153",
     targetdir = "/config/pages",
     delay     = 10,
     rsync     = {

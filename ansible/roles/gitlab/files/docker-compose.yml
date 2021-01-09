@@ -22,7 +22,7 @@ services:
       - db
       - redis
     ports:
-      - "{{ wireguard.clients.intersect.ip }}:8022:22"
+      - "8022:22"
     labels:
       - traefik.enable=true
       - traefik.http.routers.gitlab.rule=Host(`git.theorangeone.net`) || Host(`git.0rng.one`)
@@ -34,7 +34,7 @@ services:
     image: postgres:12-alpine
     restart: unless-stopped
     volumes:
-      - /mnt/tank/dbs/postgres/gitlab:/var/lib/postgresql/data
+      - ./postgres:/var/lib/postgresql/data
     environment:
       - POSTGRES_PASSWORD=gitlab
       - POSTGRES_USER=gitlab
@@ -44,7 +44,7 @@ services:
     image: redis:6-alpine
     restart: unless-stopped
     volumes:
-      - /mnt/tank/dbs/redis/gitlab:/data
+      - ./redis:/data
 
   lsyncd:
     image: theorangeone/lsyncd:latest

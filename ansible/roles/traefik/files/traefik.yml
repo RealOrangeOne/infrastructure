@@ -3,17 +3,17 @@ entryPoints:
     address: :80
     proxyProtocol:
       trustedIPs:
-        - "{{ wireguard.cidr }}"
+        - "{{ traefik_proxy_protocol_trusted_ips }}"
   web-secure:
     address: :443
     proxyProtocol:
       trustedIPs:
-        - "{{ wireguard.cidr }}"
+        - "{{ traefik_proxy_protocol_trusted_ips }}"
   matrix:
     address: :8448
     proxyProtocol:
       trustedIPs:
-        - "{{ wireguard.cidr }}"
+        - "{{ traefik_proxy_protocol_trusted_ips }}"
   traefik:
     address: "{{ traefik_private_ip }}:8080"
 

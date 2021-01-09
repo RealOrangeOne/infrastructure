@@ -9,7 +9,7 @@ services:
       - TZ=Europe/London
     restart: unless-stopped
     volumes:
-      - "{{ app_data_dir }}/heimdall/:/config"
+      - "./config:/config"
     labels:
       - traefik.enable=true
       - traefik.http.routers.heimdall.rule=Host(`jakehoward.tech`)
