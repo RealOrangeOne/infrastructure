@@ -1,2 +1,31 @@
 # Cap ARC size to 50% RAM
 zfs_arc_size: "{{ (ansible_memtotal_mb * 1024 * 1024) * 0.5 }}"
+
+sanoid_datasets:
+  tank:
+    use_template: production
+    recursive: true
+    process_children_only: true
+
+  tank/downloads:
+    use_template: replaceable
+    recursive: true
+
+sanoid_templates:
+  production:
+    frequently: 0
+    hourly: 28
+    daily: 14
+    monthly: 1
+    yearly: 0
+    autosnap: true
+    autoprune: true
+
+  replaceable:
+    frequently: 0
+    hourly: 6
+    daily: 2
+    monthly: 0
+    yearly: 0
+    autosnap: true
+    autoprune: true

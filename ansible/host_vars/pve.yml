@@ -6,3 +6,13 @@ zpools_to_scrub:
 
 # 5GB, or so
 zfs_arc_size: 5000000000
+
+sanoid_datasets:
+  tank:
+    use_template: production
+    recursive: true
+    process_children_only: true
+
+  rpool:
+    use_template: production
+    recursive: true
