@@ -1,4 +1,0 @@
-- name: restart homeassistant
-  shell:
-    chdir: /opt/home-assistant
-    cmd: "{{ docker_update_command }}"
