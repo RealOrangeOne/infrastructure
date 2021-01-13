@@ -1,0 +1,12 @@
+http:
+  routers:
+    router-jellyfin:
+      rule: Host(`media.jakehoward.tech`)
+      service: service-jellyfin
+      tls:
+        certResolver: le
+  services:
+    service-jellyfin:
+      loadBalancer:
+        servers:
+          - url: http://10.23.1.29:8096

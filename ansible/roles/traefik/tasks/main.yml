@@ -47,3 +47,23 @@
     owner: "{{ docker_user.name }}"
   notify: restart traefik
   become: true
+
+- name: Install homeassistant provider
+  template:
+    src: files/file-provider-homeassistant.yml
+    dest: /opt/traefik/traefik/conf/homeassistant.yml
+    mode: "{{ docker_compose_file_mask }}"
+    owner: "{{ docker_user.name }}"
+  notify: restart traefik
+  when: traefik_router_homeassistant
+  become: true
+
+- name: Install jellyfin provider
+  template:
+    src: files/file-provider-jellyfin.yml
+    dest: /opt/traefik/traefik/conf/jellyfin.yml
+    mode: "{{ docker_compose_file_mask }}"
+    owner: "{{ docker_user.name }}"
+  notify: restart traefik
+  when: traefik_router_jellyfin
+  become: true
