@@ -55,7 +55,7 @@
     mode: "{{ docker_compose_file_mask }}"
     owner: "{{ docker_user.name }}"
   notify: restart traefik
-  when: traefik_router_homeassistant
+  when: traefik_provider_homeassistant
   become: true
 
 - name: Install jellyfin provider
@@ -65,5 +65,5 @@
     mode: "{{ docker_compose_file_mask }}"
     owner: "{{ docker_user.name }}"
   notify: restart traefik
-  when: traefik_router_jellyfin
+  when: traefik_provider_jellyfin
   become: true
