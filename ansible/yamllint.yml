@@ -3,6 +3,7 @@ extends: default
 ignore: |
   ansible/galaxy_roles
   ansible/group_vars/all/hosts.yml
+  ansible/roles/traefik/files/traefik.yml
 
 rules:
   document-start: disable

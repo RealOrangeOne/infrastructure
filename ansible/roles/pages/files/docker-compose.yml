@@ -1,0 +1,29 @@
+version: "2.3"
+
+services:
+  minio:
+    image: minio/minio:latest
+    restart: unless-stopped
+    user: "{{ pages_user_id }}"
+    volumes:
+      - ./sites:/data
+    command: server /data --quiet
+    environment:
+      - MINIO_ACCESS_KEY={{ minio_access_key }}
+      - MINIO_SECRET_KEY={{ minio_secret_key }}
+
+  traefik-pages:
+    image: theorangeone/traefik-pages:latest
+    volumes:
+      - ./sites:/sites:ro
+    restart: unless-stopped
+    user: "{{ pages_user_id }}"
+    ports:
+      - 127.0.0.1:5000:5000
+    environment:
+      - SITES_ROOT=/sites
+      - TRAEFIK_SERVICE=traefik-pages-pages@docker
+      - AUTH_PASSWORD={{ traefik_pages_password }}
+      - TRAEFIK_CERT_RESOLVER=le
+    labels:
+      - traefik.enable=true
