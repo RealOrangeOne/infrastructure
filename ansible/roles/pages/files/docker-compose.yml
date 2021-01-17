@@ -11,6 +11,10 @@ services:
     environment:
       - MINIO_ACCESS_KEY={{ minio_access_key }}
       - MINIO_SECRET_KEY={{ minio_secret_key }}
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.upload.rule=Host(`pages.theorangeone.net`)
+      - traefik.http.routers.upload.tls.certresolver=le
 
   traefik-pages:
     image: theorangeone/traefik-pages:latest

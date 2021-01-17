@@ -149,10 +149,10 @@ resource "cloudflare_record" "theorangeonenet_plausible_bare" {
   ttl     = 1
 }
 
-resource "cloudflare_record" "theorangeonenet_gitlab_pages" {
+resource "cloudflare_record" "theorangeonenet_pages" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "pages"
-  value   = var.walker_ip
+  value   = linode_instance.grimes.ip_address
   type    = "A"
   ttl     = 1
 }
@@ -168,7 +168,7 @@ resource "cloudflare_record" "theorangeonenet_gitlab_pages_wildcard" {
 resource "cloudflare_record" "theorangeonenet_notes" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "notes"
-  value   = cloudflare_record.theorangeonenet_gitlab_pages.hostname
+  value   = cloudflare_record.theorangeonenet_pages.hostname
   type    = "CNAME"
   ttl     = 1
 }
