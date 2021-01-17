@@ -76,18 +76,10 @@ resource "cloudflare_record" "theorangeonenet_dkim_fm3" {
   ttl     = 1
 }
 
-resource "cloudflare_record" "theorangeonenet_www" {
-  zone_id = cloudflare_zone.theorangeonenet.id
-  name    = "www"
-  value   = var.walker_ip
-  type    = "A"
-  ttl     = 1
-}
-
 resource "cloudflare_record" "theorangeonenet_apex" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "@"
-  value   = var.walker_ip
+  value   = linode_instance.grimes.ip_address
   type    = "A"
   ttl     = 1
 }
