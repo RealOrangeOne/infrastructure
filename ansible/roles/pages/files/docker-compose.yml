@@ -13,8 +13,8 @@ services:
       - MINIO_SECRET_KEY={{ minio_secret_key }}
     labels:
       - traefik.enable=true
-      - traefik.http.routers.upload.rule=Host(`pages.theorangeone.net`)
-      - traefik.http.routers.upload.tls.certresolver=le
+      - traefik.http.routers.pages.rule=Host(`pages.theorangeone.net`)
+      - traefik.http.routers.pages.tls.certresolver=le
 
   traefik-pages:
     image: theorangeone/traefik-pages:latest
