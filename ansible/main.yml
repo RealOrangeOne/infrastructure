@@ -48,6 +48,7 @@
     - grafana
     - gitlab
     - heimdall
+    - gitea
 
 - hosts: walker
   roles:

@@ -2,7 +2,7 @@
   user:
     name: "{{ user }}"
     home: "{{ home }}"
-    comment: Jake Howard
+    comment: "{{ name }}"
     shell: /bin/bash
     system: true
   become: true
