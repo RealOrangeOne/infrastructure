@@ -49,6 +49,7 @@
     - gitlab
     - heimdall
     - gitea
+    - duplicati
 
 - hosts: walker
   roles:

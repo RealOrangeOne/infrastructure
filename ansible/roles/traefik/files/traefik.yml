@@ -15,7 +15,7 @@ entryPoints:
       trustedIPs:
         - "{{ traefik_proxy_protocol_trusted_ips }}"
   traefik:
-    address: "{{ traefik_private_ip }}:8080"
+    address: "{{ private_ip }}:8080"
 
 ping: {}
 
@@ -53,7 +53,7 @@ serversTransport:
 
 metrics:
   influxDB:
-    address: "{{ traefik_private_ip }}:38089"
+    address: "{{ private_ip }}:38089"
     database: traefik
     pushInterval: 30s
 

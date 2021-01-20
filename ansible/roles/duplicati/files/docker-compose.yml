@@ -13,4 +13,4 @@ services:
       - /:/source:ro
     restart: unless-stopped
     ports:
-      - "{{ wireguard.clients[ansible_fqdn].ip }}:8200:8200"
+      - "{{ protected_ip }}:8200:8200"
