@@ -33,3 +33,11 @@ resource "cloudflare_record" "orngone_dl" {
   type    = "A"
   ttl     = 1
 }
+
+resource "cloudflare_record" "orngone_yourls" {
+  zone_id = cloudflare_zone.orngone.id
+  name    = "@"
+  value   = vultr_server.casey.main_ip
+  type    = "A"
+  ttl     = 1
+}

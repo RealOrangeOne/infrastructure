@@ -1,0 +1,26 @@
+- name: Create install directory
+  file:
+    path: /opt/yourls
+    state: directory
+    owner: "{{ docker_user.name }}"
+    mode: "{{ docker_compose_directory_mask }}"
+  become: true
+
+- name: Install compose file
+  template:
+    src: files/docker-compose.yml
+    dest: /opt/yourls/docker-compose.yml
+    mode: "{{ docker_compose_file_mask }}"
+    owner: "{{ docker_user.name }}"
+    validate: /usr/bin/docker-compose -f %s config
+  notify: restart yourls
+  become: true
+
+- name: Install redirect file
+  template:
+    src: files/index.html
+    dest: /opt/yourls/index.html
+    mode: "{{ docker_compose_file_mask }}"
+    owner: "{{ docker_user.name }}"
+  notify: restart yourls
+  become: true

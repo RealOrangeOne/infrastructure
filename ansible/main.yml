@@ -50,6 +50,7 @@
     - heimdall
     - gitea
     - duplicati
+    - yourls
 
 - hosts: walker
   roles:

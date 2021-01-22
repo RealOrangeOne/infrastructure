@@ -1,0 +1,32 @@
+version: "2.3"
+
+services:
+  yourls:
+    image: yourls:1.7.9-apache
+    restart: unless-stopped
+    depends_on:
+      - mariadb
+    environment:
+      - YOURLS_DB_PASS=yourls
+      - YOURLS_DB_USER=yourls
+      - YOURLS_DB_HOST=mariadb
+      - YOURLS_USER=jake
+      - YOURLS_PASS={{ yourls_password }}
+      - YOURLS_SITE=https://0rng.one
+    volumes:
+      - ./index.html:/var/www/html/index.html
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.yourls.rule=Host(`0rng.one`)
+      - traefik.http.routers.yourls.tls.certresolver=le
+
+  mariadb:
+    image: mariadb:10.5
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=yourls
+      - MYSQL_USER=yourls
+      - MYSQL_PASSWORD=yourls
+    volumes:
+      - ./mariadb:/var/lib/mysql
+    restart: unless-stopped

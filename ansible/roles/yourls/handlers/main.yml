@@ -1,0 +1,4 @@
+- name: restart yourls
+  shell:
+    chdir: /opt/yourls
+    cmd: "{{ docker_update_command }}"
