@@ -11,6 +11,7 @@ services:
       - 3022:3022
     depends_on:
       - db
+      - redis
     volumes:
       - "{{ app_data_dir }}/gitea/app.ini:/data/gitea/conf/app.ini"
       - "{{ app_data_dir }}/gitea/:/data"
@@ -31,3 +32,9 @@ services:
     environment:
       - POSTGRES_PASSWORD=gitea
       - POSTGRES_USER=gitea
+
+  redis:
+    image: redis:6-alpine
+    restart: unless-stopped
+    volumes:
+      - /mnt/tank/dbs/redis/gitea/:/data
