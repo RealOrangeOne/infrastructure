@@ -1,8 +1,7 @@
 - name: Install Wireguard
   package:
     name:
-      - wireguard-virt
-      - wireguard-tools
+      - wireguard
   become: true
 
 - name: Get wireguard credentials
@@ -18,18 +17,9 @@
   become: true
   notify: restart wireguard
 
-# Wireguard on Alpine doesn't ship a native OpenRC service
-- name: Download wireguard service
-  get_url:
-    url: https://gitweb.gentoo.org/repo/gentoo.git/plain/net-vpn/wireguard-tools/files/wg-quick.init
-    dest: /etc/init.d/wg-quick.wg0
-    mode: "0755"
-    backup: yes
-  become: true
-
 - name: Enable wireguard
   service:
-    name: wg-quick.wg0
+    name: wg-quick@wg0
     enabled: true
   become: true
 
