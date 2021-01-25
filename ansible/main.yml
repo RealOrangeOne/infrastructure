@@ -12,6 +12,7 @@
 - hosts: casey
   roles:
     - gateway
+    - nebula
 
 - hosts:
     - walker

@@ -1,0 +1,19 @@
+- name: Install Nebula
+  package:
+    name: nebula
+  when: ansible_os_family == 'Archlinux'
+  become: true
+
+- name: Create nebula directory
+  file:
+    path: /etc/nebula
+    state: directory
+    mode: "0700"
+  become: true
+
+- name: Install nebula config
+  template:
+    src: files/nebula.yml
+    dest: /etc/nebula/config.yml
+    mode: "0600"
+  become: true

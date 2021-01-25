@@ -4,6 +4,7 @@ ignore: |
   ansible/galaxy_roles
   ansible/group_vars/all/hosts.yml
   ansible/roles/traefik/files/traefik.yml
+  ansible/roles/nebula/files/nebula.yml
 
 rules:
   document-start: disable
