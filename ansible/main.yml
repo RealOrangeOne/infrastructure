@@ -48,7 +48,6 @@
     - pve_docker
     - grafana
     - gitlab
-    - heimdall
     - gitea
     - duplicati
     - yourls

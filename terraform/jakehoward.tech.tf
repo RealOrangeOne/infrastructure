@@ -155,11 +155,3 @@ resource "cloudflare_record" "jakehowardtech_grafana" {
   type    = "A"
   ttl     = 1
 }
-
-resource "cloudflare_record" "jakehowardtech_apex" {
-  zone_id = cloudflare_zone.jakehowardtech.id
-  name    = "@"
-  value   = vultr_server.casey.main_ip
-  type    = "A"
-  ttl     = 1
-}
