@@ -104,7 +104,7 @@ resource "cloudflare_record" "theorangeonenet_srv_matrix" {
 resource "cloudflare_record" "theorangeonenet_img" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "img"
-  value   = var.walker_ip
+  value   = linode_instance.grimes.ip_address
   type    = "A"
   ttl     = 1
 }
@@ -112,7 +112,7 @@ resource "cloudflare_record" "theorangeonenet_img" {
 resource "cloudflare_record" "theorangeonenet_dl" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "dl"
-  value   = var.walker_ip
+  value   = linode_instance.grimes.ip_address
   type    = "A"
   ttl     = 1
 }
@@ -120,7 +120,7 @@ resource "cloudflare_record" "theorangeonenet_dl" {
 resource "cloudflare_record" "theorangeonenet_bg" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "bg"
-  value   = var.walker_ip
+  value   = linode_instance.grimes.ip_address
   type    = "A"
   ttl     = 1
 }
@@ -128,7 +128,7 @@ resource "cloudflare_record" "theorangeonenet_bg" {
 resource "cloudflare_record" "theorangeonenet_upload" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "upload"
-  value   = var.walker_ip
+  value   = linode_instance.grimes.ip_address
   type    = "A"
   ttl     = 1
 }

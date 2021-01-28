@@ -42,6 +42,7 @@
     - plausible
     - duplicati
     - pages
+    - upload
 
 - hosts: pve-docker
   roles:
@@ -55,7 +56,6 @@
 - hosts: walker
   roles:
     - contessa
-    - upload
     - duplicati
     - gitlab_pages
     - deluge
