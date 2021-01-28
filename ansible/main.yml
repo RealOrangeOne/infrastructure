@@ -15,7 +15,6 @@
     - nebula
 
 - hosts:
-    - walker
     - grimes
     - pve-docker
   roles:
@@ -28,13 +27,6 @@
           - "{{ user }}"
     - docker_cleanup
     - traefik
-
-# ZFS Hosts
-- hosts:
-    - walker
-    - pve
-  roles:
-    - zfs
 
 - hosts:
     - grimes
@@ -53,13 +45,6 @@
     - duplicati
     - yourls
 
-- hosts: walker
-  roles:
-    - contessa
-    - duplicati
-    - gitlab_pages
-    - deluge
-
 - hosts: ingress
   roles:
     - ingress
@@ -69,3 +54,4 @@
     - role: proxmox-nag-removal
       become: true
     - pve
+    - zfs

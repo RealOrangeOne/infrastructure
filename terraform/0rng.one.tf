@@ -21,15 +21,7 @@ resource "cloudflare_record" "orngone_who" {
 resource "cloudflare_record" "orngone_img" {
   zone_id = cloudflare_zone.orngone.id
   name    = "img"
-  value   = var.walker_ip
-  type    = "A"
-  ttl     = 1
-}
-
-resource "cloudflare_record" "orngone_dl" {
-  zone_id = cloudflare_zone.orngone.id
-  name    = "dl"
-  value   = var.walker_ip
+  value   = linode_instance.grimes.ip_address
   type    = "A"
   ttl     = 1
 }
