@@ -1,4 +1,0 @@
-- name: restart gitlab
-  shell:
-    chdir: /opt/gitlab
-    cmd: "{{ docker_update_command }}"

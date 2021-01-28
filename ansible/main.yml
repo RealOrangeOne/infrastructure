@@ -40,7 +40,6 @@
   roles:
     - pve_docker
     - grafana
-    - gitlab
     - gitea
     - duplicati
     - yourls
