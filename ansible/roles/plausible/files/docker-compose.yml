@@ -2,7 +2,7 @@ version: "2.3"
 
 services:
   plausible:
-    image: plausible/analytics:v1.1
+    image: plausible/analytics:v1.2
     restart: unless-stopped
     command: sh -c "/entrypoint.sh db migrate && /entrypoint.sh run"
     depends_on:
