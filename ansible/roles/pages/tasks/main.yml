@@ -1,6 +1,6 @@
 - name: Create install directory
   file:
-    path: /opt/pages/sites
+    path: /opt/pages
     state: directory
     owner: "{{ docker_user.name }}"
     mode: "{{ docker_compose_directory_mask }}"
