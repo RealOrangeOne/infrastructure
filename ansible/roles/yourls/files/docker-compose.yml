@@ -14,7 +14,7 @@ services:
       - YOURLS_PASS={{ yourls_password }}
       - YOURLS_SITE=https://0rng.one
     volumes:
-      - ./index.html:/var/www/html/index.html
+      - ./index.html:/var/www/html/index.html:ro
     labels:
       - traefik.enable=true
       - traefik.http.routers.yourls.rule=Host(`0rng.one`)
