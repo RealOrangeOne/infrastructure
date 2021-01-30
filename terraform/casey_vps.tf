@@ -60,7 +60,7 @@ resource "vultr_firewall_rule" "casey_mc" {
 
 resource "vultr_firewall_rule" "casey_nebula" {
   firewall_group_id = vultr_firewall_group.casey.id
-  protocol          = "tcp"
+  protocol          = "udp"
   from_port         = 6328
   network           = "0.0.0.0/0"
 }
