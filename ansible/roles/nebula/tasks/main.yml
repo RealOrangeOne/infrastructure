@@ -1,19 +1,36 @@
-- name: Install Nebula
-  package:
-    name: nebula
-  when: ansible_os_family == 'Archlinux'
-  become: true
-
-- name: Create nebula directory
+- name: Create config directory
   file:
     path: /etc/nebula
     state: directory
     mode: "0700"
   become: true
 
-- name: Install nebula config
+- name: Install binaries
+  unarchive:
+    src: https://github.com/slackhq/nebula/releases/download/v{{ nebula_version }}/nebula-linux-amd64.tar.gz
+    dest: /usr/bin
+    remote_src: yes
+    mode: "0755"
+  become: true
+  notify: restart nebula
+
+- name: Install config
   template:
     src: files/nebula.yml
     dest: /etc/nebula/config.yml
     mode: "0600"
+  become: true
+  notify: restart nebula
+
+- name: Install service
+  get_url:
+    url: https://raw.githubusercontent.com/slackhq/nebula/v{{ nebula_version }}/dist/arch/nebula.service
+    dest: /usr/lib/systemd/system/nebula.service
+    mode: '0644'
+  become: true
+
+- name: Enable service
+  service:
+    name: nebula
+    enabled: true
   become: true

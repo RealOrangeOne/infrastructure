@@ -1,0 +1,5 @@
+- name: restart nebula
+  service:
+    name: nebula
+    state: reloaded
+  become: true
