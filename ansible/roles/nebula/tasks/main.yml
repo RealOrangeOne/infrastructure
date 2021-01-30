@@ -22,11 +22,30 @@
   become: true
   notify: restart nebula
 
+- name: Install CA certificate
+  template:
+    src: files/ca.crt
+    dest: /etc/nebula/ca.crt
+    mode: "0600"
+  become: true
+  notify: restart nebula
+
+- name: Install client certificates
+  template:
+    src: files/certs/{{ item }}
+    dest: /etc/nebula/{{ item }}
+    mode: "0600"
+  loop:
+    - "{{ ansible_fqdn }}.key"
+    - "{{ ansible_fqdn }}.crt"
+  become: true
+  notify: restart nebula
+
 - name: Install service
   get_url:
     url: https://raw.githubusercontent.com/slackhq/nebula/v{{ nebula_version }}/dist/arch/nebula.service
     dest: /usr/lib/systemd/system/nebula.service
-    mode: '0644'
+    mode: "0644"
   become: true
 
 - name: Enable service
