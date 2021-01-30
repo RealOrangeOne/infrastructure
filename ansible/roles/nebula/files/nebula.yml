@@ -1,7 +1,7 @@
 pki:
   ca: /etc/nebula/ca.crt
-  cert: /etc/nebula/host.crt
-  key: /etc/nebula/host.key
+  cert: /etc/nebula/{{ ansible_fqdn }}.crt
+  key: /etc/nebula/{{ ansible_fqdn }}.key
 
 static_host_map:
   "{{ nebula_lighthouse_ip }}": ["{{ nebula_lighthouse_public_ip }}:{{ nebula_lighthouse_port }}"]
