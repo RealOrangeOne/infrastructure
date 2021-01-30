@@ -53,3 +53,14 @@
     name: nebula
     enabled: true
   become: true
+
+- name: Enable unsafe routing
+  iptables:
+    table: nat
+    chain: POSTROUTING
+    out_interface: ens18
+    source: "{{ nebula.subnet }}"
+    jump: MASQUERADE
+  notify: persist iptables
+  become: true
+  when: ansible_fqdn == "ingress"

@@ -47,6 +47,8 @@
 
 - hosts: ingress
   roles:
+    - role: chmduquesne.iptables_persistent
+      become: true
     - ingress
     - nebula
 

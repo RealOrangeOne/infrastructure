@@ -11,9 +11,9 @@ lighthouse:
   am_lighthouse: "{{ nebula_is_lighthouse | lower }}"
   interval: 60
   hosts:
-    {% if not nebula_is_lighthouse %}
+{% if not nebula_is_lighthouse %}
     - "{{ nebula_lighthouse_ip }}"
-    {% endif %}
+{% endif %}
 
 listen:
   host: 0.0.0.0
@@ -31,6 +31,10 @@ tun:
   mtu: 1300
   routes:
   unsafe_routes:
+{% if ansible_fqdn != "ingress" %}
+    - route: 10.23.1.0/24
+      via: "{{ nebula.clients.ingress.ip }}"
+{% endif %}
 
 
 logging:
