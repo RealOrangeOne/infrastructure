@@ -25,7 +25,7 @@
 
 - name: Enable grafana
   service:
-    name: grafana-service
+    name: grafana-server
     enabled: true
   become: true
 
@@ -47,7 +47,7 @@
   loop_control:
     label: "{{ item.section }}.{{ item.option }}={{ item.value }}"
   loop:
-    - {section: http, option: bind-address, value: ":8086"}
+    - {section: http, option: bind-address, value: 0.0.0.0:8086}
     - {section: http, option: auth-enabled, value: "true"}
 
 - name: Configure grafana
