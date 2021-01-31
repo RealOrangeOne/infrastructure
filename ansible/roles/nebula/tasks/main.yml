@@ -59,7 +59,7 @@
     table: nat
     chain: POSTROUTING
     out_interface: ens18
-    source: "{{ nebula.subnet }}"
+    source: "{{ nebula.cidr }}"
     jump: MASQUERADE
   notify: persist iptables
   become: true

@@ -9,4 +9,4 @@ http:
     service-jellyfin:
       loadBalancer:
         servers:
-          - url: http://10.23.1.29:8096
+          - url: http://{{ pve_hosts.jellyfin.internal_ip }}:8096

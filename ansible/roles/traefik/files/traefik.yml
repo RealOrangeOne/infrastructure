@@ -3,17 +3,23 @@ entryPoints:
     address: :80
     proxyProtocol:
       trustedIPs:
-        - "{{ traefik_proxy_protocol_trusted_ips }}"
+        - "{{ wireguard.cidr }}"
+        - "{{ pve_hosts.internal_cidr }}"
+        - "{{ nebula.cidr }}"
   web-secure:
     address: :443
     proxyProtocol:
       trustedIPs:
-        - "{{ traefik_proxy_protocol_trusted_ips }}"
+        - "{{ wireguard.cidr }}"
+        - "{{ pve_hosts.internal_cidr }}"
+        - "{{ nebula.cidr }}"
   matrix:
     address: :8448
     proxyProtocol:
       trustedIPs:
-        - "{{ traefik_proxy_protocol_trusted_ips }}"
+        - "{{ wireguard.cidr }}"
+        - "{{ pve_hosts.internal_cidr }}"
+        - "{{ nebula.cidr }}"
   traefik:
     address: "{{ private_ip }}:8080"
 

@@ -1,0 +1,13 @@
+pve_hosts:
+  internal_cidr: 10.23.1.0/24
+  ingress:
+    ip: 192.168.2.201
+    internal_ip: 10.23.1.88
+  jellyfin:
+    ip: 192.168.2.46
+    internal_ip: 10.23.1.29
+  pve_docker:
+    ip: 192.168.2.47
+    internal_ip: 10.23.1.7
+  homeassistant:
+    ip: 192.168.2.41

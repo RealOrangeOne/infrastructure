@@ -1,5 +1,5 @@
 nebula:
-  subnet: 10.23.2.0/24
+  cidr: 10.23.2.0/24
   clients:
     casey:
       ip: 10.23.2.1

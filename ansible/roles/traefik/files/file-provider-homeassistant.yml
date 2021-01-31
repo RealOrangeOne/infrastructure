@@ -9,4 +9,4 @@ http:
     service-homeassistant:
       loadBalancer:
         servers:
-          - url: http://192.168.2.41:8123
+          - url: http://{{ pve_hosts.homeassistant.ip }}:8123

@@ -4,7 +4,7 @@
       - ip
       - route
       - show
-      - "{{ nebula.subnet }}"
+      - "{{ nebula.cidr }}"
   register: routes
   changed_when: false
   become: true
@@ -15,8 +15,8 @@
       - ip
       - route
       - add
-      - "{{ nebula.subnet }}"
+      - "{{ nebula.cidr }}"
       - via
-      - "{{ ingress_private_ip }}"
+      - "{{ pve_hosts.ingress.internal_ip }}"
   become: true
-  when: nebula.subnet not in routes.stdout
+  when: nebula.cidr not in routes.stdout
