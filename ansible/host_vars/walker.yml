@@ -1,4 +1,0 @@
-docker_zfs_override: true
-
-zpools_to_scrub:
-  - tank
