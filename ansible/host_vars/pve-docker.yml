@@ -5,3 +5,4 @@ protected_ip: "{{ pve_hosts.pve_docker.internal_ip }}"
 
 traefik_provider_jellyfin: true
 traefik_provider_homeassistant: true
+traefik_provider_grafana: true

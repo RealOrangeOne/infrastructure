@@ -67,3 +67,13 @@
   notify: restart traefik
   when: traefik_provider_jellyfin
   become: true
+
+- name: Install grafana provider
+  template:
+    src: files/file-provider-grafana.yml
+    dest: /opt/traefik/traefik/conf/grafana.yml
+    mode: "{{ docker_compose_file_mask }}"
+    owner: "{{ docker_user.name }}"
+  notify: restart traefik
+  when: traefik_provider_grafana
+  become: true

@@ -2,5 +2,6 @@ traefik_influx_db_dir: ./influxdb
 
 traefik_provider_jellyfin: false
 traefik_provider_homeassistant: false
+traefik_provider_grafana: false
 
 with_traefik_pages: false

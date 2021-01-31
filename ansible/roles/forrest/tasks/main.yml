@@ -1,0 +1,65 @@
+- name: Add grafana repository
+  apt_repository:
+    repo: deb https://packages.grafana.com/oss/deb stable main
+    state: present
+    filename: grafana
+
+- name: Add influxdb repository
+  apt_repository:
+    repo: deb https://repos.influxdata.com/debian buster stable
+    state: present
+    filename: influxdb
+
+- name: Install grafana
+  package:
+    name: grafana
+  become: true
+
+- name: Install influxdb
+  package:
+    name: grafana
+  become: true
+  loop:
+    - influxdb
+    - chronograf
+
+- name: Enable grafana
+  service:
+    name: grafana-service
+    enabled: true
+  become: true
+
+- name: Enable influxdb
+  service:
+    name: influxdb
+    enabled: true
+  become: true
+
+- name: Configure influxdb
+  ini_file:
+    path: /etc/influxdb/influxdb.conf
+    mode: "0644"
+    section: "{{ item.section }}"
+    option: "{{ item.option }}"
+    value: "{{ item.value }}"
+  become: true
+  notify: restart influxdb
+  loop_control:
+    label: "{{ item.section }}.{{ item.option }}={{ item.value }}"
+  loop:
+    - {section: http, option: bind-address, value: ":8086"}
+    - {section: http, option: auth-enabled, value: "true"}
+
+- name: Configure grafana
+  ini_file:
+    path: /etc/grafana/grafana.ini
+    mode: "0644"
+    section: "{{ item.section }}"
+    option: "{{ item.option }}"
+    value: "{{ item.value }}"
+  become: true
+  notify: restart grafana
+  loop_control:
+    label: "{{ item.section }}.{{ item.option }}={{ item.value }}"
+  loop:
+    - {section: server, option: domain, value: grafana.jakehoward.tech}

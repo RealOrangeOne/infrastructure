@@ -1,0 +1,12 @@
+http:
+  routers:
+    router-grafana:
+      rule: Host(`grafana.jakehoward.tech`)
+      service: service-grafana
+      tls:
+        certResolver: le
+  services:
+    service-grafana:
+      loadBalancer:
+        servers:
+          - url: http://{{ pve_hosts.forrest.internal_ip }}:3000

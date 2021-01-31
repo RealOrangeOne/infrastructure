@@ -40,7 +40,6 @@
 - hosts: pve-docker
   roles:
     - pve_docker
-    - grafana
     - gitea
     - duplicati
     - yourls
@@ -60,3 +59,7 @@
     - pve
     - zfs
     - pve_nebula_route
+
+- hosts: forrest
+  roles:
+    - forrest
