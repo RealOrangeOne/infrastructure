@@ -44,6 +44,7 @@
     - gitea
     - duplicati
     - yourls
+    - pve_nebula_route
 
 - hosts: ingress
   roles:
@@ -58,3 +59,4 @@
       become: true
     - pve
     - zfs
+    - pve_nebula_route

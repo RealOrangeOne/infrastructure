@@ -1,0 +1,22 @@
+- name: Get routes
+  command:
+    argv:
+      - ip
+      - route
+      - show
+      - "{{ nebula.subnet }}"
+  register: routes
+  changed_when: false
+  become: true
+
+- name: Add route to nebula hosts via ingress
+  command:
+    argv:
+      - ip
+      - route
+      - add
+      - "{{ nebula.subnet }}"
+      - via
+      - "{{ ingress_private_ip }}"
+  become: true
+  when: nebula.subnet not in routes.stdout
