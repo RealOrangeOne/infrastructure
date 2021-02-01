@@ -70,3 +70,7 @@
 - hosts: forrest
   roles:
     - forrest
+
+- hosts: deluge
+  roles:
+    - deluge
