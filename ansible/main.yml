@@ -6,6 +6,7 @@
       vars:
         ntp_timezone: Europe/London
         ntp_manage_config: true
+      when: ansible_os_family != 'Alpine'  # https://github.com/ansible-collections/community.general/issues/781
     - role: realorangeone.reflector
       when: ansible_os_family == 'Archlinux'
 
@@ -17,6 +18,7 @@
 - hosts:
     - grimes
     - pve-docker
+    - deluge
   roles:
     - role: geerlingguy.docker
       become: true
@@ -26,6 +28,11 @@
         docker_users:
           - "{{ user }}"
     - docker_cleanup
+
+- hosts:
+    - grimes
+    - pve-docker
+  roles:
     - traefik
 
 - hosts:
