@@ -23,7 +23,7 @@
     - role: geerlingguy.docker
       become: true
       vars:
-        docker_install_compose: false  # This role installs the binary directly, which is kinda nasty
+        docker_install_compose: "{{ ansible_os_family == 'Debian' }}"
         docker_package: "{{ 'docker-ce' if ansible_os_family == 'Debian' else 'docker' }}"
         docker_users:
           - "{{ user }}"

@@ -2,6 +2,7 @@
   package:
     name: docker-compose
   become: true
+  when: ansible_os_family != 'Debian'
 
 - name: Create docker group
   group:
