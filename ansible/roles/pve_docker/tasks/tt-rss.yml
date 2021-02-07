@@ -55,9 +55,10 @@
     path: "{{ plugins_dir.path }}"
     state: directory
     owner: "{{ docker_user.name }}"
-    mode: u=rwX,g=rX,o=rX
+    mode: u=rwX,g=rwX,o=rX
     recurse: true
   become: true
+  when: fever_plugin.changed or feediron_plugin.changed
 
 - name: restart tt-rss
   shell:
