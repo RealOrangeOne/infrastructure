@@ -26,7 +26,7 @@
     dest: /opt/traefik/docker-compose.yml
     mode: "{{ docker_compose_file_mask }}"
     owner: "{{ docker_user.name }}"
-    validate: /usr/bin/docker-compose -f %s config
+    validate: docker-compose -f %s config
   notify: restart traefik
   become: true
 
