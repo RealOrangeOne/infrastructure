@@ -26,7 +26,7 @@
   register: sshd_config
 
 - name: Set up authorized keys
-  authorized_key:
+  ansible.posix.authorized_key:
     user: "{{ user }}"
     state: present
     key: "{{ lookup('file', item) }}"

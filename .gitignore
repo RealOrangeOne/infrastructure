@@ -114,6 +114,7 @@ dmypy.json
 env/
 ansible/.vault_pass
 ansible/galaxy_roles
+ansible/galaxy_collections
 
 # Created by https://www.gitignore.io/api/terraform
 # Edit at https://www.gitignore.io/?templates=terraform

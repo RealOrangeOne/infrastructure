@@ -1,6 +1,11 @@
-- src: geerlingguy.docker
-- src: geerlingguy.ntp
-- src: realorangeone.reflector
-- src: https://github.com/IronicBadger/ansible-role-proxmox-nag-removal
-  name: proxmox-nag-removal
-- src: chmduquesne.iptables_persistent
+collections:
+  - ansible.posix
+  - community.general
+
+roles:
+  - src: geerlingguy.docker
+  - src: geerlingguy.ntp
+  - src: realorangeone.reflector
+  - src: https://github.com/IronicBadger/ansible-role-proxmox-nag-removal
+    name: proxmox-nag-removal
+  - src: chmduquesne.iptables_persistent

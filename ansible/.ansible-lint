@@ -3,3 +3,7 @@ skip_list:
   - 401
   - 301
   - 503
+
+exclude_paths:
+  - ansible/galaxy_roles/
+  - ansible/galaxy_collections/

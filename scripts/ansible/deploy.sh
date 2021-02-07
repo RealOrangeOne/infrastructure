@@ -1,10 +1,6 @@
 #!/usr/bin/env bash
 
-set -e
-
-PATH=${PWD}/env/bin:${PATH}
-
-set -x
+set -ex
 
 cd ansible/
 
