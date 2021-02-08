@@ -19,6 +19,7 @@
     - grimes
     - pve-docker
     - deluge
+    - forrest
   roles:
     - role: geerlingguy.docker
       become: true
