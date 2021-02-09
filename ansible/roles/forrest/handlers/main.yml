@@ -1,11 +1,4 @@
 - name: restart grafana
-  service:
-    name: grafana-server
-    state: restarted
-  become: true
-
-- name: restart influxdb
-  service:
-    name: influxdb
-    state: restarted
-  become: true
+  shell:
+    chdir: /opt/grafana
+    cmd: "{{ docker_update_command }}"
