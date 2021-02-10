@@ -5,7 +5,7 @@ services:
     environment:
       - PUID={{ docker_user.id }}
       - PGID={{ docker_user.id }}
-      - TZ=Europe/London
+      - TZ={{ TZ }}
     restart: unless-stopped
     volumes:
       - ./calibre:/config

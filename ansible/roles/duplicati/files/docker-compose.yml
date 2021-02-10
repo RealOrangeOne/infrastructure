@@ -6,7 +6,7 @@ services:
     environment:
       - PUID=0
       - PGID=0
-      - TZ=Europe/London
+      - TZ={{ TZ }}
     volumes:
       - ./config:/config
       - ./restore:/restore

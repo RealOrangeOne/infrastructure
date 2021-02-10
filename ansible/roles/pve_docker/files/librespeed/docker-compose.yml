@@ -5,7 +5,7 @@ services:
     environment:
       - PUID={{ docker_user.id }}
       - PGID={{ docker_user.id }}
-      - TZ=Europe/London
+      - TZ={{ TZ }}
     ports:
       - 33377:80
     restart: unless-stopped

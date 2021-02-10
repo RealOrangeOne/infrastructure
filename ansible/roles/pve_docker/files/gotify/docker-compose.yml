@@ -3,7 +3,7 @@ services:
   gotify:
     image: gotify/server:2.0.21
     environment:
-      - TZ=Europe/London
+      - TZ={{ TZ }}
     volumes:
       - ./data:/app/data
     restart: unless-stopped

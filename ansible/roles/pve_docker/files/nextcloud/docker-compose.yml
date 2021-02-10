@@ -6,7 +6,7 @@ services:
     environment:
       - PUID={{ docker_user.id }}
       - PGID={{ docker_user.id }}
-      - TZ=Europe/London
+      - TZ={{ TZ }}
       - DOCKER_MODS=theorangeone/lsio-mod-more-processes:latest
     volumes:
       - ./nextcloud/apps:/config/www/nextcloud/apps

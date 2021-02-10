@@ -7,7 +7,7 @@ services:
     environment:
       - PUID={{ docker_user.id }}
       - PGID={{ docker_user.id }}
-      - TZ=Europe/London
+      - TZ={{ TZ }}
     volumes:
       - ./deluge:/config
       - /mnt/downloads:/downloads

@@ -5,7 +5,7 @@ services:
     environment:
       - PUID={{ docker_user.id }}
       - PGID={{ docker_user.id }}
-      - TZ=Europe/London
+      - TZ={{ TZ }}
       - DB_BACKEND=PostgreSQL
       - DB_PGSQL_USERNAME=quassel
       - DB_PGSQL_PASSWORD=quassel

@@ -6,7 +6,7 @@ services:
     environment:
       - PUID={{ docker_user.id }}
       - PGID={{ docker_user.id }}
-      - TZ=Europe/London
+      - TZ={{ TZ }}
     volumes:
       - ./tt-rss/config.php:/config/config.php:ro
       - ./tt-rss/feed-icons:/config/feed-icons
