@@ -1,0 +1,15 @@
+version: "2.3"
+
+services:
+  privatebin:
+    image: privatebin/nginx-fpm-alpine:latest
+    environment:
+      - TZ={{ TZ }}
+    volumes:
+      - "{{ app_data_dir }}/privatebin/:/srv/data"
+    restart: unless-stopped
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.privatebin.rule=Host(`bin.theorangeone.net`)
+      - traefik.http.routers.privatebin.tls.certresolver=le
+      - traefik.http.routers.privatebin.middlewares=compress@file

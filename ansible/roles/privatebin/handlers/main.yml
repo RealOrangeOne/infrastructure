@@ -1,0 +1,4 @@
+- name: restart privatebin
+  shell:
+    chdir: /opt/privatebin
+    cmd: "{{ docker_update_command }}"

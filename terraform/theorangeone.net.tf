@@ -164,3 +164,11 @@ resource "cloudflare_record" "theorangeonenet_notes" {
   type    = "CNAME"
   ttl     = 1
 }
+
+resource "cloudflare_record" "theorangeonenet_privatebin" {
+  zone_id = cloudflare_zone.theorangeonenet.id
+  name    = "bin"
+  value   = vultr_server.casey.main_ip
+  type    = "A"
+  ttl     = 1
+}

@@ -52,6 +52,7 @@
     - duplicati
     - yourls
     - pve_nebula_route
+    - privatebin
 
 - hosts: ingress
   roles:
