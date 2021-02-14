@@ -1,2 +1,5 @@
 - name: Grafana
   include: grafana.yml
+
+- name: InfluxDB
+  include: influxdb.yml
