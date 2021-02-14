@@ -9,7 +9,7 @@ services:
       - GF_RENDERING_SERVER_URL=http://renderer:8081/render
       - GF_RENDERING_CALLBACK_URL=http://grafana:3000/
     volumes:
-      - ./grafana:/var/lib/grafana
+      - "{{ app_data_dir }}/grafana:/var/lib/grafana"
     restart: unless-stopped
     ports:
       - 3000:3000
@@ -21,7 +21,7 @@ services:
     image: postgres:12-alpine
     restart: unless-stopped
     volumes:
-      - ./postgres:/var/lib/postgresql/data
+      - /mnt/tank/dbs/postgres/grafana/:/var/lib/postgresql/data
     environment:
       - POSTGRES_PASSWORD=grafana
       - POSTGRES_USER=grafana
