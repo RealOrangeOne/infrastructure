@@ -8,7 +8,7 @@ services:
       - PGID={{ docker_user.id }}
       - TZ={{ TZ }}
     volumes:
-      - ./tt-rss/config.php:/config/config.php:ro
+      - "{{ app_data_dir }}/tt-rss/config.php:/config/config.php:ro"
       - ./tt-rss/feed-icons:/config/feed-icons
       - ./plugins:/config/plugins.local
     restart: unless-stopped
