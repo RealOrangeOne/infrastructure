@@ -20,4 +20,4 @@
   shell:
     chdir: /opt/whoami
     cmd: "{{ docker_update_command }}"
-  when: compose_file.changed or config_file.changed
+  when: compose_file.changed
