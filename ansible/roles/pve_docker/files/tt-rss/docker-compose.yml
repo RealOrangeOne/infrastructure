@@ -9,7 +9,7 @@ services:
       - TZ={{ TZ }}
     volumes:
       - "{{ app_data_dir }}/tt-rss/config.php:/config/config.php:ro"
-      - ./tt-rss/feed-icons:/config/feed-icons
+      - "{{ app_data_dir }}/tt-rss/feed-icons:/config/feed-icons"
       - ./plugins:/config/plugins.local
     restart: unless-stopped
     labels:
@@ -26,7 +26,7 @@ services:
     image: postgres:12-alpine
     restart: unless-stopped
     volumes:
-      - ./postgres:/var/lib/postgresql/data
+      - /mnt/tank/dbs/postgres/tt-rss/:/var/lib/postgresql/data
     environment:
       - POSTGRES_PASSWORD=tt-rss
       - POSTGRES_USER=tt-rss
