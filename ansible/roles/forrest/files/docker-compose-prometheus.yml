@@ -1,0 +1,21 @@
+version: "2.3"
+
+services:
+  prometheus:
+    image: prom/prometheus:latest
+    restart: unless-stopped
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - /mnt/tank/dbs/prometheus/forrest/:/prometheus/
+    networks:
+      - default
+      - prometheus
+      - grafana
+    ports:
+      - "{{ protected_ip }}:9090:9090"
+
+networks:
+  prometheus:
+    external: true
+  grafana:
+    external: true

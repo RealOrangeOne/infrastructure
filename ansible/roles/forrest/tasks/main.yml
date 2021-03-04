@@ -3,3 +3,6 @@
 
 - name: InfluxDB
   include: influxdb.yml
+
+- name: Prometheus
+  include: prometheus.yml
