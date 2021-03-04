@@ -80,6 +80,7 @@
 - hosts: forrest
   roles:
     - forrest
+    - pve_nebula_route
 
 - hosts: deluge
   roles:
