@@ -1,12 +1,6 @@
 - hosts: all
   roles:
     - base
-    - role: geerlingguy.ntp
-      become: true
-      vars:
-        ntp_timezone: "{{ TZ }}"
-        ntp_manage_config: true
-      when: ansible_os_family != 'Alpine'  # https://github.com/ansible-collections/community.general/issues/781
     - role: realorangeone.reflector
       when: ansible_os_family == 'Archlinux'
 
@@ -14,6 +8,20 @@
   roles:
     - gateway
     - nebula
+
+- hosts:
+    - pve
+    - casey
+    - grimes
+    - ingress
+    - deluge
+  roles:
+    - role: geerlingguy.ntp
+      become: true
+      vars:
+        ntp_timezone: "{{ TZ }}"
+        ntp_manage_config: true
+      when: ansible_os_family != 'Alpine'  # https://github.com/ansible-collections/community.general/issues/781
 
 - hosts:
     - grimes
