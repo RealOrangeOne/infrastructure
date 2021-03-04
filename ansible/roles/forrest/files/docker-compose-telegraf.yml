@@ -1,0 +1,15 @@
+version: "2.3"
+
+services:
+  telegraf:
+    image: telegraf:alpine
+    restart: unless-stopped
+    networks:
+      - default
+      - prometheus
+    volumes:
+      - ./telegraf.conf:/etc/telegraf/telegraf.conf:ro
+
+networks:
+  prometheus:
+    external: true

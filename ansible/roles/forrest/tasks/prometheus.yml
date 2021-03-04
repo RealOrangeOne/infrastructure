@@ -10,6 +10,15 @@
     mode: "{{ docker_compose_directory_mask }}"
   become: true
 
+- name: Install prometheus config
+  template:
+    src: files/prometheus.yml
+    dest: /opt/prometheus/prometheus.yml
+    mode: "{{ docker_compose_file_mask }}"
+    owner: "{{ docker_user.name }}"
+  notify: restart prometheus
+  become: true
+
 - name: Install prometheus compose file
   template:
     src: files/docker-compose-prometheus.yml

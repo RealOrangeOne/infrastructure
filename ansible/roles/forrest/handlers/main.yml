@@ -12,3 +12,8 @@
   shell:
     chdir: /opt/prometheus
     cmd: "{{ docker_update_command }}"
+
+- name: restart telegraf
+  shell:
+    chdir: /opt/telegraf
+    cmd: "{{ docker_update_command }}"

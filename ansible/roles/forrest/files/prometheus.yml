@@ -1,0 +1,5 @@
+scrape_configs:
+  - job_name: telegraf
+    static_configs:
+      - targets:
+          - telegraf:9273
