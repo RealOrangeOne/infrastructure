@@ -1,2 +1,2 @@
-private_ip: "{{ wireguard.clients[ansible_fqdn].ip }}"
+private_ip: "{{ nebula.clients[ansible_fqdn].ip }}"
 protected_ip: "{{ private_ip }}"
