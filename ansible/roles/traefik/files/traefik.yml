@@ -58,10 +58,8 @@ serversTransport:
   insecureSkipVerify: true
 
 metrics:
-  influxDB:
-    address: "{{ private_ip }}:38089"
-    database: traefik
-    pushInterval: 30s
+  prometheus:
+    entryPoint: traefik
 
 tls:
   options:

@@ -3,3 +3,8 @@ scrape_configs:
     static_configs:
       - targets:
           - telegraf:9273
+  - job_name: traefik
+    static_configs:
+      - targets:
+          - 10.23.2.3:8080  # grimes
+          - 192.168.2.47:8080  # pve-docker
