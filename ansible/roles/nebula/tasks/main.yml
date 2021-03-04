@@ -36,8 +36,8 @@
     dest: /etc/nebula/{{ item }}
     mode: "0600"
   loop:
-    - "{{ ansible_fqdn }}.key"
-    - "{{ ansible_fqdn }}.crt"
+    - "{{ ansible_hostname }}.key"
+    - "{{ ansible_hostname }}.crt"
   become: true
   notify: restart nebula
 
@@ -63,4 +63,4 @@
     jump: MASQUERADE
   notify: persist iptables
   become: true
-  when: ansible_fqdn == "ingress"
+  when: ansible_hostname == "ingress"

@@ -1,7 +1,7 @@
 pki:
   ca: /etc/nebula/ca.crt
-  cert: /etc/nebula/{{ ansible_fqdn }}.crt
-  key: /etc/nebula/{{ ansible_fqdn }}.key
+  cert: /etc/nebula/{{ ansible_hostname }}.crt
+  key: /etc/nebula/{{ ansible_hostname }}.key
 
 static_host_map:
   "{{ nebula_lighthouse_ip }}": ["{{ nebula_lighthouse_public_ip }}:{{ nebula_lighthouse_port }}"]
@@ -31,7 +31,7 @@ tun:
   mtu: 1300
   routes:
   unsafe_routes:
-{% if ansible_fqdn != "ingress" %}
+{% if ansible_hostname != "ingress" %}
     - route: "{{ pve_hosts.internal_cidr }}"
       via: "{{ nebula.clients.ingress.ip }}"
 {% endif %}

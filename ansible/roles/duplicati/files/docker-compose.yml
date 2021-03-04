@@ -2,7 +2,7 @@ version: "2.3"
 services:
   duplicati:
     image: linuxserver/duplicati:version-v2.0.5.1-2.0.5.1_beta_2020-01-18
-    hostname: "{{ ansible_fqdn }}"
+    hostname: "{{ ansible_hostname }}"
     environment:
       - PUID=0
       - PGID=0
