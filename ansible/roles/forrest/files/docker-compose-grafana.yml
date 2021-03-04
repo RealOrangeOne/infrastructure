@@ -17,12 +17,14 @@ services:
       - GF_SMTP_PASSWORD={{ grafana_smtp_password }}
       - GF_SMTP_FROM_ADDRESS={{ grafana_from_email }}
       - GF_SMTP_FROM_NAME=grafana
-
     volumes:
       - "{{ app_data_dir }}/grafana:/var/lib/grafana"
+    networks:
+      - default
+      - grafana
     restart: unless-stopped
     ports:
-      - 3000:3000
+      - "{{ protected_ip }}:3000:3000"
     depends_on:
       - db
       - renderer
@@ -41,3 +43,8 @@ services:
     restart: unless-stopped
     environment:
       - BROWSER_TZ={{ TZ }}
+
+
+networks:
+  grafana:
+    external: true

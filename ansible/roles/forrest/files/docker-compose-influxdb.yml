@@ -8,8 +8,9 @@ services:
       - /mnt/tank/dbs/influx/forrest:/var/lib/influxdb
     environment:
       - INFLUXDB_HTTP_AUTH_ENABLED=true
-    ports:
-      - 8086:8086
+    networks:
+      - default
+      - grafana
 
   chronograf:
     image: chronograf:1.8-alpine
@@ -21,4 +22,8 @@ services:
     volumes:
       - ./chronograf:/var/lib/chronograf
     ports:
-      - 8888:8888
+      - "{{ protected_ip }}:8888:8888"
+
+networks:
+  grafana:
+    external: true

@@ -1,3 +1,7 @@
+- name: Create network
+  docker_network:
+    name: grafana
+
 - name: Create grafana install directory
   file:
     path: /opt/grafana

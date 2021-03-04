@@ -1,6 +1,7 @@
 collections:
   - ansible.posix
   - community.general
+  - community.docker
 
 roles:
   - src: geerlingguy.docker
