@@ -1,0 +1,2 @@
+telegraf_configuration_template: files/telegraf.conf
+telegraf_aws_tags: false

@@ -2,6 +2,7 @@ collections:
   - ansible.posix
   - community.general
   - community.docker
+  - amazon.aws  # Dependency of rossmcdonald.telegraf
 
 roles:
   - src: geerlingguy.docker
@@ -10,3 +11,4 @@ roles:
   - src: https://github.com/IronicBadger/ansible-role-proxmox-nag-removal
     name: proxmox-nag-removal
   - src: chmduquesne.iptables_persistent
+  - src: rossmcdonald.telegraf

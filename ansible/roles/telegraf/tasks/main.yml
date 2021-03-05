@@ -1,0 +1,4 @@
+- name: Install and configure telegraf
+  import_role:
+    name: rossmcdonald.telegraf
+  become: true

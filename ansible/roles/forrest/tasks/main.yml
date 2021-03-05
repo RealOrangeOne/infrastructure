@@ -6,6 +6,3 @@
 
 - name: Prometheus
   include: prometheus.yml
-
-- name: Telegraf
-  include: telegraf.yml

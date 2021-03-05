@@ -76,6 +76,7 @@
     - pve
     - zfs
     - pve_nebula_route
+    - telegraf
 
 - hosts: forrest
   roles:
