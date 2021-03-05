@@ -2,3 +2,9 @@
   import_role:
     name: rossmcdonald.telegraf
   become: true
+
+- name: Let telegraf do smart stats
+  lineinfile:
+    path: /etc/sudoers
+    line: "{{ telegraf_runas_user }}  ALL=(ALL) NOPASSWD: /usr/sbin/smartctl"
+  become: true
