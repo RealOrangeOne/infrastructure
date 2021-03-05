@@ -12,7 +12,7 @@
 
 - name: Install prometheus config
   template:
-    src: files/prometheus.yml
+    src: files/prometheus/prometheus.yml
     dest: /opt/prometheus/prometheus.yml
     mode: "{{ docker_compose_file_mask }}"
     owner: "{{ docker_user.name }}"
@@ -21,7 +21,7 @@
 
 - name: Install prometheus compose file
   template:
-    src: files/docker-compose-prometheus.yml
+    src: files/prometheus/docker-compose.yml
     dest: /opt/prometheus/docker-compose.yml
     mode: "{{ docker_compose_file_mask }}"
     owner: "{{ docker_user.name }}"

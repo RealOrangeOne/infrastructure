@@ -12,7 +12,7 @@
 
 - name: Install grafana compose file
   template:
-    src: files/docker-compose-grafana.yml
+    src: files/grafana/docker-compose.yml
     dest: /opt/grafana/docker-compose.yml
     mode: "{{ docker_compose_file_mask }}"
     owner: "{{ docker_user.name }}"

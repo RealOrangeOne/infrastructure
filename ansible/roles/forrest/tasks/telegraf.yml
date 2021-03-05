@@ -8,7 +8,7 @@
 
 - name: Install telegraf config
   template:
-    src: files/telegraf.conf
+    src: files/telegraf/telegraf.conf
     dest: /opt/telegraf/telegraf.conf
     mode: "{{ docker_compose_file_mask }}"
     owner: "{{ docker_user.name }}"
@@ -17,7 +17,7 @@
 
 - name: Install telegraf compose file
   template:
-    src: files/docker-compose-telegraf.yml
+    src: files/telegraf/docker-compose.yml
     dest: /opt/telegraf/docker-compose.yml
     mode: "{{ docker_compose_file_mask }}"
     owner: "{{ docker_user.name }}"
