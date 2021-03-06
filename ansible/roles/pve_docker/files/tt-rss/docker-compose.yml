@@ -7,8 +7,15 @@ services:
       - PUID={{ docker_user.id }}
       - PGID={{ docker_user.id }}
       - TZ={{ TZ }}
+
+      - TTRSS_DB_USER=tt-rss
+      - TTRSS_DB_NAME=tt-rss
+      - TTRSS_DB_PASS=tt-rss
+      - TTRSS_SELF_URL_PATH=https://tt-rss.jakehoward.tech/
+      - TTRSS_ENABLE_REGISTRATION=false
+      - TTRSS_CHECK_FOR_UPDATES=false
+      - TTRSS_ENABLE_GZIP_OUTPUT=true
     volumes:
-      - "{{ app_data_dir }}/tt-rss/config.php:/config/config.php:ro"
       - "{{ app_data_dir }}/tt-rss/feed-icons:/config/feed-icons"
       - ./plugins:/config/plugins.local
     restart: unless-stopped

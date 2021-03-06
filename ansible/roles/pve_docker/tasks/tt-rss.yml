@@ -25,15 +25,6 @@
   register: compose_file
   become: true
 
-- name: Install tt-rss config
-  template:
-    src: files/tt-rss/config.php
-    dest: "{{ app_data_dir }}/tt-rss/config.php"
-    mode: "{{ docker_compose_file_mask }}"
-    owner: "{{ docker_user.name }}"
-  register: config_file
-  become: true
-
 - name: Install fever plugin
   git:
     repo: https://github.com/DigitalDJ/tinytinyrss-fever-plugin
