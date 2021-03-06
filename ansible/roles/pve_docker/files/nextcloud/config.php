@@ -41,4 +41,5 @@ $CONFIG = array (
   'jpeg_quality' => '60',
   'has_rebuilt_cache' => true,
   'logfile' => '/config/log/nextcloud.log',
+  'default_phone_region' => 'GB',
 );
