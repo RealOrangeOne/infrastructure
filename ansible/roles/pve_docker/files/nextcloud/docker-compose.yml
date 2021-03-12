@@ -17,7 +17,6 @@ services:
     depends_on:
       - mariadb
       - redis
-      - collabora
     tmpfs:
       - /config/log
     labels:
@@ -45,16 +44,3 @@ services:
     restart: unless-stopped
     volumes:
       - /mnt/tank/dbs/redis/nextcloud:/data
-
-  collabora:
-    image: collabora/code:latest
-    restart: unless-stopped
-    cap_add:
-      - MKNOD
-    environment:
-      - domain=intersect\\.jakehoward\\.tech
-    labels:
-      - traefik.enable=true
-      - traefik.http.routers.collabora.rule=Host(`collabora.jakehoward.tech`)
-      - traefik.http.routers.collabora.tls.certresolver=le
-      - traefik.http.services.collabora-nextcloud.loadbalancer.server.scheme=https
