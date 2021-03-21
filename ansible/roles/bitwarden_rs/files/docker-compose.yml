@@ -1,0 +1,47 @@
+version: '3'
+
+services:
+  bitwarden:
+    image: bitwardenrs/server:1.19.0-alpine
+    restart: unless-stopped
+    user: "{{ docker_user.id }}:{{ docker_user.id }}"
+    volumes:
+      - "{{ app_data_dir }}/bitwarden_rs/:/data"
+    depends_on:
+      - db
+    labels:
+      - traefik.enable=true
+
+      - traefik.http.routers.bitwarden-ui.rule=Host(`bw.jakehoward.tech`)
+      - traefik.http.routers.bitwarden-ui.service=bitwarden-ui
+      - traefik.http.services.bitwarden-ui.loadbalancer.server.port=80
+      - traefik.http.routers.bitwarden-ui.tls.certresolver=le
+
+      - traefik.http.routers.bitwarden-websocket.rule=Host(`bw.jakehoward.tech`) && Path(`/notifications/hub`)
+      - traefik.http.routers.bitwarden-websocket.service=bitwarden-websocket
+      - traefik.http.services.bitwarden-websocket.loadbalancer.server.port=3012
+      - traefik.http.routers.bitwarden-websocket.tls.certresolver=le
+
+      - traefik.http.middlewares.bw-ratelimit.ratelimit.average=5
+      - traefik.http.middlewares.bw-ratelimit.ratelimit.burst=1000
+      - traefik.http.middlewares.bw-compress.compress=true
+
+      - traefik.http.routers.bitwarden-ui.middlewares=bw-ratelimit,bw-compress
+      - traefik.http.routers.bitwarden-websocket.middlewares=bw-ratelimit,bw-compress
+    environment:
+      - SIGNUPS_ALLOWED=false
+      - DOMAIN=https://bw.jakehoward.tech
+      - SHOW_PASSWORD_HINT=false
+      - DATABASE_URL=postgres://bitwarden:{{ bitwarden_database_password }}@db/bitwarden
+      - INVITATIONS_ALLOWED=false
+      - ROCKET_WORKERS=2
+      - WEBSOCKET_ENABLED=true
+
+  db:
+    image: postgres:12-alpine
+    restart: unless-stopped
+    volumes:
+      - /mnt/tank/dbs/postgres/bitwarden_rs/:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD={{ bitwarden_database_password }}
+      - POSTGRES_USER=bitwarden

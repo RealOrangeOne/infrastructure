@@ -61,6 +61,7 @@
     - yourls
     - pve_nebula_route
     - privatebin
+    - bitwarden_rs
 
 - hosts: ingress
   roles:
