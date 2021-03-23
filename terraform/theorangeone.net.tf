@@ -5,7 +5,7 @@ resource "cloudflare_zone" "theorangeonenet" {
 resource "cloudflare_record" "theorangeonenet_git" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "git"
-  value   = vultr_server.casey.main_ip
+  value   = vultr_instance.casey.main_ip
   type    = "A"
   ttl     = 1
 }
@@ -13,7 +13,7 @@ resource "cloudflare_record" "theorangeonenet_git" {
 resource "cloudflare_record" "theorangeonenet_gitea" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "gitea"
-  value   = vultr_server.casey.main_ip
+  value   = vultr_instance.casey.main_ip
   type    = "A"
   ttl     = 1
 }
@@ -21,7 +21,7 @@ resource "cloudflare_record" "theorangeonenet_gitea" {
 resource "cloudflare_record" "theorangeonenet_whoami" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "whoami"
-  value   = vultr_server.casey.main_ip
+  value   = vultr_instance.casey.main_ip
   type    = "A"
   ttl     = 1
 }
@@ -168,7 +168,7 @@ resource "cloudflare_record" "theorangeonenet_notes" {
 resource "cloudflare_record" "theorangeonenet_privatebin" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "bin"
-  value   = vultr_server.casey.main_ip
+  value   = vultr_instance.casey.main_ip
   type    = "A"
   ttl     = 1
 }
