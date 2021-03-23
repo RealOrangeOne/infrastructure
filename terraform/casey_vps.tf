@@ -62,15 +62,6 @@ resource "vultr_firewall_rule" "casey_matrix" {
   subnet_size       = 0
 }
 
-resource "vultr_firewall_rule" "casey_mc" {
-  firewall_group_id = vultr_firewall_group.casey.id
-  protocol          = "tcp"
-  port              = 25566
-  ip_type           = "v4"
-  subnet            = "0.0.0.0"
-  subnet_size       = 0
-}
-
 resource "vultr_firewall_rule" "casey_nebula" {
   firewall_group_id = vultr_firewall_group.casey.id
   protocol          = "udp"
