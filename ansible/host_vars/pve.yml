@@ -1,5 +1,3 @@
-expose_ssh: true
-
 private_ip: "{{ pve_hosts.pve.ip }}"
 protected_ip: "{{ pve_hosts.pve.internal_ip }}"
 

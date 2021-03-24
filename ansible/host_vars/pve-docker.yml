@@ -1,5 +1,3 @@
-expose_ssh: true
-
 private_ip: "{{ pve_hosts.pve_docker.ip }}"
 protected_ip: "{{ pve_hosts.pve_docker.internal_ip }}"
 
