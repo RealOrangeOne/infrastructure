@@ -1,3 +1,0 @@
-expose_ssh: true
-
-docker_zfs_override: true
