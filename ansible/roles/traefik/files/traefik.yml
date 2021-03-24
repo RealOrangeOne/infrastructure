@@ -65,3 +65,6 @@ tls:
   options:
     default:
       minVersion: VersionTLS12
+
+pilot:
+  dashboard: false
