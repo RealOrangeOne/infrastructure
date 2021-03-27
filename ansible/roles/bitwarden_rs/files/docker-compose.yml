@@ -9,6 +9,7 @@ services:
       - "{{ app_data_dir }}/bitwarden_rs/:/data"
     depends_on:
       - db
+    dns: 1.1.1.1
     labels:
       - traefik.enable=true
 
