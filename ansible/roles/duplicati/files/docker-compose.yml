@@ -13,4 +13,4 @@ services:
       - /:/source:ro
     restart: unless-stopped
     ports:
-      - "{{ protected_ip }}:8200:8200"
+      - "{{ private_ip }}:8200:8200"

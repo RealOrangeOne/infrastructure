@@ -24,7 +24,7 @@ services:
       - grafana
     restart: unless-stopped
     ports:
-      - "{{ protected_ip }}:3000:3000"
+      - "{{ private_ip }}:3000:3000"
     depends_on:
       - db
       - renderer

@@ -1,2 +1,1 @@
 private_ip: "{{ nebula.clients[ansible_hostname].ip }}"
-protected_ip: "{{ private_ip }}"

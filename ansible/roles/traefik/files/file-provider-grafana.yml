@@ -9,4 +9,4 @@ http:
     service-grafana:
       loadBalancer:
         servers:
-          - url: http://{{ pve_hosts.forrest.internal_ip }}:3000
+          - url: http://{{ pve_hosts.forrest.ip }}:3000

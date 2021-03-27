@@ -17,6 +17,6 @@
       - add
       - "{{ nebula.cidr }}"
       - via
-      - "{{ pve_hosts.ingress.internal_ip }}"
+      - "{{ pve_hosts.ingress.ip }}"
   become: true
   when: nebula.cidr not in routes.stdout

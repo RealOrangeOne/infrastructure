@@ -12,7 +12,7 @@ services:
       - prometheus
       - grafana
     ports:
-      - "{{ protected_ip }}:9090:9090"
+      - "{{ private_ip }}:9090:9090"
 
 networks:
   prometheus:

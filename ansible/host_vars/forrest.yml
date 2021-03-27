@@ -1,1 +1,1 @@
-protected_ip: "{{ pve_hosts.forrest.internal_ip }}"
+private_ip: "{{ pve_hosts.forrest.ip }}"

@@ -22,7 +22,7 @@ services:
     volumes:
       - ./chronograf:/var/lib/chronograf
     ports:
-      - "{{ protected_ip }}:8888:8888"
+      - "{{ private_ip }}:8888:8888"
 
 networks:
   grafana:
