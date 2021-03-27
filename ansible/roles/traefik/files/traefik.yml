@@ -1,6 +1,9 @@
 entryPoints:
   web:
     address: :80
+    http:
+      middlewares:
+        - tls-redirect@file
     proxyProtocol:
       trustedIPs:
         - "{{ wireguard.cidr }}"
@@ -8,6 +11,9 @@ entryPoints:
         - "{{ nebula.cidr }}"
   web-secure:
     address: :443
+    http:
+      middlewares:
+        - tls-redirect@file
     proxyProtocol:
       trustedIPs:
         - "{{ wireguard.cidr }}"
@@ -15,6 +21,9 @@ entryPoints:
         - "{{ nebula.cidr }}"
   matrix:
     address: :8448
+    http:
+      middlewares:
+        - tls-redirect@file
     proxyProtocol:
       trustedIPs:
         - "{{ wireguard.cidr }}"

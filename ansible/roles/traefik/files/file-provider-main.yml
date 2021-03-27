@@ -5,12 +5,3 @@ http:
         scheme: https
     compress:
       compress: {}
-
-  routers:
-    tls-redirect:
-      service: ping@internal
-      rule: PathPrefix(`/`)
-      entryPoints:
-        - web
-      middlewares:
-        - tls-redirect
