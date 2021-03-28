@@ -1,0 +1,15 @@
+- name: Create jail
+  template:
+    src: files/fail2ban/traefik-jail.conf
+    dest: /etc/fail2ban/jail.d/traefik.conf
+    mode: 0644
+  become: true
+  notify: restart fail2ban
+
+- name: Create filter
+  template:
+    src: files/fail2ban/traefik-filter.conf
+    dest: /etc/fail2ban/filter.d/traefik.conf
+    mode: 0644
+  become: true
+  notify: restart fail2ban

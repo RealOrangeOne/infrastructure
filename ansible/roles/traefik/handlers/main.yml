@@ -2,3 +2,9 @@
   shell:
     chdir: /opt/traefik
     cmd: "{{ docker_update_command }}"
+
+- name: restart fail2ban
+  service:
+    name: fail2ban
+    state: restarted
+  become: true

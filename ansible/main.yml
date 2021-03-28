@@ -8,6 +8,7 @@
   roles:
     - gateway
     - nebula
+    - fail2ban_ssh
 
 - hosts:
     - pve

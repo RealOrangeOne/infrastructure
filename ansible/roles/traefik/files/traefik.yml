@@ -77,3 +77,9 @@ tls:
 
 pilot:
   dashboard: false
+
+accessLog:
+  filePath: "/var/log/traefik/access.log"
+  filters:
+    statusCodes:
+      - "400-600"

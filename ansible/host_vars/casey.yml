@@ -1,1 +1,2 @@
 nebula_is_lighthouse: true
+ssh_extra_allowed_users: f2b@{{ nebula.cidr }} f2b@{{ pve_hosts.internal_cidr }}

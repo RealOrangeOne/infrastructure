@@ -2,7 +2,7 @@
 # Change to a high/odd port if this server is exposed to the internet directly
 Port {{ ssh_port }}
 
-AllowUsers {% if ansible_hostname in pve_hosts %}{{ user }}@{{ pve_hosts.internal_cidr }}{% endif %} {% if ansible_hostname in nebula.clients %}{{ user }}@{{ nebula.cidr }}{% endif %}
+AllowUsers {% if ansible_hostname in pve_hosts %}{{ user }}@{{ pve_hosts.internal_cidr }}{% endif %} {% if ansible_hostname in nebula.clients %}{{ user }}@{{ nebula.cidr }}{% endif %} {{ ssh_extra_allowed_users }}
 
 # Bind to all interfaces (change to specific interface if needed)
 ListenAddress 0.0.0.0
