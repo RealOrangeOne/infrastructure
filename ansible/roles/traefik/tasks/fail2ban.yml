@@ -13,3 +13,11 @@
     mode: 0644
   become: true
   notify: restart fail2ban
+
+- name: Create action
+  template:
+    src: files/fail2ban/remote-action.conf
+    dest: /etc/fail2ban/action.d/gateway.conf
+    mode: 0644
+  become: true
+  notify: restart fail2ban
