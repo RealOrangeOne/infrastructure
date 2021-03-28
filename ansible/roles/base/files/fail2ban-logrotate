@@ -1,5 +1,5 @@
 /var/log/fail2ban.log {
-  weekly
+  daily
   rotate 7
   missingok
   compress
