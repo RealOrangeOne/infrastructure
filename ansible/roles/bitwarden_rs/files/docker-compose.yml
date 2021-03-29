@@ -2,7 +2,7 @@ version: "2.3"
 
 services:
   bitwarden:
-    image: bitwardenrs/server:1.19.0-alpine
+    image: bitwardenrs/server:1.20.0-alpine
     restart: unless-stopped
     user: "{{ docker_user.id }}:{{ docker_user.id }}"
     volumes:
