@@ -35,7 +35,7 @@ services:
       - SHOW_PASSWORD_HINT=false
       - DATABASE_URL=postgres://bitwarden:{{ bitwarden_database_password }}@db/bitwarden
       - INVITATIONS_ALLOWED=false
-      - ROCKET_WORKERS=2
+      - ROCKET_WORKERS={{ ansible_processor_nproc }}
       - WEBSOCKET_ENABLED=true
 
   db:
