@@ -7,7 +7,7 @@ pve_hosts:
   pve_docker:
     ip: 10.23.1.7
   homeassistant:
-    ip: 192.168.2.41
+    ip: 192.168.1.132
   forrest:
     ip: 10.23.1.99
   deluge:
