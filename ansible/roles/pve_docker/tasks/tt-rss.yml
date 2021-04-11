@@ -55,4 +55,4 @@
   shell:
     chdir: /opt/tt-rss
     cmd: "{{ docker_update_command }}"
-  when: compose_file.changed or config_file.changed or fever_plugin.changed or feediron_plugin.changed
+  when: compose_file.changed or fever_plugin.changed or feediron_plugin.changed
