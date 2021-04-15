@@ -51,7 +51,7 @@ services:
     image: postgres:12-alpine
     restart: unless-stopped
     volumes:
-      - /mnt/tank/dbs/postgres/plausible:/var/lib/postgresql/data
+      - ./postgres:/var/lib/postgresql/data
     environment:
       - POSTGRES_PASSWORD=plausible
       - POSTGRES_USER=plausible
