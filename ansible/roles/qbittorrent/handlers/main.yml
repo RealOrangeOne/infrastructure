@@ -1,0 +1,11 @@
+- name: restart nginx
+  service:
+    name: nginx
+    state: restarted
+  become: true
+
+- name: restart qbittorrent
+  service:
+    name: qbittorrent-nox@{{ qbittorrent_user.name }}
+    state: restarted
+  become: true

@@ -8,4 +8,4 @@ ingress
 pve-docker
 jellyfin
 forrest
-deluge
+qbittorrent

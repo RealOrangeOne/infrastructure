@@ -1,0 +1,5 @@
+- name: qbittorrent
+  include: qbittorrent.yml
+
+- name: nginx
+  include: nginx.yml

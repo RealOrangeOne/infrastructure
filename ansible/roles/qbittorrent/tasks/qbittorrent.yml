@@ -1,0 +1,48 @@
+- name: Install qbittorrent
+  package:
+    name: qbittorrent-nox
+  become: true
+
+- name: Create user
+  user:
+    name: qbittorrent
+    system: true
+  become: true
+  register: qbittorrent_user
+
+- name: Enable service
+  service:
+    name: qbittorrent-nox@{{ qbittorrent_user.name }}
+    enabled: true
+  become: true
+
+- name: Set configuration
+  ini_file:
+    path: "{{ qbittorrent_user.home }}/.config/qBittorrent/qBittorrent.conf"
+    mode: 0700
+    owner: "{{ qbittorrent_user.name }}"
+    section: "{{ item.section }}"
+    option: "{{ item.option }}"
+    value: "{{ item.value }}"
+    no_extra_spaces: true
+  loop_control:
+    label: "{{ item.section }}.{{ item.option }}={{ item.value }}"
+  loop:
+    - {section: AutoRun, option: enabled, value: "false"}
+    - {section: LegalNotice, option: Accepted, value: "true"}
+    - {section: Preferences, option: Connection\UPnP, value: "false"}
+    - {section: Preferences, option: Downloads\SavePath, value: /mnt/downloads/completed/}
+    - {section: Preferences, option: Downloads\TempPath, value: /mnt/downloads/}
+    - {section: Preferences, option: Downloads\TempPathEnabled, value: "true"}
+    - {section: Preferences, option: WebUI\Address, value: "*"}
+    - {section: Preferences, option: WebUI\ServerDomains, value: "*"}
+    - {section: Preferences, option: WebUI\Port, value: "8080"}
+    - {section: Preferences, option: WebUI\AuthSubnetWhitelist, value: 0.0.0.0/0}
+    - {section: Preferences, option: WebUI\AuthSubnetWhitelistEnabled, value: "true"}
+    - {section: Preferences, option: WebUI\LocalHostAuth, value: "false"}
+    - {section: Preferences, option: Bittorrent\MaxConnecs, value: -1"}
+    - {section: Preferences, option: Bittorrent\MaxConnecsPerTorrent, value: -1"}
+    - {section: Preferences, option: Bittorrent\MaxUploads, value: -1"}
+    - {section: Preferences, option: Bittorrent\MaxUploadsPerTorrent, value: -1"}
+  become: true
+  notify: restart qbittorrent

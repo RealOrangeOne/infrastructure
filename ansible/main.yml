@@ -15,7 +15,7 @@
     - casey
     - grimes
     - ingress
-    - deluge
+    - qbittorrent
   roles:
     - role: geerlingguy.ntp
       become: true
@@ -27,7 +27,6 @@
 - hosts:
     - grimes
     - pve-docker
-    - deluge
     - forrest
   roles:
     - role: geerlingguy.docker
@@ -85,6 +84,6 @@
     - forrest
     - pve_nebula_route
 
-- hosts: deluge
+- hosts: qbittorrent
   roles:
-    - deluge
+    - qbittorrent

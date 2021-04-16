@@ -10,8 +10,8 @@ pve_hosts:
     ip: 192.168.1.132
   forrest:
     ip: 10.23.1.99
-  deluge:
-    ip: 10.23.1.52
   pve:
     ip: 10.23.1.1
     external_ip: 192.168.2.200
+  qbittorrent:
+    ip: 10.23.1.21
