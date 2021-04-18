@@ -16,6 +16,7 @@ entryPoints:
     http:
       middlewares:
         - tls-redirect@file
+        - floc-block@file
     proxyProtocol:
       trustedIPs:
         - "{{ wireguard.cidr }}"
