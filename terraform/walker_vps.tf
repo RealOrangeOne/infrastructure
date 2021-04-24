@@ -2,7 +2,10 @@ module "walker_firewall" {
   source = "./vultr_firewall/"
 
   description = "walker"
-  ports       = []
+  ports = [
+    "80/tcp",
+    "443/tcp"
+  ]
 }
 
 

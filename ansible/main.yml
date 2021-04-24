@@ -16,6 +16,7 @@
     - grimes
     - ingress
     - qbittorrent
+    - walker
   roles:
     - role: geerlingguy.ntp
       become: true
@@ -28,6 +29,7 @@
     - grimes
     - pve-docker
     - forrest
+    - walker
   roles:
     - role: geerlingguy.docker
       become: true
@@ -41,6 +43,7 @@
 - hosts:
     - grimes
     - pve-docker
+    - walker
   roles:
     - traefik
 
@@ -87,3 +90,7 @@
 - hosts: qbittorrent
   roles:
     - qbittorrent
+
+- hosts: walker
+  roles:
+    - nebula
