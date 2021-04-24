@@ -94,3 +94,4 @@
   roles:
     - nebula
     - upload
+    - duplicati
