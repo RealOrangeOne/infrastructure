@@ -53,7 +53,6 @@
     - plausible
     - duplicati
     - pages
-    - upload
     - nebula
 
 - hosts: pve-docker
@@ -94,3 +93,4 @@
 - hosts: walker
   roles:
     - nebula
+    - upload
