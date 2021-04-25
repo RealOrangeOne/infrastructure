@@ -1,0 +1,37 @@
+#!/usr/bin/env bash
+
+DATE=$(date -I)
+BACKUP_DIR=$1
+
+if [ -z "$BACKUP_DIR" ]
+  then
+    echo "No backup dir"
+fi
+
+all_containers=$(docker ps --format "{{.ID}}:{{ .Image }}")
+
+for line in $all_containers
+do
+    IFS=':' read -a container_details <<< $line
+
+    container_name=${container_details[1]}
+    container_id=${container_details[0]}
+    backup_name=$BACKUP_DIR/$db_name-$DATE.sql
+
+    case "$container_name" in
+    "mariadb")
+        db_name=$(docker exec $container_id bash -c 'echo $MYSQL_USER')
+        echo Backing up mariadb $db_name to $backup_name
+        docker exec $container_id bash -c 'mysqldump -u $MYSQL_USER -p$MYSQL_PASSWORD --all-databases' | pv > $backup_name
+        ;;
+
+    "postgres")
+        db_name=$(docker exec $container_id bash -c 'echo $POSTGRES_USER')
+        echo Backing up postgres $db_name to $backup_name
+        docker exec $container_id bash -c 'PGPASSWORD=$POSTGRES_PASSWORD pg_dumpall -U $POSTGRES_USER' | pv > $backup_name
+        ;;
+    esac
+done
+
+echo "Setting user permissions..."
+chown -R root:root $BACKUP_DIR
