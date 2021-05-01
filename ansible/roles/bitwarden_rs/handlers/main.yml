@@ -1,4 +1,0 @@
-- name: restart bitwarden_rs
-  shell:
-    chdir: /opt/bitwarden_rs
-    cmd: "{{ docker_update_command }}"

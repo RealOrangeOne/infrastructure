@@ -1,0 +1,4 @@
+- name: restart vaultwarden
+  shell:
+    chdir: /opt/vaultwarden
+    cmd: "{{ docker_update_command }}"
