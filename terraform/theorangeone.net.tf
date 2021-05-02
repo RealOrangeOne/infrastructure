@@ -136,7 +136,7 @@ resource "cloudflare_record" "theorangeonenet_upload" {
 resource "cloudflare_record" "theorangeonenet_plausible" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "plausible"
-  value   = linode_instance.grimes.ip_address
+  value   = vultr_instance.walker.main_ip
   type    = "A"
   ttl     = 1
 }
@@ -144,7 +144,7 @@ resource "cloudflare_record" "theorangeonenet_plausible" {
 resource "cloudflare_record" "theorangeonenet_plausible_bare" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "elbisualp"
-  value   = linode_instance.grimes.ip_address
+  value   = vultr_instance.walker.main_ip
   type    = "A"
   ttl     = 1
 }

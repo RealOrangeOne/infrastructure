@@ -50,7 +50,6 @@
 - hosts:
     - grimes
   roles:
-    - plausible
     - duplicati
     - pages
     - nebula
@@ -95,6 +94,7 @@
     - nebula
     - upload
     - duplicati
+    - plausible
 
 - hosts: jellyfin
   roles:
