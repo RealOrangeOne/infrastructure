@@ -95,3 +95,7 @@
     - nebula
     - upload
     - duplicati
+
+- hosts: jellyfin
+  roles:
+    - jellyfin
