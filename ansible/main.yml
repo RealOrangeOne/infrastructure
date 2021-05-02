@@ -51,7 +51,6 @@
     - grimes
   roles:
     - duplicati
-    - pages
     - nebula
 
 - hosts: pve-docker
@@ -95,6 +94,7 @@
     - upload
     - duplicati
     - plausible
+    - pages
 
 - hosts: jellyfin
   roles:

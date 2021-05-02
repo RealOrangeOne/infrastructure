@@ -79,7 +79,7 @@ resource "cloudflare_record" "theorangeonenet_dkim_fm3" {
 resource "cloudflare_record" "theorangeonenet_apex" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "@"
-  value   = linode_instance.grimes.ip_address
+  value   = vultr_instance.walker.main_ip
   type    = "A"
   ttl     = 1
 }
@@ -152,7 +152,7 @@ resource "cloudflare_record" "theorangeonenet_plausible_bare" {
 resource "cloudflare_record" "theorangeonenet_pages" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "pages"
-  value   = linode_instance.grimes.ip_address
+  value   = vultr_instance.walker.main_ip
   type    = "A"
   ttl     = 1
 }
