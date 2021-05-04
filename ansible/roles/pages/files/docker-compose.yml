@@ -1,16 +1,14 @@
 version: "2.3"
 
 services:
-  minio:
-    image: minio/minio:latest
+  webdav:
+    image: theorangeone/webdav:latest
     restart: unless-stopped
-    user: "{{ pages_user_id }}"
     volumes:
-      - ./sites:/data
-    command: server /data --quiet
+      - ./sites:/srv
+      - ./htpasswd.txt:/etc/nginx/.htpasswd:ro
     environment:
-      - MINIO_ACCESS_KEY={{ minio_access_key }}
-      - MINIO_SECRET_KEY={{ minio_secret_key }}
+      - PUID={{ docker_user.id }}
     labels:
       - traefik.enable=true
       - traefik.http.routers.pages.rule=Host(`pages.theorangeone.net`)
@@ -21,7 +19,7 @@ services:
     volumes:
       - ./sites:/sites:ro
     restart: unless-stopped
-    user: "{{ pages_user_id }}"
+    user: "{{ docker_user.id }}"
     ports:
       - 127.0.0.1:5000:5000
     environment:

@@ -10,7 +10,7 @@
   file:
     path: /opt/pages/sites
     state: directory
-    owner: "{{ pages_user_id }}"
+    owner: "{{ docker_user.name }}"
     mode: "{{ docker_compose_directory_mask }}"
   become: true
 
@@ -22,4 +22,21 @@
     owner: "{{ docker_user.name }}"
     validate: docker-compose -f %s config
   notify: restart pages
+  become: true
+
+- name: Create superuser
+  htpasswd:
+    path: /opt/pages/htpasswd.txt
+    name: jake
+    password: "{{ superuser_password }}"
+    mode: 0640
+    owner: "{{ docker_user.name }}"
+  become: true
+
+- name: Create GitHub user
+  htpasswd:
+    path: /opt/pages/htpasswd.txt
+    name: github
+    password: "{{ github_user_password }}"
+    mode: 0640
   become: true
