@@ -1,15 +1,14 @@
 version: "2.3"
 
 services:
-  upload:
-    image: minio/minio:latest
+  webdav:
+    image: theorangeone/webdav:latest
     restart: unless-stopped
     volumes:
-      - ./files:/data
-    command: server /data --quiet
+      - ./files:/srv
+      - ./htpasswd.txt:/etc/nginx/.htpasswd:ro
     environment:
-      - MINIO_ACCESS_KEY={{ minio_access_key }}
-      - MINIO_SECRET_KEY={{ minio_secret_key }}
+      - PUID={{ docker_user.id }}
     labels:
       - traefik.enable=true
       - traefik.http.routers.upload.rule=Host(`upload.theorangeone.net`)
@@ -20,6 +19,8 @@ services:
     restart: unless-stopped
     volumes:
       - ./files/img:/srv:ro
+    environment:
+      - PUID={{ docker_user.id }}
     labels:
       - traefik.enable=true
       - traefik.http.routers.img.rule=Host(`img.theorangeone.net`) || Host(`img.0rng.one`)
@@ -29,9 +30,10 @@ services:
     image: theorangeone/static-server:latest
     restart: unless-stopped
     volumes:
-      - ./files/background:/srv:ro
+      - ./files/bg:/srv:ro
     environment:
       - FANCY_INDEX=on
+      - PUID={{ docker_user.id }}
     labels:
       - traefik.enable=true
       - traefik.http.routers.bg.rule=Host(`bg.theorangeone.net`)
@@ -41,7 +43,9 @@ services:
     image: theorangeone/static-server:latest
     restart: unless-stopped
     volumes:
-      - ./files/download:/srv:ro
+      - ./files/dl:/srv:ro
+    environment:
+      - PUID={{ docker_user.id }}
     labels:
       - traefik.enable=true
       - traefik.http.routers.dl.rule=Host(`dl.theorangeone.net`) || Host(`dl.0rng.one`)

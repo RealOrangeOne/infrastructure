@@ -18,3 +18,20 @@
     validate: docker-compose -f %s config
   notify: restart upload
   become: true
+
+- name: Create superuser
+  htpasswd:
+    path: /opt/upload/htpasswd.txt
+    name: jake
+    password: "{{ superuser_upload_password }}"
+    mode: 0640
+    owner: "{{ docker_user.name }}"
+  become: true
+
+- name: Create nextcloud user
+  htpasswd:
+    path: /opt/upload/htpasswd.txt
+    name: nextcloud
+    password: "{{ nextcloud_upload_password }}"
+    mode: 0640
+  become: true
