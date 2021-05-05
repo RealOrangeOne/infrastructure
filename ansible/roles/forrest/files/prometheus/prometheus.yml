@@ -16,5 +16,5 @@ scrape_configs:
 
     static_configs:
       - targets:
-          - 10.23.2.3:8080  # grimes
-          - 10.23.1.7:8080  # pve-docker
+          - "{{ nebula.clients.walker.ip }}:8080"
+          - "{{ pve_hosts.pve_docker.ip }}:8080"
