@@ -13,7 +13,6 @@
 - hosts:
     - pve
     - casey
-    - grimes
     - ingress
     - qbittorrent
     - walker
@@ -26,7 +25,6 @@
       when: ansible_os_family != 'Alpine'  # https://github.com/ansible-collections/community.general/issues/781
 
 - hosts:
-    - grimes
     - pve-docker
     - forrest
     - walker
@@ -41,17 +39,10 @@
     - docker_cleanup
 
 - hosts:
-    - grimes
     - pve-docker
     - walker
   roles:
     - traefik
-
-- hosts:
-    - grimes
-  roles:
-    - duplicati
-    - nebula
 
 - hosts: pve-docker
   roles:

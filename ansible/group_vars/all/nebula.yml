@@ -3,8 +3,6 @@ nebula:
   clients:
     casey:
       ip: 10.23.2.1
-    grimes:
-      ip: 10.23.2.3
     walker:
       ip: 10.23.2.4
     ingress:

@@ -12,7 +12,3 @@ provider "cloudflare" {
 provider "aws" {
   region = "eu-west-2"
 }
-
-provider "linode" {
-  token = var.linode_api_token
-}
