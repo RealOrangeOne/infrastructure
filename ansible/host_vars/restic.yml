@@ -1,0 +1,2 @@
+restic_backup_locations:
+  - /mnt/tank

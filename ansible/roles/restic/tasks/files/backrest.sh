@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+set -e
+
+export B2_ACCOUNT_ID="{{ restic_b2_account_id }}"
+export B2_ACCOUNT_KEY="{{ restic_b2_account_key }}"
+export RESTIC_PASSWORD="{{ restic_key }}"
+export RESTIC_REPOSITORY="b2:{{ restic_b2_bucket }}"
+
+export RESTIC_LOG_DIR="$HOME/log"
+export RESTIC_LOG_FILE="$RESTIC_LOG_DIR/$(date -Iseconds).log"
+
+mkdir -p "$RESTIC_LOG_DIR"
+
+# Run backup, and capture logs to file
+cron_backup() {
+    restic --verbose backup {{ restic_backup_locations|join(' ') }} | tee -a $RESTIC_LOG_FILE
+    exit_code=${PIPESTATUS[0]}
+    echo "Exit code: $exit_code"
+}
+
+# Run backup, but show all the progress
+backup() {
+    restic --verbose backup {{ restic_backup_locations|join(' ') }}
+}
+
+# Run restic, but with environment variables set
+exec () {
+    set -x
+    restic $@
+}
+
+# Run the things
+"$@"

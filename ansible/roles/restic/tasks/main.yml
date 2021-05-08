@@ -1,0 +1,33 @@
+- name: Install restic
+  package:
+    name: restic
+  become: true
+
+- name: Make user
+  user:
+    name: restic
+    shell: /bin/nologin
+    system: false
+  become: true
+
+- name: backrest
+  template:
+    src: files/backrest.sh
+    dest: /home/restic/backrest.sh
+    mode: "0700"
+    owner: restic
+  become: true
+
+- name: Set restic binary permissions
+  file:
+    path: /usr/bin/restic
+    mode: "0750"
+    owner: root
+    group: restic
+  become: true
+
+- name: Set cap_sys_chroot=+ep on restic
+  community.general.capabilities:
+    path: /usr/bin/restic
+    capability: cap_dac_read_search=+ep
+  become: true
