@@ -16,19 +16,18 @@ do
 
     container_name=${container_details[1]}
     container_id=${container_details[0]}
-    backup_name=$BACKUP_DIR/$db_name-$DATE.sql
 
     case "$container_name" in
     "mariadb")
         db_name=$(docker exec $container_id bash -c 'echo $MYSQL_USER')
-        echo Backing up mariadb $db_name to $backup_name
-        docker exec $container_id bash -c 'mysqldump -u $MYSQL_USER -p$MYSQL_PASSWORD --all-databases' | pv > $backup_name
+        echo Backing up mariadb $db_name
+        docker exec $container_id bash -c 'mysqldump -u $MYSQL_USER -p$MYSQL_PASSWORD --all-databases' | pv > $BACKUP_DIR/$db_name-$DATE.sql
         ;;
 
     "postgres")
         db_name=$(docker exec $container_id bash -c 'echo $POSTGRES_USER')
-        echo Backing up postgres $db_name to $backup_name
-        docker exec $container_id bash -c 'PGPASSWORD=$POSTGRES_PASSWORD pg_dumpall -U $POSTGRES_USER' | pv > $backup_name
+        echo Backing up postgres $db_name
+        docker exec $container_id bash -c 'PGPASSWORD=$POSTGRES_PASSWORD pg_dumpall -U $POSTGRES_USER' | pv > $BACKUP_DIR/$db_name-$DATE.sql
         ;;
     esac
 done
