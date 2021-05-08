@@ -21,13 +21,13 @@ do
     "mariadb")
         db_name=$(docker exec $container_id bash -c 'echo $MYSQL_USER')
         echo Backing up mariadb $db_name
-        docker exec $container_id bash -c 'mysqldump -u $MYSQL_USER -p$MYSQL_PASSWORD --all-databases' | pv > $BACKUP_DIR/$db_name-$DATE.sql
+        docker exec $container_id bash -c 'mysqldump -u $MYSQL_USER -p$MYSQL_PASSWORD --all-databases' | zstd -z -11 | pv > $BACKUP_DIR/$db_name-$DATE.sql.zstd
         ;;
 
     "postgres")
         db_name=$(docker exec $container_id bash -c 'echo $POSTGRES_USER')
         echo Backing up postgres $db_name
-        docker exec $container_id bash -c 'PGPASSWORD=$POSTGRES_PASSWORD pg_dumpall -U $POSTGRES_USER' | pv > $BACKUP_DIR/$db_name-$DATE.sql
+        docker exec $container_id bash -c 'PGPASSWORD=$POSTGRES_PASSWORD pg_dumpall -U $POSTGRES_USER' | zstd -z -11 | pv > $BACKUP_DIR/$db_name-$DATE.sql.zstd
         ;;
     esac
 done
