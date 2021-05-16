@@ -8,16 +8,18 @@ export RESTIC_PASSWORD="{{ restic_key }}"
 export RESTIC_REPOSITORY="b2:{{ restic_b2_bucket }}"
 
 export RESTIC_LOG_DIR="$HOME/log"
-export RESTIC_LOG_FILE="$RESTIC_LOG_DIR/$(date -Iseconds).log"
+export RESTIC_LOG_FILE="$RESTIC_LOG_DIR/$1-$(date -Iseconds).log"
+
+export FORGET_OPTIONS="--keep-daily 7 --keep-weekly 2"
 
 mkdir -p "$RESTIC_LOG_DIR"
 
 # Run backup, and capture logs to file
 cron_backup() {
-    curl -fsS -m 10 --retry 5 -o /dev/null {{ healthchecks_host }}/{{ healthchecks_id }}/start
+    curl -fsS -m 10 --retry 5 -o /dev/null {{ healthchecks_host }}/{{ restic_healthchecks_id }}/start
     restic --verbose backup {{ restic_backup_locations|join(' ') }} | tee -a $RESTIC_LOG_FILE
     exit_code=${PIPESTATUS[0]}
-    curl -fsS -m 10 --retry 5 -o /dev/null {{ healthchecks_host }}/{{ healthchecks_id }}/$exit_code --data-binary "@$RESTIC_LOG_FILE"
+    curl -fsS -m 10 --retry 5 -o /dev/null {{ healthchecks_host }}/{{ restic_healthchecks_id }}/$exit_code --data-binary "@$RESTIC_LOG_FILE"
     rm $RESTIC_LOG_FILE
     echo "Exit code: $exit_code"
 }
@@ -26,6 +28,18 @@ cron_backup() {
 backup() {
     restic --verbose backup {{ restic_backup_locations|join(' ') }}
 }
+
+{% if restic_forget %}
+# Run forget and prune, and capture logs to file
+cron_forget() {
+    curl -fsS -m 10 --retry 5 -o /dev/null {{ healthchecks_host }}/{{ restic_forget_healthchecks_id }}/start
+    restic forget --prune $FORGET_OPTIONS | tee -a $RESTIC_LOG_FILE
+    exit_code=${PIPESTATUS[0]}
+    curl -fsS -m 10 --retry 5 -o /dev/null {{ healthchecks_host }}/{{ restic_forget_healthchecks_id }}/$exit_code --data-binary "@$RESTIC_LOG_FILE"
+    rm $RESTIC_LOG_FILE
+    echo "Exit code: $exit_code"
+}
+{% endif %}
 
 # Forget legacy snapshots
 forget() {

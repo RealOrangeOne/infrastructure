@@ -31,3 +31,20 @@
     path: /usr/bin/restic
     capability: cap_dac_read_search=+ep
   become: true
+
+- name: Schedule backup
+  cron:
+    name: restic backup
+    special_time: daily
+    job: /home/restic/backrest.sh cron_backup
+    user: restic
+  become: true
+
+- name: Schedule forget
+  cron:
+    name: restic forget
+    special_time: weekly
+    job: /home/restic/backrest.sh cron_forget
+    user: restic
+  become: true
+  when: restic_forget
