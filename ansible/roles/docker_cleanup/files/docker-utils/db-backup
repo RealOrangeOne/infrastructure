@@ -29,6 +29,16 @@ do
         echo Backing up postgres $db_name
         docker exec $container_id bash -c 'PGPASSWORD=$POSTGRES_PASSWORD pg_dumpall -U $POSTGRES_USER' | pv > $BACKUP_DIR/$db_name-$DATE.sql
         ;;
+    "yandex/clickhouse-server")
+        # Hardcode for plausible
+        tables=$(docker exec $container_id clickhouse-client --query "SELECT name FROM system.tables where database == 'plausible';")
+        for table in $tables
+        do
+            echo Backing up clickhouse table $table
+            docker exec $container_id clickhouse-client --query "SELECT * FROM plausible.$table" --format CSVWithNames | pv > $BACKUP_DIR/plausible-$table-$DATE.csv
+        done
+        ;;
+
     esac
 done
 
