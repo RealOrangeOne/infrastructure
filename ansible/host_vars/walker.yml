@@ -2,6 +2,7 @@ with_traefik_pages: true
 
 restic_backup_locations:
   - /opt
+  - "{{ home }}/db-backups"
 restic_healthchecks_id: !vault |
   $ANSIBLE_VAULT;1.1;AES256
   30663732643431326232366364373238653263613039373232663563303334326137376663373366
