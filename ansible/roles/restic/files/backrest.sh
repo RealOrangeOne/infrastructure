@@ -27,6 +27,18 @@ backup() {
     restic --verbose backup {{ restic_backup_locations|join(' ') }}
 }
 
+# Forget legacy snapshots
+forget() {
+    set -x
+    restic forget --keep-daily 7 --keep-weekly 2 $@
+}
+
+# Prune orphaned files
+prune() {
+    set -x
+    restic --verbose prune $@
+}
+
 # Run restic, but with environment variables set
 exec () {
     set -x
