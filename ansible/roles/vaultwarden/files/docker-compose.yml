@@ -13,12 +13,12 @@ services:
     labels:
       - traefik.enable=true
 
-      - traefik.http.routers.vaultwarden-ui.rule=Host(`bw.jakehoward.tech`)
+      - traefik.http.routers.vaultwarden-ui.rule=Host(`bw.jakehoward.tech`) || Host(`vaultwarden.jakehoward.tech`)
       - traefik.http.routers.vaultwarden-ui.service=vaultwarden-ui
       - traefik.http.services.vaultwarden-ui.loadbalancer.server.port=80
       - traefik.http.routers.vaultwarden-ui.tls.certresolver=le
 
-      - traefik.http.routers.vaultwarden-websocket.rule=Host(`bw.jakehoward.tech`) && Path(`/notifications/hub`)
+      - traefik.http.routers.vaultwarden-websocket.rule=(Host(`bw.jakehoward.tech`) || Host(`vaultwarden.jakehoward.tech`) )&& Path(`/notifications/hub`)
       - traefik.http.routers.vaultwarden-websocket.service=vaultwarden-websocket
       - traefik.http.services.vaultwarden-websocket.loadbalancer.server.port=3012
       - traefik.http.routers.vaultwarden-websocket.tls.certresolver=le
@@ -31,11 +31,11 @@ services:
       - traefik.http.routers.vaultwarden-websocket.middlewares=vaultwarden-ratelimit,vaultwarden-compress
     environment:
       - SIGNUPS_ALLOWED=false
-      - DOMAIN=https://bw.jakehoward.tech
+      - DOMAIN=https://vaultwarden.jakehoward.tech
       - SHOW_PASSWORD_HINT=false
-      - DATABASE_URL=postgres://bitwarden:{{ bitwarden_database_password }}@db/bitwarden
+      - DATABASE_URL=postgres://vaultwarden:{{ vaultwarden_database_password }}@db/vaultwarden
       - INVITATIONS_ALLOWED=false
-      - ROCKET_WORKERS={{ ansible_processor_nproc }}
+      - ROCKET_WORKERS={{ ansible_processor_nproc // 2 }}
       - WEBSOCKET_ENABLED=true
 
   db:
@@ -44,5 +44,5 @@ services:
     volumes:
       - /mnt/tank/dbs/postgres/vaultwarden/:/var/lib/postgresql/data
     environment:
-      - POSTGRES_PASSWORD={{ bitwarden_database_password }}
-      - POSTGRES_USER=bitwarden
+      - POSTGRES_PASSWORD={{ vaultwarden_database_password }}
+      - POSTGRES_USER=vaultwarden
