@@ -2,4 +2,4 @@ nebula_lighthouse_public_ip: "{{ hosts.casey_ip }}"
 nebula_lighthouse_ip: "{{ nebula.clients.casey.ip }}"
 nebula_lighthouse_port: 6328
 
-nebula_version: 1.3.0
+nebula_version: 1.4.0
