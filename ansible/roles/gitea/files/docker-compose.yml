@@ -2,7 +2,7 @@ version: "2.3"
 
 services:
   gitea:
-    image: gitea/gitea:1.14.1
+    image: gitea/gitea:1.14.2
     restart: unless-stopped
     environment:
       - USER_UID={{ docker_user.id }}
