@@ -14,4 +14,4 @@ rules:
     quote-type: double
     required: only-when-needed
   line-length:
-    max: 150
+    max: 160
