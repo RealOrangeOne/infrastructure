@@ -35,7 +35,8 @@
 - name: Schedule backup
   cron:
     name: restic backup
-    special_time: daily
+    hour: 2
+    minute: 0
     job: /home/restic/backrest.sh cron_backup
     user: restic
   become: true
@@ -43,7 +44,9 @@
 - name: Schedule forget
   cron:
     name: restic forget
-    special_time: weekly
+    hour: 5
+    minute: 0
+    weekday: 0
     job: /home/restic/backrest.sh cron_forget
     user: restic
   become: true
