@@ -95,3 +95,7 @@
 - hosts: restic
   roles:
     - restic
+
+- hosts: gitlab
+  roles:
+    - gitlab

@@ -13,3 +13,4 @@ roles:
     name: proxmox-nag-removal
   - src: chmduquesne.iptables_persistent
   - src: rossmcdonald.telegraf
+  - src: geerlingguy.gitlab

@@ -1,0 +1,4 @@
+- name: Install and configure GitLab
+  import_role:
+    name: geerlingguy.gitlab
+  become: true

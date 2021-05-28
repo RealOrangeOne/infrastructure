@@ -1,0 +1,2 @@
+gitlab_config_template: files/gitlab.rb
+gitlab_create_self_signed_cert: false
