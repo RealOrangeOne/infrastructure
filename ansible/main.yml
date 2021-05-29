@@ -96,6 +96,6 @@
   roles:
     - restic
 
-- hosts: gitlab
+- hosts: pve-gitlab
   roles:
     - gitlab
