@@ -1,4 +1,4 @@
-external_url 'https://{{ pve_hosts.gitlab.ip }}'  # Obviously temporary
+external_url 'https://code.theorangeone.net'
 nginx['redirect_http_to_https'] = false
 alertmanager['enable'] = false
 prometheus_monitoring['enable'] = false
@@ -21,5 +21,5 @@ sidekiq['max_concurrency'] = 10
 gitlab_rails['gitlab_default_theme'] = 2
 
 nginx['real_ip_header'] = 'X-Forwarded-For'
-#nginx['real_ip_trusted_addresses'] = ['172.80.0.0/16']
-#gitlab_rails['trusted_proxies'] = ['172.80.0.0/16']
+nginx['real_ip_trusted_addresses'] = ['{{ pve_hosts.pve_docker.ip }}/32']
+gitlab_rails['trusted_proxies'] = ['{{ pve_hosts.pve_docker.ip }}/32']

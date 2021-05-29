@@ -10,6 +10,14 @@ resource "cloudflare_record" "theorangeonenet_git" {
   ttl     = 1
 }
 
+resource "cloudflare_record" "theorangeonenet_code" {
+  zone_id = cloudflare_zone.theorangeonenet.id
+  name    = "code"
+  value   = vultr_instance.casey.main_ip
+  type    = "A"
+  ttl     = 1
+}
+
 resource "cloudflare_record" "theorangeonenet_whoami" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "whoami"

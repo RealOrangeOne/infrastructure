@@ -1,0 +1,12 @@
+http:
+  routers:
+    router-gitlab:
+      rule: Host(`code.theorangeone.net`)
+      service: service-gitlab
+      tls:
+        certResolver: le
+  services:
+    service-gitlab:
+      loadBalancer:
+        servers:
+          - url: https://{{ pve_hosts.gitlab.ip }}
