@@ -2,3 +2,19 @@
   import_role:
     name: geerlingguy.gitlab
   become: true
+
+- name: Create dir for service override
+  file:
+    path: /usr/lib/systemd/system/gitlab-runsvdir.service.d/
+    state: directory
+    mode: "0755"
+  become: true
+
+- name: Create override.conf
+  copy:
+    src: files/gitlab-override.conf
+    dest: /usr/lib/systemd/system/gitlab-runsvdir.service.d/gitlab-override.conf
+    owner: root
+    group: root
+    mode: "0644"
+  become: true
