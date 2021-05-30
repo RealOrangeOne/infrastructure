@@ -16,7 +16,9 @@
 - name: ZFS Scrub
   cron:
     name: scrub {{ item }} ZFS pool
-    special_time: weekly
+    hour: 5
+    minute: 0
+    weekday: 5
     job: "{{ which_zpool.stdout }} scrub {{ item }}"
   become: true
   loop: "{{ zpools_to_scrub }}"
