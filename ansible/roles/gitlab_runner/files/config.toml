@@ -17,3 +17,4 @@ check_interval = 10
     privileged = false
     disable_cache = false
     volumes = ["/cache"]
+    pull_policy = "if-not-present"
