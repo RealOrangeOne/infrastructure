@@ -28,6 +28,7 @@
     - pve-docker
     - forrest
     - walker
+    - pve-gitlab-runner
   roles:
     - role: geerlingguy.docker
       become: true
@@ -99,3 +100,7 @@
 - hosts: pve-gitlab
   roles:
     - gitlab
+
+- hosts: pve-gitlab-runner
+  roles:
+    - gitlab_runner

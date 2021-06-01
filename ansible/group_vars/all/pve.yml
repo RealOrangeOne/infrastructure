@@ -17,3 +17,5 @@ pve_hosts:
     ip: 10.23.1.21
   gitlab:
     ip: 10.23.1.43
+  gitlab_runner:
+    ip: 10.23.1.48

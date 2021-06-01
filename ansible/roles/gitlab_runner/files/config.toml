@@ -1,0 +1,19 @@
+concurrent = {{ ansible_processor_nproc }}
+log_level = "warning"
+check_interval = 10
+
+[session_server]
+  session_timeout = 1800
+
+[[runners]]
+  name = "runner"
+  url = "https://code.theorangeone.net"
+  token = "{{ gitlab_runner_token }}"
+  limit = 0
+  executor = "docker"
+
+  [runners.docker]
+    image = "alpine"
+    privileged = false
+    disable_cache = false
+    volumes = ["/cache"]
