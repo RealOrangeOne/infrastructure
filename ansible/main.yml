@@ -49,7 +49,6 @@
   roles:
     - pve_docker
     - gitea
-    - duplicati
     - yourls
     - pve_nebula_route
     - privatebin
@@ -84,7 +83,6 @@
   roles:
     - nebula
     - upload
-    - duplicati
     - plausible
     - pages
     - restic
