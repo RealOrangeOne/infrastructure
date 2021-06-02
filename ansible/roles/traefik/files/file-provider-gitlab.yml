@@ -1,7 +1,7 @@
 http:
   routers:
     router-gitlab:
-      rule: Host(`code.theorangeone.net`)
+      rule: Host(`git.theorangeone.net`)
       service: service-gitlab
       tls:
         certResolver: le

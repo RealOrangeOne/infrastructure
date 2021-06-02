@@ -7,7 +7,7 @@ check_interval = 10
 
 [[runners]]
   name = "runner"
-  url = "https://code.theorangeone.net"
+  url = "https://git.theorangeone.net"
   token = "{{ gitlab_runner_token }}"
   limit = 0
   executor = "docker"

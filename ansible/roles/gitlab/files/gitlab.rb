@@ -1,4 +1,4 @@
-external_url 'https://code.theorangeone.net'
+external_url 'https://git.theorangeone.net'
 nginx['redirect_http_to_https'] = false
 alertmanager['enable'] = false
 prometheus_monitoring['enable'] = false
