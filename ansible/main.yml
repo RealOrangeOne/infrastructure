@@ -48,7 +48,6 @@
 - hosts: pve-docker
   roles:
     - pve_docker
-    - gitea
     - yourls
     - pve_nebula_route
     - privatebin

@@ -1,4 +1,0 @@
-- name: restart gitea
-  shell:
-    chdir: /opt/gitea
-    cmd: "{{ docker_update_command }}"
