@@ -3,11 +3,6 @@
     chdir: /opt/grafana
     cmd: "{{ docker_update_command }}"
 
-- name: restart influxdb
-  shell:
-    chdir: /opt/influxdb
-    cmd: "{{ docker_update_command }}"
-
 - name: restart prometheus
   shell:
     chdir: /opt/prometheus
