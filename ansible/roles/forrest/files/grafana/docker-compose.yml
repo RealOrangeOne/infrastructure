@@ -24,7 +24,7 @@ services:
       - grafana
     restart: unless-stopped
     ports:
-      - "{{ private_ip }}:3000:3000"
+      - "{{ pve_hosts.forrest.ip }}:3000:3000"
     depends_on:
       - db
       - renderer

@@ -22,7 +22,7 @@ services:
     volumes:
       - ./chronograf:/var/lib/chronograf
     ports:
-      - "{{ private_ip }}:8888:8888"
+      - "{{ pve_hosts.forrest.ip }}:8888:8888"
 
 networks:
   grafana:

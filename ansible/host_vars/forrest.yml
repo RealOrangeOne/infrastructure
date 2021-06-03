@@ -1,1 +1,0 @@
-private_ip: "{{ pve_hosts.forrest.ip }}"

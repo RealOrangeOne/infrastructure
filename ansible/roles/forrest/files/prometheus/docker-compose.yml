@@ -12,7 +12,7 @@ services:
       - prometheus
       - grafana
     ports:
-      - "{{ private_ip }}:9090:9090"
+      - "{{ pve_hosts.forrest.ip }}:9090:9090"
 
 networks:
   prometheus:
