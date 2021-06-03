@@ -1,21 +1,23 @@
 pve_hosts:
   internal_cidr: 10.23.1.0/24
-  ingress:
-    ip: 10.23.1.88
-  jellyfin:
-    ip: 10.23.1.29
-  pve_docker:
-    ip: 10.23.1.7
-  homeassistant:
-    ip: 192.168.1.132
-  forrest:
-    ip: 10.23.1.99
   pve:
     ip: 10.23.1.1
     external_ip: 192.168.2.200
-  qbittorrent:
-    ip: 10.23.1.21
+  restic:
+    ip: 10.23.1.11
+  forrest:
+    ip: 10.23.1.13
+  jellyfin:
+    ip: 10.23.1.101
+  pve_docker:
+    ip: 10.23.1.103
   gitlab:
-    ip: 10.23.1.43
+    ip: 10.23.1.106
   gitlab_runner:
-    ip: 10.23.1.48
+    ip: 10.23.1.107
+  ingress:
+    ip: 10.23.1.10
+  homeassistant:
+    ip: 192.168.2.203
+  qbittorrent:
+    ip: 10.23.1.105

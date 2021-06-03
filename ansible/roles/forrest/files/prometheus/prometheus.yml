@@ -7,7 +7,7 @@ scrape_configs:
 
     static_configs:
       - targets:
-          - 10.23.1.1:9273
+          - "{{ pve_hosts.pve.ip }}:9273"
   - job_name: traefik
     metric_relabel_configs:
       - source_labels: [__name__]
