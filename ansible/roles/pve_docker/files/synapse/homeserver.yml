@@ -70,3 +70,10 @@ trusted_key_servers:
   - server_name: matrix.org
 
 suppress_key_server_warning: true
+
+## Workers ##
+
+redis:
+  enabled: true
+  host: redis
+  port: 6379
