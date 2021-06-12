@@ -1,9 +1,6 @@
 - name: Install calibre
   include: calibre.yml
 
-- name: Install gotify
-  include: gotify.yml
-
 - name: Install librespeed
   include: librespeed.yml
 

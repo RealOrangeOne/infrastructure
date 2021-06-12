@@ -108,14 +108,6 @@ resource "cloudflare_record" "jakehowardtech_intersect" {
   ttl     = 1
 }
 
-resource "cloudflare_record" "jakehowardtech_gotify" {
-  zone_id = cloudflare_zone.jakehowardtech.id
-  name    = "gotify"
-  value   = vultr_instance.casey.main_ip
-  type    = "A"
-  ttl     = 1
-}
-
 resource "cloudflare_record" "jakehowardtech_calibre" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "calibre"
