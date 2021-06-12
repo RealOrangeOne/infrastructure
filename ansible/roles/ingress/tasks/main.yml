@@ -1,2 +1,5 @@
 - name: Configure wireguard
   include: wireguard.yml
+
+- name: Configure haproxy
+  include: haproxy.yml

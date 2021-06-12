@@ -3,3 +3,9 @@
     name: wg-quick.wg0
     state: restarted
   become: true
+
+- name: restart haproxy
+  service:
+    name: haproxy
+    state: restarted
+  become: true
