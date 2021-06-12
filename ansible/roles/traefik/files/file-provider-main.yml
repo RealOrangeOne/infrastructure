@@ -1,8 +1,5 @@
 http:
   middlewares:
-    tls-redirect:
-      redirectScheme:
-        scheme: https
     compress:
       compress: {}
 

@@ -15,18 +15,7 @@ entryPoints:
     address: :443
     http:
       middlewares:
-        - tls-redirect@file
         - floc-block@file
-    proxyProtocol:
-      trustedIPs:
-        - "{{ wireguard.cidr }}"
-        - "{{ pve_hosts.internal_cidr }}"
-        - "{{ nebula.cidr }}"
-  matrix:
-    address: :8448
-    http:
-      middlewares:
-        - tls-redirect@file
     proxyProtocol:
       trustedIPs:
         - "{{ wireguard.cidr }}"
