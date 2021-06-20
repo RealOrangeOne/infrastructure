@@ -164,3 +164,19 @@ resource "cloudflare_record" "theorangeonenet_privatebin" {
   type    = "A"
   ttl     = 1
 }
+
+resource "cloudflare_record" "theorangeonenet_dokku" {
+  zone_id = cloudflare_zone.theorangeonenet.id
+  name    = "d"
+  value   = vultr_instance.grimes.main_ip
+  type    = "A"
+  ttl     = 1
+}
+
+resource "cloudflare_record" "theorangeonenet_dokku_wildcard" {
+  zone_id = cloudflare_zone.theorangeonenet.id
+  name    = "*.d"
+  value   = vultr_instance.grimes.main_ip
+  type    = "A"
+  ttl     = 1
+}
