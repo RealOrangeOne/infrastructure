@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-DATE=$(date -I)
 BACKUP_DIR=$1
 
 if [ -z "$BACKUP_DIR" ]
@@ -21,13 +20,13 @@ do
     "mariadb")
         db_name=$(docker exec $container_id bash -c 'echo $MYSQL_USER')
         echo Backing up mariadb $db_name
-        docker exec $container_id bash -c 'mysqldump -u $MYSQL_USER -p$MYSQL_PASSWORD --all-databases' | pv > $BACKUP_DIR/$db_name-$DATE.sql
+        docker exec $container_id bash -c 'mysqldump -u $MYSQL_USER -p$MYSQL_PASSWORD --all-databases' | pv > $BACKUP_DIR/$db_name.sql
         ;;
 
     "postgres")
         db_name=$(docker exec $container_id bash -c 'echo $POSTGRES_USER')
         echo Backing up postgres $db_name
-        docker exec $container_id bash -c 'PGPASSWORD=$POSTGRES_PASSWORD pg_dumpall -U $POSTGRES_USER' | pv > $BACKUP_DIR/$db_name-$DATE.sql
+        docker exec $container_id bash -c 'PGPASSWORD=$POSTGRES_PASSWORD pg_dumpall -U $POSTGRES_USER' | pv > $BACKUP_DIR/$db_name.sql
         ;;
     "yandex/clickhouse-server")
         # Hardcode for plausible
@@ -35,7 +34,7 @@ do
         for table in $tables
         do
             echo Backing up clickhouse table $table
-            docker exec $container_id clickhouse-client --query "SELECT * FROM plausible.$table" --format CSVWithNames | pv > $BACKUP_DIR/plausible-$table-$DATE.csv
+            docker exec $container_id clickhouse-client --query "SELECT * FROM plausible.$table" --format CSVWithNames | pv > $BACKUP_DIR/plausible-$table.csv
         done
         ;;
 
