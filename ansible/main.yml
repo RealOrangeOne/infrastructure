@@ -23,7 +23,6 @@
       vars:
         ntp_timezone: "{{ TZ }}"
         ntp_manage_config: true
-      when: ansible_os_family != 'Alpine'  # https://github.com/ansible-collections/community.general/issues/781
 
 - hosts:
     - pve-docker
