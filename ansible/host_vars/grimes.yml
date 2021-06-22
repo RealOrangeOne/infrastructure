@@ -1,3 +1,15 @@
 ssh_extra_allowed_users: dokku
 
 dokku_daemon_install: false
+dokku_plugins:
+  - name: postgres
+    url: https://github.com/dokku/dokku-postgres.git
+
+  - name: redis
+    url: https://github.com/dokku/dokku-redis.git
+
+  - name: letsencrypt
+    url: https://github.com/dokku/dokku-letsencrypt.git
+
+  - name: redirect
+    url: https://github.com/dokku/dokku-redirect.git
