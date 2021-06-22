@@ -13,3 +13,4 @@ roles:
   - src: chmduquesne.iptables_persistent
   - src: rossmcdonald.telegraf
   - src: geerlingguy.gitlab
+  - src: dokku_bot.ansible_dokku

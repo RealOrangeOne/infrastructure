@@ -1,1 +1,3 @@
 ssh_extra_allowed_users: dokku
+
+dokku_daemon_install: false

@@ -106,3 +106,5 @@
 - hosts: grimes
   roles:
     - nebula
+    - role: dokku_bot.ansible_dokku
+      become: true
