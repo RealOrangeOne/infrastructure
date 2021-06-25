@@ -9,7 +9,7 @@ roles:
   - src: geerlingguy.ntp
   - src: realorangeone.reflector
   - src: https://github.com/IronicBadger/ansible-role-proxmox-nag-removal
-    name: proxmox-nag-removal
+    name: IronicBadger.proxmox-nag-removal
   - src: chmduquesne.iptables_persistent
   - src: rossmcdonald.telegraf
   - src: geerlingguy.gitlab

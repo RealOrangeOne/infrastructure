@@ -63,7 +63,7 @@
 
 - hosts: pve
   roles:
-    - role: proxmox-nag-removal
+    - role: IronicBadger.proxmox-nag-removal
       become: true
     - pve
     - zfs
