@@ -5,21 +5,13 @@
     mode: "0644"
   become: true
 
-- name: Locate zpool command
-  command:
-    cmd: which zpool
-    strip_empty_ends: true
-  register: which_zpool
-  changed_when: false
-  become: true
-
 - name: ZFS Scrub
   cron:
     name: scrub {{ item }} ZFS pool
     hour: 5
     minute: 0
     weekday: 5
-    job: "{{ which_zpool.stdout }} scrub {{ item }}"
+    job: zpool scrub {{ item }}
   become: true
   loop: "{{ zpools_to_scrub }}"
 
