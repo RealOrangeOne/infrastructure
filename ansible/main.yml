@@ -69,6 +69,8 @@
     - zfs
     - pve_nebula_route
     - telegraf
+    - role: IronicBadger.snapraid
+      become: true
 
 - hosts: forrest
   roles:

@@ -16,3 +16,28 @@ sanoid_datasets:
   rpool:
     use_template: production
     recursive: true
+
+# Snapraid
+snapraid_install: false
+snapraid_runner: false
+
+snapraid_data_disks:
+  - path: /mnt/bulk
+    content: true
+snapraid_parity_disks:
+  - path: /mnt/parity
+    content: true
+
+snapraid_content_files:
+  - /mnt/tank/files/snapraid.content
+  - /var/snapraid.content
+
+snapraid_config_excludes:
+  - "*.unrecoverable"
+  - /lost+found/
+  - "*.!sync"
+  - /tmp/
+
+snapraid_scrub_schedule:
+  hour: 5
+  weekday: 4
