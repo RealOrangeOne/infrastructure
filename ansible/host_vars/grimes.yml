@@ -1,6 +1,7 @@
 ssh_extra_allowed_users: dokku
 
 dokku_daemon_install: false
+dokku_hostname: d.theorangeone.net
 dokku_plugins:
   - name: postgres
     url: https://github.com/dokku/dokku-postgres.git
