@@ -51,3 +51,10 @@
     user: restic
   become: true
   when: restic_forget
+
+- name: backrest fail2ban config
+  template:
+    src: files/backrest-logrotate
+    dest: /etc/logrotate.d/backrest
+    mode: "0600"
+  become: true

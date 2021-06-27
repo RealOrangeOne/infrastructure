@@ -20,7 +20,6 @@ cron_backup() {
     restic --verbose backup {{ restic_backup_locations|join(' ') }} &> | tee -a $RESTIC_LOG_FILE
     exit_code=${PIPESTATUS[0]}
     curl -fsS -m 10 --retry 5 -o /dev/null {{ healthchecks_host }}/{{ restic_healthchecks_id }}/$exit_code --data-binary "@$RESTIC_LOG_FILE"
-    rm $RESTIC_LOG_FILE
     echo "Exit code: $exit_code"
 }
 
@@ -36,7 +35,6 @@ cron_forget() {
     restic forget --prune $FORGET_OPTIONS &> | tee -a $RESTIC_LOG_FILE
     exit_code=${PIPESTATUS[0]}
     curl -fsS -m 10 --retry 5 -o /dev/null {{ healthchecks_host }}/{{ restic_forget_healthchecks_id }}/$exit_code --data-binary "@$RESTIC_LOG_FILE"
-    rm $RESTIC_LOG_FILE
     echo "Exit code: $exit_code"
 }
 {% endif %}

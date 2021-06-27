@@ -1,0 +1,8 @@
+/home/restic/log/* {
+  weekly
+  rotate 12
+  missingok
+  compress
+  nodateext
+  notifempty
+}
