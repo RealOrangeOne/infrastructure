@@ -1,5 +1,5 @@
 terraform:
-  image: hashicorp/terraform:latest
+  image: registry.gitlab.com/gitlab-org/terraform-images/stable:latest
   before_script:
     - ./scripts/terraform/terraform.sh init -backend=false
   script:
