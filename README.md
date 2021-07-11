@@ -1,6 +1,6 @@
 # Infrastructure
 
-![CI Status](https://github.com/realorangeone/infrastructure/workflows/CI/badge.svg)
+![CI](https://git.theorangeone.net/sys/infrastructure/badges/master/pipeline.svg)
 
 ## Requirements
 
