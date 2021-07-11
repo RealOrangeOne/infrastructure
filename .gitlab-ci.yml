@@ -7,14 +7,14 @@ terraform:
     - ./scripts/terraform/lint.sh
 
 ansible:
-  image: python:3.9-alpine
+  image: python:3.9-slim
   variables:
     PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
   cache:
     paths:
       - .cache/pip
   before_script:
-    - apk add --no-cache bash
+    - apt-get update && apt-get install -y bash git
     - ./scripts/ansible/setup.sh
   script:
     - ./scripts/ansible/lint.sh
