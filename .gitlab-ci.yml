@@ -14,8 +14,8 @@ ansible:
     paths:
       - .cache/pip
   before_script:
+    - chmod 0755 .  # HACK: https://docs.ansible.com/ansible/devel/reference_appendices/config.html#cfg-in-world-writable-dir
     - apt-get update && apt-get install -y bash git
     - ./scripts/ansible/setup.sh
-    - chmod 0755 .  # HACK: https://docs.ansible.com/ansible/devel/reference_appendices/config.html#cfg-in-world-writable-dir
   script:
     - ./scripts/ansible/lint.sh
