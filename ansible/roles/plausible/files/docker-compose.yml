@@ -34,7 +34,7 @@ services:
       - BASE_URL=https://elbisualp.theorangeone.net
 
   clickhouse:
-    image: yandex/clickhouse-server:21-alpine
+    image: yandex/clickhouse-server:21.6-alpine
     restart: unless-stopped
     volumes:
       - ./clickhouse:/var/lib/clickhouse
