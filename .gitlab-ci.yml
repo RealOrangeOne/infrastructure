@@ -1,0 +1,18 @@
+terraform:
+  image: hashicorp/terraform:latest
+  before_script:
+    - ./scripts/terraform/terraform.sh init -backend=false
+  script:
+    - ./scripts/terraform/lint.sh
+
+ansible:
+  image: python:3.9-alpine
+  variables:
+    PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+  cache:
+    paths:
+      - .cache/pip
+  before_script:
+    - ./scripts/ansible/setup.sh
+  script:
+    - ./scripts/ansible/lint.sh
