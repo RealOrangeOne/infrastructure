@@ -16,5 +16,6 @@ ansible:
   before_script:
     - apt-get update && apt-get install -y bash git
     - ./scripts/ansible/setup.sh
+    - chmod 0755 .  # HACK: https://docs.ansible.com/ansible/devel/reference_appendices/config.html#cfg-in-world-writable-dir
   script:
     - ./scripts/ansible/lint.sh
