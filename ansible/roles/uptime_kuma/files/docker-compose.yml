@@ -1,0 +1,14 @@
+version: "2.3"
+
+services:
+  uptime-kuma:
+    image: louislam/uptime-kuma:1
+    restart: unless-stopped
+    user: "{{ docker_user.id }}:{{ docker_user.id }}"
+    volumes:
+      - ./data:/app/data
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.uptime-kuma.rule=Host(`uptime.jakehoward.tech`)
+      - traefik.http.routers.uptime-kuma.tls.certresolver=le
+      - traefik.http.routers.uptime-kuma.middlewares=compress@file

@@ -1,0 +1,4 @@
+- name: restart uptime-kuma
+  shell:
+    chdir: /opt/uptime-kuma
+    cmd: "{{ docker_update_command }}"

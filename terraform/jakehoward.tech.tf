@@ -147,3 +147,11 @@ resource "cloudflare_record" "jakehowardtech_vaultwarden" {
   type    = "A"
   ttl     = 1
 }
+
+resource "cloudflare_record" "jakehowardtech_uptime" {
+  zone_id = cloudflare_zone.jakehowardtech.id
+  name    = "uptime"
+  value   = vultr_instance.walker.main_ip
+  type    = "A"
+  ttl     = 1
+}
