@@ -1,0 +1,9 @@
+[Trigger]
+Operation = Upgrade
+Type = Package
+Target = restic
+
+[Action]
+Description = Set restic binary permissions
+When = PostTransaction
+Exec = /usr/share/libalpm/scripts/restic-post.sh

@@ -58,3 +58,19 @@
     dest: /etc/logrotate.d/backrest
     mode: "0600"
   become: true
+
+- name: Install pacman post script
+  template:
+    src: files/restic-post.sh
+    dest: /usr/share/libalpm/scripts/restic-post.sh
+    mode: "0700"
+  become: true
+  when: ansible_os_family == 'Archlinux'
+
+- name: Install pacman post hook
+  template:
+    src: files/restic-post.hook
+    dest: /usr/share/libalpm/hooks/restic-post.hook
+    mode: "0600"
+  become: true
+  when: ansible_os_family == 'Archlinux'
