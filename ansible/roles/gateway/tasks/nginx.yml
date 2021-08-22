@@ -1,0 +1,26 @@
+- name: Install nginx
+  package:
+    name: nginx
+  become: true
+
+- name: Nginx config
+  template:
+    src: files/nginx.conf
+    dest: /etc/nginx/nginx.conf
+    validate: nginx -t -c %s
+    mode: "0644"
+  become: true
+  register: nginx_config
+
+- name: Enable Nginx
+  service:
+    name: nginx
+    enabled: true
+  become: true
+
+- name: Restart Nginx
+  service:
+    name: nginx
+    state: restarted
+  become: true
+  when: nginx_config.changed

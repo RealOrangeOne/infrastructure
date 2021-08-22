@@ -1,15 +1,15 @@
 - name: fail2ban filter
   template:
-    src: files/haproxy-fail2ban-filter.conf
-    dest: /etc/fail2ban/filter.d/haproxy-basic.conf
+    src: files/nginx-fail2ban-filter.conf
+    dest: /etc/fail2ban/filter.d/nginx-tcp.conf
     mode: "0600"
   become: true
   register: fail2ban_filter
 
 - name: fail2ban jail
   template:
-    src: files/haproxy-fail2ban-jail.conf
-    dest: /etc/fail2ban/jail.d/haproxy.conf
+    src: files/nginx-fail2ban-jail.conf
+    dest: /etc/fail2ban/jail.d/nginx.conf
     mode: "0600"
   become: true
   register: fail2ban_jail
