@@ -4,8 +4,8 @@ zpools_to_scrub:
   - tank
   - rpool
 
-# 10GB, or so
-zfs_arc_size: 10000000000
+# 7GB, or so
+zfs_arc_size: 7000000000
 
 sanoid_datasets:
   tank:
