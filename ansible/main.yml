@@ -65,7 +65,6 @@
   roles:
     - role: IronicBadger.proxmox-nag-removal
       become: true
-    - pve
     - zfs
     - pve_nebula_route
     - telegraf
