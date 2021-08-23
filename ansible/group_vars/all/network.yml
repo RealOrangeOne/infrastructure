@@ -1,1 +1,1 @@
-private_ip: "{{ nebula.clients[ansible_hostname].ip }}"
+private_ip: "{{ nebula.clients[hostname_slug].ip }}"

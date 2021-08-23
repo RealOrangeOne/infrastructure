@@ -20,8 +20,8 @@ sidekiq['max_concurrency'] = 10
 gitlab_rails['gitlab_default_theme'] = 2
 
 nginx['real_ip_header'] = 'X-Forwarded-For'
-nginx['real_ip_trusted_addresses'] = ['{{ pve_hosts.pve_docker.ip }}/32']
-gitlab_rails['trusted_proxies'] = ['{{ pve_hosts.pve_docker.ip }}/32']
+nginx['real_ip_trusted_addresses'] = ['{{ pve_hosts.docker.ip }}/32']
+gitlab_rails['trusted_proxies'] = ['{{ pve_hosts.docker.ip }}/32']
 
 # SMTP
 gitlab_rails['smtp_enable'] = true

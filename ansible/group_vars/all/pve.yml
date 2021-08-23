@@ -9,7 +9,7 @@ pve_hosts:
     ip: 10.23.1.13
   jellyfin:
     ip: 10.23.1.101
-  pve_docker:
+  docker:
     ip: 10.23.1.103
   gitlab:
     ip: 10.23.1.106
