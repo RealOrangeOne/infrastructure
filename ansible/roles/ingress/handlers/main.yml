@@ -1,6 +1,6 @@
 - name: restart wireguard
   service:
-    name: wg-quick.wg0
+    name: wg-quick@wg0
     state: restarted
   become: true
 
