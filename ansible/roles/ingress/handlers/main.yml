@@ -4,8 +4,8 @@
     state: restarted
   become: true
 
-- name: restart haproxy
+- name: restart nginx
   service:
-    name: haproxy
+    name: nginx
     state: restarted
   become: true
