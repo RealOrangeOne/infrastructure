@@ -1,2 +1,3 @@
 restic_backup_locations: []
+restic_backup_excludes: []
 restic_forget: false

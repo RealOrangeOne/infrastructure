@@ -10,11 +10,27 @@
     system: false
   become: true
 
-- name: backrest
+- name: Install backrest
   template:
     src: files/backrest.sh
     dest: /home/restic/backrest.sh
     mode: "0700"
+    owner: restic
+  become: true
+
+- name: Install includes files
+  copy:
+    content: "{{ restic_backup_locations | join('\n') }}"
+    dest: /home/restic/restic-include.txt
+    mode: "0644"
+    owner: restic
+  become: true
+
+- name: Install excludes files
+  copy:
+    content: "{{ restic_backup_excludes | join('\n') }}"
+    dest: /home/restic/restic-excludes.txt
+    mode: "0644"
     owner: restic
   become: true
 
