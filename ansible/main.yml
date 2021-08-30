@@ -112,3 +112,4 @@
     - nebula
     - role: dokku_bot.ansible_dokku
       become: true
+    - restic
