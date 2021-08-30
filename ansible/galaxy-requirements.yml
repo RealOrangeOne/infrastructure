@@ -17,6 +17,5 @@ roles:
     name: rossmcdonald.telegraf
   - src: geerlingguy.gitlab
   - src: dokku_bot.ansible_dokku
-  - src: https://github.com/RealOrangeOne/ansible-role-snapraid
-    version: snapraid-plain-cron
+  - src: https://github.com/IronicBadger/ansible-role-snapraid
     name: IronicBadger.snapraid
