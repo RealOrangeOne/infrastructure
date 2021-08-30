@@ -12,9 +12,7 @@ roles:
     version: b0502ef4c371bbfb18faf85f5d869e3ffec661a8  # https://github.com/IronicBadger/ansible-role-proxmox-nag-removal/pull/15
     name: IronicBadger.proxmox-nag-removal
   - src: chmduquesne.iptables_persistent
-  - src: https://github.com/RealOrangeOne/ansible-role-telegraf
-    version: bullseye-support  # https://github.com/rossmcdonald/telegraf/pull/54
-    name: rossmcdonald.telegraf
+  - src: rossmcdonald.telegraf
   - src: geerlingguy.gitlab
   - src: dokku_bot.ansible_dokku
   - src: https://github.com/IronicBadger/ansible-role-snapraid
