@@ -15,6 +15,9 @@ dokku_plugins:
   - name: redirect
     url: https://github.com/dokku/dokku-redirect.git
 
+  - name: http-auth
+    url: https://github.com/dokku/dokku-http-auth.git
+
 # https://dokku.com/docs/advanced-usage/backup-recovery/
 restic_backup_locations:
   - /home/dokku
