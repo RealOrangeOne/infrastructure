@@ -3,7 +3,7 @@ pve_hosts:
   pve:
     ip: 10.23.1.1
     external_ip: 192.168.2.200
-  restic:
+  pve_restic:
     ip: 10.23.1.11
   forrest:
     ip: 10.23.1.13
