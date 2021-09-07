@@ -10,7 +10,7 @@ export RESTIC_REPOSITORY="b2:{{ restic_b2_bucket }}"
 export RESTIC_LOG_DIR="$HOME/log"
 export RESTIC_LOG_FILE="$RESTIC_LOG_DIR/$1-$(date -Iseconds).log"
 
-export FORGET_OPTIONS="--keep-daily 7 --keep-weekly 2"
+export FORGET_OPTIONS="--keep-daily 30"
 
 mkdir -p "$RESTIC_LOG_DIR"
 
@@ -42,7 +42,7 @@ cron_forget() {
 # Forget legacy snapshots
 forget() {
     set -x
-    restic forget --keep-daily 7 --keep-weekly 2 $@
+    restic forget $FORGET_OPTIONS $@
 }
 
 # Prune orphaned files
