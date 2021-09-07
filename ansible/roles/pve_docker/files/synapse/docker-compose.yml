@@ -15,8 +15,6 @@ services:
       - "{{ app_data_dir }}/synapse:/data"
     depends_on:
       - db
-    expose:
-      - 8008
     labels:
       - traefik.enable=true
       - traefik.http.routers.synapse.rule=Host(`matrix.jakehoward.tech`)
