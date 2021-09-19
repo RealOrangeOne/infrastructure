@@ -23,7 +23,6 @@ services:
       - traefik.enable=true
       - traefik.http.routers.tt-rss.rule=Host(`tt-rss.jakehoward.tech`)
       - traefik.http.routers.tt-rss.tls.certresolver=le
-      - traefik.http.routers.tt-rss.middlewares=compress@file
     depends_on:
       - db
     tmpfs:

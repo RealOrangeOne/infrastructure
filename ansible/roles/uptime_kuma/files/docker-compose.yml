@@ -11,4 +11,3 @@ services:
       - traefik.enable=true
       - traefik.http.routers.uptime-kuma.rule=Host(`uptime.jakehoward.tech`)
       - traefik.http.routers.uptime-kuma.tls.certresolver=le
-      - traefik.http.routers.uptime-kuma.middlewares=compress@file
