@@ -5,7 +5,6 @@ module "grimes_firewall" {
   ports = [
     "80/tcp",
     "443/tcp",
-    "7743/tcp"
   ]
 }
 

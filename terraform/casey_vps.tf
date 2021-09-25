@@ -6,7 +6,6 @@ module "casey_firewall" {
     "80/tcp",
     "443/tcp",
     "51820/udp",
-    "4242/tcp",
     "8448/tcp",
     "6328/udp"
   ]
