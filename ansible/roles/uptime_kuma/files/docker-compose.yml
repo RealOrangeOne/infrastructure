@@ -2,9 +2,12 @@ version: "2.3"
 
 services:
   uptime-kuma:
-    image: louislam/uptime-kuma:1
+    image: louislam/uptime-kuma:1-alpine
     restart: unless-stopped
-    user: "{{ docker_user.id }}:{{ docker_user.id }}"
+    environment:
+      - PUID={{ docker_user.id }}
+      - PGID={{ docker_user.id }}
+      - TZ={{ TZ }}
     volumes:
       - ./data:/app/data
     labels:
