@@ -17,6 +17,7 @@
     - qbittorrent
     - walker
     - grimes
+    - decker
   roles:
     - role: geerlingguy.ntp
       become: true
@@ -30,6 +31,7 @@
     - walker
     - pve-gitlab-runner
     - grimes
+    - decker
   roles:
     - role: geerlingguy.docker
       become: true
@@ -43,6 +45,7 @@
 - hosts:
     - pve-docker
     - walker
+    - decker
   roles:
     - traefik
 
@@ -112,4 +115,9 @@
     - nebula
     - role: dokku_bot.ansible_dokku
       become: true
+    - restic
+
+- hosts: decker
+  roles:
+    - nebula
     - restic
