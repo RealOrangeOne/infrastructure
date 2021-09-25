@@ -92,7 +92,6 @@
     - plausible
     - pages
     - restic
-    - uptime_kuma
 
 - hosts: jellyfin
   roles:
@@ -121,3 +120,4 @@
   roles:
     - nebula
     - restic
+    - uptime_kuma
