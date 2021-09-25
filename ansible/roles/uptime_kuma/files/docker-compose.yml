@@ -12,5 +12,5 @@ services:
       - ./data:/app/data
     labels:
       - traefik.enable=true
-      - traefik.http.routers.uptime-kuma.rule=Host(`uptime.jakehoward.tech`)
+      - traefik.http.routers.uptime-kuma.rule=Host(`status.theorangeone.net`)
       - traefik.http.routers.uptime-kuma.tls.certresolver=le

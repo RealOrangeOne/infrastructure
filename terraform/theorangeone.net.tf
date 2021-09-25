@@ -180,3 +180,11 @@ resource "cloudflare_record" "theorangeonenet_dokku_wildcard" {
   type    = "A"
   ttl     = 1
 }
+
+resource "cloudflare_record" "theorangeonenet_status" {
+  zone_id = cloudflare_zone.theorangeonenet.id
+  name    = "status"
+  value   = vultr_instance.decker.main_ip
+  type    = "A"
+  ttl     = 1
+}
