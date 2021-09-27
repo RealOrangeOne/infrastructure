@@ -7,3 +7,4 @@ skip_list:
 exclude_paths:
   - ansible/galaxy_roles/
   - ansible/galaxy_collections/
+  - ~/.ansible
