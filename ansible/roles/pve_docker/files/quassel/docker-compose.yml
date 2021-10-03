@@ -1,7 +1,7 @@
 version: "2.3"
 services:
   quassel-core:
-    image: linuxserver/quassel-core:latest
+    image: lscr.io/linuxserver/quassel-core:latest
     environment:
       - PUID={{ docker_user.id }}
       - PGID={{ docker_user.id }}

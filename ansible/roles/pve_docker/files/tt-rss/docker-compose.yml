@@ -2,7 +2,7 @@ version: "2.3"
 
 services:
   tt-rss:
-    image: lunik1/tt-rss:latest
+    image: registry.gitlab.com/lunik1/docker-tt-rss:latest
     environment:
       - PUID={{ docker_user.id }}
       - PGID={{ docker_user.id }}

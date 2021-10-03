@@ -2,7 +2,7 @@ version: "2.3"
 
 services:
   webdav:
-    image: theorangeone/webdav:latest
+    image: ghcr.io/realorangeone/webdav:latest
     restart: unless-stopped
     volumes:
       - ./files:/srv
@@ -15,7 +15,7 @@ services:
       - traefik.http.routers.upload.tls.certresolver=le
 
   img:
-    image: theorangeone/static-server:latest
+    image: ghcr.io/realorangeone/static-server:latest
     restart: unless-stopped
     volumes:
       - ./files/img:/srv:ro
@@ -27,7 +27,7 @@ services:
       - traefik.http.routers.img.tls.certresolver=le
 
   bg:
-    image: theorangeone/static-server:latest
+    image: ghcr.io/realorangeone/static-server:latest
     restart: unless-stopped
     volumes:
       - ./files/bg:/srv:ro
@@ -40,7 +40,7 @@ services:
       - traefik.http.routers.bg.tls.certresolver=le
 
   dl:
-    image: theorangeone/static-server:latest
+    image: ghcr.io/realorangeone/static-server:latest
     restart: unless-stopped
     volumes:
       - ./files/dl:/srv:ro
