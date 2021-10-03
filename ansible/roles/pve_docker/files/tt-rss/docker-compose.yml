@@ -7,6 +7,7 @@ services:
       - PUID={{ docker_user.id }}
       - PGID={{ docker_user.id }}
       - TZ={{ TZ }}
+      - DOCKER_MODS=theorangeone/lsio-mod-more-processes:latest
 
       - TTRSS_DB_USER=tt-rss
       - TTRSS_DB_NAME=tt-rss
