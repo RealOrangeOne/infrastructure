@@ -17,6 +17,15 @@ entryPoints:
       middlewares:
         - floc-block@file
         - compress@file
+      tls:
+        certresolver: le
+        domains:
+          - main: theorangeone.net
+            sans: "*.theorangeone.net"
+          - main: jakehoward.tech
+            sans: "*.jakehoward.tech"
+          - main: 0rng.one
+            sans: "*.0rng.one"
     proxyProtocol:
       trustedIPs:
         - "{{ wireguard.cidr }}"

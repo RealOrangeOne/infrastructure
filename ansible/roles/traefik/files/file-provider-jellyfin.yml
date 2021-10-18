@@ -3,8 +3,6 @@ http:
     router-jellyfin:
       rule: Host(`media.jakehoward.tech`)
       service: service-jellyfin
-      tls:
-        certResolver: le
   services:
     service-jellyfin:
       loadBalancer:

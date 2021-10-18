@@ -13,7 +13,6 @@ services:
     labels:
       - traefik.enable=true
       - traefik.http.routers.wallabag.rule=Host(`wallabag.jakehoward.tech`)
-      - traefik.http.routers.wallabag.tls.certresolver=le
     depends_on:
       - redis
 

@@ -13,4 +13,3 @@ services:
     labels:
       - traefik.enable=true
       - traefik.http.routers.uptime-kuma.rule=Host(`status.theorangeone.net`)
-      - traefik.http.routers.uptime-kuma.tls.certresolver=le

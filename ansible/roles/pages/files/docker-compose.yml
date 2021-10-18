@@ -12,7 +12,6 @@ services:
     labels:
       - traefik.enable=true
       - traefik.http.routers.pages.rule=Host(`pages.theorangeone.net`)
-      - traefik.http.routers.pages.tls.certresolver=le
 
   traefik-pages:
     image: ghcr.io/realorangeone/traefik-pages:latest

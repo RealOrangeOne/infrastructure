@@ -3,8 +3,6 @@ http:
     router-gitlab:
       rule: Host(`git.theorangeone.net`)
       service: service-gitlab
-      tls:
-        certResolver: le
   services:
     service-gitlab:
       loadBalancer:

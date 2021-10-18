@@ -18,7 +18,6 @@ services:
     labels:
       - traefik.enable=true
       - traefik.http.routers.synapse.rule=Host(`matrix.jakehoward.tech`)
-      - traefik.http.routers.synapse.tls.certresolver=le
 
   db:
     image: postgres:12-alpine
@@ -42,6 +41,5 @@ services:
     labels:
       - traefik.enable=true
       - traefik.http.routers.synapse-admin.rule=Host(`matrix.jakehoward.tech`) && PathPrefix(`/admin`)
-      - traefik.http.routers.synapse-admin.tls.certresolver=le
       - traefik.http.middlewares.synapse-admin-path.stripprefix.prefixes=/admin
       - traefik.http.routers.synapse-admin.middlewares=synapse-admin-path@docker

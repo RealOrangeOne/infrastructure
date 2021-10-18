@@ -12,4 +12,3 @@ services:
     labels:
       - traefik.enable=true
       - traefik.http.routers.privatebin.rule=Host(`bin.theorangeone.net`)
-      - traefik.http.routers.privatebin.tls.certresolver=le

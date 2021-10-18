@@ -12,6 +12,5 @@ services:
     labels:
       - traefik.enable=true
       - traefik.http.routers.librespeed.rule=Host(`speed.jakehoward.tech`)
-      - traefik.http.routers.librespeed.tls.certresolver=le
       - traefik.http.routers.librespeed.middlewares=librespeed-auth@docker
       - traefik.http.middlewares.librespeed-auth.basicauth.users={{ librespeed_basicauth }}
