@@ -15,5 +15,6 @@ roles:
   - src: rossmcdonald.telegraf
   - src: geerlingguy.gitlab
   - src: dokku_bot.ansible_dokku
-  - src: https://github.com/IronicBadger/ansible-role-snapraid
+  - src: https://github.com/RealOrangeOne/ansible-role-snapraid
     name: IronicBadger.snapraid
+    version: 8bb040fef8ad33f01f9175f754adb750b8828b32  # https://github.com/IronicBadger/ansible-role-snapraid/pull/9
