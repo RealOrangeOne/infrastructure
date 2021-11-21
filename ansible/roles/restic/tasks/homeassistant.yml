@@ -1,0 +1,29 @@
+- name: Install CIFS utils
+  package:
+    name: cifs-utils
+  become: true
+
+- name: Create dir for CIFS mount
+  file:
+    path: /mnt/home-assistant
+    state: directory
+    mode: "0755"
+  become: true
+
+- name: Create dir for each CIFS mount
+  file:
+    path: /mnt/home-assistant/{{ item }}
+    state: directory
+    mode: "0600"
+  become: true
+  loop: "{{ restic_homeassistant_mounts }}"
+
+- name: Create mounts
+  mount:
+    path: /mnt/home-assistant/{{ item }}
+    fstype: cifs
+    opts: username=homeassistant,password=homeassistant
+    src: //{{ pve_hosts.homeassistant.ip }}/{{ item }}
+    state: mounted
+  become: true
+  loop: "{{ restic_homeassistant_mounts }}"

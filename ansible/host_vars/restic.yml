@@ -1,5 +1,6 @@
 restic_backup_locations:
   - /mnt/tank
+  - /mnt/home-assistant
 restic_healthchecks_id: !vault |
   $ANSIBLE_VAULT;1.1;AES256
   61343535336633643231356138356631663130313234343538366634393661666232303965643365

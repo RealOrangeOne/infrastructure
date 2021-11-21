@@ -25,3 +25,7 @@ restic_key: !vault |
   66643135336539333738623231346331623464636637373639666435663961383936
 restic_b2_bucket: 0rng-restic
 healthchecks_host: https://hc-ping.com
+
+restic_homeassistant_mounts:
+  - backup
+  - config

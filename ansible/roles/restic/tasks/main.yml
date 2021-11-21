@@ -90,3 +90,7 @@
     mode: "0600"
   become: true
   when: ansible_os_family == 'Archlinux'
+
+- name: Install HomeAssistant mounts
+  include_tasks: homeassistant.yml
+  when: ansible_hostname == 'pve-restic'
