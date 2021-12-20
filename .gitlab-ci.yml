@@ -17,5 +17,6 @@ ansible:
     - chmod 0755 ansible/  # HACK: https://docs.ansible.com/ansible/devel/reference_appendices/config.html#cfg-in-world-writable-dir
     - apt-get update && apt-get install -y bash git
     - ./scripts/ansible/setup.sh
+    - chmod -x ansible/vault-pass.sh  # HACK: Pretend executable _is_ the password
   script:
     - ./scripts/ansible/lint.sh
