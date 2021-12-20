@@ -112,7 +112,6 @@ dmypy.json
 
 # End of https://www.gitignore.io/api/python,ansible
 env/
-ansible/.vault_pass
 ansible/galaxy_roles
 ansible/galaxy_collections
 

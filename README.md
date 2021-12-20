@@ -15,7 +15,7 @@
 
 ### Private Settings
 
-The ansible vault password needs setting in `ansible/.vault_pass`.
+Ansible [integrates](https://theorangeone.net/posts/ansible-vault-bitwarden/) with Bitwarden through its [CLI](https://bitwarden.com/help/article/cli/).
 
 Terraform configuration needs to be placed in `terraform/secrets.auto.tfvars`.
 
