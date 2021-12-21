@@ -1,0 +1,8 @@
+restic_backup_locations:
+  - /mnt/host/mnt/tank
+  - /mnt/host/etc/pve
+  - /mnt/home-assistant
+restic_healthchecks_id: "{{ vault_restic_healthchecks_id }}"
+
+restic_forget: true
+restic_forget_healthchecks_id: "{{ vault_restic_forget_healthchecks_id }}"

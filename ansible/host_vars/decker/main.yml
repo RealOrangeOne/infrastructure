@@ -1,0 +1,4 @@
+restic_backup_locations:
+  - /opt
+  - "{{ home }}/db-backups"
+restic_healthchecks_id: "{{ vault_restic_healthchecks_id }}"
