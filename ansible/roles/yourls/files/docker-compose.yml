@@ -20,7 +20,7 @@ services:
       - traefik.http.routers.yourls.rule=Host(`0rng.one`)
 
   mariadb:
-    image: mariadb:10.5
+    image: mariadb:10.7
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=yourls
