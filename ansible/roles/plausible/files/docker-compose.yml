@@ -22,8 +22,8 @@ services:
       - traefik.http.routers.plausible-embed.middlewares=plausible-index
 
     environment:
-      - SECRET_KEY_BASE={{ secret_key }}
-      - SIGNING_SALT={{ signing_salt }}
+      - SECRET_KEY_BASE={{ plausible_secret_key }}
+      - SIGNING_SALT={{ plausible_signing_salt }}
       - DATABASE_URL=postgres://plausible:plausible@db:5432/plausible
       - DISABLE_REGISTRATION=true
       - DISABLE_SUBSCRIPTION=true
