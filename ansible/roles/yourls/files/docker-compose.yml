@@ -2,7 +2,7 @@ version: "2.3"
 
 services:
   yourls:
-    image: yourls:1.7.9-apache
+    image: yourls:apache
     restart: unless-stopped
     depends_on:
       - mariadb
