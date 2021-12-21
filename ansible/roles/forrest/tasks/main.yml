@@ -1,3 +1,6 @@
+- name: Include vault
+  include_vars: vault.yml
+
 - name: Grafana
   include: grafana.yml
 
