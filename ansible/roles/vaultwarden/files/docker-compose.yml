@@ -13,11 +13,11 @@ services:
     labels:
       - traefik.enable=true
 
-      - traefik.http.routers.vaultwarden-ui.rule=Host(`bw.jakehoward.tech`) || Host(`vaultwarden.jakehoward.tech`)
+      - traefik.http.routers.vaultwarden-ui.rule=Host(`vaultwarden.jakehoward.tech`)
       - traefik.http.routers.vaultwarden-ui.service=vaultwarden-ui
       - traefik.http.services.vaultwarden-ui.loadbalancer.server.port=80
 
-      - traefik.http.routers.vaultwarden-websocket.rule=(Host(`bw.jakehoward.tech`) || Host(`vaultwarden.jakehoward.tech`) )&& Path(`/notifications/hub`)
+      - traefik.http.routers.vaultwarden-websocket.rule=Host(`vaultwarden.jakehoward.tech`) && Path(`/notifications/hub`)
       - traefik.http.routers.vaultwarden-websocket.service=vaultwarden-websocket
       - traefik.http.services.vaultwarden-websocket.loadbalancer.server.port=3012
 

@@ -132,14 +132,6 @@ resource "cloudflare_record" "jakehowardtech_grafana" {
   ttl     = 1
 }
 
-resource "cloudflare_record" "jakehowardtech_bw" {
-  zone_id = cloudflare_zone.jakehowardtech.id
-  name    = "bw"
-  value   = vultr_instance.casey.main_ip
-  type    = "A"
-  ttl     = 1
-}
-
 resource "cloudflare_record" "jakehowardtech_vaultwarden" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "vaultwarden"
