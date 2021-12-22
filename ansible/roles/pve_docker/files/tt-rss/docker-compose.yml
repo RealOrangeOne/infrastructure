@@ -29,7 +29,7 @@ services:
       - /config/log
 
   db:
-    image: postgres:12-alpine
+    image: postgres:14-alpine
     restart: unless-stopped
     volumes:
       - /mnt/tank/dbs/postgres/tt-rss/:/var/lib/postgresql/data
