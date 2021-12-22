@@ -37,7 +37,7 @@ services:
       - WEBSOCKET_ENABLED=true
 
   db:
-    image: postgres:12-alpine
+    image: postgres:14-alpine
     restart: unless-stopped
     volumes:
       - /mnt/tank/dbs/postgres/vaultwarden/:/var/lib/postgresql/data
