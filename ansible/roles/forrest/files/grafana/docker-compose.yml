@@ -30,7 +30,7 @@ services:
       - renderer
 
   db:
-    image: postgres:12-alpine
+    image: postgres:14-alpine
     restart: unless-stopped
     volumes:
       - /mnt/tank/dbs/postgres/grafana/:/var/lib/postgresql/data
