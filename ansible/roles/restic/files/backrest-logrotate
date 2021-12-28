@@ -1,4 +1,4 @@
-/home/restic/log/* {
+/home/restic/log/*.log {
   weekly
   rotate 12
   missingok
