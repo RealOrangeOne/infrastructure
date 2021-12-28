@@ -1,6 +1,6 @@
 /home/restic/log/*.log {
-  weekly
-  rotate 12
+  daily
+  rotate 14
   missingok
   compress
   nodateext
