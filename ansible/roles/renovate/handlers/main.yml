@@ -1,0 +1,4 @@
+- name: restart renovate
+  shell:
+    chdir: /opt/renovate
+    cmd: "{{ docker_update_command }}"

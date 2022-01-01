@@ -56,6 +56,7 @@
     - pve_nebula_route
     - privatebin
     - vaultwarden
+    - renovate
 
 - hosts: ingress
   roles:

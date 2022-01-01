@@ -1,0 +1,38 @@
+- name: Include vault
+  include_vars: vault.yml
+
+- name: Create install directory
+  file:
+    path: /opt/renovate
+    state: directory
+    owner: "{{ docker_user.name }}"
+    mode: "{{ docker_compose_directory_mask }}"
+  become: true
+
+- name: Install compose file
+  template:
+    src: files/docker-compose.yml
+    dest: /opt/renovate/docker-compose.yml
+    mode: "{{ docker_compose_file_mask }}"
+    owner: "{{ docker_user.name }}"
+    validate: docker-compose -f %s config
+  notify: restart renovate
+  become: true
+
+- name: Install config file
+  template:
+    src: files/config.js
+    dest: "{{ app_data_dir }}/renovate/config.js"
+    mode: "{{ docker_compose_file_mask }}"
+    owner: "{{ docker_user.name }}"
+  notify: restart renovate
+  become: true
+
+- name: Install custom entrypoint
+  template:
+    src: files/entrypoint.sh
+    dest: "{{ app_data_dir }}/renovate/entrypoint.sh"
+    mode: "0755"
+    owner: "{{ docker_user.name }}"
+  notify: restart renovate
+  become: true

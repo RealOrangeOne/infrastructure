@@ -1,0 +1,2 @@
+renovate_gitlab_token: "{{ vault_renovate_gitlab_token }}"
+renovate_github_token: "{{ vault_renovate_github_token }}"

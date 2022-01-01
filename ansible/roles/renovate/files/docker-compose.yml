@@ -1,0 +1,23 @@
+version: "2.3"
+services:
+  renovate:
+    image: renovate/renovate:31-slim
+    user: "{{ docker_user.id }}"
+    command: /entrypoint.sh
+    environment:
+      - TZ={{ TZ }}
+      - GITHUB_COM_TOKEN={{ renovate_github_token }}
+    restart: unless-stopped
+    depends_on:
+      - redis
+    tmpfs:
+      - /tmp
+    volumes:
+      - "{{ app_data_dir }}/renovate/config.js:/usr/src/app/config.js:ro"
+      - "{{ app_data_dir }}/renovate/entrypoint.sh:/entrypoint.sh:ro"
+
+  redis:
+    image: redis:6-alpine
+    restart: unless-stopped
+    volumes:
+      - /mnt/tank/dbs/redis/renovate:/data
