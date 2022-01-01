@@ -7,5 +7,9 @@ module.exports = {
   onboarding: false,
   redisUrl: 'redis://redis',
   repositoryCache: 'enabled',
-  persistRepoData: true
+  persistRepoData: true,
+  binarySource: "docker",
+  dockerUser: "{{ docker_user.id }}",
+  baseDir: "/opt/renovate/renovate",
+  cacheDir: "/opt/renovate/renovate/cache"
 };

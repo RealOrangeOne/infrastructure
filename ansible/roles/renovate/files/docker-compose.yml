@@ -2,22 +2,35 @@ version: "2.3"
 services:
   renovate:
     image: renovate/renovate:31-slim
-    user: "{{ docker_user.id }}"
     command: /entrypoint.sh
+    user: "{{ docker_user.id }}"
     environment:
       - TZ={{ TZ }}
       - GITHUB_COM_TOKEN={{ renovate_github_token }}
+      - DOCKER_HOST=tcp://docker_proxy:2375
+      - LOG_LEVEL=debug  # Noisy, but required for debugging
     restart: unless-stopped
     depends_on:
       - redis
-    tmpfs:
-      - /tmp
+      - docker_proxy
     volumes:
-      - "{{ app_data_dir }}/renovate/config.js:/usr/src/app/config.js:ro"
-      - "{{ app_data_dir }}/renovate/entrypoint.sh:/entrypoint.sh:ro"
+      - ./config.js:/usr/src/app/config.js:ro
+      - ./entrypoint.sh:/entrypoint.sh:ro
+      - /opt/renovate/renovate:/opt/renovate/renovate  # These must be the same
 
   redis:
     image: redis:6-alpine
     restart: unless-stopped
     volumes:
-      - /mnt/tank/dbs/redis/renovate:/data
+      - ./redis:/data
+
+  docker_proxy:
+    image: tecnativa/docker-socket-proxy:latest
+    restart: unless-stopped
+    environment:
+      - POST=1
+      - CONTAINERS=1
+      - INFO=1
+      - IMAGES=1
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
