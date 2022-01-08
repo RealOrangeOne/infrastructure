@@ -15,3 +15,29 @@ resource "vultr_instance" "decker" {
   hostname          = "decker"
   firewall_group_id = module.decker_firewall.firewall_group.id
 }
+
+
+# Linode
+
+resource "linode_instance" "decker" {
+  label      = "decker"
+  image      = "linode/arch"
+  region     = "eu-central"
+  type       = "g6-nanode-1"
+  private_ip = true
+}
+
+resource "linode_firewall" "decker" {
+  label           = "decker"
+  linodes         = [linode_instance.decker.id]
+  outbound_policy = "ACCEPT"
+  inbound_policy  = "DROP"
+
+  inbound {
+    label    = "allow-ping"
+    action   = "ACCEPT"
+    protocol = "ICMP"
+    ipv4     = ["0.0.0.0/0"]
+    ipv6     = ["::/0"]
+  }
+}
