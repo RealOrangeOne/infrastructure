@@ -1,4 +1,4 @@
-TZ: Europe/London
+timezone: Europe/London  # noqa var-naming
 
 # HACK: Some of the hostnames aren't valid dict keys
 hostname_slug: "{{ ansible_hostname | replace('-', '_') }}"

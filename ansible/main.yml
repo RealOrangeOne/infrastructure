@@ -22,7 +22,7 @@
     - role: geerlingguy.ntp
       become: true
       vars:
-        ntp_timezone: "{{ TZ }}"
+        ntp_timezone: "{{ timezone }}"
         ntp_manage_config: true
 
 - hosts:

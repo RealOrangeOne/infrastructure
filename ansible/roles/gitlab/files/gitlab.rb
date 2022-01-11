@@ -11,7 +11,7 @@ nginx['ssl_certificate'] = "/etc/ssl/certs/ssl-cert-snakeoil.pem"
 nginx['ssl_certificate_key'] = "/etc/ssl/private/ssl-cert-snakeoil.key"
 letsencrypt['enable'] = false
 
-gitlab_rails['time_zone'] = '{{ TZ }}'
+gitlab_rails['time_zone'] = '{{ timezone }}'
 
 # https://docs.gitlab.com/omnibus/settings/memory_constrained_envs.html
 puma['worker_processes'] = 2

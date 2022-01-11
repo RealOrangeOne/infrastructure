@@ -5,7 +5,7 @@ services:
     command: /entrypoint.sh
     user: "{{ docker_user.id }}"
     environment:
-      - TZ={{ TZ }}
+      - TZ={{ timezone }}
       - GITHUB_COM_TOKEN={{ renovate_github_token }}
       - DOCKER_HOST=tcp://docker_proxy:2375
       - LOG_LEVEL=debug  # Noisy, but required for debugging

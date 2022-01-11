@@ -9,7 +9,7 @@
   unarchive:
     src: https://github.com/slackhq/nebula/releases/download/v{{ nebula_version }}/nebula-linux-amd64.tar.gz
     dest: /usr/bin
-    remote_src: yes
+    remote_src: true
     mode: "0755"
   become: true
   notify: restart nebula

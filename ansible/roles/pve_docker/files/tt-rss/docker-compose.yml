@@ -6,7 +6,7 @@ services:
     environment:
       - PUID={{ docker_user.id }}
       - PGID={{ docker_user.id }}
-      - TZ={{ TZ }}
+      - TZ={{ timezone }}
       - DOCKER_MODS=theorangeone/lsio-mod-more-processes:latest
 
       - TTRSS_DB_USER=tt-rss

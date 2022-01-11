@@ -5,7 +5,7 @@ services:
     environment:
       - PUID={{ docker_user.id }}
       - PGID={{ docker_user.id }}
-      - TZ={{ TZ }}
+      - TZ={{ timezone }}
     restart: unless-stopped
     volumes:
       - /mnt/tank/app-data/calibre:/config

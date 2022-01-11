@@ -4,10 +4,10 @@ set -e
 
 PATH=${PWD}/env/bin:${PATH}
 
-set -x
+yamllint -sc ansible/yamllint.yml ansible
 
-yamllint -sc ansible/yamllint.yml ansible/
+cd ansible/
 
-ansible-lint ansible/main.yml -p -c ansible/.ansible-lint
+ansible-lint -p
 
-cd ansible/ && ansible-playbook main.yml --syntax-check
+ansible-playbook main.yml --syntax-check

@@ -7,7 +7,7 @@ services:
     environment:
       - PUID={{ docker_user.id }}
       - PGID={{ docker_user.id }}
-      - TZ={{ TZ }}
+      - TZ={{ timezone }}
     volumes:
       - ./data:/app/data
     labels:
