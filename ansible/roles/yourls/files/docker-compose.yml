@@ -18,6 +18,9 @@ services:
     labels:
       - traefik.enable=true
       - traefik.http.routers.yourls.rule=Host(`0rng.one`)
+    networks:
+      - default
+      - traefik
 
   mariadb:
     image: mariadb:10.7
@@ -29,3 +32,7 @@ services:
     volumes:
       - /mnt/tank/dbs/mariadb/yourls:/var/lib/mysql
     restart: unless-stopped
+
+networks:
+  traefik:
+    external: true

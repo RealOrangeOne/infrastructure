@@ -3,7 +3,7 @@ version: "2.3"
 services:
   traefik:
     image: traefik:v2.5
-    network_mode: host
+    user: "{{ docker_user.id }}"
     environment:
       - CF_DNS_API_TOKEN={{ cloudflare_api_token }}
     volumes:
@@ -11,3 +11,30 @@ services:
       - /tmp/traefik-logs:/var/log/traefik
       - ./traefik:/etc/traefik
     restart: unless-stopped
+    ports:
+      - 80:80
+      - 443:443
+      - "{{ private_ip }}:8080:8080"
+    depends_on:
+      - docker_proxy
+    networks:
+      - default
+      - traefik
+      - proxy_private
+
+  docker_proxy:
+    image: tecnativa/docker-socket-proxy:latest
+    restart: unless-stopped
+    environment:
+      - CONTAINERS=1
+      - INFO=1
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - proxy_private
+
+networks:
+  traefik:
+    external: true
+  proxy_private:
+    internal: true

@@ -26,6 +26,9 @@ services:
       - traefik.http.services.nextcloud-nextcloud.loadbalancer.server.scheme=https
       - traefik.http.middlewares.nextcloud-hsts.headers.stsseconds=15552000
       - traefik.http.routers.nextcloud.middlewares=nextcloud-hsts@docker
+    networks:
+      - default
+      - traefik
 
   mariadb:
     image: mariadb:10.5
@@ -43,3 +46,7 @@ services:
     restart: unless-stopped
     volumes:
       - /mnt/tank/dbs/redis/nextcloud:/data
+
+networks:
+  traefik:
+    external: true

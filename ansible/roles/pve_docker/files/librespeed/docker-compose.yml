@@ -14,3 +14,10 @@ services:
       - traefik.http.routers.librespeed.rule=Host(`speed.jakehoward.tech`)
       - traefik.http.routers.librespeed.middlewares=librespeed-auth@docker
       - traefik.http.middlewares.librespeed-auth.basicauth.users={{ librespeed_basicauth }}
+    networks:
+      - default
+      - traefik
+
+networks:
+  traefik:
+    external: true

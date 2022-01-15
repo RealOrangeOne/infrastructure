@@ -32,21 +32,22 @@ entryPoints:
         - "{{ pve_hosts.internal_cidr }}"
         - "{{ nebula.cidr }}"
   traefik:
-    address: "{{ private_ip }}:8080"
+    address: :8080
 
 ping: {}
 
 providers:
   docker:
-    endpoint: unix:///var/run/docker.sock
+    endpoint: tcp://docker_proxy:2375
     watch: true
     exposedByDefault: false
+    network: traefik
   file:
     directory: /etc/traefik/conf
 {% if with_traefik_pages %}
   http:
     endpoint:
-      - "http://{{ traefik_pages_password }}@127.0.0.1:5000/.traefik-pages/provider"
+      - "http://{{ traefik_pages_password }}@traefik-pages:5000/.traefik-pages/provider"
 {% endif %}
 
 api:

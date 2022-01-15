@@ -35,6 +35,9 @@ services:
       - INVITATIONS_ALLOWED=false
       - ROCKET_WORKERS={{ ansible_processor_nproc // 2 }}
       - WEBSOCKET_ENABLED=true
+    networks:
+      - default
+      - traefik
 
   db:
     image: postgres:14-alpine
@@ -44,3 +47,7 @@ services:
     environment:
       - POSTGRES_PASSWORD={{ vaultwarden_database_password }}
       - POSTGRES_USER=vaultwarden
+
+networks:
+  traefik:
+    external: true

@@ -8,6 +8,9 @@ services:
     depends_on:
       - db
       - clickhouse
+    networks:
+      - default
+      - traefik
     labels:
       - traefik.enable=true
       - traefik.http.routers.plausible.rule=Host(`plausible.theorangeone.net`)
@@ -52,3 +55,7 @@ services:
     environment:
       - POSTGRES_PASSWORD=plausible
       - POSTGRES_USER=plausible
+
+networks:
+  traefik:
+    external: true

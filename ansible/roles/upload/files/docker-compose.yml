@@ -12,6 +12,9 @@ services:
     labels:
       - traefik.enable=true
       - traefik.http.routers.upload.rule=Host(`upload.theorangeone.net`)
+    networks:
+      - default
+      - traefik
 
   img:
     image: ghcr.io/realorangeone/static-server:latest
@@ -23,6 +26,9 @@ services:
     labels:
       - traefik.enable=true
       - traefik.http.routers.img.rule=Host(`img.theorangeone.net`) || Host(`img.0rng.one`)
+    networks:
+      - default
+      - traefik
 
   bg:
     image: ghcr.io/realorangeone/static-server:latest
@@ -35,6 +41,9 @@ services:
     labels:
       - traefik.enable=true
       - traefik.http.routers.bg.rule=Host(`bg.theorangeone.net`)
+    networks:
+      - default
+      - traefik
 
   dl:
     image: ghcr.io/realorangeone/static-server:latest
@@ -46,3 +55,10 @@ services:
     labels:
       - traefik.enable=true
       - traefik.http.routers.dl.rule=Host(`dl.theorangeone.net`) || Host(`dl.0rng.one`)
+    networks:
+      - default
+      - traefik
+
+networks:
+  traefik:
+    external: true

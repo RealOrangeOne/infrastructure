@@ -15,9 +15,16 @@ services:
       - traefik.http.routers.wallabag.rule=Host(`wallabag.jakehoward.tech`)
     depends_on:
       - redis
+    networks:
+      - default
+      - traefik
 
   redis:
     image: redis:6-alpine
     restart: unless-stopped
     volumes:
       - /mnt/tank/dbs/redis/wallabag:/data
+
+networks:
+  traefik:
+    external: true

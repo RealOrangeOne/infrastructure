@@ -8,8 +8,15 @@ services:
       - PUID={{ docker_user.id }}
       - PGID={{ docker_user.id }}
       - TZ={{ timezone }}
+    networks:
+      - default
+      - traefik
     volumes:
       - ./data:/app/data
     labels:
       - traefik.enable=true
       - traefik.http.routers.uptime-kuma.rule=Host(`status.theorangeone.net`)
+
+networks:
+  traefik:
+    external: true

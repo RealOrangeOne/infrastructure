@@ -12,3 +12,10 @@ services:
     labels:
       - traefik.enable=true
       - traefik.http.routers.privatebin.rule=Host(`bin.theorangeone.net`)
+    networks:
+      - default
+      - traefik
+
+networks:
+  traefik:
+    external: true

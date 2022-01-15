@@ -27,6 +27,9 @@ services:
       - db
     tmpfs:
       - /config/log
+    networks:
+      - default
+      - traefik
 
   db:
     image: postgres:14-alpine
@@ -36,3 +39,7 @@ services:
     environment:
       - POSTGRES_PASSWORD=tt-rss
       - POSTGRES_USER=tt-rss
+
+networks:
+  traefik:
+    external: true

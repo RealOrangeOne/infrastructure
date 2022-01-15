@@ -19,12 +19,17 @@ services:
       - ./sites:/sites:ro
     restart: unless-stopped
     user: "{{ docker_user.id }}"
-    ports:
-      - 127.0.0.1:5000:5000
     environment:
       - SITES_ROOT=/sites
       - TRAEFIK_SERVICE=traefik-pages-pages@docker
       - AUTH_PASSWORD={{ traefik_pages_password }}
       - TRAEFIK_CERT_RESOLVER=le
+    networks:
+      - default
+      - traefik
     labels:
       - traefik.enable=true
+
+networks:
+  traefik:
+    external: true
