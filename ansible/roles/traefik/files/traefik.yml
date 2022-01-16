@@ -17,6 +17,7 @@ entryPoints:
       middlewares:
         - floc-block@file
         - compress@file
+        - shenanigans@file
       tls:
         certresolver: le
         domains:

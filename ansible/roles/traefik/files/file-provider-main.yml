@@ -8,3 +8,7 @@ http:
       headers:
         customResponseHeaders:
           Permissions-Policy: interest-cohort=()
+
+    shenanigans:
+      forwardAuth:
+        address: http://shenanigans
