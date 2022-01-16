@@ -24,6 +24,7 @@ restic_backup_locations:
   - /var/lib/dokku/config
   - /var/lib/dokku/data
   - /var/lib/dokku/services
+  - /opt/db-auto-backup/backups
 
 restic_backup_excludes:
   - /home/dokku/**/cache  # Caches are big, don't need those
