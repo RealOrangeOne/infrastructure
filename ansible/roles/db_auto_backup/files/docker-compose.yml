@@ -1,0 +1,11 @@
+version: "2.3"
+
+services:
+  backup:
+    image: ghcr.io/realorangeone/db-auto-backup:latest
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - "{{ db_backups_dir }}:/var/backups"
+    environment:
+      - HEALTHCHECKS_ID={{ db_auto_backup_healthchecks_id }}

@@ -6,3 +6,5 @@ traefik_provider_grafana: true
 traefik_provider_gitlab: true
 
 with_fail2ban: true
+
+db_backups_dir: /mnt/tank/dbs/backups

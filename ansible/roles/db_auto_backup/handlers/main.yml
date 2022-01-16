@@ -1,0 +1,4 @@
+- name: restart db-auto-backup
+  shell:
+    chdir: /opt/db-auto-backup
+    cmd: "{{ docker_update_command }}"

@@ -45,6 +45,15 @@
 
 - hosts:
     - pve-docker
+    - forrest
+    - walker
+    - grimes
+    - decker
+  roles:
+    - db_auto_backup
+
+- hosts:
+    - pve-docker
     - walker
     - decker
   roles:
