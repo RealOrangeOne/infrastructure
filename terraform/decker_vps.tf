@@ -38,3 +38,8 @@ resource "linode_firewall" "decker" {
     ipv6     = ["::/0"]
   }
 }
+
+resource "linode_rdns" "decker_reverse_ipv4" {
+  address = linode_instance.decker.ip_address
+  rdns    = "decker.sys.theorangeone.net"
+}
