@@ -23,7 +23,7 @@ resource "cloudflare_record" "jakehowardtech_mx2" {
 resource "cloudflare_record" "jakehowardtech_txt" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "@"
-  value   = "v=spf1 include:spf.messagingengine.com ?all"
+  value   = "v=spf1 include:spf.messagingengine.com ~all"
   type    = "TXT"
   ttl     = 1
 }

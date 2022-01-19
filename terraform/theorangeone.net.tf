@@ -39,7 +39,7 @@ resource "cloudflare_record" "theorangeonenet_mx2" {
 resource "cloudflare_record" "theorangeonenet_txt" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "@"
-  value   = "v=spf1 include:spf.messagingengine.com ?all"
+  value   = "v=spf1 include:spf.messagingengine.com ~all"
   type    = "TXT"
   ttl     = 1
 }
