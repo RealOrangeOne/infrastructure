@@ -1,3 +1,11 @@
+- name: Install wireguard tools
+  package:
+    name: "{{ item }}"
+  become: true
+  loop:
+    - wireguard-tools
+    - qrencode
+
 - name: Wireguard server config
   template:
     src: files/wireguard-server.conf
@@ -46,11 +54,3 @@
     reload: true
     sysctl_file: /etc/sysctl.d/99-sysctl.conf
   become: true
-
-- name: Install wireguard tools
-  package:
-    name: "{{ item }}"
-  become: true
-  loop:
-    - wireguard-tools
-    - qrencode
