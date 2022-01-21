@@ -28,6 +28,14 @@
   register: config_file
   become: true
 
+- name: Install occ script
+  template:
+    src: files/nextcloud/occ
+    dest: /opt/nextcloud/occ
+    mode: "0755"
+    owner: "{{ docker_user.name }}"
+  become: true
+
 - name: restart nextcloud
   shell:
     chdir: /opt/nextcloud
