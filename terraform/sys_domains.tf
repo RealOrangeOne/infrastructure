@@ -1,7 +1,7 @@
 resource "cloudflare_record" "sys_domain_casey" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "casey.sys"
-  value   = vultr_instance.casey.main_ip
+  value   = linode_instance.casey.ip_address
   type    = "A"
   ttl     = 1
 }

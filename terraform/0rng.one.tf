@@ -29,7 +29,7 @@ resource "cloudflare_record" "orngone_img" {
 resource "cloudflare_record" "orngone_yourls" {
   zone_id = cloudflare_zone.orngone.id
   name    = "@"
-  value   = vultr_instance.casey.main_ip
+  value   = linode_instance.casey.ip_address
   type    = "A"
   ttl     = 1
 }
