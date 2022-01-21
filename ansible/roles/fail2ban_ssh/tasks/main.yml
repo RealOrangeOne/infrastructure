@@ -25,3 +25,10 @@
     mode: 0755
   become: true
   register: sshd_config
+
+- name: Set up authorized keys
+  ansible.posix.authorized_key:
+    user: "{{ f2b_user }}"
+    state: present
+    key: "{{ lookup('file', 'files/f2b_key.pub') }}"
+  become: true

@@ -21,3 +21,12 @@
     mode: 0644
   become: true
   notify: restart fail2ban
+
+- name: Create SSH key
+  copy:
+    src: files/fail2ban/f2b_key.key
+    dest: /etc/fail2ban/f2b_key.key
+    owner: root
+    group: root
+    mode: "0600"
+  become: true
