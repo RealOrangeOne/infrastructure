@@ -1,23 +1,23 @@
 - name: Install calibre
-  include: calibre.yml
+  include_tasks: calibre.yml
 
 - name: Install librespeed
-  include: librespeed.yml
+  include_tasks: librespeed.yml
 
 - name: Install nextcloud
-  include: nextcloud.yml
+  include_tasks: nextcloud.yml
 
 - name: Install quassel
-  include: quassel.yml
+  include_tasks: quassel.yml
 
 - name: Install synapse
-  include: synapse.yml
+  include_tasks: synapse.yml
 
 - name: Install tt-rss
-  include: tt-rss.yml
+  include_tasks: tt-rss.yml
 
 - name: Install wallabag
-  include: wallabag.yml
+  include_tasks: wallabag.yml
 
 - name: Install whoami
-  include: whoami.yml
+  include_tasks: whoami.yml

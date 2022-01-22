@@ -22,4 +22,4 @@
   become: true
 
 - name: Sanoid
-  include: sanoid.yml
+  include_tasks: sanoid.yml

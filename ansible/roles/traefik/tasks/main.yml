@@ -104,7 +104,7 @@
   become: true
 
 - name: fail2ban
-  include: fail2ban.yml
+  include_tasks: fail2ban.yml
   when: with_fail2ban
 
 - name: Check for nginx config

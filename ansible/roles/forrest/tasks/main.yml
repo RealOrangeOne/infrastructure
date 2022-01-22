@@ -2,7 +2,7 @@
   include_vars: vault.yml
 
 - name: Grafana
-  include: grafana.yml
+  include_tasks: grafana.yml
 
 - name: Prometheus
-  include: prometheus.yml
+  include_tasks: prometheus.yml

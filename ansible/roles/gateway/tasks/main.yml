@@ -1,8 +1,8 @@
 - name: Configure Nginx
-  include: nginx.yml
+  include_tasks: nginx.yml
 
 - name: Configure wireguard
-  include: wireguard.yml
+  include_tasks: wireguard.yml
 
 - name: Configure fail2ban
-  include: fail2ban.yml
+  include_tasks: fail2ban.yml

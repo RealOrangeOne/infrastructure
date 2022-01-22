@@ -1,5 +1,5 @@
 - name: qbittorrent
-  include: qbittorrent.yml
+  include_tasks: qbittorrent.yml
 
 - name: nginx
-  include: nginx.yml
+  include_tasks: nginx.yml

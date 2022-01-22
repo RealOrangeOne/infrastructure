@@ -1,14 +1,14 @@
 - name: Packages
-  include: packages.yml
+  include_tasks: packages.yml
 
 - name: User
-  include: user.yml
+  include_tasks: user.yml
 
 - name: SSH
-  include: ssh.yml
+  include_tasks: ssh.yml
 
 - name: fail2ban
-  include: fail2ban.yml
+  include_tasks: fail2ban.yml
 
 - name: logrotate
-  include: logrotate.yml
+  include_tasks: logrotate.yml
