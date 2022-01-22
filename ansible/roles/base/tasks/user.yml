@@ -8,7 +8,8 @@
   become: true
 
 - name: Give user sudo access
-  lineinfile:
-    path: /etc/sudoers
-    line: "{{ user }} ALL=(ALL) ALL"
+  user:
+    name: "{{ user }}"
+    groups: "{{ 'sudo' if ansible_os_family == 'Debian' else 'wheel' }}"
+    append: true
   become: true
