@@ -9,6 +9,9 @@ services:
       - ./htpasswd.txt:/etc/nginx/.htpasswd:ro
     environment:
       - PUID={{ docker_user.id }}
+    networks:
+      - default
+      - traefik
     labels:
       - traefik.enable=true
       - traefik.http.routers.pages.rule=Host(`pages.theorangeone.net`)
