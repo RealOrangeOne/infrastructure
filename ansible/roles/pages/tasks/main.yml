@@ -40,3 +40,11 @@
     password: "{{ github_user_password }}"
     mode: 0640
   become: true
+
+- name: Create status user
+  htpasswd:
+    path: /opt/pages/htpasswd.txt
+    name: status
+    password: "{{ status_user_password }}"
+    mode: 0640
+  become: true
