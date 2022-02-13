@@ -101,6 +101,14 @@ resource "cloudflare_record" "theorangeonenet_img" {
   ttl     = 1
 }
 
+resource "cloudflare_record" "theorangeonenet_matrix" {
+  zone_id = cloudflare_zone.theorangeonenet.id
+  name    = "matrix"
+  value   = linode_instance.casey.ip_address
+  type    = "A"
+  ttl     = 1
+}
+
 resource "cloudflare_record" "theorangeonenet_dl" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "dl"
