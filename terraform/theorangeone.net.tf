@@ -36,7 +36,7 @@ resource "cloudflare_record" "theorangeonenet_mx2" {
   ttl      = 1
 }
 
-resource "cloudflare_record" "theorangeonenet_txt" {
+resource "cloudflare_record" "theorangeonenet_spf" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "@"
   value   = "v=spf1 include:spf.messagingengine.com ~all"
@@ -186,5 +186,13 @@ resource "cloudflare_record" "theorangeonenet_status" {
   name    = "status"
   value   = linode_instance.decker.ip_address
   type    = "A"
+  ttl     = 1
+}
+
+resource "cloudflare_record" "theorangeonenet_google_site_verification" {
+  zone_id = cloudflare_zone.theorangeonenet.id
+  name    = "@"
+  value   = "google-site-verification=IXY4iSBN_vOcM3cp_f-BgVvEI_shz1GzXuY_8dqY61o"
+  type    = "TXT"
   ttl     = 1
 }
