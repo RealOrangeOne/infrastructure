@@ -14,7 +14,7 @@ check_interval = 10
 
   [runners.docker]
     image = "alpine"
-    privileged = false
+    privileged = true
     disable_cache = false
-    volumes = ["/cache"]
+    volumes = ["/cache", "/var/run/docker.sock:/var/run/docker.sock:ro"]
     pull_policy = "if-not-present"
