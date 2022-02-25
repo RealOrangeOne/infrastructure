@@ -10,6 +10,14 @@ resource "cloudflare_record" "theorangeonenet_git" {
   ttl     = 1
 }
 
+resource "cloudflare_record" "theorangeonenet_git_registry" {
+  zone_id = cloudflare_zone.theorangeonenet.id
+  name    = "registry.git"
+  value   = cloudflare_record.theorangeonenet_git.hostname
+  type    = "CNAME"
+  ttl     = 1
+}
+
 resource "cloudflare_record" "theorangeonenet_whoami" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "whoami"

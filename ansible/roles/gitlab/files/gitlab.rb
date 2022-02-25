@@ -36,3 +36,18 @@ gitlab_rails['gitlab_email_from'] = "{{ gitlab_from_email }}"
 
 gitlab_rails['artifacts_path'] = "/mnt/gitlab-bulk/artifacts"
 gitlab_rails['backup_path'] = "/mnt/gitlab-bulk/backups"
+
+# Registry
+registry_external_url "https://registry.git.theorangeone.net"
+registry_nginx['redirect_http_to_https'] = false
+registry_nginx['ssl_certificate'] = "/etc/ssl/certs/ssl-cert-snakeoil.pem"
+registry_nginx['ssl_certificate_key'] = "/etc/ssl/private/ssl-cert-snakeoil.key"
+registry['storage'] = {
+  's3' => {
+    'accesskey' => '{{ gitlab_registry_access_key }}',
+    'secretkey' => '{{ gitlab_registry_secret_key }}',
+    'bucket' => '0rng-registry',
+    'region' => 'eu-central-003',
+    'regionendpoint' => 'https://s3.eu-central-003.backblazeb2.com'
+  }
+}

@@ -3,6 +3,9 @@ http:
     router-gitlab:
       rule: Host(`git.theorangeone.net`)
       service: service-gitlab
+    router-gitlab-registry:
+      rule: Host(`registry.git.theorangeone.net`)
+      service: service-gitlab
   services:
     service-gitlab:
       loadBalancer:
