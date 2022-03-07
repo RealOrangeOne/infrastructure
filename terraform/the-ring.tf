@@ -25,4 +25,13 @@ resource "linode_firewall" "the-ring" {
     ipv4     = ["0.0.0.0/0"]
     ipv6     = ["::/0"]
   }
+
+  inbound {
+    label    = "allow-k8s-unprivileged"
+    action   = "ACCEPT"
+    protocol = "TCP"
+    ports    = "30000-32767"
+    ipv4     = ["0.0.0.0/0"]
+    ipv6     = ["::/0"]
+  }
 }
