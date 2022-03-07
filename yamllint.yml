@@ -1,0 +1,17 @@
+extends: default
+
+ignore: |
+  ansible/galaxy_roles
+  ansible/galaxy_collections
+  ansible/group_vars/all/hosts.yml
+  ansible/roles/traefik/files/traefik.yml
+  ansible/roles/nebula/files/nebula.yml
+
+rules:
+  document-start: disable
+  truthy: disable
+  quoted-strings:
+    quote-type: double
+    required: only-when-needed
+  line-length:
+    max: 160
