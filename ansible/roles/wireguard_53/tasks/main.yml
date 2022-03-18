@@ -1,0 +1,33 @@
+- name: Include vault
+  include_vars: vault.yml
+
+- name: Install wireguard tools
+  package:
+    name: "{{ item }}"
+  become: true
+  loop:
+    - wireguard-tools
+    - qrencode
+
+- name: Wireguard server config
+  template:
+    src: files/server.conf
+    dest: /etc/wireguard/wg53.conf
+    mode: "0600"
+    backup: true
+  become: true
+  notify: restart wireguard
+
+- name: Wireguard client config
+  template:
+    src: files/client.conf
+    dest: "{{ home }}/wg53.conf"
+    mode: "0600"
+  become: true
+  notify: restart wireguard
+
+- name: Enable wireguard
+  service:
+    name: wg-quick@wg53
+    enabled: true
+  become: true

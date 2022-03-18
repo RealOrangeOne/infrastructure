@@ -9,6 +9,7 @@
     - gateway
     - nebula
     - fail2ban_ssh
+    - wireguard_53
 
 - hosts:
     - pve
