@@ -2,7 +2,7 @@ version: "2.3"
 
 services:
   nextcloud:
-    image: lscr.io/linuxserver/nextcloud:version-23.0.2
+    image: lscr.io/linuxserver/nextcloud:version-23.0.3
     environment:
       - PUID={{ docker_user.id }}
       - PGID={{ docker_user.id }}
