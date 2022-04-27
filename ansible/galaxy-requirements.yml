@@ -6,9 +6,7 @@ collections:
 
 roles:
   - src: geerlingguy.docker
-  - src: https://github.com/blmhemu/ansible-role-ntp
-    version: fa40f44c2542e6fcff96d50eaf06a417a9376244  # https://github.com/geerlingguy/ansible-role-ntp/pull/110
-    name: geerlingguy.ntp
+  - src: geerlingguy.ntp
   - src: realorangeone.reflector
   - src: https://github.com/jsclayton/ansible-role-proxmox-nag-removal
     version: b0502ef4c371bbfb18faf85f5d869e3ffec661a8  # https://github.com/IronicBadger/ansible-role-proxmox-nag-removal/pull/15
