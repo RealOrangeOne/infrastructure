@@ -11,7 +11,7 @@ export GOGC=20  # HACK: Work around for restic's high memory usage https://githu
 export RESTIC_LOG_DIR="$HOME/log"
 export RESTIC_LOG_FILE="$RESTIC_LOG_DIR/$1-$(date -Iseconds).log"
 
-export FORGET_OPTIONS="--keep-daily 30 --group-by host"
+export FORGET_OPTIONS="--keep-daily 30 --keep-monthly 3 --group-by host"
 
 mkdir -p "$RESTIC_LOG_DIR"
 

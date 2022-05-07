@@ -14,17 +14,17 @@ sanoid_datasets:
 sanoid_templates:
   production:
     frequently: 0
-    hourly: 24
-    daily: 14
-    monthly: 2
+    hourly: 36
+    daily: 21
+    monthly: 3
     yearly: 0
     autosnap: true
     autoprune: true
 
   replaceable:
     frequently: 0
-    hourly: 6
-    daily: 2
+    hourly: 12
+    daily: 5
     monthly: 0
     yearly: 0
     autosnap: true
