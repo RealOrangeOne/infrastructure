@@ -6,13 +6,18 @@ collections:
 
 roles:
   - src: geerlingguy.docker
+    version: 4.2.2
   - src: geerlingguy.ntp
+    version: 2.3.1
   - src: realorangeone.reflector
-  - src: https://github.com/IronicBadger/ansible-role-proxmox-nag-removal
-    name: IronicBadger.proxmox-nag-removal
+  - src: ironicbadger.proxmox_nag_removal
+    version: 1.0.1
   - src: chmduquesne.iptables_persistent
   - src: rossmcdonald.telegraf
+    version: v1.2.0
   - src: geerlingguy.gitlab
+    version: 3.2.0
   - src: dokku_bot.ansible_dokku
-  - src: https://github.com/IronicBadger/ansible-role-snapraid
-    name: IronicBadger.snapraid
+    version: v2021.11.28
+  - src: ironicbadger.snapraid
+    version: 1.0.0

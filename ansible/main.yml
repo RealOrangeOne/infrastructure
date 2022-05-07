@@ -79,12 +79,12 @@
 
 - hosts: pve
   roles:
-    - role: IronicBadger.proxmox-nag-removal
+    - role: ironicbadger.proxmox_nag_removal
       become: true
     - zfs
     - pve_nebula_route
     - telegraf
-    - role: IronicBadger.snapraid
+    - role: ironicbadger.snapraid
       become: true
 
 - hosts: forrest
