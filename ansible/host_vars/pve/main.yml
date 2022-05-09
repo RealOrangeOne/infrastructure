@@ -17,6 +17,26 @@ sanoid_datasets:
     use_template: production
     recursive: true
 
+sanoid_templates:
+  production:
+    frequently: 0
+    hourly: 48
+    daily: 28
+    monthly: 3
+    yearly: 0
+    autosnap: true
+    autoprune: true
+
+  replaceable:
+    frequently: 0
+    hourly: 24
+    daily: 7
+    monthly: 0
+    yearly: 0
+    autosnap: true
+    autoprune: true
+
+
 # Snapraid
 snapraid_install: false
 snapraid_runner: false
