@@ -19,7 +19,7 @@ sanoid_datasets:
 
 sanoid_templates:
   production:
-    frequently: 0
+    frequently: 2
     hourly: 48
     daily: 28
     monthly: 3
