@@ -13,6 +13,9 @@ services:
       - traefik
     volumes:
       - ./data:/app/data
+    dns:
+      - 1.1.1.1
+      - 8.8.8.8
     labels:
       - traefik.enable=true
       - traefik.http.routers.uptime-kuma.rule=Host(`status.theorangeone.net`)
