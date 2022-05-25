@@ -31,9 +31,7 @@
     - {section: AutoRun, option: enabled, value: "false"}
     - {section: LegalNotice, option: Accepted, value: "true"}
     - {section: Preferences, option: Connection\UPnP, value: "false"}
-    - {section: Preferences, option: Downloads\SavePath, value: /mnt/downloads/completed/}
-    - {section: Preferences, option: Downloads\TempPath, value: /mnt/downloads/}
-    - {section: Preferences, option: Downloads\TempPathEnabled, value: "true"}
+    - {section: Preferences, option: Downloads\SavePath, value: /mnt/media/temp/downloads}
     - {section: Preferences, option: WebUI\Address, value: "*"}
     - {section: Preferences, option: WebUI\ServerDomains, value: "*"}
     - {section: Preferences, option: WebUI\Port, value: "8080"}
