@@ -5,7 +5,20 @@ services:
     image: ghcr.io/realorangeone/db-auto-backup:latest
     restart: unless-stopped
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro
       - "{{ db_backups_dir }}:/var/backups"
     environment:
+      - DOCKER_HOST=tcp://docker_proxy:2375
       - HEALTHCHECKS_ID={{ db_auto_backup_healthchecks_id }}
+    depends_on:
+      - docker_proxy
+
+  docker_proxy:
+    image: tecnativa/docker-socket-proxy:latest
+    restart: unless-stopped
+    environment:
+      - POST=1
+      - CONTAINERS=1
+      - IMAGES=1
+      - EXEC=1
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
