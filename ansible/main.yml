@@ -102,6 +102,7 @@
     - plausible
     - pages
     - restic
+    - commento
 
 - hosts: jellyfin
   roles:

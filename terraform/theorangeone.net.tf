@@ -212,3 +212,11 @@ resource "cloudflare_record" "theorangeonenet_google_site_verification" {
   type    = "TXT"
   ttl     = 1
 }
+
+resource "cloudflare_record" "theorangeonenet_commento" {
+  zone_id = cloudflare_zone.theorangeonenet.id
+  name    = "commento"
+  value   = vultr_instance.walker.main_ip
+  type    = "A"
+  ttl     = 1
+}

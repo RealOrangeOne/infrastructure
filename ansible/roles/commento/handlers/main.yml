@@ -1,0 +1,4 @@
+- name: restart commento
+  shell:
+    chdir: /opt/commento
+    cmd: "{{ docker_update_command }}"
