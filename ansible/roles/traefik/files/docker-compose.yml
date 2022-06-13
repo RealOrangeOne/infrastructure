@@ -42,6 +42,14 @@ services:
     networks:
       - proxy_private
 
+  certs:
+    image: slocomptech/traefik-cert-extract:latest
+    restart: unless-stopped
+    networks: []
+    volumes:
+      - ./traefik:/data:ro
+      - ./certs:/config/certs
+
 networks:
   traefik:
     external: true
