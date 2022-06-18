@@ -2,7 +2,7 @@ version: "2.3"
 
 services:
   vaultwarden:
-    image: vaultwarden/server:1.24.0-alpine
+    image: vaultwarden/server:1.25.0-alpine
     restart: unless-stopped
     user: "{{ docker_user.id }}:{{ docker_user.id }}"
     volumes:
