@@ -81,6 +81,9 @@ tls:
 pilot:
   dashboard: false
 
+experimental:
+  hub: false
+
 accessLog:
   filePath: "/var/log/traefik/access.log"
   filters:
