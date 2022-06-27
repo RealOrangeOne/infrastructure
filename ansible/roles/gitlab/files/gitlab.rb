@@ -51,3 +51,6 @@ registry['storage'] = {
     'regionendpoint' => 'https://s3.eu-central-003.backblazeb2.com'
   }
 }
+
+# https://gitlab.com/gitlab-org/omnibus-gitlab/-/issues/6895
+nginx['worker_processes'] = "auto"
