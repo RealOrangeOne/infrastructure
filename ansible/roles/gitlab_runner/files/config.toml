@@ -16,5 +16,5 @@ check_interval = 10
     image = "alpine"
     privileged = true
     disable_cache = false
-    volumes = ["/cache", "/var/run/docker.sock:/var/run/docker.sock:ro"]
+    volumes = ["/cache", "/certs/client"]
     pull_policy = "if-not-present"
