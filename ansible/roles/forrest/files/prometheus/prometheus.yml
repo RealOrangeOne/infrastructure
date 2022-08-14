@@ -17,4 +17,5 @@ scrape_configs:
     static_configs:
       - targets:
           - "{{ nebula.clients.walker.ip }}:8080"
+          - "{{ nebula.clients.decker.ip }}:8080"
           - "{{ pve_hosts.docker.ip }}:8080"
