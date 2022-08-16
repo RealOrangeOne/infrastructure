@@ -7,7 +7,6 @@ services:
     environment:
       - CF_DNS_API_TOKEN={{ cloudflare_api_token }}
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro
       - /tmp/traefik-logs:/var/log/traefik
       - ./traefik:/etc/traefik
     restart: unless-stopped
