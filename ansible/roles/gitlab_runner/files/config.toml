@@ -1,4 +1,4 @@
-concurrent = {{ ansible_processor_nproc // 2 }}
+concurrent = {{ ansible_processor_nproc }}
 log_level = "warning"
 check_interval = 10
 
