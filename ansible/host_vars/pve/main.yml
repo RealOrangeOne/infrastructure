@@ -49,8 +49,8 @@ snapraid_parity_disks:
     content: true
 
 snapraid_content_files:
-  - /mnt/tank/files/snapraid.content
   - /var/snapraid.content
+  - /mnt/tank/files/snapraid.content
 
 snapraid_config_excludes:
   - "*.unrecoverable"
