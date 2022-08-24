@@ -139,3 +139,11 @@ resource "cloudflare_record" "jakehowardtech_vaultwarden" {
   type    = "A"
   ttl     = 1
 }
+
+resource "cloudflare_record" "jakehowardtech_tandoor" {
+  zone_id = cloudflare_zone.jakehowardtech.id
+  name    = "recipes"
+  value   = linode_instance.casey.ip_address
+  type    = "A"
+  ttl     = 1
+}

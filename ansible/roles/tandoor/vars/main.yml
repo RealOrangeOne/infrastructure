@@ -1,0 +1,1 @@
+tandoor_secret_key: "{{ vault_tandoor_secret_key }}"

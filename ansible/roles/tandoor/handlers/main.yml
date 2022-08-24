@@ -1,0 +1,4 @@
+- name: restart tandoor
+  shell:
+    chdir: /opt/tandoor
+    cmd: "{{ docker_update_command }}"

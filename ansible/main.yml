@@ -66,6 +66,7 @@
     - pve_nebula_route
     - privatebin
     - vaultwarden
+    - tandoor
 
 - hosts: ingress
   roles:

@@ -1,0 +1,43 @@
+version: "2.3"
+
+services:
+  tandoor:
+    image: vabene1111/recipes:1.3.3
+    environment:
+      - TIMEZONE={{ timezone }}
+      - DEBUG=0
+      - ALLOWED_HOSTS=recipes.jakehoward.tech
+      - SECRET_KEY={{ tandoor_secret_key }}
+      - DATABASE_URL=postgres://tandoor:tandoor@db:5432/tandoor
+      - DB_ENGINE=django.db.backends.postgresql
+      - POSTGRES_HOST=db
+      - POSTGRES_PORT=5432
+      - POSTGRES_USER=tandoor
+      - POSTGRES_PASSWORD=tandoor
+      - GUNICORN_MEDIA=1
+    restart: unless-stopped
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.tandoor.rule=Host(`recipes.jakehoward.tech`)
+    depends_on:
+      - db
+    networks:
+      - default
+      - traefik
+    volumes:
+      - "{{ app_data_dir }}/tandoor/media:/opt/recipes/mediafiles"
+    tmpfs:
+      - /opt/recipes/staticfiles
+
+  db:
+    image: postgres:14-alpine
+    restart: unless-stopped
+    volumes:
+      - /mnt/tank/dbs/postgres/tandoor/:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=tandoor
+      - POSTGRES_USER=tandoor
+
+networks:
+  traefik:
+    external: true
