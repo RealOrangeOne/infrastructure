@@ -1,3 +1,4 @@
 grafana_smtp_password: "{{ vault_grafana_smtp_password }}"
 grafana_smtp_user: "{{ vault_grafana_smtp_user }}"
 grafana_from_email: "{{ vault_grafana_from_email }}"
+homeassistant_token: "{{ vault_homeassistant_token }}"

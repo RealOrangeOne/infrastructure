@@ -8,6 +8,7 @@ scrape_configs:
     static_configs:
       - targets:
           - "{{ pve_hosts.pve.ip }}:9273"
+
   - job_name: traefik
     metric_relabel_configs:
       - source_labels: [__name__]
@@ -19,3 +20,17 @@ scrape_configs:
           - "{{ nebula.clients.walker.ip }}:8080"
           - "{{ nebula.clients.decker.ip }}:8080"
           - "{{ pve_hosts.docker.ip }}:8080"
+
+  - job_name: homeassistant
+    metrics_path: /api/prometheus
+
+    authorization:
+      credentials: "{{ homeassistant_token }}"
+
+    metric_relabel_configs:
+      - source_labels: [__name__]
+        regex: go_.+
+        action: drop
+
+    static_configs:
+      - targets: ["{{ pve_hosts.homeassistant.ip }}:8123"]
