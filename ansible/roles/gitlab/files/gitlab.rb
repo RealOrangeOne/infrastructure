@@ -25,7 +25,7 @@ gitlab_rails['trusted_proxies'] = ['{{ pve_hosts.docker.ip }}/32']
 
 # SMTP
 gitlab_rails['smtp_enable'] = true
-gitlab_rails['smtp_address'] = "smtp.fastmail.com"
+gitlab_rails['smtp_address'] = "smtp.eu.mailgun.org"
 gitlab_rails['smtp_port'] = 465
 gitlab_rails['smtp_user_name'] = "{{ gitlab_smtp_user }}"
 gitlab_rails['smtp_password'] = "{{ gitlab_smtp_password }}"
