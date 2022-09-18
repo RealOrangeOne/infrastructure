@@ -11,6 +11,7 @@ x-authentik: &authentik
     - AUTHENTIK_POSTGRESQL__NAME=authentik
     - AUTHENTIK_POSTGRESQL__PASSWORD=authentik
     - AUTHENTIK_SECRET_KEY="{{ authentik_secret_key }}"
+    - AUTHENTIK_DISABLE_STARTUP_ANALYTICS=true  # Sending the hash of my secret key? No thanks
   volumes:
     - "{{ app_data_dir }}/authentik/media:/media"
     - "{{ app_data_dir }}/authentik/custom-templates:/templates"
