@@ -19,8 +19,8 @@ services:
       - COMMENTO_FORBID_NEW_OWNERS=true
       - COMMENTO_GITHUB_KEY={{ commento_github_client_id }}
       - COMMENTO_GITHUB_SECRET={{ commento_github_client_secret }}
-      - COMMENTO_SMTP_HOST=smtp.fastmail.com
-      - COMMENTO_SMTP_PORT=465
+      - COMMENTO_SMTP_HOST=smtp.eu.mailgun.org
+      - COMMENTO_SMTP_PORT=587
       - COMMENTO_SMTP_USERNAME={{ commento_smtp_username }}
       - COMMENTO_SMTP_PASSWORD={{ commento_smtp_password }}
       - COMMENTO_SMTP_FROM_ADDRESS={{ commento_from_email }}
