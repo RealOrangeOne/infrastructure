@@ -1,0 +1,4 @@
+- name: restart authentik
+  shell:
+    chdir: /opt/authentik
+    cmd: "{{ docker_update_command }}"

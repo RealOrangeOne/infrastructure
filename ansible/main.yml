@@ -67,6 +67,7 @@
     - privatebin
     - vaultwarden
     - tandoor
+    - authentik
 
 - hosts: ingress
   roles:

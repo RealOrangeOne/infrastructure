@@ -1,0 +1,58 @@
+version: "2.3"
+
+x-authentik: &authentik
+  image: ghcr.io/goauthentik/server:2022.8.2
+  restart: unless-stopped
+  environment:
+    - TIMEZONE={{ timezone }}
+    - AUTHENTIK_REDIS__HOST=redis
+    - AUTHENTIK_POSTGRESQL__HOST=db
+    - AUTHENTIK_POSTGRESQL__USER=authentik
+    - AUTHENTIK_POSTGRESQL__NAME=authentik
+    - AUTHENTIK_POSTGRESQL__PASSWORD=authentik
+    - AUTHENTIK_SECRET_KEY="{{ authentik_secret_key }}"
+  volumes:
+    - "{{ app_data_dir }}/authentik/media:/media"
+    - "{{ app_data_dir }}/authentik/custom-templates:/templates"
+    - "{{ app_data_dir }}/authentik/certs:/certs"
+  depends_on:
+    - db
+    - redis
+
+services:
+  authentik:
+    <<: *authentik
+    command: server
+    networks:
+      - default
+      - traefik
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.authentik.rule=Host(`auth.jakehoward.tech`)
+      - traefik.http.services.authentik-authentik.loadbalancer.server.port=9000
+      - traefik.http.middlewares.authentik-ratelimit.ratelimit.average=5
+      - traefik.http.middlewares.authentik-ratelimit.ratelimit.burst=1000
+      - traefik.http.routers.authentik.middlewares=authentik-ratelimit
+
+  worker:
+    <<: *authentik
+    command: worker
+
+  db:
+    image: postgres:14-alpine
+    restart: unless-stopped
+    volumes:
+      - /mnt/tank/dbs/postgres/authentik/:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=authentik
+      - POSTGRES_USER=authentik
+
+  redis:
+    image: redis:6-alpine
+    restart: unless-stopped
+    volumes:
+      - /mnt/tank/dbs/redis/authentik:/data
+
+networks:
+  traefik:
+    external: true
