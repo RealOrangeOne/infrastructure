@@ -9,7 +9,6 @@ services:
       - "{{ app_data_dir }}/vaultwarden/:/data"
     depends_on:
       - db
-    dns: 1.1.1.1
     labels:
       - traefik.enable=true
 
