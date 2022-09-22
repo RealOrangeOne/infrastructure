@@ -1,1 +1,4 @@
 tandoor_secret_key: "{{ vault_tandoor_secret_key }}"
+tandoor_email_user: "{{ vault_tandoor_email_user }}"
+tandoor_email_password: "{{ vault_tandoor_email_password }}"
+tandoor_email_from: "{{ vault_tandoor_email_from }}"

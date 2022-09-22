@@ -15,6 +15,12 @@ services:
       - POSTGRES_USER=tandoor
       - POSTGRES_PASSWORD=tandoor
       - GUNICORN_MEDIA=1
+      - EMAIL_HOST=smtp.eu.mailgun.org
+      - EMAIL_PORT=465
+      - EMAIL_HOST_USER={{ tandoor_email_user }}
+      - EMAIL_HOST_PASSWORD={{ tandoor_email_password }}
+      - EMAIL_USE_TLS=1
+      - DEFAULT_FROM_EMAIL={{ tandoor_email_from }}
     restart: unless-stopped
     labels:
       - traefik.enable=true
