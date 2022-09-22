@@ -34,6 +34,7 @@ services:
       - BASE_URL=https://elbisualp.theorangeone.net
       - GOOGLE_CLIENT_ID={{ plausible_google_client_id }}
       - GOOGLE_CLIENT_SECRET={{ plausible_google_client_secret }}
+      - RELEASE_DISTRIBUTION=none
 
   clickhouse:
     image: clickhouse/clickhouse-server:21.12-alpine
