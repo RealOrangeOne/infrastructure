@@ -35,6 +35,12 @@ services:
       - GOOGLE_CLIENT_ID={{ plausible_google_client_id }}
       - GOOGLE_CLIENT_SECRET={{ plausible_google_client_secret }}
       - RELEASE_DISTRIBUTION=none
+      - MAILER_EMAIL={{ plausible_from_email }}
+      - SMTP_HOST_ADDR=smtp.eu.mailgun.org
+      - SMTP_HOST_PORT=465
+      - SMTP_USER_NAME={{ plausible_smtp_user }}
+      - SMTP_USER_PWD={{ plausible_smtp_password }}
+      - SMTP_HOST_SSL_ENABLED=true
 
   clickhouse:
     image: clickhouse/clickhouse-server:21.12-alpine
