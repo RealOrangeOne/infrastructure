@@ -23,7 +23,7 @@ resource "cloudflare_record" "jakehowardtech_mx2" {
 resource "cloudflare_record" "jakehowardtech_txt" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "@"
-  value   = "v=spf1 include:spf.messagingengine.com ~all"
+  value   = "v=spf1 include:spf.messagingengine.com -all"
   type    = "TXT"
   ttl     = 1
 }
@@ -55,7 +55,7 @@ resource "cloudflare_record" "jakehowardtech_dkim_fm3" {
 resource "cloudflare_record" "jakehowardtech_dmarc" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "_dmarc"
-  value   = "v=DMARC1; p=quarantine; rua=mailto:dmarc-report@jakehoward.tech;"
+  value   = "v=DMARC1; pct=100; p=quarantine; rua=mailto:dmarc-report@jakehoward.tech;"
   type    = "TXT"
   ttl     = 1
 }
@@ -167,7 +167,7 @@ resource "cloudflare_record" "jakehowardtech_auth" {
 resource "cloudflare_record" "jakehowardtech_mailgun_spf" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "mg"
-  value   = "v=spf1 include:mailgun.org ~all"
+  value   = "v=spf1 include:mailgun.org -all"
   type    = "TXT"
   ttl     = 1
 }

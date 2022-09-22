@@ -47,7 +47,7 @@ resource "cloudflare_record" "theorangeonenet_mx2" {
 resource "cloudflare_record" "theorangeonenet_spf" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "@"
-  value   = "v=spf1 include:spf.messagingengine.com ~all"
+  value   = "v=spf1 include:spf.messagingengine.com -all"
   type    = "TXT"
   ttl     = 1
 }
@@ -79,7 +79,7 @@ resource "cloudflare_record" "theorangeonenet_dkim_fm3" {
 resource "cloudflare_record" "theorangeonenet_dmarc" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "_dmarc"
-  value   = "v=DMARC1; p=quarantine; rua=mailto:dmarc-report@jakehoward.tech;"
+  value   = "v=DMARC1; pct=100; p=quarantine; rua=mailto:dmarc-report@jakehoward.tech;"
   type    = "TXT"
   ttl     = 1
 }
@@ -232,7 +232,7 @@ resource "cloudflare_record" "theorangeonenet_commento" {
 resource "cloudflare_record" "theorangeonenet_mailgun_spf" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "mg"
-  value   = "v=spf1 include:mailgun.org ~all"
+  value   = "v=spf1 include:mailgun.org -all"
   type    = "TXT"
   ttl     = 1
 }
