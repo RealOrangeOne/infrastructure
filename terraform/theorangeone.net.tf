@@ -228,3 +228,19 @@ resource "cloudflare_record" "theorangeonenet_commento" {
   type    = "A"
   ttl     = 1
 }
+
+resource "cloudflare_record" "theorangeonenet_mailgun_spf" {
+  zone_id = cloudflare_zone.theorangeonenet.id
+  name    = "mg"
+  value   = "v=spf1 include:mailgun.org ~all"
+  type    = "TXT"
+  ttl     = 1
+}
+
+resource "cloudflare_record" "theorangeonenet_mailgun_dkim" {
+  zone_id = cloudflare_zone.theorangeonenet.id
+  name    = "mta._domainkey.mg"
+  value   = "k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA1Z/MHEzpbWm5EgMkyWb+Xkz44Xrzr4SA5i2u8M2H5yZ1PSb4DpGk3IAX+I05UWax02+WBW3CBb5wU9rH9flgxezBoCf/hiMS1Wjb9hKGIBa2jMCzpF+wa5fyqLkLoAJZF4bc/BJKyi/ET2c7+DAA/2KlWv/nv4MEjcUR4hNGLPEC9+6PhUp8z2PnUQLzPRWHpKc1oLrnROWaX3XxdDekCzwyOw7ygzZdThVevE+0CqXVOt5SUSUCnd2tjVbvblGi6DBiQY5Tl6+xLqkQHCRqks9187+EN4FdJXkjQodkFzzyiBH5cXVGiZLOhal4koEvxGirr596qM97bIXiJWArdQIDAQAB"
+  type    = "TXT"
+  ttl     = 1
+}

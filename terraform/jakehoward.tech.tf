@@ -163,3 +163,19 @@ resource "cloudflare_record" "jakehowardtech_auth" {
   type    = "A"
   ttl     = 1
 }
+
+resource "cloudflare_record" "jakehowardtech_mailgun_spf" {
+  zone_id = cloudflare_zone.jakehowardtech.id
+  name    = "mg"
+  value   = "v=spf1 include:mailgun.org ~all"
+  type    = "TXT"
+  ttl     = 1
+}
+
+resource "cloudflare_record" "jakehowardtech_mailgun_dkim" {
+  zone_id = cloudflare_zone.jakehowardtech.id
+  name    = "s1._domainkey.mg"
+  value   = "k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4E4cv86U+sFUjgLys26ZLccTghzGfHiFpitWdFg68lGXG63aoG2/+9bgKVT0ZBG7bjPvj6Kyj4N3TIe4oCJo2saVvtsNK1pvZkOadaBPgjzKeRvBaw48ZatUGKoV7q1NCa0kXAfiJleF7bMvbt8rYDmBljr/BG6TtZYPt6XgoZyh8HHXjv/1L6WT3JBVQ8q5UtqVRVujXNHf57FmJTOJpvs0bKn/6TUaXYZmt5z3jpDhc/HfmkzVV22AwRf9jn7kgKkgaKpkvfSL8gtYNn5oyfS0Y9W9x9ntqb4g72RCbynMppQb1uwxbIuWRVOp0un0koQDm3C8ZzhOOYAwe58BYQIDAQAB"
+  type    = "TXT"
+  ttl     = 1
+}
