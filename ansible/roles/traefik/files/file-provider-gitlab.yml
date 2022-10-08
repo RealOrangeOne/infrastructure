@@ -9,6 +9,9 @@ http:
     router-gitlab-pages:
       rule: HostRegexp(`gitlab-pages.theorangeone.net`, `{subdomain:[a-z]+}.gitlab-pages.theorangeone.net`)
       service: service-gitlab-pages
+    router-slides:
+      rule: Host(`slides.jakehoward.tech`)
+      service: service-slides
   services:
     service-gitlab:
       loadBalancer:
@@ -18,3 +21,10 @@ http:
       loadBalancer:
         servers:
           - url: http://{{ pve_hosts.gitlab.ip }}:8008
+
+    # HACK: GitLab doesn't support `_redirects` with domains in
+    service-slides:
+      loadBalancer:
+        passHostHeader: false
+        servers:
+          - url: https://slides.gitlab-pages.theorangeone.net

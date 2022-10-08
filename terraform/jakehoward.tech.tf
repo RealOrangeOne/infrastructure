@@ -187,3 +187,11 @@ resource "cloudflare_record" "jakehowardtech_mailgun_dmarc" {
   type    = "TXT"
   ttl     = 1
 }
+
+resource "cloudflare_record" "jakehowardtech_slides" {
+  zone_id = cloudflare_zone.jakehowardtech.id
+  name    = "slides"
+  value   = cloudflare_record.theorangeonenet_gitlab_pages.hostname
+  type    = "CNAME"
+  ttl     = 1
+}
