@@ -54,3 +54,10 @@ registry['storage'] = {
 
 # https://gitlab.com/gitlab-org/omnibus-gitlab/-/issues/6895
 nginx['worker_processes'] = "auto"
+
+# GitLab Pages
+pages_external_url "https://gitlab-pages.theorangeone.net"
+gitlab_pages["external_http"] = [":8008"]
+gitlab_pages["access_control"] = true
+pages_nginx["enable"] = false
+gitlab_rails["pages_path"] = "/mnt/gitlab-bulk/pages"

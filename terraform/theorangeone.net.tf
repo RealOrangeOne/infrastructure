@@ -252,3 +252,19 @@ resource "cloudflare_record" "theorangeonenet_mailgun_dmarc" {
   type    = "TXT"
   ttl     = 1
 }
+
+resource "cloudflare_record" "theorangeonenet_gitlab_pages" {
+  zone_id = cloudflare_zone.theorangeonenet.id
+  name    = "gitlab-pages"
+  value   = cloudflare_record.theorangeonenet_git.hostname
+  type    = "CNAME"
+  ttl     = 1
+}
+
+resource "cloudflare_record" "theorangeonenet_gitlab_pages_wildcard" {
+  zone_id = cloudflare_zone.theorangeonenet.id
+  name    = "*.gitlab-pages"
+  value   = cloudflare_record.theorangeonenet_gitlab_pages.hostname
+  type    = "CNAME"
+  ttl     = 1
+}

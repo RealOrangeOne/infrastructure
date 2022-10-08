@@ -6,8 +6,15 @@ http:
     router-gitlab-registry:
       rule: Host(`registry.git.theorangeone.net`)
       service: service-gitlab
+    router-gitlab-pages:
+      rule: HostRegexp(`gitlab-pages.theorangeone.net`, `{subdomain:[a-z]+}.gitlab-pages.theorangeone.net`)
+      service: service-gitlab-pages
   services:
     service-gitlab:
       loadBalancer:
         servers:
           - url: https://{{ pve_hosts.gitlab.ip }}
+    service-gitlab-pages:
+      loadBalancer:
+        servers:
+          - url: http://{{ pve_hosts.gitlab.ip }}:8008

@@ -26,6 +26,10 @@ entryPoints:
             sans: "*.jakehoward.tech"
           - main: 0rng.one
             sans: "*.0rng.one"
+{% if traefik_provider_gitlab %}
+          - main: gitlab-pages.theorangeone.net
+            sans: "*.gitlab-pages.theorangeone.net"
+{% endif %}
     proxyProtocol:
       trustedIPs:
         - "{{ wireguard.cidr }}"
