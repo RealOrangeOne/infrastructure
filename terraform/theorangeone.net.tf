@@ -176,7 +176,7 @@ resource "cloudflare_record" "theorangeonenet_pages" {
 resource "cloudflare_record" "theorangeonenet_notes" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "notes"
-  value   = cloudflare_record.theorangeonenet_dokku.hostname
+  value   = cloudflare_record.theorangeonenet_gitlab_pages.hostname
   type    = "CNAME"
   ttl     = 1
 }

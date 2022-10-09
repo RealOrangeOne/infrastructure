@@ -7,7 +7,7 @@ http:
       rule: Host(`registry.git.theorangeone.net`)
       service: service-gitlab
     router-gitlab-pages:
-      rule: HostRegexp(`gitlab-pages.theorangeone.net`, `{subdomain:[a-z]+}.gitlab-pages.theorangeone.net`)
+      rule: HostRegexp(`gitlab-pages.theorangeone.net`, `{subdomain:[a-z]+}.gitlab-pages.theorangeone.net`, `notes.theorangeone.net`)
       service: service-gitlab-pages
     router-slides:
       rule: Host(`slides.jakehoward.tech`)
