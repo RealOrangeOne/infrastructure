@@ -106,18 +106,3 @@
 - name: fail2ban
   include_tasks: fail2ban.yml
   when: with_fail2ban
-
-- name: Check for nginx config
-  stat:
-    path: /opt/traefik/nginx.conf
-  register: nginx_file
-  become: true
-
-- name: Create nginx config, if it doesn't exist already
-  template:
-    src: files/nginx.conf
-    dest: /opt/traefik/nginx.conf
-    mode: "0600"
-  when: not nginx_file.stat.exists
-  notify: restart traefik
-  become: true

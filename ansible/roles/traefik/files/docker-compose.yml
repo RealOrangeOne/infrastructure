@@ -16,7 +16,6 @@ services:
       - "{{ private_ip }}:8080:8080"
     depends_on:
       - docker_proxy
-      - shenanigans
     networks:
       - default
       - traefik
@@ -30,16 +29,6 @@ services:
       - INFO=1
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
-    networks:
-      - proxy_private
-    logging:
-      driver: none
-
-  shenanigans:
-    image: nginx:alpine
-    restart: unless-stopped
-    volumes:
-      - /opt/traefik/nginx.conf:/etc/nginx/conf.d/default.conf:ro
     networks:
       - proxy_private
     logging:
