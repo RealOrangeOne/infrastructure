@@ -11,7 +11,7 @@ services:
       - traefik.http.middlewares.remove-ttrss.stripprefix.prefixes=/tt-rss
       - traefik.http.routers.tt-rss.middlewares=remove-ttrss,add-ttrss
     volumes:
-      - /tmp/tt-rss:/var/www/html
+      - ./tt-rss:/var/www/html
       - "{{ app_data_dir }}/tt-rss/feed-icons:/var/www/html/tt-rss/feed-icons:ro"
     depends_on:
       - app
@@ -36,7 +36,7 @@ services:
       - PHP_WORKER_MAX_CHILDREN=50
       - PHP_WORKER_MEMORY_LIMIT=512M
     volumes:
-      - /tmp/tt-rss:/var/www/html
+      - ./tt-rss:/var/www/html
       - "{{ app_data_dir }}/tt-rss/feed-icons:/var/www/html/tt-rss/feed-icons"
       - ./plugins:/var/www/html/tt-rss/plugins.local
     depends_on:
