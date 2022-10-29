@@ -1,0 +1,65 @@
+version: "2.3"
+
+x-website: &website
+  image: registry.git.theorangeone.net/repos/website:latest
+  user: "{{ docker_user.id }}"
+  restart: unless-stopped
+  init: true
+  environment:
+    - TZ={{ timezone }}
+    - DEBUG=false
+    - SECRET_KEY={{ website_secret_key }}
+    - DATABASE_URL=postgres://website:website@db/website?conn_max_age=600
+    - CACHE_URL=redis://redis/0
+    - QUEUE_STORE_URL=redis://redis/1
+    - RENDITION_CACHE_URL=redis://redis/2
+    - SPOTIFY_PROXY_HOST={{ spotify_proxy_host }}
+    - UNSPLASH_CLIENT_ID={{ unsplash_client_id }}
+    - SENTRY_DSN={{ website_sentry_dsn }}
+    - BASE_HOSTNAME=staging.theorangeone.net
+    - WEB_CONCURRENCY=4
+    - SEO_INDEX=true
+  volumes:
+    - ./media:/app/media
+  depends_on:
+    - db
+    - redis
+
+services:
+  website:
+    <<: *website
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.website.rule=Host(`staging.theorangeone.net`)
+      - traefik.http.middlewares.website-auth.basicauth.users={{ website_basic_auth }}
+      - traefik.http.routers.website.middlewares=website-auth
+    networks:
+      - default
+      - traefik
+
+  worker:
+    <<: *website
+    command: python manage.py rqworker
+
+  cron:
+    <<: *website
+    command: supercronic etc/crontab
+
+  db:
+    image: postgres:14-alpine
+    restart: unless-stopped
+    volumes:
+      - ./postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=website
+      - POSTGRES_USER=website
+
+  redis:
+    image: redis:6.0-alpine
+    restart: unless-stopped
+    volumes:
+      - ./redis:/data
+
+networks:
+  traefik:
+    external: true
