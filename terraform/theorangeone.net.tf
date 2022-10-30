@@ -165,14 +165,6 @@ resource "cloudflare_record" "theorangeonenet_plausible_bare" {
   ttl     = 1
 }
 
-resource "cloudflare_record" "theorangeonenet_pages" {
-  zone_id = cloudflare_zone.theorangeonenet.id
-  name    = "pages"
-  value   = vultr_instance.walker.main_ip
-  type    = "A"
-  ttl     = 1
-}
-
 resource "cloudflare_record" "theorangeonenet_notes" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "notes"

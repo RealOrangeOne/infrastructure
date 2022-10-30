@@ -16,7 +16,7 @@ x-website: &website
     - SPOTIFY_PROXY_HOST={{ spotify_proxy_host }}
     - UNSPLASH_CLIENT_ID={{ unsplash_client_id }}
     - SENTRY_DSN={{ website_sentry_dsn }}
-    - BASE_HOSTNAME=staging.theorangeone.net
+    - BASE_HOSTNAME=theorangeone.net
     - WEB_CONCURRENCY=4
     - SEO_INDEX=true
   volumes:
@@ -30,9 +30,7 @@ services:
     <<: *website
     labels:
       - traefik.enable=true
-      - traefik.http.routers.website.rule=Host(`staging.theorangeone.net`)
-      - traefik.http.middlewares.website-auth.basicauth.users={{ website_basic_auth }}
-      - traefik.http.routers.website.middlewares=website-auth
+      - traefik.http.routers.website.rule=Host(`theorangeone.net`)
     networks:
       - default
       - traefik

@@ -1,4 +1,0 @@
-- name: restart pages
-  shell:
-    chdir: /opt/pages
-    cmd: "{{ docker_update_command }}"
