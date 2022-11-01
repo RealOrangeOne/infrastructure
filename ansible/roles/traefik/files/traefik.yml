@@ -48,11 +48,6 @@ providers:
     network: traefik
   file:
     directory: /etc/traefik/conf
-{% if with_traefik_pages %}
-  http:
-    endpoint:
-      - "http://{{ traefik_pages_password }}@traefik-pages:5000/.traefik-pages/provider"
-{% endif %}
 
 api:
   dashboard: true
