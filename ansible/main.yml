@@ -96,6 +96,7 @@
 - hosts: qbittorrent
   roles:
     - qbittorrent
+    - http_proxy
 
 - hosts: walker
   roles:
