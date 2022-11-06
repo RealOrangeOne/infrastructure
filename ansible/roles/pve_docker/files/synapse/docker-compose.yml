@@ -10,8 +10,8 @@ services:
       - SYNAPSE_REPORT_STATS=yes
       - UID={{ docker_user.id }}
       - GID={{ docker_user.id }}
-      - HTTP_PROXY={{ pve_hosts.qbittorrent.ip }}
-      - HTTPS_PROXY={{ pve_hosts.qbittorrent.ip }}
+      - HTTP_PROXY={{ pve_hosts.qbittorrent.ip }}:3128
+      - HTTPS_PROXY={{ pve_hosts.qbittorrent.ip }}:3128
     volumes:
       - "{{ app_data_dir }}/synapse/homeserver.yaml:/etc/homeserver.yaml"
       - "{{ app_data_dir }}/synapse:/data"
