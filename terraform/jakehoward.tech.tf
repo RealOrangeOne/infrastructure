@@ -195,3 +195,10 @@ resource "cloudflare_record" "jakehowardtech_slides" {
   type    = "CNAME"
   ttl     = 1
 }
+resource "cloudflare_record" "jakehowardtech_matrix_admin" {
+  zone_id = cloudflare_zone.jakehowardtech.id
+  name    = "synapse-admin"
+  value   = linode_instance.casey.ip_address
+  type    = "A"
+  ttl     = 1
+}

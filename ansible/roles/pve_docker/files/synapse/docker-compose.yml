@@ -19,7 +19,7 @@ services:
       - db
     labels:
       - traefik.enable=true
-      - traefik.http.routers.synapse.rule=Host(`matrix.jakehoward.tech`) || Host(`matrix.theorangeone.net`)
+      - traefik.http.routers.synapse.rule=Host(`matrix.jakehoward.tech`)
     networks:
       - default
       - traefik
@@ -45,9 +45,7 @@ services:
     restart: unless-stopped
     labels:
       - traefik.enable=true
-      - traefik.http.routers.synapse-admin.rule=Host(`matrix.theorangeone.net`) && PathPrefix(`/admin`)
-      - traefik.http.middlewares.synapse-admin-path.stripprefix.prefixes=/admin
-      - traefik.http.routers.synapse-admin.middlewares=synapse-admin-path@docker
+      - traefik.http.routers.synapse-admin.rule=Host(`synapse-admin.jakehoward.tech`)
     networks:
       - default
       - traefik
