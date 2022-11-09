@@ -2,7 +2,7 @@ version: "2.3"
 
 services:
   tandoor:
-    image: vabene1111/recipes:1.4.4
+    image: vabene1111/recipes:1.4.5
     environment:
       - TIMEZONE={{ timezone }}
       - DEBUG=0
