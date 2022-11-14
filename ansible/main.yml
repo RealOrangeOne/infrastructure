@@ -3,6 +3,8 @@
     - base
     - role: realorangeone.reflector
       when: ansible_os_family == 'Archlinux'
+    - role: paccache
+      when: ansible_os_family == 'Archlinux'
 
 - hosts: casey
   roles:
