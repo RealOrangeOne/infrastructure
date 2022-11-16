@@ -30,7 +30,7 @@ services:
     <<: *website
     labels:
       - traefik.enable=true
-      - traefik.http.routers.website.rule=Host(`theorangeone.net`)
+      - traefik.http.routers.website.rule=Host(`theorangeone.net`) || Host(`jakehoward.tech`)
     networks:
       - default
       - traefik
