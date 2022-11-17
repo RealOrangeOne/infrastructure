@@ -36,9 +36,8 @@
 - name: Clean up docker containers
   cron:
     name: clean up docker containers
-    hour: 12
+    hour: 23
     minute: 0
-    weekday: 3
     job: docker system prune -af --volumes
 
 - name: Install util scripts
