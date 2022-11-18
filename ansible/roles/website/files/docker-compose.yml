@@ -19,6 +19,7 @@ x-website: &website
     - BASE_HOSTNAME=theorangeone.net
     - WEB_CONCURRENCY=4
     - SEO_INDEX=true
+    - ACTIVITYPUB_HOST=mastodon.theorangeone.net
   volumes:
     - ./media:/app/media
   depends_on:

@@ -70,6 +70,7 @@
     - vaultwarden
     - tandoor
     - authentik
+    - mastodon
 
 - hosts: ingress
   roles:

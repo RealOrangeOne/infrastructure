@@ -1,0 +1,4 @@
+- name: restart mastodon
+  shell:
+    chdir: /opt/mastodon
+    cmd: "{{ docker_update_command }}"

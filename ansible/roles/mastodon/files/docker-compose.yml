@@ -1,0 +1,61 @@
+version: "2.3"
+
+services:
+  mastodon:
+    image: lscr.io/linuxserver/mastodon:4.0.2
+    environment:
+      - TZ={{ timezone }}
+      - PUID={{ docker_user.id }}
+      - PGID={{ docker_user.id }}
+      - LOCAL_DOMAIN=theorangeone.net
+      - WEB_DOMAIN=mastodon.theorangeone.net
+      - DATABASE_URL=postgresql://mastodon:mastodon@db/mastodon
+      - REDIS_URL=redis://redis
+      - SECRET_KEY_BASE={{ secret_key_base }}
+      - OTP_SECRET={{ otp_secret }}
+      - VAPID_PRIVATE_KEY={{ vapid_private_key }}
+      - VAPID_PUBLIC_KEY={{ vapid_public_key }}
+      - TRUSTED_PROXY_IP=172.20.0.1
+      - SINGLE_USER_MODE=true
+      - DEFAULT_LOCALE=en
+      - STREAMING_CLUSTER_NUM=2
+      - WEB_CONCURRENCY=2
+      - MAX_THREADS=4
+      - HTTP_PROXY={{ pve_hosts.qbittorrent.ip }}:3128
+      - HTTPS_PROXY={{ pve_hosts.qbittorrent.ip }}:3128
+    restart: unless-stopped
+    volumes:
+      - "{{ app_data_dir }}/mastodon:/config/mastodon"
+    depends_on:
+      - db
+      - redis
+    networks:
+      - default
+      - traefik
+    tmpfs:
+      - /var/cache
+      - /config/log
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.mastodon.rule=Host(`mastodon.theorangeone.net`)
+      - traefik.http.services.mastodon-mastodon.loadbalancer.server.port=443
+      - traefik.http.services.mastodon-mastodon.loadbalancer.server.scheme=https
+
+  db:
+    image: postgres:14-alpine
+    restart: unless-stopped
+    volumes:
+      - /mnt/tank/dbs/postgres/mastodon/:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=mastodon
+      - POSTGRES_USER=mastodon
+
+  redis:
+    image: redis:6-alpine
+    restart: unless-stopped
+    volumes:
+      - /mnt/tank/dbs/redis/mastodon/:/data
+
+networks:
+  traefik:
+    external: true

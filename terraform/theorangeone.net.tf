@@ -260,3 +260,11 @@ resource "cloudflare_record" "theorangeonenet_gitlab_pages_wildcard" {
   type    = "CNAME"
   ttl     = 1
 }
+
+resource "cloudflare_record" "theorangeonenet_mastodon" {
+  zone_id = cloudflare_zone.theorangeonenet.id
+  name    = "mastodon"
+  value   = linode_instance.casey.ip_address
+  type    = "A"
+  ttl     = 1
+}
