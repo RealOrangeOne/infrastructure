@@ -8,7 +8,7 @@
 - name: ZFS Scrub
   cron:
     name: scrub {{ item }} ZFS pool
-    hour: 5
+    hour: 2
     minute: 0
     weekday: 5
     job: zpool scrub {{ item }}

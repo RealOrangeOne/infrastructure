@@ -36,7 +36,7 @@
 - name: Clean up docker containers
   cron:
     name: clean up docker containers
-    hour: 23
+    hour: 1
     minute: 0
     job: docker system prune -af --volumes
 

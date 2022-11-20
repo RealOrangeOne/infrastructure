@@ -59,7 +59,7 @@ snapraid_config_excludes:
   - /tmp/
 
 snapraid_scrub_schedule:
-  hour: 5
+  hour: 2
   weekday: 4
 
 snapraid_scrub_healthcheck_io_uuid: "{{ vault_snapraid_scrub_healthcheck_io_uuid }}"
