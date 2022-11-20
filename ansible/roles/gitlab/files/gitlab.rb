@@ -15,7 +15,7 @@ gitlab_rails['time_zone'] = '{{ timezone }}'
 
 # https://docs.gitlab.com/omnibus/settings/memory_constrained_envs.html
 puma['worker_processes'] = 2
-sidekiq['max_concurrency'] = 10
+sidekiq['max_concurrency'] = 5
 
 gitlab_rails['gitlab_default_theme'] = 2
 
