@@ -18,9 +18,9 @@ services:
       - TRUSTED_PROXY_IP=172.20.0.1
       - SINGLE_USER_MODE=true
       - DEFAULT_LOCALE=en
-      - STREAMING_CLUSTER_NUM=2
+      - STREAMING_CLUSTER_NUM=1
       - WEB_CONCURRENCY=2
-      - MAX_THREADS=4
+      - MAX_THREADS={{ ansible_processor_nproc }}
       - HTTP_PROXY={{ pve_hosts.qbittorrent.ip }}:3128
       - HTTPS_PROXY={{ pve_hosts.qbittorrent.ip }}:3128
     restart: unless-stopped
