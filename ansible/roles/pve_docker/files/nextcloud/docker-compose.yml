@@ -42,7 +42,7 @@ services:
       - MYSQL_PASSWORD=nextcloud
 
   redis:
-    image: redis:6-alpine
+    image: redis:7-alpine
     restart: unless-stopped
     volumes:
       - /mnt/tank/dbs/redis/nextcloud:/data

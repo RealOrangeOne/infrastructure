@@ -19,7 +19,7 @@ services:
       - /opt/renovate/renovate:/opt/renovate/renovate  # These must be the same
 
   redis:
-    image: redis:6-alpine
+    image: redis:7-alpine
     restart: unless-stopped
     volumes:
       - ./redis:/data
