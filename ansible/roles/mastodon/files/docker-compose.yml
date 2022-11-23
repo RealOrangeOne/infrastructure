@@ -52,7 +52,7 @@ services:
       - POSTGRES_USER=mastodon
 
   redis:
-    image: redis:6-alpine
+    image: redis:7-alpine
     restart: unless-stopped
     volumes:
       - /mnt/tank/dbs/redis/mastodon/:/data

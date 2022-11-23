@@ -54,7 +54,7 @@ services:
       - POSTGRES_USER=website
 
   redis:
-    image: redis:6-alpine
+    image: redis:7-alpine
     restart: unless-stopped
     volumes:
       - ./redis:/data

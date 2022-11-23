@@ -35,7 +35,7 @@ services:
       - /mnt/tank/dbs/postgres/synapse:/var/lib/postgresql/data
 
   redis:
-    image: redis:6-alpine
+    image: redis:7-alpine
     restart: unless-stopped
     volumes:
       - /mnt/tank/dbs/redis/synapse:/data
