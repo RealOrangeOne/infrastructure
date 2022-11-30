@@ -22,6 +22,8 @@ x-website: &website
     - ACTIVITYPUB_HOST=mastodon.theorangeone.net
   volumes:
     - ./media:/app/media
+  tmpfs:
+    - /tmp
   depends_on:
     - db
     - redis
