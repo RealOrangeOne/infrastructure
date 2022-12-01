@@ -11,6 +11,7 @@ services:
       - GF_SERVER_ROOT_URL=https://grafana.jakehoward.tech
       - GF_SERVER_ENABLE_GZIP=true
       - GF_DEFAULT_FORCE_MIGRATION=true
+      - GF_FEATURE_TOGGLES_ENABLE=publicDashboards
 
       - GF_SMTP_ENABLED=true
       - GF_SMTP_HOST=smtp.eu.mailgun.org:465
