@@ -210,3 +210,11 @@ resource "cloudflare_record" "jakehowardtech_apex" {
   type    = "A"
   ttl     = 1
 }
+
+resource "cloudflare_record" "jakehowardtech_collabora" {
+  zone_id = cloudflare_zone.jakehowardtech.id
+  name    = "collabora"
+  value   = linode_instance.casey.ip_address
+  type    = "A"
+  ttl     = 1
+}

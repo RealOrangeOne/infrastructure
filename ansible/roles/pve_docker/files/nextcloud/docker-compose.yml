@@ -30,6 +30,22 @@ services:
       - default
       - traefik
 
+  collabora:
+    image: collabora/code:latest
+    restart: unless-stopped
+    tty: true
+    environment:
+      - domain=intersect.jakehoward.tech
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.collabora.rule=Host(`collabora.jakehoward.tech`)
+      - traefik.http.services.collabora-nextcloud.loadbalancer.server.scheme=https
+    networks:
+      - default
+      - traefik
+    tmpfs:
+      - /tmp
+
   mariadb:
     image: mariadb:10.5
     restart: unless-stopped
