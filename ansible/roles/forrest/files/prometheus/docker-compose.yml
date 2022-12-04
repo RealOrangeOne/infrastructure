@@ -9,7 +9,6 @@ services:
       - /mnt/tank/dbs/prometheus/forrest/:/prometheus/
     networks:
       - default
-      - prometheus
       - grafana
     ports:
       - "{{ pve_hosts.forrest.ip }}:9090:9090"
@@ -21,7 +20,5 @@ services:
       - ./blackbox.yml:/etc/blackbox_exporter/config.yml
 
 networks:
-  prometheus:
-    external: true
   grafana:
     external: true
