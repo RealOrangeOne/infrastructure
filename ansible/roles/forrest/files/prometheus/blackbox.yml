@@ -1,0 +1,23 @@
+modules:
+  http:
+    prober: http
+    timeout: 10s
+
+  http_external:
+    prober: http
+    timeout: 10s
+    http:
+      proxy_url: http://{{ pve_hosts.qbittorrent.ip }}:3128
+      skip_resolve_phase_with_proxy: true
+
+  https_redir:
+    prober: http
+    timeout: 10s
+    http:
+      method: GET
+      valid_status_codes: [301, 302, 307, 308]
+      no_follow_redirects: true
+      fail_if_ssl: true
+      fail_if_header_not_matches:
+        - header: Location
+          regexp: ^https

@@ -28,3 +28,12 @@
     validate: docker-compose -f %s config
   notify: restart prometheus
   become: true
+
+- name: Install blackbox config
+  template:
+    src: files/prometheus/blackbox.yml
+    dest: /opt/prometheus/blackbox.yml
+    mode: "{{ docker_compose_file_mask }}"
+    owner: "{{ docker_user.name }}"
+  notify: restart prometheus
+  become: true

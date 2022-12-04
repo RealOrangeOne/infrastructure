@@ -14,6 +14,12 @@ services:
     ports:
       - "{{ pve_hosts.forrest.ip }}:9090:9090"
 
+  blackbox:
+    image: prom/blackbox-exporter:latest
+    restart: unless-stopped
+    volumes:
+      - ./blackbox.yml:/etc/blackbox_exporter/config.yml
+
 networks:
   prometheus:
     external: true

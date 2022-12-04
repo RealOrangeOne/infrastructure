@@ -4,7 +4,6 @@ scrape_configs:
       - source_labels: [__name__]
         regex: go_.+
         action: drop
-
     static_configs:
       - targets:
           - "{{ pve_hosts.pve.ip }}:9273"
@@ -14,7 +13,6 @@ scrape_configs:
       - source_labels: [__name__]
         regex: go_.+
         action: drop
-
     static_configs:
       - targets:
           - "{{ nebula.clients.walker.ip }}:8080"
@@ -23,14 +21,57 @@ scrape_configs:
 
   - job_name: homeassistant
     metrics_path: /api/prometheus
-
     authorization:
       credentials: "{{ homeassistant_token }}"
-
     metric_relabel_configs:
       - source_labels: [__name__]
         regex: go_.+
         action: drop
-
     static_configs:
       - targets: ["{{ pve_hosts.homeassistant.ip }}:8123"]
+
+  - job_name: blackbox_http_external
+    scrape_interval: 1m
+    metrics_path: /probe
+    params:
+      module: [http_external]
+    static_configs:
+      - targets:
+          - https://bin.theorangeone.net
+          - https://git.theorangeone.net/-/liveness?token={{ gitlab_liveness_access_token }}
+          - https://grafana.jakehoward.tech/api/health
+          - https://homeassistant.jakehoward.tech
+          - https://intersect.jakehoward.tech
+          - https://mastodon.theorangeone.net/health
+          - https://matrix.jakehoward.tech:8448/_matrix/federation/v1/version
+          - https://matrix.jakehoward.tech/_matrix/federation/v1/version
+          - https://media.jakehoward.tech
+          - https://notes.theorangeone.net
+          - https://plausible.theorangeone.net
+          - https://recipes.jakehoward.tech
+          - https://theorangeone.net
+          - https://tt-rss.jakehoward.tech
+          - https://vaultwarden.jakehoward.tech/alive
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: blackbox:9115
+
+  - job_name: blackbox_https_redir
+    scrape_interval: 10m
+    metrics_path: /probe
+    params:
+      module: [https_redir]
+    static_configs:
+      - targets:
+          - http://{{ hosts.casey_ip }}
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: blackbox:9115
