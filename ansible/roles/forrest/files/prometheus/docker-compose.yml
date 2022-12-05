@@ -5,7 +5,7 @@ services:
     image: prom/prometheus:latest
     restart: unless-stopped
     volumes:
-      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
       - /mnt/tank/dbs/prometheus/forrest/:/prometheus/
     networks:
       - default
@@ -17,13 +17,13 @@ services:
     image: prom/blackbox-exporter:latest
     restart: unless-stopped
     volumes:
-      - ./blackbox.yml:/etc/blackbox_exporter/config.yml
+      - ./blackbox.yml:/etc/blackbox_exporter/config.yml:ro
 
   alertmanager:
     image: prom/alertmanager:latest
     restart: unless-stopped
     volumes:
-      - ./alertmanager.yml:/etc/alertmanager/alertmanager.yml
+      - ./alertmanager.yml:/etc/alertmanager/alertmanager.yml:ro
 
 networks:
   grafana:
