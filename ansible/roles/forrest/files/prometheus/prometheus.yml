@@ -75,3 +75,25 @@ scrape_configs:
         target_label: instance
       - target_label: __address__
         replacement: blackbox:9115
+
+  - job_name: blackbox_healthcheck
+    scrape_interval: 10m
+    metrics_path: /probe
+    params:
+      module: [http_external]
+    static_configs:
+      - targets:
+          - https://hc-ping.com/{{ prometheus_healthcheck_uuid }}
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: blackbox:9115
+
+  - job_name: healthchecks
+    scheme: https
+    metrics_path: /projects/{{ healthchecks_project_uuid }}/metrics/{{ healthcheck_api_token }}
+    static_configs:
+      - targets: [healthchecks.io]

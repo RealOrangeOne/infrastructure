@@ -8,7 +8,7 @@
     chdir: /opt/prometheus
     cmd: "{{ docker_update_command }}"
 
-- name: restart telegraf
+- name: reload prometheus
   shell:
-    chdir: /opt/telegraf
-    cmd: "{{ docker_update_command }}"
+    chdir: /opt/prometheus
+    cmd: docker-compose exec prometheus kill -HUP 1
