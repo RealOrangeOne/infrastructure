@@ -33,3 +33,12 @@
     owner: "{{ docker_user.name }}"
   notify: restart prometheus
   become: true
+
+- name: Install alertmanager config
+  template:
+    src: files/prometheus/alertmanager.yml
+    dest: /opt/prometheus/alertmanager.yml
+    mode: "{{ docker_compose_file_mask }}"
+    owner: "{{ docker_user.name }}"
+  notify: restart prometheus
+  become: true

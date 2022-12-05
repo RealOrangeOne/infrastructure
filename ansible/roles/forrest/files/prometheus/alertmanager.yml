@@ -1,0 +1,15 @@
+global:
+  resolve_timeout: 3m
+  smtp_smarthost: smtp.eu.mailgun.org:465
+  smtp_from: "{{ alertmanager_from_address }}"
+  smtp_auth_username: "{{ alertmanager_from_address }}"
+  smtp_auth_password: "{{ alertmanager_smtp_password }}"
+
+route:
+  receiver: default
+
+receivers:
+  - name: default
+    email_configs:
+      - to: "{{ alertmanager_to_address }}"
+        send_resolved: true

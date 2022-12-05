@@ -19,6 +19,12 @@ services:
     volumes:
       - ./blackbox.yml:/etc/blackbox_exporter/config.yml
 
+  alertmanager:
+    image: prom/alertmanager:latest
+    restart: unless-stopped
+    volumes:
+      - ./alertmanager.yml:/etc/alertmanager/alertmanager.yml
+
 networks:
   grafana:
     external: true
