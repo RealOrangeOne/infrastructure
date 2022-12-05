@@ -4,6 +4,7 @@ services:
   prometheus:
     image: prom/prometheus:latest
     restart: unless-stopped
+    user: "{{ docker_user.id }}"
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
       - /mnt/tank/dbs/prometheus/forrest/:/prometheus/
@@ -16,12 +17,14 @@ services:
   blackbox:
     image: prom/blackbox-exporter:latest
     restart: unless-stopped
+    user: "{{ docker_user.id }}"
     volumes:
       - ./blackbox.yml:/etc/blackbox_exporter/config.yml:ro
 
   alertmanager:
     image: prom/alertmanager:latest
     restart: unless-stopped
+    user: "{{ docker_user.id }}"
     volumes:
       - ./alertmanager.yml:/etc/alertmanager/alertmanager.yml:ro
 
