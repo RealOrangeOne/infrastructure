@@ -2,6 +2,8 @@ modules:
   http:
     prober: http
     timeout: 10s
+    http:
+      preferred_ip_protocol: ip4  # Docker network is v4 only
 
   https_redir:
     prober: http
@@ -14,3 +16,4 @@ modules:
       fail_if_header_not_matches:
         - header: Location
           regexp: ^https
+      preferred_ip_protocol: ip4  # Docker network is v4 only
