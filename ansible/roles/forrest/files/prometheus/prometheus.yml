@@ -40,7 +40,7 @@ scrape_configs:
     scrape_interval: 1m
     metrics_path: /probe
     params:
-      module: [http_external]
+      module: [http]
     static_configs:
       - targets:
           - https://bin.theorangeone.net
@@ -64,7 +64,7 @@ scrape_configs:
       - source_labels: [__param_target]
         target_label: instance
       - target_label: __address__
-        replacement: blackbox:9115
+        replacement: blackbox-external:9115
 
   - job_name: blackbox_https_redir
     scrape_interval: 10m
@@ -80,13 +80,13 @@ scrape_configs:
       - source_labels: [__param_target]
         target_label: instance
       - target_label: __address__
-        replacement: blackbox:9115
+        replacement: blackbox-external:9115
 
   - job_name: blackbox_healthcheck
     scrape_interval: 10m
     metrics_path: /probe
     params:
-      module: [http_external]
+      module: [http]
     static_configs:
       - targets:
           - https://hc-ping.com/{{ prometheus_healthcheck_uuid }}

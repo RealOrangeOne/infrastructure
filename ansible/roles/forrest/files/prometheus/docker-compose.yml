@@ -1,5 +1,12 @@
 version: "2.3"
 
+x-blackbox: &blackbox
+  image: prom/blackbox-exporter:latest
+  restart: unless-stopped
+  user: "{{ docker_user.id }}"
+  volumes:
+    - ./blackbox.yml:/etc/blackbox_exporter/config.yml:ro
+
 services:
   prometheus:
     image: prom/prometheus:latest
@@ -15,11 +22,14 @@ services:
       - "{{ pve_hosts.forrest.ip }}:9090:9090"
 
   blackbox:
-    image: prom/blackbox-exporter:latest
-    restart: unless-stopped
-    user: "{{ docker_user.id }}"
-    volumes:
-      - ./blackbox.yml:/etc/blackbox_exporter/config.yml:ro
+    <<: *blackbox
+
+  blackbox-external:
+    <<: *blackbox
+    # Don't use my internal DNS servers
+    dns:
+      - 9.9.9.9
+      - 149.112.112.112
 
   alertmanager:
     image: prom/alertmanager:latest
