@@ -16,5 +16,9 @@ terraform {
       source  = "linode/linode"
       version = "1.25.1"
     }
+    uptimerobot = {
+      source  = "vexxhost/uptimerobot"
+      version = "0.8.2"
+    }
   }
 }

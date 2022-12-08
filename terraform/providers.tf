@@ -16,3 +16,7 @@ provider "aws" {
 provider "linode" {
   token = var.linode_personal_access_token
 }
+
+provider "uptimerobot" {
+  api_key = var.uptimerobot_api_key
+}
