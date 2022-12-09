@@ -1,3 +1,8 @@
+locals {
+  uptimerobot_email_contact_id = "3407128"
+  uptimerobot_phone_contact_id = "0355509"
+}
+
 resource "uptimerobot_monitor" "vps_ping" {
   for_each = {
     casey  = linode_instance.casey.ip_address
@@ -9,6 +14,14 @@ resource "uptimerobot_monitor" "vps_ping" {
   type          = "ping"
   url           = each.value
   interval      = 600
+
+  alert_contact {
+    id = local.uptimerobot_email_contact_id
+  }
+
+  alert_contact {
+    id = local.uptimerobot_phone_contact_id
+  }
 }
 
 resource "uptimerobot_monitor" "website" {
@@ -16,6 +29,14 @@ resource "uptimerobot_monitor" "website" {
   type          = "http"
   url           = "https://theorangeone.net/.health/"
   interval      = 300
+
+  alert_contact {
+    id = local.uptimerobot_email_contact_id
+  }
+
+  alert_contact {
+    id = local.uptimerobot_phone_contact_id
+  }
 }
 
 resource "uptimerobot_monitor" "grafana" {
@@ -23,6 +44,14 @@ resource "uptimerobot_monitor" "grafana" {
   type          = "http"
   url           = "https://grafana.jakehoward.tech/api/health"
   interval      = 300
+
+  alert_contact {
+    id = local.uptimerobot_email_contact_id
+  }
+
+  alert_contact {
+    id = local.uptimerobot_phone_contact_id
+  }
 }
 
 resource "uptimerobot_monitor" "whoami" {
@@ -30,6 +59,14 @@ resource "uptimerobot_monitor" "whoami" {
   type          = "http"
   url           = "https://whoami.theorangeone.net"
   interval      = 300
+
+  alert_contact {
+    id = local.uptimerobot_email_contact_id
+  }
+
+  alert_contact {
+    id = local.uptimerobot_phone_contact_id
+  }
 }
 
 resource "uptimerobot_status_page" "main" {
