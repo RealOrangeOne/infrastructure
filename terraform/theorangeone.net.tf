@@ -197,14 +197,6 @@ resource "cloudflare_record" "theorangeonenet_dokku_wildcard" {
   ttl     = 1
 }
 
-resource "cloudflare_record" "theorangeonenet_status" {
-  zone_id = cloudflare_zone.theorangeonenet.id
-  name    = "status"
-  value   = linode_instance.decker.ip_address
-  type    = "A"
-  ttl     = 1
-}
-
 resource "cloudflare_record" "theorangeonenet_google_site_verification" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "@"

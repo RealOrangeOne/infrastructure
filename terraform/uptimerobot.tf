@@ -2,7 +2,6 @@ resource "uptimerobot_monitor" "vps_ping" {
   for_each = {
     casey  = linode_instance.casey.ip_address
     walker = vultr_instance.walker.main_ip
-    decker = linode_instance.decker.ip_address
     grimes = vultr_instance.grimes.main_ip
   }
 

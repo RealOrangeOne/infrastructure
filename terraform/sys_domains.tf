@@ -21,11 +21,3 @@ resource "cloudflare_record" "sys_domain_grimes" {
   type    = "A"
   ttl     = 1
 }
-
-resource "cloudflare_record" "sys_domain_decker" {
-  zone_id = cloudflare_zone.theorangeonenet.id
-  name    = "decker.sys"
-  value   = linode_instance.decker.ip_address
-  type    = "A"
-  ttl     = 1
-}

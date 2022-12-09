@@ -19,7 +19,6 @@
     - ingress
     - walker
     - grimes
-    - decker
   roles:
     - role: geerlingguy.ntp
       become: true
@@ -33,7 +32,6 @@
     - walker
     - pve-gitlab-runner
     - grimes
-    - decker
     - renovate
   roles:
     - role: geerlingguy.docker
@@ -50,14 +48,12 @@
     - forrest
     - walker
     - grimes
-    - decker
   roles:
     - db_auto_backup
 
 - hosts:
     - pve-docker
     - walker
-    - decker
   roles:
     - traefik
 
@@ -132,12 +128,6 @@
     - role: dokku_bot.ansible_dokku
       become: true
     - restic
-
-- hosts: decker
-  roles:
-    - nebula
-    - restic
-    - uptime_kuma
 
 - hosts: renovate
   roles:
