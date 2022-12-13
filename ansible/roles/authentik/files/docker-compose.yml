@@ -1,7 +1,7 @@
 version: "2.3"
 
 x-authentik: &authentik
-  image: ghcr.io/goauthentik/server:2022.9.0
+  image: ghcr.io/goauthentik/server:2022.11.3
   restart: unless-stopped
   environment:
     - TIMEZONE={{ timezone }}
