@@ -36,6 +36,7 @@ gitlab_rails['gitlab_email_from'] = "{{ gitlab_from_email }}"
 
 gitlab_rails['artifacts_path'] = "/mnt/gitlab-bulk/artifacts"
 gitlab_rails['backup_path'] = "/mnt/gitlab-bulk/backups"
+gitlab_rails['backup_keep_time'] = 60 * 60 * 24 * 14  # 14 days
 
 # Registry
 registry_external_url "https://registry.git.theorangeone.net"
