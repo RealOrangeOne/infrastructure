@@ -2,7 +2,7 @@ version: "2.3"
 
 services:
   plausible:
-    image: plausible/analytics:v1.4
+    image: plausible/analytics:v1.5
     restart: unless-stopped
     command: sh -c "/entrypoint.sh db migrate && /entrypoint.sh run"
     depends_on:
@@ -43,7 +43,7 @@ services:
       - SMTP_HOST_SSL_ENABLED=true
 
   clickhouse:
-    image: clickhouse/clickhouse-server:21.12-alpine
+    image: clickhouse/clickhouse-server:22.6-alpine
     restart: unless-stopped
     volumes:
       - ./clickhouse:/var/lib/clickhouse
