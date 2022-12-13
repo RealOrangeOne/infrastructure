@@ -23,7 +23,7 @@ services:
       - traefik
 
   mariadb:
-    image: mariadb:10.8
+    image: mariadb:10.10
     environment:
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=yourls
