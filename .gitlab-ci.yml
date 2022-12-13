@@ -7,7 +7,7 @@ terraform:
     - ./scripts/terraform/lint.sh
 
 ansible:
-  image: python:3.9-slim
+  image: python:3.11-slim
   variables:
     PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
   cache:
