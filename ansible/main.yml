@@ -132,3 +132,7 @@
 - hosts: renovate
   roles:
     - renovate
+
+- hosts: tang
+  roles:
+    - pihole

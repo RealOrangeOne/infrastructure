@@ -1,0 +1,7 @@
+- name: Install internal alias config
+  template:
+    src: files/internal-alias.conf
+    dest: /etc/dnsmasq.d/internal-alias.conf
+    mode: 0644
+  notify: restart pihole FTL
+  become: true
