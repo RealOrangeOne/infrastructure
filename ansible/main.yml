@@ -19,6 +19,7 @@
     - ingress
     - walker
     - grimes
+    - tang
   roles:
     - role: geerlingguy.ntp
       become: true
