@@ -1,7 +1,18 @@
+- name: Include vault
+  include_vars: vault.yml
+
 - name: Install internal alias config
   template:
     src: files/internal-alias.conf
     dest: /etc/dnsmasq.d/internal-alias.conf
+    mode: 0644
+  notify: restart pihole FTL
+  become: true
+
+- name: Install pihole config
+  template:
+    src: files/setup-vars.conf
+    dest: /etc/pihole/setupVars.conf
     mode: 0644
   notify: restart pihole FTL
   become: true
