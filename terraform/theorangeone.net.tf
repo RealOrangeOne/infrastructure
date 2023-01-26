@@ -84,6 +84,21 @@ resource "cloudflare_record" "theorangeonenet_dmarc" {
   ttl     = 1
 }
 
+resource "cloudflare_record" "theorangeonenet_dmarc_report" {
+  for_each = toset([
+    cloudflare_zone.theorangeonenet.zone,
+    cloudflare_zone.jakehowardtech.zone,
+    cloudflare_record.theorangeonenet_mailgun_spf.hostname,
+    cloudflare_record.jakehowardtech_mailgun_spf.hostname,
+  ])
+
+  zone_id = cloudflare_zone.theorangeonenet.id
+  name    = "${each.value}._report._dmarc"
+  value   = "v=DMARC1"
+  type    = "TXT"
+  ttl     = 1
+}
+
 resource "cloudflare_record" "theorangeonenet_apex" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "@"
