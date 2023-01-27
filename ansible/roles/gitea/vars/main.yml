@@ -1,0 +1,3 @@
+lfs_jwt_secret: "{{ vault_lfs_jwt_secret }}"
+secret_key: "{{ vault_secret_key }}"
+internal_token: "{{ vault_internal_token }}"

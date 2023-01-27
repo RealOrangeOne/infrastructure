@@ -68,6 +68,7 @@
     - tandoor
     - authentik
     - mastodon
+    - gitea
 
 - hosts: ingress
   roles:

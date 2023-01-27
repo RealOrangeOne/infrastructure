@@ -1,0 +1,49 @@
+version: "2.3"
+
+services:
+  gitea:
+    image: gitea/gitea:1.18.1-rootless
+    user: "{{ docker_user.id }}:{{ docker_user.id }}"
+    environment:
+      - TZ={{ timezone }}
+    volumes:
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+      - "{{ app_data_dir }}/gitea/data:/var/lib/gitea"
+      - "{{ app_data_dir }}/gitea/config:/etc/gitea"
+      - /mnt/tank/files/gitea-repositories/repositories:/mnt/repositories
+      - /mnt/tank/files/gitea-repositories/lfs:/mnt/lfs
+    tmpfs:
+      - /var/lib/gitea/tmp
+    restart: unless-stopped
+    ports:
+      - "{{ pve_hosts.docker.ip }}:2222:2222"
+    depends_on:
+      - db
+      - redis
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.gitea.rule=Host(`gitea.theorangeone.net`)
+      - traefik.http.services.gitea-gitea.loadbalancer.server.port=3000
+    networks:
+      - default
+      - traefik
+
+  db:
+    image: postgres:14-alpine
+    restart: unless-stopped
+    volumes:
+      - /mnt/tank/dbs/postgres/gitea:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=gitea
+      - POSTGRES_USER=gitea
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    volumes:
+      - /mnt/tank/dbs/redis/gitea:/data
+
+networks:
+  traefik:
+    external: true

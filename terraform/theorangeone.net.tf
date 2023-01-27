@@ -10,6 +10,14 @@ resource "cloudflare_record" "theorangeonenet_git" {
   ttl     = 1
 }
 
+resource "cloudflare_record" "theorangeonenet_gitea" {
+  zone_id = cloudflare_zone.theorangeonenet.id
+  name    = "gitea"
+  value   = linode_instance.casey.ip_address
+  type    = "A"
+  ttl     = 1
+}
+
 resource "cloudflare_record" "theorangeonenet_git_registry" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "registry.git"
