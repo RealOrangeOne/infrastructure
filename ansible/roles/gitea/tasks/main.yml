@@ -27,3 +27,12 @@
     owner: "{{ docker_user.name }}"
   notify: restart gitea
   become: true
+
+- name: Install robots.txt
+  template:
+    src: files/robots.txt
+    dest: "{{ app_data_dir }}/gitea/data/custom/robots.txt"
+    mode: "{{ docker_compose_file_mask }}"
+    owner: "{{ docker_user.name }}"
+  notify: restart gitea
+  become: true
