@@ -18,3 +18,21 @@
     validate: docker-compose -f %s config
   notify: restart mastodon
   become: true
+
+- name: Install media cleanup script
+  template:
+    src: files/purge-media.sh
+    dest: /opt/mastodon/purge-media.sh
+    mode: "0755"
+    owner: "{{ docker_user.name }}"
+  become: true
+
+- name: Schedule media cleanup
+  cron:
+    name: clean up mastodon media
+    hour: 2
+    minute: 0
+    weekday: 1
+    job: /opt/mastodon/purge-media.sh
+    user: "{{ docker_user.name }}"
+  become: true
