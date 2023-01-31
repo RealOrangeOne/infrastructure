@@ -5,14 +5,18 @@ alerting:
             - alertmanager:9093
 
 scrape_configs:
-  - job_name: telegraf
-    metric_relabel_configs:
-      - source_labels: [__name__]
-        regex: go_.+
-        action: drop
+  - job_name: pve
     static_configs:
       - targets:
-          - "{{ pve_hosts.pve.ip }}:9273"
+          - "{{ pve_hosts.pve.ip }}"
+    metrics_path: /pve
+    relabel_configs:
+      - source_labels: [__address__]
+        target_label: __param_target
+      - source_labels: [__param_target]
+        target_label: instance
+      - target_label: __address__
+        replacement: proxmox_exporter:9221
 
   - job_name: traefik
     metric_relabel_configs:
@@ -102,3 +106,13 @@ scrape_configs:
     metrics_path: /projects/{{ healthchecks_project_uuid }}/metrics/{{ healthcheck_api_token }}
     static_configs:
       - targets: [healthchecks.io]
+
+  - job_name: node
+    metrics_path: /metrics
+    static_configs:
+      - targets:
+          - "{{ pve_hosts.pve.ip }}:9100"
+    metric_relabel_configs:
+      - source_labels: [__name__]
+        regex: go_.+
+        action: drop

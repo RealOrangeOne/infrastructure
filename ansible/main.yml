@@ -85,8 +85,9 @@
       become: true
     - zfs
     - pve_nebula_route
-    - telegraf
     - role: ironicbadger.snapraid
+      become: true
+    - role: prometheus.prometheus.node_exporter
       become: true
 
 - hosts: forrest

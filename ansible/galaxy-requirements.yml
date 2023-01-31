@@ -2,7 +2,8 @@ collections:
   - ansible.posix
   - community.general
   - community.docker
-  - amazon.aws  # Dependency of rossmcdonald.telegraf
+  - name: https://github.com/prometheus-community/ansible
+    type: git
 
 roles:
   - src: geerlingguy.docker
@@ -13,8 +14,6 @@ roles:
   - src: ironicbadger.proxmox_nag_removal
     version: 1.0.1
   - src: chmduquesne.iptables_persistent
-  - src: rossmcdonald.telegraf
-    version: v1.2.0
   - src: geerlingguy.gitlab
     version: 3.2.0
   - src: dokku_bot.ansible_dokku

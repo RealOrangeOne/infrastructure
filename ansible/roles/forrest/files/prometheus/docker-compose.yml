@@ -38,6 +38,16 @@ services:
     volumes:
       - ./alertmanager.yml:/etc/alertmanager/alertmanager.yml:ro
 
+  proxmox_exporter:
+    image: prompve/prometheus-pve-exporter:latest
+    restart: unless-stopped
+    user: "{{ docker_user.id }}"
+    environment:
+      - PVE_USER=prometheus@pve
+      - PVE_TOKEN_NAME=prometheus
+      - PVE_TOKEN_VALUE={{ prometheus_api_token }}
+      - PVE_VERIFY_SSL=false
+
 networks:
   grafana:
     external: true
