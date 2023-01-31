@@ -48,6 +48,11 @@ services:
       - PVE_TOKEN_VALUE={{ prometheus_api_token }}
       - PVE_VERIFY_SSL=false
 
+  speedtest_exporter:
+    image: jraviles/prometheus_speedtest:latest
+    restart: unless-stopped
+    user: "{{ docker_user.id }}"
+
 networks:
   grafana:
     external: true

@@ -134,3 +134,15 @@ scrape_configs:
       - source_labels: [__name__]
         regex: go_.+
         action: drop
+
+  - job_name: speedtest
+    scrape_interval: 10m
+    scrape_timeout: 2m
+    metrics_path: /probe
+    static_configs:
+      - targets:
+          - speedtest_exporter:9516
+    metric_relabel_configs:
+      - source_labels: [__name__]
+        target_label: __name__
+        replacement: speedtest_$1
