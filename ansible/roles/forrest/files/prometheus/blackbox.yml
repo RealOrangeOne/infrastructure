@@ -17,3 +17,6 @@ modules:
         - header: Location
           regexp: ^https
       preferred_ip_protocol: ip4  # Docker network is v4 only
+
+  icmp:
+    prober: icmp
