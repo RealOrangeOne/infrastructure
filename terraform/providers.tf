@@ -20,3 +20,7 @@ provider "linode" {
 provider "uptimerobot" {
   api_key = var.uptimerobot_api_key
 }
+
+provider "gandi" {
+  key = var.gandi_api_key
+}

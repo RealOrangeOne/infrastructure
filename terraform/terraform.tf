@@ -20,5 +20,9 @@ terraform {
       source  = "vexxhost/uptimerobot"
       version = "0.8.2"
     }
+    gandi = {
+      source  = "go-gandi/gandi"
+      version = "2.2.3"
+    }
   }
 }

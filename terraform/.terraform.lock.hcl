@@ -20,6 +20,26 @@ provider "registry.terraform.io/cloudflare/cloudflare" {
   ]
 }
 
+provider "registry.terraform.io/go-gandi/gandi" {
+  version     = "2.2.3"
+  constraints = "2.2.3"
+  hashes = [
+    "h1:2SFGp4KWheP2bjuD0sIzbcuM91uSFiMVr2qYBRUJ7HU=",
+    "zh:1059865208c4ce9a827d0e1fa09a74297476d064d5aebd598633b10036cdff5d",
+    "zh:1e912145a1819fc7516353369332a41558a3c6e9edac8bdcc09aa8c2735d29e3",
+    "zh:2977e335cb1df04baa200933679048a7b4151f48cbd551917abe45dc3b62f85d",
+    "zh:4211fa55947c3b7841931a2f944fe02fa50d2dca5fe850113d7dc5713574c0de",
+    "zh:509f2262f4d682504eb412eeb58968c23208ddab8ebd0b0371a9eb1332b57f33",
+    "zh:784ee8dd57193dfcb38fe06fedc2931b02a887ce887744ce92b856f121d6fb50",
+    "zh:81a9bcbae602d32d71fa8ff3b2140c3d86692736a4c3379ebcfa06c858fae549",
+    "zh:9e296c6b33a4b3042c030a44368a45c95a531b7c6c369db30a7fd2e9503bb4d8",
+    "zh:a030027413d3dc7695691917f328fecb9b15d6b9e0d72b35439534cc22abb782",
+    "zh:a5019df0ce14c20483f397eef4e91d9f60ad78644acb3134130c4ebbc26059b5",
+    "zh:d03f6bd478f2b57091f2e82dde17a4adfe0b423eaaa0f99c59838fc64dd965ab",
+    "zh:e1b23742e9d98391fb84a4fad4e577ca2827bb25c40e310f3faaa3dcbde3a508",
+  ]
+}
+
 provider "registry.terraform.io/hashicorp/aws" {
   version     = "3.8.0"
   constraints = "3.8.0"
