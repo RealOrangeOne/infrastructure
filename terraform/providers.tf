@@ -17,10 +17,13 @@ provider "linode" {
   token = var.linode_personal_access_token
 }
 
-provider "uptimerobot" {
-  api_key = var.uptimerobot_api_key
-}
-
 provider "gandi" {
   key = var.gandi_api_key
+}
+
+provider "grafana" {
+  url             = "https://theorangeone.grafana.net"
+  auth            = var.grafana_cloud_api_key
+  sm_access_token = var.grafana_cloud_synthetic_monitoring_token
+  sm_url          = "https://synthetic-monitoring-api-gb-south.grafana.net"
 }
