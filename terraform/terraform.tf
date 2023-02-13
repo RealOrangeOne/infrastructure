@@ -14,7 +14,7 @@ terraform {
     }
     linode = {
       source  = "linode/linode"
-      version = "1.25.1"
+      version = "1.30.0"
     }
     gandi = {
       source  = "go-gandi/gandi"
