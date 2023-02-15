@@ -47,6 +47,7 @@ resource "grafana_synthetic_monitoring_check" "vps_ping" {
   target  = each.value
   enabled = true
   probes  = local.partial_global_probes
+  alert_sensitivity = "medium"
 
   frequency = 120 * 1000 # 2 minutes
 
@@ -64,6 +65,7 @@ resource "grafana_synthetic_monitoring_check" "personal_website" {
   target  = "https://theorangeone.net/.health/"
   enabled = true
   probes  = local.global_probes
+  alert_sensitivity = "high"
 
   settings {
     http {
@@ -81,6 +83,7 @@ resource "grafana_synthetic_monitoring_check" "grafana" {
   probes = [
     data.grafana_synthetic_monitoring_probes.main.probes.London
   ]
+  alert_sensitivity = "high"
 
   settings {
     http {
@@ -98,6 +101,7 @@ resource "grafana_synthetic_monitoring_check" "whoami" {
   probes = [
     data.grafana_synthetic_monitoring_probes.main.probes.London
   ]
+  alert_sensitivity = "medium"
 
   settings {
     http {
