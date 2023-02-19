@@ -14,6 +14,7 @@ services:
     user: "{{ docker_user.id }}"
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./alert-rules.d:/etc/prometheus/alert-rules.d:ro
       - /mnt/tank/dbs/prometheus/forrest/:/prometheus/
     networks:
       - default

@@ -1,0 +1,6 @@
+groups:
+  - name: blackbox
+    rules:
+      - alert: HttpSuccess
+        expr: probe_success{job="blackbox_http_external"} == 0
+        for: 5m

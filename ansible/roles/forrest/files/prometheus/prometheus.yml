@@ -4,6 +4,9 @@ alerting:
         - targets:
             - alertmanager:9093
 
+rule_files:
+  - /etc/prometheus/alert-rules.d/*.yml
+
 scrape_configs:
   - job_name: pve
     static_configs:
