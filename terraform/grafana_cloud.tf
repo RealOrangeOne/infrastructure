@@ -43,10 +43,10 @@ resource "grafana_synthetic_monitoring_check" "vps_ping" {
     grimes = vultr_instance.grimes.main_ip
   }
 
-  job     = each.key
-  target  = each.value
-  enabled = true
-  probes  = local.partial_global_probes
+  job               = each.key
+  target            = each.value
+  enabled           = true
+  probes            = local.partial_global_probes
   alert_sensitivity = "medium"
 
   frequency = 120 * 1000 # 2 minutes
@@ -61,10 +61,10 @@ resource "grafana_synthetic_monitoring_check" "vps_ping" {
 
 
 resource "grafana_synthetic_monitoring_check" "personal_website" {
-  job     = "Personal Website"
-  target  = "https://theorangeone.net/.health/"
-  enabled = true
-  probes  = local.global_probes
+  job               = "Personal Website"
+  target            = "https://theorangeone.net/.health/"
+  enabled           = true
+  probes            = local.global_probes
   alert_sensitivity = "high"
 
   settings {
