@@ -9,7 +9,7 @@ module "walker_firewall" {
 }
 
 resource "vultr_instance" "walker" {
-  plan              = "vhf-1c-1gb"
+  plan              = "vhf-1c-2gb"
   region            = "lhr"
   hostname          = "walker"
   firewall_group_id = module.walker_firewall.firewall_group.id
