@@ -17,7 +17,7 @@ x-website: &website
     - UNSPLASH_CLIENT_ID={{ unsplash_client_id }}
     - SENTRY_DSN={{ website_sentry_dsn }}
     - BASE_HOSTNAME=theorangeone.net
-    - WEB_CONCURRENCY=4
+    - WEB_CONCURRENCY=3
     - SEO_INDEX=true
     - ACTIVITYPUB_HOST=mastodon.theorangeone.net
   volumes:
@@ -29,22 +29,30 @@ x-website: &website
     - redis
 
 services:
-  website:
+  nginx:
     <<: *website
+    user: root
+    command: /app/etc/entrypoints/nginx
     labels:
       - traefik.enable=true
       - traefik.http.routers.website.rule=Host(`theorangeone.net`) || Host(`jakehoward.tech`)
     networks:
       - default
       - traefik
+    depends_on:
+      - django
 
   worker:
     <<: *website
-    command: python manage.py rqworker
+    command: /app/etc/entrypoints/worker
 
   cron:
     <<: *website
-    command: supercronic etc/crontab
+    command: /app/etc/entrypoints/cron
+
+  django:
+    <<: *website
+    command: /app/etc/entrypoints/web
 
   db:
     image: postgres:14-alpine
