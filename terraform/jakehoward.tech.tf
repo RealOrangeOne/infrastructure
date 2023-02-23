@@ -156,14 +156,6 @@ resource "cloudflare_record" "jakehowardtech_tandoor" {
   ttl     = 1
 }
 
-resource "cloudflare_record" "jakehowardtech_auth" {
-  zone_id = cloudflare_zone.jakehowardtech.id
-  name    = "auth"
-  value   = linode_instance.casey.ip_address
-  type    = "A"
-  ttl     = 1
-}
-
 resource "cloudflare_record" "jakehowardtech_mailgun_spf" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "mg"
