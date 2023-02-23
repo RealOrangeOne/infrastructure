@@ -32,6 +32,7 @@
     depth: 1
   register: fever_plugin
   become: true
+  become_user: "{{ docker_user.name }}"
 
 - name: Install feediron plugin
   git:
@@ -40,6 +41,7 @@
     depth: 1
   register: feediron_plugin
   become: true
+  become_user: "{{ docker_user.name }}"
 
 - name: Ensure plugins are owned by {{ docker_user.name }}
   file:

@@ -28,4 +28,3 @@
     repo: https://git.theorangeone.net/sys/gitlab-dater
     dest: "{{ home }}/gitlab-dater"
     depth: 1
-  become: true
