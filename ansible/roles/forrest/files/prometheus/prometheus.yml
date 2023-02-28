@@ -140,7 +140,7 @@ scrape_configs:
         action: drop
 
   - job_name: speedtest
-    scrape_interval: 10m
+    scrape_interval: 1h
     scrape_timeout: 2m
     metrics_path: /probe
     static_configs:
