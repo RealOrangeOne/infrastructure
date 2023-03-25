@@ -7,11 +7,11 @@ services:
       - TZ={{ timezone }}
       - PUID={{ docker_user.id }}
       - PGID={{ docker_user.id }}
-      - DOCKER_MODS=theorangeone/lsio-mod-more-processes:latest
       - LOCAL_DOMAIN=theorangeone.net
       - WEB_DOMAIN=mastodon.theorangeone.net
       - DATABASE_URL=postgresql://mastodon:mastodon@db/mastodon
       - REDIS_URL=redis://redis
+      - SIDEKIQ_REDIS_URL=redis://redis/1
       - SECRET_KEY_BASE={{ secret_key_base }}
       - OTP_SECRET={{ otp_secret }}
       - VAPID_PRIVATE_KEY={{ vapid_private_key }}
@@ -20,7 +20,8 @@ services:
       - SINGLE_USER_MODE=true
       - DEFAULT_LOCALE=en
       - STREAMING_CLUSTER_NUM=1
-      - WEB_CONCURRENCY=2
+      - WEB_CONCURRENCY=0  # 0 means 1, but not in clustered mode
+      - SIDEKIQ_THREADS=1
       - MAX_THREADS={{ ansible_processor_nproc }}
       - HTTP_PROXY={{ pve_hosts.qbittorrent.ip }}:3128
       - HTTPS_PROXY={{ pve_hosts.qbittorrent.ip }}:3128
