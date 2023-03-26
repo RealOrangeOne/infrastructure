@@ -1,0 +1,1 @@
+gitea_runner_registration_token: "{{ vault_gitea_runner_registration_token }}"

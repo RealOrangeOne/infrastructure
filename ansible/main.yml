@@ -34,6 +34,7 @@
     - pve-gitlab-runner
     - grimes
     - renovate
+    - gitea-runner
   roles:
     - role: geerlingguy.docker
       become: true
@@ -123,6 +124,10 @@
 - hosts: pve-gitlab-runner
   roles:
     - gitlab_runner
+
+- hosts: gitea-runner
+  roles:
+    - gitea_runner
 
 - hosts: grimes
   roles:

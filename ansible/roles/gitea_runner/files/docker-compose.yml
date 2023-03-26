@@ -1,0 +1,15 @@
+version: "2.3"
+
+services:
+  act-runner:
+    image: vegardit/gitea-act-runner:latest
+    network_mode: host
+    volumes:
+      - ./data:/data
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    environment:
+      - TZ={{ timezone }}
+      - GITEA_INSTANCE_URL=https://gitea.theorangeone.net
+      - GITEA_RUNNER_REGISTRATION_TOKEN={{ gitea_runner_registration_token }}
+      - GITEA_RUNNER_NAME={{ ansible_hostname }}
+    restart: unless-stopped
