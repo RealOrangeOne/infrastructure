@@ -1,7 +1,5 @@
 # Infrastructure
 
-![CI](https://git.theorangeone.net/sys/infrastructure/badges/master/pipeline.svg)
-
 ## Requirements
 
 - Python 3

@@ -1,0 +1,37 @@
+on: [pull_request, push]
+
+jobs:
+  terraform:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+      - name: Init
+        run: ./scripts/terraform/terraform.sh init -backend=false
+      - name: Lint
+        run: ./scripts/terraform/lint.sh
+
+  ansible:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+      - uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: pip-${{ hashFiles('ansible/dev-requirements.txt') }}
+
+      # HACK: https://docs.ansible.com/ansible/devel/reference_appendices/config.html#cfg-in-world-writable-dir
+      - name: Fix permissions
+        run: chmod 0755 ansible/
+
+      - name: Set up
+        run: ./scripts/ansible/setup.sh
+      - name: Pretend executable is vault password
+        run: chmod -x ansible/vault-pass.sh
+      - name: Lint
+        run: ./scripts/ansible/lint.sh
