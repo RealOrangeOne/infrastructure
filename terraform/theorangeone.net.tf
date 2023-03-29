@@ -191,7 +191,7 @@ resource "cloudflare_record" "theorangeonenet_plausible_bare" {
 resource "cloudflare_record" "theorangeonenet_notes" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "notes"
-  value   = "RealOrangeOne.gitlab.io"
+  value   = "realorangeone.gitlab.io"
   type    = "CNAME"
   ttl     = 1
 }
