@@ -191,8 +191,16 @@ resource "cloudflare_record" "theorangeonenet_plausible_bare" {
 resource "cloudflare_record" "theorangeonenet_notes" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "notes"
-  value   = cloudflare_record.theorangeonenet_gitlab_pages.hostname
+  value   = "RealOrangeOne.gitlab.io"
   type    = "CNAME"
+  ttl     = 1
+}
+
+resource "cloudflare_record" "theorangeonenet_notes_verification" {
+  zone_id = cloudflare_zone.theorangeonenet.id
+  name    = "_gitlab-pages-verification-code.notes"
+  value   = "gitlab-pages-verification-code=bb2b6cf5a1f59094353c2eb11a4d3fa8"
+  type    = "TXT"
   ttl     = 1
 }
 
