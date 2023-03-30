@@ -3,7 +3,6 @@ private_ip: "{{ pve_hosts.docker.ip }}"
 traefik_provider_jellyfin: true
 traefik_provider_homeassistant: true
 traefik_provider_grafana: true
-traefik_provider_gitlab: true
 
 with_fail2ban: true
 

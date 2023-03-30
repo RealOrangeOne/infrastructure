@@ -1,7 +1,0 @@
-gitlab_config_template: files/gitlab.rb
-gitlab_create_self_signed_cert: false
-gitlab_smtp_password: "{{ vault_gitlab_smtp_password }}"
-gitlab_smtp_user: "{{ vault_gitlab_smtp_user }}"
-gitlab_from_email: "{{ vault_gitlab_from_email }}"
-gitlab_registry_access_key: "{{ vault_gitlab_registry_access_key }}"
-gitlab_registry_secret_key: "{{ vault_gitlab_registry_secret_key }}"

@@ -10,22 +10,6 @@ resource "cloudflare_record" "theorangeonenet_git" {
   ttl     = 1
 }
 
-resource "cloudflare_record" "theorangeonenet_gitea" {
-  zone_id = cloudflare_zone.theorangeonenet.id
-  name    = "gitea"
-  value   = linode_instance.casey.ip_address
-  type    = "A"
-  ttl     = 1
-}
-
-resource "cloudflare_record" "theorangeonenet_git_registry" {
-  zone_id = cloudflare_zone.theorangeonenet.id
-  name    = "registry.git"
-  value   = cloudflare_record.theorangeonenet_git.hostname
-  type    = "CNAME"
-  ttl     = 1
-}
-
 resource "cloudflare_record" "theorangeonenet_whoami" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "whoami"
@@ -265,22 +249,6 @@ resource "cloudflare_record" "theorangeonenet_mailgun_dmarc" {
   name    = "_dmarc.mg"
   value   = "v=DMARC1; p=quarantine; rua=mailto:dmarc-report@jakehoward.tech;"
   type    = "TXT"
-  ttl     = 1
-}
-
-resource "cloudflare_record" "theorangeonenet_gitlab_pages" {
-  zone_id = cloudflare_zone.theorangeonenet.id
-  name    = "gitlab-pages"
-  value   = cloudflare_record.theorangeonenet_git.hostname
-  type    = "CNAME"
-  ttl     = 1
-}
-
-resource "cloudflare_record" "theorangeonenet_gitlab_pages_wildcard" {
-  zone_id = cloudflare_zone.theorangeonenet.id
-  name    = "*.gitlab-pages"
-  value   = cloudflare_record.theorangeonenet_gitlab_pages.hostname
-  type    = "CNAME"
   ttl     = 1
 }
 

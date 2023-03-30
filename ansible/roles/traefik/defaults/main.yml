@@ -1,6 +1,5 @@
 traefik_provider_jellyfin: false
 traefik_provider_homeassistant: false
 traefik_provider_grafana: false
-traefik_provider_gitlab: false
 
 with_fail2ban: false

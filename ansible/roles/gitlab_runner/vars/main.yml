@@ -1,1 +1,0 @@
-gitlab_runner_token: "{{ vault_gitlab_runner_token }}"

@@ -12,7 +12,5 @@ jellyfin
 forrest
 qbittorrent
 restic
-pve-gitlab
-pve-gitlab-runner
 renovate
 gitea-runner

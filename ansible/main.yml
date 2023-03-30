@@ -31,7 +31,6 @@
     - pve-docker
     - forrest
     - walker
-    - pve-gitlab-runner
     - grimes
     - renovate
     - gitea-runner
@@ -116,14 +115,6 @@
 - hosts: restic
   roles:
     - restic
-
-- hosts: pve-gitlab
-  roles:
-    - gitlab
-
-- hosts: pve-gitlab-runner
-  roles:
-    - gitlab_runner
 
 - hosts: gitea-runner
   roles:

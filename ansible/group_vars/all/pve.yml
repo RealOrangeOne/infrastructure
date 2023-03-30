@@ -11,10 +11,6 @@ pve_hosts:
     ip: 10.23.1.101
   docker:
     ip: 10.23.1.103
-  gitlab:
-    ip: 10.23.1.106
-  gitlab_runner:
-    ip: 10.23.1.107
   ingress:
     ip: 10.23.1.10
     external_ip: 192.168.2.201

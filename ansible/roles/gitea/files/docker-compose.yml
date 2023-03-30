@@ -23,7 +23,7 @@ services:
       - redis
     labels:
       - traefik.enable=true
-      - traefik.http.routers.gitea.rule=Host(`gitea.theorangeone.net`)
+      - traefik.http.routers.gitea.rule=Host(`git.theorangeone.net`)
       - traefik.http.services.gitea-gitea.loadbalancer.server.port=3000
     networks:
       - default

@@ -14,8 +14,6 @@ roles:
   - src: ironicbadger.proxmox_nag_removal
     version: 1.0.1
   - src: chmduquesne.iptables_persistent
-  - src: geerlingguy.gitlab
-    version: 3.2.0
   - src: dokku_bot.ansible_dokku
     version: v2021.11.28
   - src: ironicbadger.snapraid
