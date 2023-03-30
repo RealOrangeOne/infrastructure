@@ -1,7 +1,7 @@
 version: "2.3"
 
 x-website: &website
-  image: registry.git.theorangeone.net/repos/website:latest
+  image: registry.gitlab.com/realorangeone/website:latest
   user: "{{ docker_user.id }}"
   restart: unless-stopped
   init: true
