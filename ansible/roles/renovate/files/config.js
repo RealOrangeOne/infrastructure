@@ -1,7 +1,7 @@
 module.exports = {
-  endpoint: 'https://git.theorangeone.net/api/v4/',
-  token: '{{ renovate_gitlab_token }}',
-  platform: 'gitlab',
+  endpoint: 'https://git.theorangeone.net/',
+  token: '{{ renovate_gitea_token }}',
+  platform: 'gitea',
   //dryRun: true,
   autodiscover: true,
   onboarding: false,
