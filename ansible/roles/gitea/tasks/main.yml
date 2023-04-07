@@ -47,7 +47,7 @@
 
 - name: Install custom branding
   unarchive:
-    src: https://gitea.theorangeone.net/api/packages/sys/generic/gitea-branding/latest/branding.zip
+    src: https://git.theorangeone.net/api/packages/sys/generic/gitea-branding/latest/branding.zip
     dest: "{{ app_data_dir }}/gitea/data/custom/public/img"
     remote_src: true
     owner: "{{ docker_user.name }}"
