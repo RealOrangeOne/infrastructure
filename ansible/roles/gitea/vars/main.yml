@@ -1,3 +1,6 @@
 lfs_jwt_secret: "{{ vault_lfs_jwt_secret }}"
 secret_key: "{{ vault_secret_key }}"
 internal_token: "{{ vault_internal_token }}"
+mailer_from_address: "{{ vault_mailer_from_address }}"
+mailer_user: "{{ vault_mailer_user }}"
+mailer_password: "{{ vault_mailer_password }}"
