@@ -1,3 +1,6 @@
+- name: Include vault
+  include_vars: vault.yml
+
 - name: Create network
   docker_network:
     name: traefik

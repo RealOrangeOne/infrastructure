@@ -6,6 +6,7 @@ services:
     user: "{{ docker_user.id }}"
     environment:
       - CF_DNS_API_TOKEN={{ cloudflare_api_token }}
+      - GANDI_API_KEY={{ gandi_api_key }}
     volumes:
       - /tmp/traefik-logs:/var/log/traefik
       - ./traefik:/etc/traefik
