@@ -20,3 +20,9 @@ resource "vultr_reverse_ipv4" "walker_reverse_ipv4" {
   ip          = vultr_instance.walker.main_ip
   reverse     = "walker.sys.theorangeone.net"
 }
+
+resource "vultr_reverse_ipv6" "walker_reverse_ipv6" {
+  instance_id = vultr_instance.walker.id
+  ip          = vultr_instance.walker.v6_main_ip
+  reverse     = "walker.sys.theorangeone.net"
+}

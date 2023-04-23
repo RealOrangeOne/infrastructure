@@ -79,3 +79,8 @@ resource "linode_rdns" "casey_reverse_ipv4" {
   address = linode_instance.casey.ip_address
   rdns    = "casey.sys.theorangeone.net"
 }
+
+resource "linode_rdns" "casey_reverse_ipv6" {
+  address = split("/", linode_instance.casey.ipv6)[0]
+  rdns    = "casey.sys.theorangeone.net"
+}

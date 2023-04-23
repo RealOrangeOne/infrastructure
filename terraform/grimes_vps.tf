@@ -21,3 +21,9 @@ resource "vultr_reverse_ipv4" "grimes_reverse_ipv4" {
   ip          = vultr_instance.grimes.main_ip
   reverse     = "grimes.sys.theorangeone.net"
 }
+
+resource "vultr_reverse_ipv6" "grimes_reverse_ipv6" {
+  instance_id = vultr_instance.grimes.id
+  ip          = vultr_instance.grimes.v6_main_ip
+  reverse     = "grimes.sys.theorangeone.net"
+}
