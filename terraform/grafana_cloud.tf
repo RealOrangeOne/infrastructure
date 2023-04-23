@@ -43,7 +43,7 @@ resource "grafana_synthetic_monitoring_check" "vps_ping" {
     grimes = vultr_instance.grimes.main_ip
   }
 
-  job               = each.key
+  job               = "${each.key} v4"
   target            = each.value
   enabled           = true
   probes            = local.partial_global_probes
@@ -53,8 +53,29 @@ resource "grafana_synthetic_monitoring_check" "vps_ping" {
 
   settings {
     ping {
-      ip_version    = "Any"
-      dont_fragment = true
+      ip_version = "V4"
+    }
+  }
+}
+
+resource "grafana_synthetic_monitoring_check" "vps_ping_v6" {
+  for_each = {
+    casey  = split("/", linode_instance.casey.ipv6)[0]
+    walker = vultr_instance.walker.v6_main_ip
+    grimes = vultr_instance.grimes.v6_main_ip
+  }
+
+  job               = "${each.key} v6"
+  target            = each.value
+  enabled           = true
+  probes            = local.partial_global_probes
+  alert_sensitivity = "medium"
+
+  frequency = 120 * 1000 # 2 minutes
+
+  settings {
+    ping {
+      ip_version = "V6"
     }
   }
 }
