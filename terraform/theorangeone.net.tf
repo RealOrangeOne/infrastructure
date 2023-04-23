@@ -199,16 +199,16 @@ resource "cloudflare_record" "theorangeonenet_privatebin" {
 resource "cloudflare_record" "theorangeonenet_dokku" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "d"
-  value   = vultr_instance.grimes.main_ip
-  type    = "A"
+  value   = cloudflare_record.sys_domain_grimes.hostname
+  type    = "CNAME"
   ttl     = 1
 }
 
 resource "cloudflare_record" "theorangeonenet_dokku_wildcard" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "*.d"
-  value   = vultr_instance.grimes.main_ip
-  type    = "A"
+  value   = cloudflare_record.theorangeonenet_dokku.hostname
+  type    = "CNAME"
   ttl     = 1
 }
 
