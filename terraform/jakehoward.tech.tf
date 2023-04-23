@@ -188,11 +188,12 @@ resource "cloudflare_record" "jakehowardtech_matrix_admin" {
   ttl     = 1
 }
 
+# Cloudflare supports CNAME flattening - so this is ok
 resource "cloudflare_record" "jakehowardtech_apex" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "@"
-  value   = vultr_instance.walker.main_ip
-  type    = "A"
+  value   = cloudflare_record.sys_domain_walker.hostname
+  type    = "CNAME"
   ttl     = 1
 }
 

@@ -91,11 +91,12 @@ resource "cloudflare_record" "theorangeonenet_dmarc_report" {
   ttl     = 1
 }
 
+# Cloudflare supports CNAME flattening - so this is ok
 resource "cloudflare_record" "theorangeonenet_apex" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "@"
-  value   = vultr_instance.walker.main_ip
-  type    = "A"
+  value   = cloudflare_record.sys_domain_walker.hostname
+  type    = "CNAME"
   ttl     = 1
 }
 
@@ -119,8 +120,8 @@ resource "cloudflare_record" "theorangeonenet_srv_matrix" {
 resource "cloudflare_record" "theorangeonenet_img" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "img"
-  value   = vultr_instance.walker.main_ip
-  type    = "A"
+  value   = cloudflare_record.sys_domain_walker.hostname
+  type    = "CNAME"
   ttl     = 1
 }
 
@@ -135,40 +136,40 @@ resource "cloudflare_record" "theorangeonenet_matrix" {
 resource "cloudflare_record" "theorangeonenet_dl" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "dl"
-  value   = vultr_instance.walker.main_ip
-  type    = "A"
+  value   = cloudflare_record.sys_domain_walker.hostname
+  type    = "CNAME"
   ttl     = 1
 }
 
 resource "cloudflare_record" "theorangeonenet_bg" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "bg"
-  value   = vultr_instance.walker.main_ip
-  type    = "A"
+  value   = cloudflare_record.sys_domain_walker.hostname
+  type    = "CNAME"
   ttl     = 1
 }
 
 resource "cloudflare_record" "theorangeonenet_upload" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "upload"
-  value   = vultr_instance.walker.main_ip
-  type    = "A"
+  value   = cloudflare_record.sys_domain_walker.hostname
+  type    = "CNAME"
   ttl     = 1
 }
 
 resource "cloudflare_record" "theorangeonenet_plausible" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "plausible"
-  value   = vultr_instance.walker.main_ip
-  type    = "A"
+  value   = cloudflare_record.sys_domain_walker.hostname
+  type    = "CNAME"
   ttl     = 1
 }
 
 resource "cloudflare_record" "theorangeonenet_plausible_bare" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "elbisualp"
-  value   = vultr_instance.walker.main_ip
-  type    = "A"
+  value   = cloudflare_record.sys_domain_walker.hostname
+  type    = "CNAME"
   ttl     = 1
 }
 
@@ -223,8 +224,8 @@ resource "cloudflare_record" "theorangeonenet_google_site_verification" {
 resource "cloudflare_record" "theorangeonenet_commento" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "commento"
-  value   = vultr_instance.walker.main_ip
-  type    = "A"
+  value   = cloudflare_record.sys_domain_walker.hostname
+  type    = "CNAME"
   ttl     = 1
 }
 
