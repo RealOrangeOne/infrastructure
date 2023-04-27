@@ -4,7 +4,6 @@ locals {
   global_probes = [
     data.grafana_synthetic_monitoring_probes.main.probes.Amsterdam,
     data.grafana_synthetic_monitoring_probes.main.probes.CapeTown,
-    data.grafana_synthetic_monitoring_probes.main.probes.Dallas,
     data.grafana_synthetic_monitoring_probes.main.probes.Frankfurt,
     data.grafana_synthetic_monitoring_probes.main.probes.London,
     data.grafana_synthetic_monitoring_probes.main.probes.Mumbai,
@@ -21,7 +20,6 @@ locals {
   ]
   partial_global_probes = [
     data.grafana_synthetic_monitoring_probes.main.probes.CapeTown,
-    data.grafana_synthetic_monitoring_probes.main.probes.Dallas,
     data.grafana_synthetic_monitoring_probes.main.probes.Frankfurt,
     data.grafana_synthetic_monitoring_probes.main.probes.London,
     data.grafana_synthetic_monitoring_probes.main.probes.Mumbai,
