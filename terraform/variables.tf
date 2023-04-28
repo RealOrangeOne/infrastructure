@@ -25,3 +25,11 @@ variable "grafana_cloud_api_key" {
 variable "grafana_cloud_synthetic_monitoring_token" {
   sensitive = true
 }
+
+variable "backblaze_application_key" {
+  sensitive = true
+}
+
+variable "backblaze_application_key_id" {
+  sensitive = true
+}

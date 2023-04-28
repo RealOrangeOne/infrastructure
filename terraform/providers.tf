@@ -27,3 +27,8 @@ provider "grafana" {
   sm_access_token = var.grafana_cloud_synthetic_monitoring_token
   sm_url          = "https://synthetic-monitoring-api-gb-south.grafana.net"
 }
+
+provider "b2" {
+  application_key    = var.backblaze_application_key
+  application_key_id = var.backblaze_application_key_id
+}

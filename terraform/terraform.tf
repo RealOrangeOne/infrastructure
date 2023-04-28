@@ -24,5 +24,9 @@ terraform {
       source  = "grafana/grafana"
       version = "1.36.1"
     }
+    b2 = {
+      source  = "Backblaze/b2"
+      version = "0.8.4"
+    }
   }
 }
