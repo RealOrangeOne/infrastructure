@@ -85,6 +85,7 @@ resource "grafana_synthetic_monitoring_check" "personal_website" {
   enabled           = true
   probes            = local.global_probes
   alert_sensitivity = "high"
+  timeout           = 5000 # 5 seconds
 
   settings {
     http {
