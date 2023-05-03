@@ -150,5 +150,4 @@ override.tf.json
 
 # End of https://www.gitignore.io/api/terraform
 
-terraform/secrets.auto.tfvars
-terraform/secrets.sh
+.env

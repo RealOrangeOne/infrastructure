@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
 
-set -ex
+set -e
 
 cd terraform/
 
-source secrets.sh || true
+# Load secrets from env file (if it exists)
+set -a
+source ./.env || true
+set +a -x
 
 terraform $@
