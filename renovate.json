@@ -4,5 +4,10 @@
     "config:base"
   ],
   "prHourlyLimit": 0,
-  "prConcurrentLimit": 0
+  "prConcurrentLimit": 0,
+  "ansible-galaxy": {
+    "fileMatch": [
+      "(^|/)ansible/galaxy-requirements\\.ya?ml$"
+    ]
+  }
 }
