@@ -7,14 +7,14 @@ collections:
 
 roles:
   - src: geerlingguy.docker
-    version: 4.2.3
+    version: 6.1.0
   - src: geerlingguy.ntp
     version: 2.3.1
   - src: realorangeone.reflector
   - src: ironicbadger.proxmox_nag_removal
-    version: 1.0.1
+    version: 1.0.2
   - src: chmduquesne.iptables_persistent
   - src: dokku_bot.ansible_dokku
-    version: v2021.11.28
+    version: v2022.10.17
   - src: ironicbadger.snapraid
     version: 1.0.0

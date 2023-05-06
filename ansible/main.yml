@@ -38,8 +38,7 @@
     - role: geerlingguy.docker
       become: true
       vars:
-        docker_install_compose: "{{ ansible_os_family == 'Debian' }}"
-        docker_package: "{{ 'docker-ce' if ansible_os_family == 'Debian' else 'docker' }}"
+        docker_install_compose_plugin: "{{ ansible_os_family == 'Debian' }}"
         docker_users:
           - "{{ user }}"
     - docker_cleanup
