@@ -204,3 +204,16 @@ resource "cloudflare_record" "jakehowardtech_collabora" {
   type    = "A"
   ttl     = 1
 }
+
+resource "cloudflare_record" "jakehowardtech_caa" {
+  zone_id = cloudflare_zone.jakehowardtech.id
+  name    = "@"
+  type    = "CAA"
+  ttl     = 1
+
+  data = {
+    tag   = "issue"
+    flags = 0
+    value = "letsencrypt.org"
+  }
+}

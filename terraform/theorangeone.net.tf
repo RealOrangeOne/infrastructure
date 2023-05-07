@@ -260,3 +260,16 @@ resource "cloudflare_record" "theorangeonenet_mastodon" {
   type    = "A"
   ttl     = 1
 }
+
+resource "cloudflare_record" "theorangeonenet_caa" {
+  zone_id = cloudflare_zone.theorangeonenet.id
+  name    = "@"
+  type    = "CAA"
+  ttl     = 1
+
+  data = {
+    tag   = "issue"
+    flags = 0
+    value = "letsencrypt.org"
+  }
+}
