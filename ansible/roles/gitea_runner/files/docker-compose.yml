@@ -5,7 +5,7 @@ services:
     image: vegardit/gitea-act-runner:latest
     network_mode: host
     volumes:
-      - ./data:/data
+      - /mnt/data:/data
       - /var/run/docker.sock:/var/run/docker.sock:ro
     environment:
       - TZ={{ timezone }}
