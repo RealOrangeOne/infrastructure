@@ -10,6 +10,6 @@ module.exports = {
   persistRepoData: true,
   binarySource: "docker",
   dockerUser: "{{ docker_user.id }}",
-  baseDir: "/opt/renovate/renovate",
-  cacheDir: "/opt/renovate/renovate/cache"
+  baseDir: "/mnt/bulk",
+  cacheDir: "/mnt/bulk/cache"
 };

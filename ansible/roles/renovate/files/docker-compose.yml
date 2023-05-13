@@ -16,7 +16,7 @@ services:
     volumes:
       - ./config.js:/usr/src/app/config.js:ro
       - ./entrypoint.sh:/entrypoint.sh:ro
-      - /opt/renovate/renovate:/opt/renovate/renovate  # These must be the same
+      - /mnt/data:/mnt/data  # These must be the same
 
   redis:
     image: redis:7-alpine
