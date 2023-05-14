@@ -50,7 +50,7 @@ services:
     image: mariadb:10.6
     restart: unless-stopped
     volumes:
-      - /mnt/tank/dbs/mariadb/nextcloud/:/var/lib/mysql
+      - ./db:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=nextcloud
       - MYSQL_DATABASE=nextcloud
@@ -61,7 +61,7 @@ services:
     image: redis:7-alpine
     restart: unless-stopped
     volumes:
-      - /mnt/tank/dbs/redis/nextcloud:/data
+      - ./redis:/data
 
 networks:
   traefik:
