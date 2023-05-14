@@ -1,0 +1,29 @@
+- name: Install nginx
+  package:
+    name: nginx
+  become: true
+
+- name: Enable nginx
+  service:
+    name: nginx
+    enabled: true
+  become: true
+
+- name: Add a user to a password file and ensure permissions are set
+  community.general.htpasswd:
+    path: /etc/nginx/.htpasswd
+    name: aurto
+    password: aurto
+    owner: http
+    group: http
+    mode: 0600
+  become: true
+  notify: restart nginx
+
+- name: Nginx config
+  template:
+    src: files/nginx.conf
+    dest: /etc/nginx/nginx.conf
+    mode: "0600"
+  become: true
+  notify: restart nginx

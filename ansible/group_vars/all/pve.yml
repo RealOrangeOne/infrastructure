@@ -21,4 +21,6 @@ pve_hosts:
   renovate:
     ip: 10.23.1.110
   gitea_runner:
-    ip: 20.23.1.114
+    ip: 10.23.1.114
+  aurto:
+    ip: 10.23.1.106

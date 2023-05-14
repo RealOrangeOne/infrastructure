@@ -135,3 +135,7 @@
     - pihole
     - role: prometheus.prometheus.node_exporter
       become: true
+
+- hosts: aurto
+  roles:
+    - aurto

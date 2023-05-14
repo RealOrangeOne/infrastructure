@@ -1,0 +1,44 @@
+- name: Install aurto
+  package:
+    name: aurto
+  become: true
+
+- name: Create aurto user
+  user:
+    name: aurto
+    system: true
+  become: true
+
+- name: Ensure aurto repository has the correct owner
+  file:
+    path: /var/cache/pacman/aurto
+    state: directory
+    owner: aurto
+    mode: u=rwX,g=rwX,o=rX
+    recurse: true
+  become: true
+
+- name: Update aurto user
+  copy:
+    content: aurto
+    dest: /usr/lib/aurto/user
+    mode: "0700"
+    owner: aurto
+  become: true
+
+- name: Ensure trusted users have the correct permissions
+  file:
+    dest: /etc/aurto/trusted-users
+    mode: "0640"
+    owner: aurto
+  become: true
+
+- name: Allow aurto to run required commands as root
+  ansible.builtin.replace:
+    path: /etc/sudoers.d/50_aurto_passwordless
+    regexp: ^%wheel (.+)$
+    replace: aurto \1
+  become: true
+
+- name: Configure nginx
+  include_tasks: nginx.yml
