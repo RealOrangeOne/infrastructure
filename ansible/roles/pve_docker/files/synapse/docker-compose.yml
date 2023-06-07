@@ -32,13 +32,13 @@ services:
       - POSTGRES_PASSWORD=synapse
       - POSTGRES_INITDB_ARGS=--encoding=UTF-8 --lc-collate=C --lc-ctype=C
     volumes:
-      - /mnt/tank/dbs/postgres/synapse:/var/lib/postgresql/data
+      - ./db:/var/lib/postgresql/data
 
   redis:
     image: redis:7-alpine
     restart: unless-stopped
     volumes:
-      - /mnt/tank/dbs/redis/synapse:/data
+      - ./redis:/data
 
   admin:
     image: awesometechnologies/synapse-admin:latest
