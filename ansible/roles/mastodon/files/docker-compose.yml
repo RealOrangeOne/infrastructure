@@ -47,7 +47,7 @@ services:
     image: postgres:14-alpine
     restart: unless-stopped
     volumes:
-      - ./db:/var/lib/postgresql/data
+      - /mnt/speed/dbs/postgres/mastodon:/var/lib/postgresql/data
     environment:
       - POSTGRES_PASSWORD=mastodon
       - POSTGRES_USER=mastodon
@@ -56,7 +56,7 @@ services:
     image: redis:7-alpine
     restart: unless-stopped
     volumes:
-      - ./redis:/data
+      - /mnt/speed/dbs/redis/mastodon:/data
 
 networks:
   traefik:

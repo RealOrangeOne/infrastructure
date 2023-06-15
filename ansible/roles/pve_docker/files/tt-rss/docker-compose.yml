@@ -52,7 +52,7 @@ services:
     image: postgres:14-alpine
     restart: unless-stopped
     volumes:
-      - ./db:/var/lib/postgresql/data
+      - /mnt/speed/dbs/postgres/tt-rss:/var/lib/postgresql/data
     environment:
       - POSTGRES_PASSWORD=tt-rss
       - POSTGRES_USER=tt-rss
