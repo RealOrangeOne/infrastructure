@@ -34,5 +34,5 @@
     minute: 0
     weekday: 1
     job: /opt/mastodon/purge-media.sh
-    user: "{{ user }}"
+    user: "{{ me.user }}"
   become: true

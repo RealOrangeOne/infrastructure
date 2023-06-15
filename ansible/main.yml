@@ -40,7 +40,7 @@
       vars:
         docker_install_compose_plugin: "{{ ansible_os_family == 'Debian' }}"
         docker_users:
-          - "{{ user }}"
+          - "{{ me.user }}"
     - docker_cleanup
 
 - hosts:

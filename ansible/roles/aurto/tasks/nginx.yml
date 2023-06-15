@@ -16,7 +16,7 @@
     password: aurto
     owner: http
     group: http
-    mode: 0600
+    mode: "600"
   become: true
   notify: restart nginx
 
@@ -24,6 +24,6 @@
   template:
     src: files/nginx.conf
     dest: /etc/nginx/nginx.conf
-    mode: "0600"
+    mode: "600"
   become: true
   notify: restart nginx

@@ -24,7 +24,7 @@
     path: /opt/upload/htpasswd.txt
     name: jake
     password: "{{ superuser_upload_password }}"
-    mode: 0640
+    mode: "640"
     owner: "{{ docker_user.name }}"
   become: true
 
@@ -33,5 +33,5 @@
     path: /opt/upload/htpasswd.txt
     name: nextcloud
     password: "{{ nextcloud_upload_password }}"
-    mode: 0640
+    mode: "640"
   become: true

@@ -2,7 +2,7 @@
   template:
     src: files/fail2ban/traefik-jail.conf
     dest: /etc/fail2ban/jail.d/traefik.conf
-    mode: 0644
+    mode: "644"
   become: true
   notify: restart fail2ban
 
@@ -10,7 +10,7 @@
   template:
     src: files/fail2ban/traefik-filter.conf
     dest: /etc/fail2ban/filter.d/traefik.conf
-    mode: 0644
+    mode: "644"
   become: true
   notify: restart fail2ban
 
@@ -18,7 +18,7 @@
   template:
     src: files/fail2ban/remote-action.conf
     dest: /etc/fail2ban/action.d/gateway.conf
-    mode: 0644
+    mode: "644"
   become: true
   notify: restart fail2ban
 

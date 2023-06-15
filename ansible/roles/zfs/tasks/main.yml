@@ -18,7 +18,7 @@
 - name: Give user passwordless access to ZFS commands
   lineinfile:
     path: /etc/sudoers
-    line: "{{ user }} ALL=(ALL) NOPASSWD: /usr/sbin/zfs,/usr/sbin/zpool"
+    line: "{{ me.user }} ALL=(ALL) NOPASSWD: /usr/sbin/zfs,/usr/sbin/zpool"
   become: true
 
 - name: Sanoid

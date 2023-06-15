@@ -21,14 +21,14 @@
 
 - name: Add user to docker user group
   user:
-    name: "{{ user }}"
+    name: "{{ me.user }}"
     groups: "{{ docker_user.name }}"
     append: true
   become: true
 
 - name: Add user to docker group
   user:
-    name: "{{ user }}"
+    name: "{{ me.user }}"
     groups: docker
     append: true
   become: true
@@ -44,8 +44,8 @@
   copy:
     src: ./files/docker-utils
     dest: "{{ home }}"
-    mode: 0755
-    directory_mode: 0755
+    mode: "755"
+    directory_mode: "755"
 
 - name: override docker service for zfs dependencies
   include_tasks: zfs-override.yml

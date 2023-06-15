@@ -1,15 +1,15 @@
 - name: Make me
   user:
-    name: "{{ user }}"
-    home: "{{ home }}"
-    comment: "{{ name }}"
+    name: "{{ me.user }}"
+    home: "{{ me.home }}"
+    comment: "{{ me.name }}"
     shell: /bin/bash
     system: true
   become: true
 
 - name: Give user sudo access
   user:
-    name: "{{ user }}"
+    name: "{{ me.user }}"
     groups: "{{ 'sudo' if ansible_os_family == 'Debian' else 'wheel' }}"
     append: true
   become: true

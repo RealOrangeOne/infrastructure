@@ -19,7 +19,7 @@
 - name: Set configuration
   ini_file:
     path: "{{ qbittorrent_user.home }}/.config/qBittorrent/qBittorrent.conf"
-    mode: 0700
+    mode: "700"
     owner: "{{ qbittorrent_user.name }}"
     section: "{{ item.section }}"
     option: "{{ item.option }}"

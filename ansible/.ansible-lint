@@ -2,6 +2,10 @@ skip_list:
   - command-instead-of-shell
   - no-handler
   - git-latest
+  - fqcn
+  - name[casing]
+  - name[play]
+  - no-changed-when
 
 exclude_paths:
   - galaxy_roles/

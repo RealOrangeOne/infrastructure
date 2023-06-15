@@ -21,13 +21,13 @@
     dest: /etc/ssh/sshd_config
     validate: /usr/sbin/sshd -t -f %s
     backup: true
-    mode: 0644
+    mode: "644"
   become: true
   register: sshd_config
 
 - name: Set up authorized keys
   ansible.posix.authorized_key:
-    user: "{{ user }}"
+    user: "{{ me.user }}"
     state: present
     key: "{{ lookup('file', item) }}"
   loop:

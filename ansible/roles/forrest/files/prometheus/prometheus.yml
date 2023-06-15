@@ -98,7 +98,7 @@ scrape_configs:
       module: [https_redir]
     static_configs:
       - targets:
-          - http://{{ hosts.casey_ip }}
+          - http://{{ vps_hosts.casey_ip }}
     relabel_configs:
       - source_labels: [__address__]
         target_label: __param_target

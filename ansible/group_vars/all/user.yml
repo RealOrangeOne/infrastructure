@@ -1,3 +1,0 @@
-user: jake
-home: /home/{{ user }}
-name: Jake Howard

@@ -1,5 +1,5 @@
 wireguard:
-  public_ip: "{{ hosts.casey_ip }}"
+  public_ip: "{{ vps_hosts.casey_ip }}"
   port: 51820
   cidr: 10.23.0.0/24
   server:

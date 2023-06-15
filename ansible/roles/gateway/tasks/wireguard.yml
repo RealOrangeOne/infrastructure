@@ -32,16 +32,16 @@
   file:
     path: "{{ home }}/wireguard-clients"
     state: directory
-    owner: "{{ user }}"
-    mode: 0700
+    owner: "{{ me.user }}"
+    mode: "700"
 
 - name: Wireguard client configuration
   template:
     src: files/wireguard-client.conf
     dest: "{{ home }}/wireguard-clients/{{ item.key }}.conf"
-    owner: "{{ user }}"
-    mode: 0600
-  loop: "{{ wireguard.clients|dict2items }}"
+    owner: "{{ me.user }}"
+    mode: "600"
+  loop: "{{ wireguard.clients | dict2items }}"
   loop_control:
     label: "{{ item.key }}"
 
