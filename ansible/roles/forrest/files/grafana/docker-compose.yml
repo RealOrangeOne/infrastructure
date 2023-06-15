@@ -35,7 +35,7 @@ services:
     image: postgres:14-alpine
     restart: unless-stopped
     volumes:
-      - /mnt/tank/dbs/postgres/grafana/:/var/lib/postgresql/data
+      - /mnt/speed/dbs/postgres/grafana/:/var/lib/postgresql/data
     environment:
       - POSTGRES_PASSWORD=grafana
       - POSTGRES_USER=grafana

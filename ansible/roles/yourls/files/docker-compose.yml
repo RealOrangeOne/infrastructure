@@ -30,7 +30,7 @@ services:
       - MYSQL_USER=yourls
       - MYSQL_PASSWORD=yourls
     volumes:
-      - /mnt/tank/dbs/mariadb/yourls:/var/lib/mysql
+      - /mnt/speed/dbs/mariadb/yourls:/var/lib/mysql
     restart: unless-stopped
 
 networks:

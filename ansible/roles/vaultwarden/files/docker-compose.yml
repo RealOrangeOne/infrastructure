@@ -42,7 +42,7 @@ services:
     image: postgres:14-alpine
     restart: unless-stopped
     volumes:
-      - /mnt/tank/dbs/postgres/vaultwarden/:/var/lib/postgresql/data
+      - /mnt/speed/dbs/postgres/vaultwarden/:/var/lib/postgresql/data
     environment:
       - POSTGRES_PASSWORD={{ vaultwarden_database_password }}
       - POSTGRES_USER=vaultwarden

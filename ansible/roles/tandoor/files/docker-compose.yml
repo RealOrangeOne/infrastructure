@@ -39,7 +39,7 @@ services:
     image: postgres:14-alpine
     restart: unless-stopped
     volumes:
-      - /mnt/tank/dbs/postgres/tandoor/:/var/lib/postgresql/data
+      - /mnt/speed/dbs/postgres/tandoor/:/var/lib/postgresql/data
     environment:
       - POSTGRES_PASSWORD=tandoor
       - POSTGRES_USER=tandoor

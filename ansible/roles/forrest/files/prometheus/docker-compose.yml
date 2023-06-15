@@ -15,7 +15,7 @@ services:
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
       - ./alert-rules.d:/etc/prometheus/alert-rules.d:ro
-      - /mnt/tank/dbs/prometheus/forrest/:/prometheus/
+      - /mnt/speed/dbs/prometheus/forrest/:/prometheus/
     networks:
       - default
       - grafana
