@@ -1,5 +1,26 @@
 version: "2.3"
 
+x-app: &app
+  image: cthulhoo/ttrss-fpm-pgsql-static:latest
+  restart: unless-stopped
+  environment:
+    - TTRSS_DB_USER=tt-rss
+    - TTRSS_DB_NAME=tt-rss
+    - TTRSS_DB_PASS=tt-rss
+    - TTRSS_SELF_URL_PATH=https://tt-rss.jakehoward.tech/tt-rss/
+    - TTRSS_ENABLE_REGISTRATION=false
+    - TTRSS_CHECK_FOR_UPDATES=false
+    - TTRSS_ENABLE_GZIP_OUTPUT=true
+    - TTRSS_NO_STARTUP_PLUGIN_UPDATES=true
+    - OWNER_UID={{ docker_user.id }}
+    - OWNER_GID={{ docker_user.id }}
+    - PHP_WORKER_MAX_CHILDREN=50
+    - PHP_WORKER_MEMORY_LIMIT=512M
+  volumes:
+    - ./tt-rss:/var/www/html
+    - "{{ app_data_dir }}/tt-rss/feed-icons:/var/www/html/tt-rss/feed-icons"
+    - ./plugins:/var/www/html/tt-rss/plugins.local
+
 services:
   nginx:
     image: cthulhoo/ttrss-web-nginx:latest
@@ -19,26 +40,8 @@ services:
       - default
       - traefik
 
-  app: &app
-    image: cthulhoo/ttrss-fpm-pgsql-static:latest
-    restart: unless-stopped
-    environment:
-      - TTRSS_DB_USER=tt-rss
-      - TTRSS_DB_NAME=tt-rss
-      - TTRSS_DB_PASS=tt-rss
-      - TTRSS_SELF_URL_PATH=https://tt-rss.jakehoward.tech/tt-rss/
-      - TTRSS_ENABLE_REGISTRATION=false
-      - TTRSS_CHECK_FOR_UPDATES=false
-      - TTRSS_ENABLE_GZIP_OUTPUT=true
-      - TTRSS_NO_STARTUP_PLUGIN_UPDATES=true
-      - OWNER_UID={{ docker_user.id }}
-      - OWNER_GID={{ docker_user.id }}
-      - PHP_WORKER_MAX_CHILDREN=50
-      - PHP_WORKER_MEMORY_LIMIT=512M
-    volumes:
-      - ./tt-rss:/var/www/html
-      - "{{ app_data_dir }}/tt-rss/feed-icons:/var/www/html/tt-rss/feed-icons"
-      - ./plugins:/var/www/html/tt-rss/plugins.local
+  app:
+    <<: *app
     depends_on:
       - db
 

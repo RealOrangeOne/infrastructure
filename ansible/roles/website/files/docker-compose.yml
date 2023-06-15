@@ -24,9 +24,6 @@ x-website: &website
     - ./media:/app/media
   tmpfs:
     - /tmp
-  depends_on:
-    - db
-    - redis
 
 services:
   nginx:
@@ -45,14 +42,23 @@ services:
   worker:
     <<: *website
     command: /app/etc/entrypoints/worker
+    depends_on:
+      - db
+      - redis
 
   cron:
     <<: *website
     command: /app/etc/entrypoints/cron
+    depends_on:
+      - db
+      - redis
 
   django:
     <<: *website
     command: /app/etc/entrypoints/web
+    depends_on:
+      - db
+      - redis
 
   db:
     image: postgres:14-alpine
