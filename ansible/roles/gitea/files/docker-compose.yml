@@ -33,7 +33,7 @@ services:
     image: postgres:14-alpine
     restart: unless-stopped
     volumes:
-      - ./db:/var/lib/postgresql/data
+      - /mnt/speed/dbs/postgres/gitea:/var/lib/postgresql/data
     environment:
       - POSTGRES_PASSWORD=gitea
       - POSTGRES_USER=gitea
@@ -42,7 +42,7 @@ services:
     image: redis:7-alpine
     restart: unless-stopped
     volumes:
-      - ./redis:/data
+      - /mnt/speed/dbs/redis/gitea:/data
 
 networks:
   traefik:

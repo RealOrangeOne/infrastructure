@@ -3,12 +3,18 @@ private_ip: "{{ pve_hosts.pve.ip }}"
 zpools_to_scrub:
   - tank
   - rpool
+  - speed
 
 # 5GB, or so
 zfs_arc_size: 5000000000
 
 sanoid_datasets:
   tank:
+    use_template: production
+    recursive: true
+    process_children_only: true
+
+  speed:
     use_template: production
     recursive: true
     process_children_only: true
