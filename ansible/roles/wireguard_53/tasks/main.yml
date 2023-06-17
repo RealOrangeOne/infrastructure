@@ -21,7 +21,7 @@
 - name: Wireguard client config
   template:
     src: files/client.conf
-    dest: "{{ home }}/wg53.conf"
+    dest: "{{ me.home }}/wg53.conf"
     mode: "0600"
   become: true
   notify: restart wireguard

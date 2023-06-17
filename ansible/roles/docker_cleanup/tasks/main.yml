@@ -43,7 +43,7 @@
 - name: Install util scripts
   copy:
     src: ./files/docker-utils
-    dest: "{{ home }}"
+    dest: "{{ me.home }}"
     mode: "755"
     directory_mode: "755"
 

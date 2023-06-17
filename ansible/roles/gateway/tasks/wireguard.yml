@@ -30,7 +30,7 @@
 
 - name: Create wireguard client directory
   file:
-    path: "{{ home }}/wireguard-clients"
+    path: "{{ me.home }}/wireguard-clients"
     state: directory
     owner: "{{ me.user }}"
     mode: "700"
@@ -38,7 +38,7 @@
 - name: Wireguard client configuration
   template:
     src: files/wireguard-client.conf
-    dest: "{{ home }}/wireguard-clients/{{ item.key }}.conf"
+    dest: "{{ me.home }}/wireguard-clients/{{ item.key }}.conf"
     owner: "{{ me.user }}"
     mode: "600"
   loop: "{{ wireguard.clients | dict2items }}"
