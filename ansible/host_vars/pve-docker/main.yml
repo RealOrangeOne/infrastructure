@@ -6,4 +6,4 @@ traefik_provider_grafana: true
 
 with_fail2ban: true
 
-db_backups_dir: /mnt/tank/dbs/backups
+db_backups_dir: /mnt/tank/files/db-backups
