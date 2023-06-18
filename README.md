@@ -16,9 +16,7 @@
 
 Ansible [integrates](https://theorangeone.net/posts/ansible-vault-bitwarden/) with Bitwarden through its [CLI](https://bitwarden.com/help/article/cli/).
 
-Terraform configuration needs to be placed in `terraform/secrets.auto.tfvars`.
-
-Terraform backend secrets need to be placed in `terraform/secrets.sh`.
+Terraform secrets are stored in `terraform/.env`, and provisioned using `just update-secrets`.
 
 ## Deploying
 

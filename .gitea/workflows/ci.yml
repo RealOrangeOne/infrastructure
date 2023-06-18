@@ -8,7 +8,7 @@ jobs:
       - uses: actions/checkout@v3
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
-      - uses: extractions/setup-just@v1
+      - uses: taiki-e/install-action@just
       - name: Init
         run: just terraform init -backend=false
       - name: Lint
@@ -22,7 +22,7 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: 3.11
-      - uses: extractions/setup-just@v1
+      - uses: taiki-e/install-action@just
 
       # HACK: https://docs.ansible.com/ansible/devel/reference_appendices/config.html#cfg-in-world-writable-dir
       - name: Fix permissions
