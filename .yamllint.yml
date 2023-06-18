@@ -6,6 +6,7 @@ ignore: |
   ansible/group_vars/all/vps-hosts.yml
   ansible/roles/traefik/files/traefik.yml
   ansible/roles/nebula/files/nebula.yml
+  env
 
 rules:
   document-start: disable

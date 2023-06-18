@@ -5,11 +5,12 @@
 - Python 3
 - Locally configured SSH config (ideally deployed through [dotfiles](https://github.com/realorangeone/dotfiles))
 - `ansible` installed on the system
+- [`just`](https://github.com/casey/just)
 
 ## Installation
 
-- `./scripts/ansible/setup.sh`
-- `cd terraform/ && ./scripts/terraform/terraform.sh init`
+- `just setup`
+- `just terraform init`
 
 ### Private Settings
 
@@ -21,5 +22,5 @@ Terraform backend secrets need to be placed in `terraform/secrets.sh`.
 
 ## Deploying
 
-- `./scripts/ansible/deploy.sh`
-- `./scripts/terraform/terraform.sh apply`
+- `just ansible-deploy`
+- `juts terraform apply`
