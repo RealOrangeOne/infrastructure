@@ -10,7 +10,7 @@ services:
       - DOCKER_MODS=theorangeone/lsio-mod-more-processes:latest
     volumes:
       - "{{ app_data_dir }}/nextcloud/apps:/config/www/nextcloud/apps"
-      - "{{ app_data_dir }}/nextcloud/config.php:/config/www/nextcloud/config/config.php"
+      - "{{ app_data_dir }}/nextcloud/config:/config/www/nextcloud/config"
       - /mnt/tank/files/nextcloud:/data
       - /mnt/tank/files:/mnt/files
     restart: unless-stopped
