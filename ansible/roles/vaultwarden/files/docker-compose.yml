@@ -2,7 +2,7 @@ version: "2.3"
 
 services:
   vaultwarden:
-    image: vaultwarden/server:1.28.1-alpine
+    image: vaultwarden/server:1.29.0-alpine
     restart: unless-stopped
     user: "{{ docker_user.id }}:{{ docker_user.id }}"
     volumes:
@@ -12,20 +12,14 @@ services:
     labels:
       - traefik.enable=true
 
-      - traefik.http.routers.vaultwarden-ui.rule=Host(`vaultwarden.jakehoward.tech`)
-      - traefik.http.routers.vaultwarden-ui.service=vaultwarden-ui
-      - traefik.http.services.vaultwarden-ui.loadbalancer.server.port=80
-
-      - traefik.http.routers.vaultwarden-websocket.rule=Host(`vaultwarden.jakehoward.tech`) && Path(`/notifications/hub`)
-      - traefik.http.routers.vaultwarden-websocket.service=vaultwarden-websocket
-      - traefik.http.services.vaultwarden-websocket.loadbalancer.server.port=3012
+      - traefik.http.routers.vaultwarden.rule=Host(`vaultwarden.jakehoward.tech`)
+      - traefik.http.routers.vaultwarden.service=vaultwarden
+      - traefik.http.services.vaultwarden.loadbalancer.server.port=80
 
       - traefik.http.middlewares.vaultwarden-ratelimit.ratelimit.average=5
       - traefik.http.middlewares.vaultwarden-ratelimit.ratelimit.burst=1000
-      - traefik.http.middlewares.vaultwarden-compress.compress=true
 
-      - traefik.http.routers.vaultwarden-ui.middlewares=vaultwarden-ratelimit,vaultwarden-compress
-      - traefik.http.routers.vaultwarden-websocket.middlewares=vaultwarden-ratelimit,vaultwarden-compress
+      - traefik.http.routers.vaultwarden.middlewares=vaultwarden-ratelimit
     environment:
       - SIGNUPS_ALLOWED=false
       - DOMAIN=https://vaultwarden.jakehoward.tech
@@ -33,7 +27,6 @@ services:
       - DATABASE_URL=postgres://vaultwarden:{{ vaultwarden_database_password }}@db/vaultwarden
       - INVITATIONS_ALLOWED=false
       - ROCKET_WORKERS={{ ansible_processor_nproc // 2 }}
-      - WEBSOCKET_ENABLED=true
     networks:
       - default
       - traefik
