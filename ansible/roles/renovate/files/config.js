@@ -10,6 +10,6 @@ module.exports = {
   persistRepoData: true,
   binarySource: "docker",
   dockerUser: "{{ docker_user.id }}",
-  baseDir: "/mnt/bulk",
-  cacheDir: "/mnt/bulk/cache"
+  baseDir: "/mnt/data",
+  cacheDir: "/mnt/data/cache"
 };
