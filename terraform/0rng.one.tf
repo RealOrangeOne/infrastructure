@@ -8,7 +8,7 @@ resource "gandi_livedns_record" "orngone_git" {
   type = "CNAME"
   ttl  = 3600
   values = [
-    cloudflare_record.theorangeonenet_git.hostname
+    "${cloudflare_record.theorangeonenet_git.hostname}."
   ]
 }
 
@@ -18,7 +18,7 @@ resource "gandi_livedns_record" "orngone_who" {
   type = "CNAME"
   ttl  = 3600
   values = [
-    cloudflare_record.theorangeonenet_whoami.hostname
+    "${cloudflare_record.theorangeonenet_whoami.hostname}."
   ]
 }
 
@@ -28,7 +28,7 @@ resource "gandi_livedns_record" "orngone_img" {
   type = "CNAME"
   ttl  = 3600
   values = [
-    cloudflare_record.theorangeonenet_img.hostname
+    "${cloudflare_record.theorangeonenet_img.hostname}."
   ]
 }
 
