@@ -25,7 +25,10 @@ services:
       - PUID={{ docker_user.id }}
     labels:
       - traefik.enable=true
-      - traefik.http.routers.img.rule=Host(`img.theorangeone.net`) || Host(`img.0rng.one`)
+      - traefik.http.routers.img.rule=Host(`img.theorangeone.net`)
+
+      - traefik.http.routers.0rng-img.tls.certresolver=gandi
+      - traefik.http.routers.0rng-img.rule=Host(`img.0rng.one`)
     networks:
       - default
       - traefik
