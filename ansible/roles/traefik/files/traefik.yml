@@ -66,7 +66,7 @@ certificatesResolvers:
       email: "{{ letsencrypt_email }}"
       storage: /etc/traefik/acme.json
       dnsChallenge:
-        provider: gandi
+        provider: gandiv5
         delayBeforeCheck: 0
         resolvers:
           - 1.1.1.1:53
