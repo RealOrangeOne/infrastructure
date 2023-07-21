@@ -34,6 +34,7 @@ services:
     volumes:
       - ./tt-rss:/var/www/html
       - "{{ app_data_dir }}/tt-rss/feed-icons:/var/www/html/tt-rss/feed-icons:ro"
+      - ./plugins:/var/www/html/tt-rss/plugins.local
     depends_on:
       - app
     networks:
