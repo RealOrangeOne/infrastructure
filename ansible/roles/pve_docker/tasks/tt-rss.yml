@@ -34,15 +34,6 @@
   become: true
   become_user: "{{ docker_user.name }}"
 
-- name: Install feediron plugin
-  git:
-    repo: https://github.com/feediron/ttrss_plugin-feediron
-    dest: "{{ plugins_dir.path }}/feediron"
-    depth: 1
-  register: feediron_plugin
-  become: true
-  become_user: "{{ docker_user.name }}"
-
 - name: Ensure plugins are owned by {{ docker_user.name }}
   file:
     path: "{{ plugins_dir.path }}"
@@ -51,10 +42,10 @@
     mode: u=rwX,g=rwX,o=rX
     recurse: true
   become: true
-  when: fever_plugin.changed or feediron_plugin.changed
+  when: fever_plugin.changed
 
 - name: restart tt-rss
   shell:
     chdir: /opt/tt-rss
     cmd: "{{ docker_update_command }}"
-  when: compose_file.changed or fever_plugin.changed or feediron_plugin.changed
+  when: compose_file.changed or fever_plugin.changed
