@@ -141,14 +141,6 @@ resource "cloudflare_record" "theorangeonenet_dl" {
   ttl     = 1
 }
 
-resource "cloudflare_record" "theorangeonenet_bg" {
-  zone_id = cloudflare_zone.theorangeonenet.id
-  name    = "bg"
-  value   = cloudflare_record.sys_domain_walker.hostname
-  type    = "CNAME"
-  ttl     = 1
-}
-
 resource "cloudflare_record" "theorangeonenet_upload" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "upload"

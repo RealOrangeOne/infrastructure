@@ -33,21 +33,6 @@ services:
       - default
       - traefik
 
-  bg:
-    image: ghcr.io/realorangeone/static-server:latest
-    restart: unless-stopped
-    volumes:
-      - ./files/bg:/srv:ro
-    environment:
-      - FANCY_INDEX=on
-      - PUID={{ docker_user.id }}
-    labels:
-      - traefik.enable=true
-      - traefik.http.routers.bg.rule=Host(`bg.theorangeone.net`)
-    networks:
-      - default
-      - traefik
-
   dl:
     image: ghcr.io/realorangeone/static-server:latest
     restart: unless-stopped
