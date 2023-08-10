@@ -7,7 +7,7 @@ collections:
 
 roles:
   - src: geerlingguy.docker
-    version: 6.1.0
+    version: 6.2.0
   - src: geerlingguy.ntp
     version: 2.3.3
   - src: realorangeone.reflector
