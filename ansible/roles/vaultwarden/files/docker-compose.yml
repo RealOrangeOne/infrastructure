@@ -17,7 +17,7 @@ services:
       - traefik.http.services.vaultwarden.loadbalancer.server.port=80
 
       - traefik.http.middlewares.vaultwarden-ratelimit.ratelimit.average=5
-      - traefik.http.middlewares.vaultwarden-ratelimit.ratelimit.burst=1000
+      - traefik.http.middlewares.vaultwarden-ratelimit.ratelimit.burst=200
 
       - traefik.http.routers.vaultwarden.middlewares=vaultwarden-ratelimit
     environment:
@@ -26,7 +26,9 @@ services:
       - SHOW_PASSWORD_HINT=false
       - DATABASE_URL=postgres://vaultwarden:{{ vaultwarden_database_password }}@db/vaultwarden
       - INVITATIONS_ALLOWED=false
-      - ROCKET_WORKERS={{ ansible_processor_nproc // 2 }}
+      - ROCKET_WORKERS=2
+      - EMERGENCY_ACCESS_ALLOWED=false
+      - AUTHENTICATOR_DISABLE_TIME_DRIFT=true
     networks:
       - default
       - traefik
