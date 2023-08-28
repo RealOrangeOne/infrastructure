@@ -2,7 +2,7 @@ version: "2.3"
 
 services:
   wallabag:
-    image: wallabag/wallabag:2.6.2
+    image: wallabag/wallabag:2.6.5
     restart: unless-stopped
     environment:
       - SYMFONY__ENV__SECRET={{ wallabag_secret }}
