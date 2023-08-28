@@ -7,6 +7,7 @@ services:
     environment:
       - SYMFONY__ENV__SECRET={{ wallabag_secret }}
       - SYMFONY__ENV__DOMAIN_NAME=https://wallabag.jakehoward.tech
+      - SYMFONY__ENV__FOSUSER_REGISTRATION=true
     volumes:
       - /mnt/tank/app-data/wallabag/data:/var/www/wallabag/data
       - /mnt/tank/app-data/wallabag/images:/var/www/wallabag/images
