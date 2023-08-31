@@ -29,6 +29,9 @@ update-secrets:
 ansible-deploy *ARGS:
     cd ansible/ && ansible-playbook main.yml --vault-password-file=vault-pass.sh -K {{ ARGS }}
 
+ansible-vault ACTION *ARGS:
+    cd ansible/ && ansible-vault {{ ACTION }} --vault-password-file=vault-pass.sh {{ ARGS }}
+
 terraform-lint:
     just terraform validate
     just terraform fmt -check -recursive
