@@ -44,13 +44,3 @@
   loop: "{{ wireguard.clients | dict2items }}"
   loop_control:
     label: "{{ item.key }}"
-
-- name: Enable p2p communication
-  sysctl:
-    name: net.ipv4.ip_forward
-    value: "1"
-    sysctl_set: true
-    state: present
-    reload: true
-    sysctl_file: /etc/sysctl.d/99-sysctl.conf
-  become: true
