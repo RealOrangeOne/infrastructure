@@ -1,23 +1,6 @@
 data "grafana_synthetic_monitoring_probes" "main" {}
 
 locals {
-  global_probes = [
-    data.grafana_synthetic_monitoring_probes.main.probes.Amsterdam,
-    data.grafana_synthetic_monitoring_probes.main.probes.CapeTown,
-    data.grafana_synthetic_monitoring_probes.main.probes.Frankfurt,
-    data.grafana_synthetic_monitoring_probes.main.probes.London,
-    data.grafana_synthetic_monitoring_probes.main.probes.Mumbai,
-    data.grafana_synthetic_monitoring_probes.main.probes.NewYork,
-    data.grafana_synthetic_monitoring_probes.main.probes.NorthCalifornia,
-    data.grafana_synthetic_monitoring_probes.main.probes.Oregon,
-    data.grafana_synthetic_monitoring_probes.main.probes.Paris,
-    data.grafana_synthetic_monitoring_probes.main.probes.SaoPaulo,
-    data.grafana_synthetic_monitoring_probes.main.probes.Seoul,
-    data.grafana_synthetic_monitoring_probes.main.probes.Singapore,
-    data.grafana_synthetic_monitoring_probes.main.probes.Sydney,
-    data.grafana_synthetic_monitoring_probes.main.probes.Tokyo,
-    data.grafana_synthetic_monitoring_probes.main.probes.Toronto
-  ]
   partial_global_probes = [
     data.grafana_synthetic_monitoring_probes.main.probes.CapeTown,
     data.grafana_synthetic_monitoring_probes.main.probes.Frankfurt,
@@ -31,7 +14,6 @@ locals {
     data.grafana_synthetic_monitoring_probes.main.probes.Sydney,
     data.grafana_synthetic_monitoring_probes.main.probes.Toronto,
   ]
-  all_probes = data.grafana_synthetic_monitoring_probes.main.probes.*
 }
 
 resource "grafana_synthetic_monitoring_check" "vps_ping" {
@@ -83,7 +65,7 @@ resource "grafana_synthetic_monitoring_check" "personal_website" {
   job               = "Personal Website"
   target            = "https://theorangeone.net/.health/"
   enabled           = true
-  probes            = local.global_probes
+  probes            = local.partial_global_probes
   alert_sensitivity = "high"
   timeout           = 5000 # 5 seconds
 
