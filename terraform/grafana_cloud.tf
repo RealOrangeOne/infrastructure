@@ -87,6 +87,8 @@ resource "grafana_synthetic_monitoring_check" "personal_website" {
   alert_sensitivity = "high"
   timeout           = 5000 # 5 seconds
 
+  frequency = 120 * 1000 # 2 minutes
+
   settings {
     http {
       ip_version = "Any"
@@ -105,6 +107,8 @@ resource "grafana_synthetic_monitoring_check" "grafana" {
   ]
   alert_sensitivity = "high"
 
+  frequency = 120 * 1000 # 2 minutes
+
   settings {
     http {
       ip_version = "Any"
@@ -122,6 +126,8 @@ resource "grafana_synthetic_monitoring_check" "whoami" {
     data.grafana_synthetic_monitoring_probes.main.probes.London
   ]
   alert_sensitivity = "medium"
+
+  frequency = 120 * 1000 # 2 minutes
 
   settings {
     http {
