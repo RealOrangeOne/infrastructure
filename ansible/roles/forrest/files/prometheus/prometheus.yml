@@ -49,6 +49,7 @@ scrape_configs:
       module: [http]
     static_configs:
       - targets:
+          - https://0rng.one
           - https://bin.theorangeone.net
           - https://git.theorangeone.net/api/healthz
           - https://grafana.jakehoward.tech/api/health
@@ -61,10 +62,10 @@ scrape_configs:
           - https://notes.theorangeone.net
           - https://plausible.theorangeone.net
           - https://recipes.jakehoward.tech
+          - https://tasks.jakehoward.tech/health
           - https://theorangeone.net
           - https://tt-rss.jakehoward.tech
           - https://vaultwarden.jakehoward.tech/alive
-          - https://0rng.one
     relabel_configs:
       - source_labels: [__address__]
         target_label: __param_target

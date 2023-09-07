@@ -1,0 +1,4 @@
+- name: restart vikunja
+  shell:
+    chdir: /opt/vikunja
+    cmd: "{{ docker_update_command }}"

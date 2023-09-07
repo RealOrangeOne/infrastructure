@@ -1,0 +1,67 @@
+version: "2.3"
+
+services:
+  api:
+    image: vikunja/api:latest
+    restart: unless-stopped
+    environment:
+      - VIKUNJA_DATABASE_HOST=db
+      - VIKUNJA_DATABASE_PASSWORD=vikunja
+      - VIKUNJA_DATABASE_TYPE=postgres
+      - VIKUNJA_DATABASE_USER=vikunja
+      - VIKUNJA_DATABASE_DATABASE=vikunja
+      - VIKUNJA_SERVICE_FRONTENDURL=https://tasks.jakehoward.tech
+      - VIKUNJA_SERVICE_JWTSECRET="{{ jwt_secret }}"
+      - VIKUNJA_SERVICE_ENABLEREGISTRATION=false
+      - VIKUNJA_SERVICE_TIMEZONE={{ timezone }}
+      - VIKUNJA_REDIS_HOST=redis:6379
+      - VIKUNJA_REDIS_ENABLED=true
+      - VIKUNJA_LOG_PATH=/dev/stdout
+      - VIKUNJA_KEYVALUE_TYPE=redis
+      - TZ={{ timezone }}
+      - PUID={{ docker_user.id }}
+      - PGID={{ docker_user.id }}
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.vikunja-api.rule=Host(`tasks.jakehoward.tech`) && (PathPrefix(`/api/v1`) || PathPrefix(`/dav/`) || PathPrefix(`/.well-known/`) || Path(`/health`))
+    volumes:
+      - /mnt/tank/app-data/vikunja/files:/app/vikunja/files
+    depends_on:
+      - db
+      - redis
+    networks:
+      - default
+      - traefik
+
+  frontend:
+    image: vikunja/frontend:latest
+    restart: unless-stopped
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.vikunja-frontend.rule=Host(`tasks.jakehoward.tech`)
+    environment:
+      - VIKUNJA_SENTRY_DSN=
+    networks:
+      - default
+      - traefik
+    depends_on:
+      - api
+
+  db:
+    image: postgres:14-alpine
+    restart: unless-stopped
+    volumes:
+      - /mnt/speed/dbs/postgres/vikunja/:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=vikunja
+      - POSTGRES_USER=vikunja
+
+  redis:
+    image: redis:6-alpine
+    restart: unless-stopped
+    volumes:
+      - /mnt/speed/dbs/redis/vikunja/:/data
+
+networks:
+  traefik:
+    external: true

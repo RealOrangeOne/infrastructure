@@ -67,6 +67,7 @@
     - tandoor
     - mastodon
     - gitea
+    - vikunja
 
 - hosts: ingress
   roles:

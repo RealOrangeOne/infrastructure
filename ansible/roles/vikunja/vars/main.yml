@@ -1,0 +1,1 @@
+jwt_secret: "{{ vault_jwt_secret }}"
