@@ -1,1 +1,4 @@
 jwt_secret: "{{ vault_jwt_secret }}"
+from_email: "{{ vault_from_email }}"
+smtp_username: "{{ vault_smtp_username }}"
+smtp_password: "{{ vault_smtp_password }}"

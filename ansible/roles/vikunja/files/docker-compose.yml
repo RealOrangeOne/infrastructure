@@ -18,6 +18,11 @@ services:
       - VIKUNJA_REDIS_ENABLED=true
       - VIKUNJA_LOG_PATH=/dev/stdout
       - VIKUNJA_KEYVALUE_TYPE=redis
+      - VIKUNJA_MAILER_ENABLED=true
+      - VIKUNJA_MAIL_FROMEMAIL={{ from_email }}
+      - VIKUNJA_MAILER_USERNAME={{ smtp_username }}
+      - VIKUNJA_MAILER_PASSWORD={{ smtp_password }}
+      - VIKUNJA_MAILER_HOST=smtp.eu.mailgun.org
       - TZ={{ timezone }}
       - PUID={{ docker_user.id }}
       - PGID={{ docker_user.id }}
