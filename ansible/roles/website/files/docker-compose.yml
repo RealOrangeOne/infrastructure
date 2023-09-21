@@ -13,7 +13,7 @@ x-website: &website
     - CACHE_URL=redis://redis/0
     - QUEUE_STORE_URL=redis://redis/1
     - RENDITION_CACHE_URL=redis://redis/2
-    - SPOTIFY_PROXY_HOST={{ spotify_proxy_host }}
+    - SPOTIFY_PROXY_URL=http://spotify_public_proxy
     - UNSPLASH_CLIENT_ID={{ unsplash_client_id }}
     - SENTRY_DSN={{ website_sentry_dsn }}
     - BASE_HOSTNAME=theorangeone.net
@@ -74,6 +74,15 @@ services:
     restart: unless-stopped
     volumes:
       - ./redis:/data
+
+  spotify_public_proxy:
+    image: ghcr.io/realorangeone/spotify-public-proxy:latest
+    restart: unless-stopped
+    environment:
+      - PORT=80
+      - SPOTIFY_CLIENT_ID={{ spotify_client_id }}
+      - SPOTIFY_CLIENT_SECRET={{ spotify_client_secret }}
+      - SENTRY_DSN={{ spotify_sentry_dsn }}
 
 networks:
   traefik:
