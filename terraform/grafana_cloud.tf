@@ -20,7 +20,6 @@ resource "grafana_synthetic_monitoring_check" "vps_ping" {
   for_each = {
     casey  = linode_instance.casey.ip_address
     walker = vultr_instance.walker.main_ip
-    grimes = vultr_instance.grimes.main_ip
   }
 
   job               = "${each.key} v4"
@@ -42,7 +41,6 @@ resource "grafana_synthetic_monitoring_check" "vps_ping_v6" {
   for_each = {
     casey  = split("/", linode_instance.casey.ipv6)[0]
     walker = vultr_instance.walker.v6_main_ip
-    grimes = vultr_instance.grimes.v6_main_ip
   }
 
   job               = "${each.key} v6"

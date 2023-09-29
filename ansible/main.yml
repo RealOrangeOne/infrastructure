@@ -18,7 +18,6 @@
     - casey
     - ingress
     - walker
-    - grimes
     - tang
   roles:
     - role: geerlingguy.ntp
@@ -31,7 +30,6 @@
     - pve-docker
     - forrest
     - walker
-    - grimes
     - renovate
     - gitea-runner
   roles:
@@ -47,7 +45,6 @@
     - pve-docker
     - forrest
     - walker
-    - grimes
   roles:
     - db_auto_backup
 
@@ -119,13 +116,6 @@
 - hosts: gitea-runner
   roles:
     - gitea_runner
-
-- hosts: grimes
-  roles:
-    - nebula
-    - role: dokku_bot.ansible_dokku
-      become: true
-    - restic
 
 - hosts: renovate
   roles:

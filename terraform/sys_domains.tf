@@ -14,14 +14,6 @@ resource "cloudflare_record" "sys_domain_walker" {
   ttl     = 1
 }
 
-resource "cloudflare_record" "sys_domain_grimes" {
-  zone_id = cloudflare_zone.theorangeonenet.id
-  name    = "grimes.sys"
-  value   = vultr_instance.grimes.main_ip
-  type    = "A"
-  ttl     = 1
-}
-
 resource "cloudflare_record" "sys_domain_casey_v6" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "casey.sys"
@@ -34,14 +26,6 @@ resource "cloudflare_record" "sys_domain_walker_v6" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "walker.sys"
   value   = vultr_instance.walker.v6_main_ip
-  type    = "AAAA"
-  ttl     = 1
-}
-
-resource "cloudflare_record" "sys_domain_grimes_v6" {
-  zone_id = cloudflare_zone.theorangeonenet.id
-  name    = "grimes.sys"
-  value   = vultr_instance.grimes.v6_main_ip
   type    = "AAAA"
   ttl     = 1
 }
