@@ -9,6 +9,8 @@ pve_hosts:
     ip: 10.23.1.13
   jellyfin:
     ip: 10.23.1.101
+  dokku:
+    ip: 10.23.1.102
   docker:
     ip: 10.23.1.103
   ingress:

@@ -32,6 +32,7 @@
     - walker
     - renovate
     - gitea-runner
+    - pve-dokku
   roles:
     - role: geerlingguy.docker
       become: true
