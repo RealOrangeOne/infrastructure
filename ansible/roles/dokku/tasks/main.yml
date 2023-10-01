@@ -26,12 +26,12 @@
 
 - name: Automatically update Dokku plugins
   cron:
-    name: "dokku plugin:update {{ item.name }}"
-    minute: "0"
-    hour: "12"
-    user: "root"
-    job: "/usr/bin/chronic /usr/bin/dokku plugin:update {{ item.name }}"
-    cron_file: "dokku-plugin-update-{{ item.name }}"
+    name: dokku plugin:update {{ item.name }}
+    minute: 0
+    hour: 12
+    user: root
+    job: /usr/bin/chronic /usr/bin/dokku plugin:update {{ item.name }}
+    cron_file: dokku-plugin-update-{{ item.name }}
   loop: "{{ dokku_plugins }}"
   loop_control:
     label: "{{ item.name }}"
