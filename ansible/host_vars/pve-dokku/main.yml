@@ -1,0 +1,3 @@
+ssh_extra_allowed_users: dokku
+
+db_backups_dir: /mnt/tank/files/db-backups

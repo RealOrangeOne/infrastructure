@@ -46,6 +46,7 @@
     - pve-docker
     - forrest
     - walker
+    - pve-dokku
   roles:
     - db_auto_backup
 
