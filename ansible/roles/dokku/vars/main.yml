@@ -1,0 +1,9 @@
+dokku_plugins:
+  - name: postgres
+    url: https://github.com/dokku/dokku-postgres.git
+  - name: redis
+    url: https://github.com/dokku/dokku-redis.git
+  - name: redirect
+    url: https://github.com/dokku/dokku-redirect.git
+  - name: http-auth
+    url: https://github.com/dokku/dokku-http-auth.git

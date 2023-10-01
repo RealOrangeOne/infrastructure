@@ -16,3 +16,5 @@ roles:
   - src: chmduquesne.iptables_persistent
   - src: ironicbadger.snapraid
     version: 1.0.0
+  - src: dokku_bot.ansible_dokku
+    version: v2022.10.17

@@ -1,0 +1,53 @@
+# HACK: Fake include some tasks from `ansible_dokku`, so its library plugins can be used below
+- name: Run role without running any tasks
+  include_role:
+    name: dokku_bot.ansible_dokku
+    tasks_from: init.yml
+    apply:
+      when: false
+
+- name: Install Dokku
+  package:
+    name: dokku
+  become: true
+
+- name: List dokku plugins
+  command: dokku plugin:list
+  changed_when: false
+  register: installed_dokku_plugins
+
+- name: Install Dokku plugins
+  command: dokku plugin:install {{ item.url }} --name {{ item.name }}
+  when: installed_dokku_plugins.stdout.find(item.name) == -1
+  loop: "{{ dokku_plugins }}"
+  loop_control:
+    label: "{{ item.name }}"
+  become: true
+
+- name: Automatically update Dokku plugins
+  cron:
+    name: "dokku plugin:update {{ item.name }}"
+    minute: "0"
+    hour: "12"
+    user: "root"
+    job: "/usr/bin/chronic /usr/bin/dokku plugin:update {{ item.name }}"
+    cron_file: "dokku-plugin-update-{{ item.name }}"
+  loop: "{{ dokku_plugins }}"
+  loop_control:
+    label: "{{ item.name }}"
+  become: true
+
+- name: Set up global domain
+  dokku_domains:
+    global: true
+    domains: d.theorangeone.net
+  become: true
+
+- name: Install custom nginx config
+  template:
+    src: files/nginx.conf
+    dest: /etc/nginx/nginx.conf
+    validate: nginx -t -c %s
+    mode: "644"
+  notify: restart nginx
+  become: true

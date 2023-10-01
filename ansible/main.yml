@@ -127,3 +127,7 @@
     - pihole
     - role: prometheus.prometheus.node_exporter
       become: true
+
+- hosts: pve-dokku
+  roles:
+    - dokku

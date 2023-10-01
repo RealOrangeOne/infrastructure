@@ -47,6 +47,8 @@
     dest: /opt/traefik/traefik/traefik.yml
     mode: "{{ docker_compose_file_mask }}"
     owner: "{{ docker_user.name }}"
+    lstrip_blocks: true
+    trim_blocks: true
   notify: restart traefik
   become: true
 
@@ -87,6 +89,16 @@
     owner: "{{ docker_user.name }}"
   notify: restart traefik
   when: traefik_provider_grafana
+  become: true
+
+- name: Install dokku provider
+  template:
+    src: files/file-provider-dokku.yml
+    dest: /opt/traefik/traefik/conf/dokku.yml
+    mode: "{{ docker_compose_file_mask }}"
+    owner: "{{ docker_user.name }}"
+  notify: restart traefik
+  when: traefik_provider_dokku
   become: true
 
 - name: logrotate config

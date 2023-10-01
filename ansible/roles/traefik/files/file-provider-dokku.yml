@@ -1,0 +1,10 @@
+http:
+  routers:
+    router-dokku:
+      rule: HostRegexp(`{subdomain:[a-z]+}.d.theorangeone.net`)
+      service: service-dokku
+  services:
+    service-dokku:
+      loadBalancer:
+        servers:
+          - url: http://{{ pve_hosts.dokku.ip }}
