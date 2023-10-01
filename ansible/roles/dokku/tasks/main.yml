@@ -51,3 +51,13 @@
     mode: "644"
   notify: restart nginx
   become: true
+
+# https://dokku.com/docs/advanced-usage/backup-recovery/
+- name: Sync data to app-data
+  cron:
+    name: clean up docker containers
+    hour: "*/6"
+    minute: 0
+    user: root
+    job: rsync --archive --progress -h /var/lib/dokku/{config,data,services} /home/dokku --exclude '/home/dokku/**/cache/*' /mnt/tank/app-data/dokku/
+    cron_file: dokku-data-sync
