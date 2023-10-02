@@ -7,9 +7,6 @@ services:
     labels:
       - traefik.enable=true
       - traefik.http.routers.whoami.rule=Host(`whoami.theorangeone.net`)
-
-      - traefik.http.routers.0rng-whoami.rule=Host(`who.0rng.one`)
-      - traefik.http.routers.0rng-whoami.tls.certresolver=gandi
     networks:
       - default
       - traefik

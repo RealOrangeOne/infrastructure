@@ -24,8 +24,6 @@ entryPoints:
             sans: "*.theorangeone.net"
           - main: jakehoward.tech
             sans: "*.jakehoward.tech"
-          - main: 0rng.one
-            sans: "*.0rng.one"
           {% if traefik_provider_dokku %}
           - main: d.theorangeone.net
             sans: "*.d.theorangeone.net"
