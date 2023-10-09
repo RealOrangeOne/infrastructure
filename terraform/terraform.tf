@@ -20,10 +20,6 @@ terraform {
       source  = "go-gandi/gandi"
       version = "2.2.3"
     }
-    grafana = {
-      source  = "grafana/grafana"
-      version = "1.39.0"
-    }
     b2 = {
       source  = "Backblaze/b2"
       version = "0.8.4"
