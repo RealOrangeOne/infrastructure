@@ -13,6 +13,7 @@ services:
       - "{{ app_data_dir }}/gitea/config:/etc/gitea"
       - /mnt/tank/files/gitea-repositories/repositories:/mnt/repositories
       - /mnt/tank/files/gitea-repositories/lfs:/mnt/lfs
+      - /mnt/tank/files/gitea-repositories/archive:/mnt/repo-archive
     tmpfs:
       - /var/lib/gitea/tmp
     restart: unless-stopped
