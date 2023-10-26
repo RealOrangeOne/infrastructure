@@ -70,8 +70,6 @@
 
 - hosts: ingress
   roles:
-    - role: chmduquesne.iptables_persistent
-      become: true
     - role: nginxinc.nginx  # The nginx in debian's repos is very old
       become: true
     - ingress

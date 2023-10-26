@@ -1,0 +1,19 @@
+- name: Install nftables
+  package:
+    name: nftables
+  become: true
+
+- name: Copy firewall config
+  template:
+    src: files/nftables.conf
+    dest: /etc/nftables.conf
+    validate: nft -c -f %s
+  become: true
+  notify: reload firewall
+
+- name: Enable nftables
+  service:
+    name: nftables
+    enabled: true
+    state: started
+  become: true

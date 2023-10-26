@@ -9,3 +9,11 @@
     name: nginx
     state: restarted
   become: true
+
+- name: reload nftables
+  command:
+    argv:
+      - nft
+      - -f
+      - /etc/nftables.conf
+  become: true
