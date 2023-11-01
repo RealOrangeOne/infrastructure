@@ -11,7 +11,7 @@ modules:
     http:
       method: GET
       valid_status_codes: [301, 302, 307, 308]
-      no_follow_redirects: true
+      follow_redirects: false
       fail_if_ssl: true
       fail_if_header_not_matches:
         - header: Location
