@@ -35,7 +35,6 @@ services:
   alertmanager:
     image: prom/alertmanager:latest
     restart: unless-stopped
-    user: "{{ docker_user.id }}"
     volumes:
       - ./alertmanager.yml:/etc/alertmanager/alertmanager.yml:ro
 
