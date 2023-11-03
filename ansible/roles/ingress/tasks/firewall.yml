@@ -9,7 +9,7 @@
     dest: /etc/nftables.conf
     validate: nft -c -f %s
   become: true
-  notify: reload firewall
+  notify: reload nftables
 
 - name: Enable nftables
   service:

@@ -17,7 +17,7 @@ lighthouse:
 
 listen:
   host: 0.0.0.0
-  port: "{{ nebula_is_lighthouse | ternary(nebula_lighthouse_port, 0) }}"
+  port: "{{ nebula_listen_port }}"
 
 punchy:
   punch: true

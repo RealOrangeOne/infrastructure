@@ -1,0 +1,2 @@
+# Listen on a static port so it can be opened in the firewall
+nebula_listen_port: "{{ nebula_lighthouse_port }}"
