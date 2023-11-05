@@ -74,7 +74,7 @@ scrape_configs:
       - target_label: __address__
         replacement: blackbox-external:9115
       - source_labels: [instance]
-        regex: "https?://([^/]+)/?.*"
+        regex: https?://([^/]+)/?.*
         target_label: hostname
 
   - job_name: blackbox_icmp
