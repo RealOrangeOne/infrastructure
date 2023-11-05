@@ -8,6 +8,7 @@
     src: files/nftables.conf
     dest: /etc/nftables.conf
     validate: nft -c -f %s
+    mode: "644"
   become: true
   notify: reload nftables
 
