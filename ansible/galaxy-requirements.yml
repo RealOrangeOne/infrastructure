@@ -17,3 +17,5 @@ roles:
     version: 1.0.0
   - src: dokku_bot.ansible_dokku
     version: v2022.10.17
+  - src: nginxinc.nginx
+    version: 0.24.1
