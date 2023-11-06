@@ -1,0 +1,4 @@
+- name: restart remark
+  shell:
+    chdir: /opt/remark42
+    cmd: "{{ docker_update_command }}"

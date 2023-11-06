@@ -103,6 +103,7 @@
     - restic
     - commento
     - website
+    - remark42
 
 - hosts: jellyfin
   roles:

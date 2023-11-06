@@ -213,6 +213,14 @@ resource "cloudflare_record" "theorangeonenet_commento" {
   ttl     = 1
 }
 
+resource "cloudflare_record" "theorangeonenet_remark" {
+  zone_id = cloudflare_zone.theorangeonenet.id
+  name    = "remark"
+  value   = cloudflare_record.sys_domain_walker.hostname
+  type    = "CNAME"
+  ttl     = 1
+}
+
 resource "cloudflare_record" "theorangeonenet_mailgun_spf" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "mg"

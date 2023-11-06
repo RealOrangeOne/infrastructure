@@ -1,0 +1,42 @@
+version: "2.3"
+
+services:
+  remark:
+    image: umputun/remark42:latest
+    restart: unless-stopped
+    networks:
+      - default
+      - traefik
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.remark.rule=Host(`remark.theorangeone.net`)
+    environment:
+      - APP_UID={{ docker_user.id }}
+      - REMARK_URL=https://remark.theorangeone.net
+      - SECRET={{ remark_secret }}
+      - ADMIN_PASSWD={{ remark_admin_password }}
+      - SITE=theorangeone
+      - TIME_ZONE={{ timezone }}
+      - SMTP_HOST=smtp.eu.mailgun.org
+      - SMTP_USERNAME={{ remark_smtp_username }}
+      - SMTP_PASSWORD={{ remark_smtp_password }}
+      - NOTIFY_EMAIL_FROM={{ remark_from_email }}
+      - AUTH_EMAIL_FROM={{ remark_from_email }}
+      - SMTP_TLS=true
+      - SMTP_PORT=465
+      - ADMIN_EDIT=true
+      - NOTIFY_USERS=email
+      - NOTIFY_ADMINS=email
+      - EMOJI=true
+      - DISABLE_SIGNATURE=true
+      - AUTH_ANON=true
+      - AUTH_GITHUB_CID={{ remark_github_client_id }}
+      - AUTH_GITHUB_CSEC={{ remark_github_client_secret }}
+      - ALLOWED_HOSTS=remark.theorangeone.net,theorangeone.net
+      - ADMIN_SHARED_EMAIL={{ remark_admin_email }}
+    volumes:
+      - ./remark:/srv/var
+
+networks:
+  traefik:
+    external: true
