@@ -213,6 +213,14 @@ resource "cloudflare_record" "jakehowardtech_tasks" {
   ttl     = 1
 }
 
+resource "cloudflare_record" "jakehowardtech_auth" {
+  zone_id = cloudflare_zone.jakehowardtech.id
+  name    = "auth"
+  value   = linode_instance.casey.ip_address
+  type    = "A"
+  ttl     = 1
+}
+
 resource "cloudflare_record" "jakehowardtech_caa" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "@"

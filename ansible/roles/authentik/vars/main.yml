@@ -1,0 +1,5 @@
+authentik_db_password: "{{ vault_authentik_db_password }}"
+authentik_secret_key: "{{ vault_authentik_secret_key }}"
+authentik_email_username: "{{ vault_authentik_email_username }}"
+authentik_email_password: "{{ vault_authentik_email_password }}"
+authentik_email_from: "{{ vault_authentik_email_from }}"

@@ -1,0 +1,78 @@
+version: "3.4"
+
+x-env: &env
+  - TIMEZONE={{ timezone }}
+  - AUTHENTIK_REDIS__HOST=redis
+  - AUTHENTIK_POSTGRESQL__HOST=db
+  - AUTHENTIK_POSTGRESQL__USER=authentik
+  - AUTHENTIK_POSTGRESQL__NAME=authentik
+  - AUTHENTIK_POSTGRESQL__PASSWORD={{ authentik_db_password }}
+  - AUTHENTIK_SECRET_KEY={{ authentik_secret_key }}
+  - AUTHENTIK_WEB__WORKERS=1
+  - AUTHENTIK_DISABLE_UPDATE_CHECK=true
+  - AUTHENTIK_ERROR_REPORTING__ENABLED=false
+  - AUTHENTIK_DISABLE_STARTUP_ANALYTICS=true
+  - AUTHENTIK_EMAIL__HOST=smtp.eu.mailgun.org
+  - AUTHENTIK_EMAIL__PORT=465
+  - AUTHENTIK_EMAIL__USERNAME={{ authentik_email_username }}
+  - AUTHENTIK_EMAIL__PASSWORD={{ authentik_email_password }}
+  - AUTHENTIK_EMAIL__USE_TLS=true
+  - AUTHENTIK_EMAIL__FROM={{ authentik_email_from }}
+
+services:
+  server:
+    image: ghcr.io/goauthentik/server:2023.10.2
+    restart: unless-stopped
+    command: server
+    user: "{{ docker_user.id }}"
+    environment: *env
+    volumes:
+      - "{{ app_data_dir }}/authentik/media:/media"
+      - "{{ app_data_dir }}/authentik/custom-templates:/templates"
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.authentik.rule=Host(`auth.jakehoward.tech`)
+      - traefik.http.services.authentik-authentik.loadbalancer.server.port=9000
+      - traefik.http.middlewares.authentik-ratelimit.ratelimit.average=5
+      - traefik.http.middlewares.authentik-ratelimit.ratelimit.burst=1000
+      - traefik.http.routers.authentik.middlewares=authentik-ratelimit
+    depends_on:
+      - db
+      - redis
+    networks:
+      - default
+      - traefik
+
+  worker:
+    image: ghcr.io/goauthentik/server:2023.10.2
+    restart: unless-stopped
+    command: worker
+    user: "{{ docker_user.id }}"
+    environment: *env
+    volumes:
+      - "{{ app_data_dir }}/authentik/media:/media"
+      - "{{ app_data_dir }}/authentik/certs:/certs"
+      - "{{ app_data_dir }}/authentik/custom-templates:/templates"
+    depends_on:
+      - db
+      - redis
+      - server
+
+  db:
+    image: postgres:15-alpine
+    restart: unless-stopped
+    volumes:
+      - /mnt/speed/dbs/postgres/authentik:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD={{ authentik_db_password }}
+      - POSTGRES_USER=authentik
+
+  redis:
+    image: redis:alpine
+    restart: unless-stopped
+    volumes:
+      - /mnt/speed/dbs/redis/authentik:/data
+
+networks:
+  traefik:
+    external: true
