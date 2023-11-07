@@ -1,4 +1,0 @@
-- name: restart upload
-  shell:
-    chdir: /opt/upload
-    cmd: "{{ docker_update_command }}"

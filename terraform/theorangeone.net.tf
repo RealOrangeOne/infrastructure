@@ -117,35 +117,11 @@ resource "cloudflare_record" "theorangeonenet_srv_matrix" {
   }
 }
 
-resource "cloudflare_record" "theorangeonenet_img" {
-  zone_id = cloudflare_zone.theorangeonenet.id
-  name    = "img"
-  value   = cloudflare_record.sys_domain_walker.hostname
-  type    = "CNAME"
-  ttl     = 1
-}
-
 resource "cloudflare_record" "theorangeonenet_matrix" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "matrix"
   value   = linode_instance.casey.ip_address
   type    = "A"
-  ttl     = 1
-}
-
-resource "cloudflare_record" "theorangeonenet_dl" {
-  zone_id = cloudflare_zone.theorangeonenet.id
-  name    = "dl"
-  value   = cloudflare_record.sys_domain_walker.hostname
-  type    = "CNAME"
-  ttl     = 1
-}
-
-resource "cloudflare_record" "theorangeonenet_upload" {
-  zone_id = cloudflare_zone.theorangeonenet.id
-  name    = "upload"
-  value   = cloudflare_record.sys_domain_walker.hostname
-  type    = "CNAME"
   ttl     = 1
 }
 
