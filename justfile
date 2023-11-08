@@ -27,7 +27,7 @@ update-secrets:
     cd terraform/ && bw get attachment .env --itemid c4f8b44e-ae62-442d-a9e0-02d0621c2454
 
 ansible-deploy *ARGS:
-    cd ansible/ && ansible-playbook main.yml --vault-password-file=vault-pass.sh -K {{ ARGS }}
+    cd ansible/ && ansible-playbook main.yml --vault-password-file=vault-pass.sh -K --diff {{ ARGS }}
 
 ansible-vault ACTION *ARGS:
     cd ansible/ && ansible-vault {{ ACTION }} --vault-password-file=vault-pass.sh {{ ARGS }}
