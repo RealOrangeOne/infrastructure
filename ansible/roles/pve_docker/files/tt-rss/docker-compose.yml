@@ -12,6 +12,11 @@ x-app: &app
     - TTRSS_CHECK_FOR_UPDATES=false
     - TTRSS_ENABLE_GZIP_OUTPUT=true
     - TTRSS_NO_STARTUP_PLUGIN_UPDATES=true
+    - TTRSS_PLUGINS=auth_oidc
+    - TTRSS_AUTH_OIDC_NAME=Authentik
+    - TTRSS_AUTH_OIDC_URL=https://auth.jakehoward.tech/application/o/tt-rss/
+    - TTRSS_AUTH_OIDC_CLIENT_ID={{ tt_rss_oidc_client_id }}
+    - TTRSS_AUTH_OIDC_CLIENT_SECRET={{ tt_rss_oidc_client_secret }}
     - OWNER_UID={{ docker_user.id }}
     - OWNER_GID={{ docker_user.id }}
     - PHP_WORKER_MAX_CHILDREN=50
