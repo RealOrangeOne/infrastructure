@@ -50,6 +50,7 @@ scrape_configs:
     static_configs:
       - targets:
           - https://0rng.one
+          - https://auth.jakehoward.tech/-/health/ready/
           - https://bin.theorangeone.net
           - https://git.theorangeone.net/api/healthz
           - https://grafana.jakehoward.tech/api/health
