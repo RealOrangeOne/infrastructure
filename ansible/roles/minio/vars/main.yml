@@ -1,0 +1,1 @@
+minio_root_password: "{{ vault_minio_root_password }}"

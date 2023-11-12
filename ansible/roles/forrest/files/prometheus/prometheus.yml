@@ -59,9 +59,11 @@ scrape_configs:
           - https://matrix.jakehoward.tech:8448/_matrix/federation/v1/version
           - https://matrix.jakehoward.tech/_matrix/federation/v1/version
           - https://media.jakehoward.tech
+          - https://minio.jakehoward.tech/minio/health/live
           - https://notes.theorangeone.net
           - https://plausible.theorangeone.net
           - https://recipes.jakehoward.tech
+          - https://s3.jakehoward.tech/minio/health/live
           - https://tasks.jakehoward.tech/health
           - https://theorangeone.net
           - https://tt-rss.jakehoward.tech

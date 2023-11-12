@@ -67,6 +67,7 @@
     - gitea
     - vikunja
     - authentik
+    - minio
 
 - hosts: ingress
   roles:

@@ -1,0 +1,31 @@
+version: "2.3"
+
+services:
+  minio:
+    image: quay.io/minio/minio:latest
+    command: server /data --console-address ":9090"
+    user: "{{ docker_user.id }}"
+    environment:
+      - TZ=Europe/London
+      - MINIO_ROOT_USER=jake
+      - MINIO_ROOT_PASSWORD={{ minio_root_password }}
+    restart: unless-stopped
+    labels:
+      - traefik.enable=true
+
+      - traefik.http.routers.minio-console.rule=Host(`minio.jakehoward.tech`)
+      - traefik.http.routers.minio-console.service=minio-console
+      - traefik.http.services.minio-console.loadbalancer.server.port=9090
+
+      - traefik.http.routers.minio-s3.rule=Host(`s3.jakehoward.tech`)
+      - traefik.http.routers.minio-s3.service=minio-s3
+      - traefik.http.services.minio-s3.loadbalancer.server.port=9000
+    volumes:
+      - /mnt/tank/files/minio:/data
+    networks:
+      - default
+      - traefik
+
+networks:
+  traefik:
+    external: true

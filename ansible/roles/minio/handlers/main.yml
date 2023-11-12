@@ -1,0 +1,4 @@
+- name: restart minio
+  shell:
+    chdir: /opt/minio
+    cmd: "{{ docker_update_command }}"

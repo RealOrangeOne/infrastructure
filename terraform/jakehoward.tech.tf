@@ -221,6 +221,22 @@ resource "cloudflare_record" "jakehowardtech_auth" {
   ttl     = 1
 }
 
+resource "cloudflare_record" "jakehowardtech_minio" {
+  zone_id = cloudflare_zone.jakehowardtech.id
+  name    = "minio"
+  value   = linode_instance.casey.ip_address
+  type    = "A"
+  ttl     = 1
+}
+
+resource "cloudflare_record" "jakehowardtech_s3" {
+  zone_id = cloudflare_zone.jakehowardtech.id
+  name    = "s3"
+  value   = linode_instance.casey.ip_address
+  type    = "A"
+  ttl     = 1
+}
+
 resource "cloudflare_record" "jakehowardtech_caa" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "@"
