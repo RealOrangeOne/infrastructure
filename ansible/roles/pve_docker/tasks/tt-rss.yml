@@ -1,6 +1,3 @@
-- name: Include tt-rss variables
-  include_vars: tt-rss.yml
-
 - name: Create tt-rss directory
   file:
     path: /opt/tt-rss
@@ -37,15 +34,6 @@
   become: true
   become_user: "{{ docker_user.name }}"
 
-- name: Install OIDC plugin
-  git:
-    repo: https://git.tt-rss.org/fox/ttrss-auth-oidc.git
-    dest: "{{ plugins_dir.path }}/auth_oidc"
-    depth: 1
-  register: oidc_plugin
-  become: true
-  become_user: "{{ docker_user.name }}"
-
 - name: Ensure plugins are owned by {{ docker_user.name }}
   file:
     path: "{{ plugins_dir.path }}"
@@ -54,10 +42,10 @@
     mode: u=rwX,g=rwX,o=rX
     recurse: true
   become: true
-  when: fever_plugin.changed or oidc_plugin.changed
+  when: fever_plugin.changed
 
 - name: restart tt-rss
   shell:
     chdir: /opt/tt-rss
     cmd: "{{ docker_update_command }}"
-  when: compose_file.changed or fever_plugin.changed or oidc_plugin.changed
+  when: compose_file.changed or fever_plugin.changed
