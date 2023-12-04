@@ -53,6 +53,7 @@ $CONFIG = array (
   'mail_smtpname' => '{{ nextcloud.email_username }}',
   'mail_smtppassword' => '{{ nextcloud.email_password }}',
   'mail_smtpport' => '465',
+  'upgrade.disable-web' => true,
   # Allow Nextcloud to talk to Authentik
   'allow_local_remote_servers' => true,
 );
