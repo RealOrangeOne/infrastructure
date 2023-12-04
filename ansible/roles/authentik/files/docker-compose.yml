@@ -68,7 +68,7 @@ services:
       - POSTGRES_USER=authentik
 
   redis:
-    image: redis:alpine
+    image: redis:7-alpine
     restart: unless-stopped
     volumes:
       - /mnt/speed/dbs/redis/authentik:/data
