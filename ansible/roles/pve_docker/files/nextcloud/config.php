@@ -19,7 +19,7 @@ $CONFIG = array (
     0 => 'intersect.jakehoward.tech',
   ),
   'dbtype' => 'mysql',
-  'version' => '27.1.4.1',
+  'version' => '28.0.0.11',
   'overwrite.cli.url' => 'https://intersect.jakehoward.tech',
   'dbname' => 'nextcloud',
   'dbhost' => 'mariadb',
