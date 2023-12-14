@@ -1,4 +1,0 @@
-secret_key_base: "{{ vault_secret_key_base }}"
-otp_secret: "{{ vault_otp_secret }}"
-vapid_private_key: "{{ vault_vapid_private_key }}"
-vapid_public_key: "{{ vault_vapid_public_key }}"

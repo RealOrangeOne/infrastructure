@@ -8,7 +8,7 @@ services:
       - "{{ db_backups_dir }}:/var/backups"
     environment:
       - DOCKER_HOST=tcp://docker_proxy:2375
-      - HEALTHCHECKS_ID={{ db_auto_backup_healthchecks_id }}
+      - HEALTHCHECKS_ID={{ vault_db_auto_backup_healthchecks_id }}
     depends_on:
       - docker_proxy
 

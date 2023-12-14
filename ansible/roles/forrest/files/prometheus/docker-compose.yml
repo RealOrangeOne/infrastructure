@@ -45,7 +45,7 @@ services:
     environment:
       - PVE_USER=prometheus@pve
       - PVE_TOKEN_NAME=prometheus
-      - PVE_TOKEN_VALUE={{ prometheus_api_token }}
+      - PVE_TOKEN_VALUE={{ vault_prometheus_api_token }}
       - PVE_VERIFY_SSL=false
 
   speedtest_exporter:

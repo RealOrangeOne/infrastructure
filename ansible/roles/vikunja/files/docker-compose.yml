@@ -11,7 +11,7 @@ services:
       - VIKUNJA_DATABASE_USER=vikunja
       - VIKUNJA_DATABASE_DATABASE=vikunja
       - VIKUNJA_SERVICE_FRONTENDURL=https://tasks.jakehoward.tech
-      - VIKUNJA_SERVICE_JWTSECRET="{{ jwt_secret }}"
+      - VIKUNJA_SERVICE_JWTSECRET="{{ vault_jwt_secret }}"
       - VIKUNJA_SERVICE_ENABLEREGISTRATION=false
       - VIKUNJA_SERVICE_TIMEZONE={{ timezone }}
       - VIKUNJA_REDIS_HOST=redis:6379
@@ -19,9 +19,9 @@ services:
       - VIKUNJA_LOG_PATH=/dev/stdout
       - VIKUNJA_KEYVALUE_TYPE=redis
       - VIKUNJA_MAILER_ENABLED=true
-      - VIKUNJA_MAIL_FROMEMAIL={{ from_email }}
-      - VIKUNJA_MAILER_USERNAME={{ smtp_username }}
-      - VIKUNJA_MAILER_PASSWORD={{ smtp_password }}
+      - VIKUNJA_MAIL_FROMEMAIL={{ vault_from_email }}
+      - VIKUNJA_MAILER_USERNAME={{ vault_smtp_username }}
+      - VIKUNJA_MAILER_PASSWORD={{ vault_smtp_password }}
       - VIKUNJA_MAILER_HOST=smtp.eu.mailgun.org
       - TZ={{ timezone }}
       - PUID={{ docker_user.id }}

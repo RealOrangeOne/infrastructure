@@ -15,9 +15,9 @@ services:
 
       - GF_SMTP_ENABLED=true
       - GF_SMTP_HOST=smtp.eu.mailgun.org:465
-      - GF_SMTP_USER={{ grafana_smtp_user }}
-      - GF_SMTP_PASSWORD={{ grafana_smtp_password }}
-      - GF_SMTP_FROM_ADDRESS={{ grafana_from_email }}
+      - GF_SMTP_USER={{ vault_grafana_smtp_user }}
+      - GF_SMTP_PASSWORD={{ vault_grafana_smtp_password }}
+      - GF_SMTP_FROM_ADDRESS={{ vault_grafana_from_email }}
       - GF_SMTP_FROM_NAME=grafana
     volumes:
       - "{{ app_data_dir }}/grafana:/var/lib/grafana"

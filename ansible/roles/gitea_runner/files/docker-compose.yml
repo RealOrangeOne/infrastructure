@@ -10,7 +10,7 @@ services:
     environment:
       - TZ={{ timezone }}
       - GITEA_INSTANCE_URL=https://git.theorangeone.net
-      - GITEA_RUNNER_REGISTRATION_TOKEN={{ gitea_runner_registration_token }}
+      - GITEA_RUNNER_REGISTRATION_TOKEN={{ vault_gitea_runner_registration_token }}
       - GITEA_RUNNER_NAME={{ ansible_hostname }}
       - GITEA_RUNNER_FETCH_INTERVAL=5s
       - GITEA_RUNNER_MAX_PARALLEL_JOBS={{ ansible_processor_nproc }}

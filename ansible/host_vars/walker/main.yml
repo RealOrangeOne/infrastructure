@@ -1,3 +1,2 @@
 restic_backup_locations:
   - /opt
-restic_healthchecks_id: "{{ vault_restic_healthchecks_id }}"

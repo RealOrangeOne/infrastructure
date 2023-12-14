@@ -1,7 +1,0 @@
-commento_github_client_id: "{{ vault_commento_github_client_id }}"
-commento_github_client_secret: "{{ vault_commento_github_client_secret }}"
-commento_smtp_username: "{{ vault_commento_smtp_username }}"
-commento_smtp_password: "{{ vault_commento_smtp_password }}"
-commento_from_email: "{{ vault_commento_from_email }}"
-commento_gitlab_application_id: "{{ vault_commento_gitlab_application_id }}"
-commento_gitlab_application_secret: "{{ vault_commento_gitlab_application_secret }}"

@@ -1,2 +1,0 @@
-renovate_gitea_token: "{{ vault_renovate_gitea_token }}"
-renovate_github_token: "{{ vault_renovate_github_token }}"

@@ -17,10 +17,10 @@ mkdir -p "$RESTIC_LOG_DIR"
 
 # Run backup, and capture logs to file
 cron_backup() {
-    curl -fsS -m 10 --retry 5 -o /dev/null {{ healthchecks_host }}/{{ restic_healthchecks_id }}/start
+    curl -fsS -m 10 --retry 5 -o /dev/null {{ healthchecks_host }}/{{ vault_restic_healthchecks_id }}/start
     restic --verbose backup --files-from=$HOME/restic-include.txt --exclude-file=$HOME/restic-excludes.txt | tee -a $RESTIC_LOG_FILE
     exit_code=${PIPESTATUS[0]}
-    curl -fsS -m 10 --retry 5 -o /dev/null {{ healthchecks_host }}/{{ restic_healthchecks_id }}/$exit_code --data-binary "@$RESTIC_LOG_FILE"
+    curl -fsS -m 10 --retry 5 -o /dev/null {{ healthchecks_host }}/{{ vault_restic_healthchecks_id }}/$exit_code --data-binary "@$RESTIC_LOG_FILE"
     echo "Exit code: $exit_code"
 }
 
@@ -32,10 +32,10 @@ backup() {
 {% if restic_forget %}
 # Run forget and prune, and capture logs to file
 cron_forget() {
-    curl -fsS -m 10 --retry 5 -o /dev/null {{ healthchecks_host }}/{{ restic_forget_healthchecks_id }}/start
+    curl -fsS -m 10 --retry 5 -o /dev/null {{ healthchecks_host }}/{{ vault_restic_forget_healthchecks_id }}/start
     restic forget --prune $FORGET_OPTIONS | tee -a $RESTIC_LOG_FILE
     exit_code=${PIPESTATUS[0]}
-    curl -fsS -m 10 --retry 5 -o /dev/null {{ healthchecks_host }}/{{ restic_forget_healthchecks_id }}/$exit_code --data-binary "@$RESTIC_LOG_FILE"
+    curl -fsS -m 10 --retry 5 -o /dev/null {{ healthchecks_host }}/{{ vault_restic_forget_healthchecks_id }}/$exit_code --data-binary "@$RESTIC_LOG_FILE"
     echo "Exit code: $exit_code"
 }
 {% endif %}

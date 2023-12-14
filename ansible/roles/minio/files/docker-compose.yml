@@ -8,7 +8,7 @@ services:
     environment:
       - TZ=Europe/London
       - MINIO_ROOT_USER=jake
-      - MINIO_ROOT_PASSWORD={{ minio_root_password }}
+      - MINIO_ROOT_PASSWORD={{ vault_minio_root_password }}
     restart: unless-stopped
     labels:
       - traefik.enable=true

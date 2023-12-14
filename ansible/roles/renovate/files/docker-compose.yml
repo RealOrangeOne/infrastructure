@@ -6,7 +6,7 @@ services:
     user: "{{ docker_user.id }}"
     environment:
       - TZ={{ timezone }}
-      - GITHUB_COM_TOKEN={{ renovate_github_token }}
+      - GITHUB_COM_TOKEN={{ vault_renovate_github_token }}
       - DOCKER_HOST=tcp://docker_proxy:2375
       - LOG_LEVEL=debug  # Noisy, but required for debugging
     restart: unless-stopped

@@ -7,7 +7,7 @@ services:
       - TIMEZONE={{ timezone }}
       - DEBUG=0
       - ALLOWED_HOSTS=recipes.jakehoward.tech
-      - SECRET_KEY={{ tandoor_secret_key }}
+      - SECRET_KEY={{ vault_tandoor_secret_key }}
       - DATABASE_URL=postgres://tandoor:tandoor@db:5432/tandoor
       - DB_ENGINE=django.db.backends.postgresql
       - POSTGRES_HOST=db
@@ -17,10 +17,10 @@ services:
       - GUNICORN_MEDIA=1
       - EMAIL_HOST=smtp.eu.mailgun.org
       - EMAIL_PORT=465
-      - EMAIL_HOST_USER={{ tandoor_email_user }}
-      - EMAIL_HOST_PASSWORD={{ tandoor_email_password }}
+      - EMAIL_HOST_USER={{ vault_tandoor_email_user }}
+      - EMAIL_HOST_PASSWORD={{ vault_tandoor_email_password }}
       - EMAIL_USE_TLS=1
-      - DEFAULT_FROM_EMAIL={{ tandoor_email_from }}
+      - DEFAULT_FROM_EMAIL={{ vault_tandoor_email_from }}
     restart: unless-stopped
     labels:
       - traefik.enable=true

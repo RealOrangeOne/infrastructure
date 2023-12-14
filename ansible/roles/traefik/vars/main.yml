@@ -1,3 +1,0 @@
-gandi_api_key: "{{ vault_gandi_api_key }}"
-letsencrypt_email: "{{ vault_letsencrypt_email }}"
-cloudflare_api_token: "{{ vault_cloudflare_api_token }}"

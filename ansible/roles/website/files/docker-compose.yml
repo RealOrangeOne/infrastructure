@@ -8,14 +8,14 @@ x-website: &website
   environment:
     - TZ={{ timezone }}
     - DEBUG=false
-    - SECRET_KEY={{ website_secret_key }}
+    - SECRET_KEY={{ vault_website_secret_key }}
     - DATABASE_URL=postgres://website:website@db/website?conn_max_age=600
     - CACHE_URL=redis://redis/0
     - QUEUE_STORE_URL=redis://redis/1
     - RENDITION_CACHE_URL=redis://redis/2
     - SPOTIFY_PROXY_URL=http://spotify_public_proxy
-    - UNSPLASH_CLIENT_ID={{ unsplash_client_id }}
-    - SENTRY_DSN={{ website_sentry_dsn }}
+    - UNSPLASH_CLIENT_ID={{ vault_unsplash_client_id }}
+    - SENTRY_DSN={{ vault_website_sentry_dsn }}
     - BASE_HOSTNAME=theorangeone.net
     - WEB_CONCURRENCY=3
     - SEO_INDEX=true
@@ -80,9 +80,9 @@ services:
     restart: unless-stopped
     environment:
       - PORT=80
-      - SPOTIFY_CLIENT_ID={{ spotify_client_id }}
-      - SPOTIFY_CLIENT_SECRET={{ spotify_client_secret }}
-      - SENTRY_DSN={{ spotify_sentry_dsn }}
+      - SPOTIFY_CLIENT_ID={{ vault_spotify_client_id }}
+      - SPOTIFY_CLIENT_SECRET={{ vault_spotify_client_secret }}
+      - SENTRY_DSN={{ vault_spotify_sentry_dsn }}
 
 networks:
   traefik:

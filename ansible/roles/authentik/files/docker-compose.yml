@@ -6,18 +6,18 @@ x-env: &env
   - AUTHENTIK_POSTGRESQL__HOST=db
   - AUTHENTIK_POSTGRESQL__USER=authentik
   - AUTHENTIK_POSTGRESQL__NAME=authentik
-  - AUTHENTIK_POSTGRESQL__PASSWORD={{ authentik_db_password }}
-  - AUTHENTIK_SECRET_KEY={{ authentik_secret_key }}
+  - AUTHENTIK_POSTGRESQL__PASSWORD={{ vault_authentik_db_password }}
+  - AUTHENTIK_SECRET_KEY={{ vault_authentik_secret_key }}
   - AUTHENTIK_WEB__WORKERS=1
   - AUTHENTIK_DISABLE_UPDATE_CHECK=true
   - AUTHENTIK_ERROR_REPORTING__ENABLED=false
   - AUTHENTIK_DISABLE_STARTUP_ANALYTICS=true
   - AUTHENTIK_EMAIL__HOST=smtp.eu.mailgun.org
   - AUTHENTIK_EMAIL__PORT=465
-  - AUTHENTIK_EMAIL__USERNAME={{ authentik_email_username }}
-  - AUTHENTIK_EMAIL__PASSWORD={{ authentik_email_password }}
+  - AUTHENTIK_EMAIL__USERNAME={{ vault_authentik_email_username }}
+  - AUTHENTIK_EMAIL__PASSWORD={{ vault_authentik_email_password }}
   - AUTHENTIK_EMAIL__USE_TLS=true
-  - AUTHENTIK_EMAIL__FROM={{ authentik_email_from }}
+  - AUTHENTIK_EMAIL__FROM={{ vault_authentik_email_from }}
 
 services:
   server:
@@ -64,7 +64,7 @@ services:
     volumes:
       - /mnt/speed/dbs/postgres/authentik:/var/lib/postgresql/data
     environment:
-      - POSTGRES_PASSWORD={{ authentik_db_password }}
+      - POSTGRES_PASSWORD={{ vault_authentik_db_password }}
       - POSTGRES_USER=authentik
 
   redis:

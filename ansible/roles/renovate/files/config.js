@@ -1,6 +1,6 @@
 module.exports = {
   endpoint: 'https://git.theorangeone.net/',
-  token: '{{ renovate_gitea_token }}',
+  token: '{{ vault_renovate_gitea_token }}',
   platform: 'gitea',
   //dryRun: true,
   autodiscover: true,

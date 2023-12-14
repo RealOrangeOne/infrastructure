@@ -25,21 +25,21 @@ services:
       - traefik.http.routers.plausible-embed.middlewares=plausible-index
 
     environment:
-      - SECRET_KEY_BASE={{ plausible_secret_key }}
-      - SIGNING_SALT={{ plausible_signing_salt }}
+      - SECRET_KEY_BASE={{ vault_plausible_secret_key }}
+      - SIGNING_SALT={{ vault_plausible_signing_salt }}
       - DATABASE_URL=postgres://plausible:plausible@db:5432/plausible
       - DISABLE_REGISTRATION=true
       - DISABLE_SUBSCRIPTION=true
       - CLICKHOUSE_DATABASE_URL=http://clickhouse:8123/plausible
       - BASE_URL=https://elbisualp.theorangeone.net
-      - GOOGLE_CLIENT_ID={{ plausible_google_client_id }}
-      - GOOGLE_CLIENT_SECRET={{ plausible_google_client_secret }}
+      - GOOGLE_CLIENT_ID={{ vault_plausible_google_client_id }}
+      - GOOGLE_CLIENT_SECRET={{ vault_plausible_google_client_secret }}
       - RELEASE_DISTRIBUTION=none
-      - MAILER_EMAIL={{ plausible_from_email }}
+      - MAILER_EMAIL={{ vault_plausible_from_email }}
       - SMTP_HOST_ADDR=smtp.eu.mailgun.org
       - SMTP_HOST_PORT=465
-      - SMTP_USER_NAME={{ plausible_smtp_user }}
-      - SMTP_USER_PWD={{ plausible_smtp_password }}
+      - SMTP_USER_NAME={{ vault_plausible_smtp_user }}
+      - SMTP_USER_PWD={{ vault_plausible_smtp_password }}
       - SMTP_HOST_SSL_ENABLED=true
 
   clickhouse:

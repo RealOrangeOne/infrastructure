@@ -34,7 +34,7 @@ scrape_configs:
   - job_name: homeassistant
     metrics_path: /api/prometheus
     authorization:
-      credentials: "{{ homeassistant_token }}"
+      credentials: "{{ vault_homeassistant_token }}"
     metric_relabel_configs:
       - source_labels: [__name__]
         regex: python_.+
@@ -121,7 +121,7 @@ scrape_configs:
       module: [http]
     static_configs:
       - targets:
-          - https://hc-ping.com/{{ prometheus_healthcheck_uuid }}
+          - https://hc-ping.com/{{ vault_prometheus_healthcheck_uuid }}
     relabel_configs:
       - source_labels: [__address__]
         target_label: __param_target
@@ -132,7 +132,7 @@ scrape_configs:
 
   - job_name: healthchecks
     scheme: https
-    metrics_path: /projects/{{ healthchecks_project_uuid }}/metrics/{{ healthcheck_api_token }}
+    metrics_path: /projects/{{ vault_healthchecks_project_uuid }}/metrics/{{ vault_healthcheck_api_token }}
     static_configs:
       - targets: [healthchecks.io]
 

@@ -12,10 +12,10 @@ services:
       - DATABASE_URL=postgresql://mastodon:mastodon@db/mastodon
       - REDIS_URL=redis://redis
       - SIDEKIQ_REDIS_URL=redis://redis/1
-      - SECRET_KEY_BASE={{ secret_key_base }}
-      - OTP_SECRET={{ otp_secret }}
-      - VAPID_PRIVATE_KEY={{ vapid_private_key }}
-      - VAPID_PUBLIC_KEY={{ vapid_public_key }}
+      - SECRET_KEY_BASE={{ vault_secret_key_base }}
+      - OTP_SECRET={{ vault_otp_secret }}
+      - VAPID_PRIVATE_KEY={{ vault_vapid_private_key }}
+      - VAPID_PUBLIC_KEY={{ vault_vapid_public_key }}
       - TRUSTED_PROXY_IP=172.20.0.1
       - SINGLE_USER_MODE=true
       - DEFAULT_LOCALE=en

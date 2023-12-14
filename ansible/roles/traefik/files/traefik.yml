@@ -54,7 +54,7 @@ api:
 certificatesResolvers:
   le:
     acme:
-      email: "{{ letsencrypt_email }}"
+      email: "{{ vault_letsencrypt_email }}"
       storage: /etc/traefik/acme.json
       dnsChallenge:
         provider: cloudflare
@@ -65,7 +65,7 @@ certificatesResolvers:
 
   gandi:
     acme:
-      email: "{{ letsencrypt_email }}"
+      email: "{{ vault_letsencrypt_email }}"
       storage: /etc/traefik/acme.json
       dnsChallenge:
         provider: gandiv5
