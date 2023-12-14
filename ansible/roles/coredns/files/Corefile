@@ -1,0 +1,21 @@
+. {
+    errors
+    cancel
+
+    # Only allow requests to `.docker` records
+    view docker {
+        expr name() matches '^[a-zA-Z0-9-_]+\\.docker\\.$'
+    }
+
+    # Strip the `.docker` suffix
+    rewrite name suffix .docker . answer auto
+
+    # Forward requests to Docker's DNS server
+    forward . 127.0.0.11
+}
+
+. {
+    acl {
+        block
+    }
+}

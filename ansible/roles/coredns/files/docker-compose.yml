@@ -1,0 +1,16 @@
+version: "2.3"
+
+services:
+  coredns:
+    image: coredns/coredns:latest
+    volumes:
+      - ./Corefile:/home/nonroot/Corefile:ro
+    ports:
+      - "{{ private_ip }}:5353:53/udp"
+    networks:
+      - default
+      - traefik
+
+networks:
+  traefik:
+    external: true

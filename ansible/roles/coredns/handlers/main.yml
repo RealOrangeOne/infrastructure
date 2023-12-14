@@ -1,0 +1,4 @@
+- name: restart coredns
+  shell:
+    chdir: /opt/coredns
+    cmd: "{{ docker_update_command }}"

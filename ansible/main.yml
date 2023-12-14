@@ -105,6 +105,7 @@
     - commento
     - website
     - remark42
+    - coredns
 
 - hosts: jellyfin
   roles:
