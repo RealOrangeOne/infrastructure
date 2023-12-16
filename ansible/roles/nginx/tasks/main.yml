@@ -4,9 +4,9 @@
   when: ansible_os_family != 'Archlinux'
   become: true
 
-- name: Install nginx on Arch
+- name: Install nginx (mainline) on Arch
   package:
-    name: nginx
+    name: nginx-mainline
   when: ansible_os_family == 'Archlinux'
   become: true
 
