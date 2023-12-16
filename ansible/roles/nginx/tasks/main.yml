@@ -36,3 +36,4 @@
     mode: "0644"
   become: true
   notify: reload nginx
+  when: nginx_https_redirect
