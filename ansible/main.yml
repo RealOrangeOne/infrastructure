@@ -8,6 +8,7 @@
 
 - hosts: casey
   roles:
+    - nginx
     - gateway
     - nebula
     - fail2ban_ssh
@@ -71,8 +72,7 @@
 
 - hosts: ingress
   roles:
-    - role: nginxinc.nginx  # The nginx in debian's repos is very old
-      become: true
+    - nginx
     - ingress
     - nebula
 
@@ -94,6 +94,7 @@
 
 - hosts: qbittorrent
   roles:
+    - nginx
     - qbittorrent
     - http_proxy
 
@@ -131,4 +132,5 @@
 
 - hosts: pve-dokku
   roles:
+    - nginx
     - dokku

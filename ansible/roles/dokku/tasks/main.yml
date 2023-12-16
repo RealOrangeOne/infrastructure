@@ -43,13 +43,12 @@
     domains: d.theorangeone.net
   become: true
 
-- name: Install custom nginx config
+- name: Install nginx config
   template:
     src: files/nginx.conf
-    dest: /etc/nginx/nginx.conf
-    validate: nginx -t -c %s
+    dest: /etc/nginx/http.d/dokku.conf
     mode: "644"
-  notify: restart nginx
+  notify: reload nginx
   become: true
 
 # https://dokku.com/docs/advanced-usage/backup-recovery/
@@ -61,3 +60,4 @@
     user: root
     job: rsync --archive --progress -h /var/lib/dokku/{config,data,services} /home/dokku --exclude '/home/dokku/**/cache/*' /mnt/tank/app-data/dokku/
     cron_file: dokku-data-sync
+  become: true

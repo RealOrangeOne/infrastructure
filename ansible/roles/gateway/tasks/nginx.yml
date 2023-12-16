@@ -1,26 +1,14 @@
-- name: Install nginx
-  package:
-    name: nginx
-  become: true
-
 - name: Nginx config
   template:
     src: files/nginx.conf
-    dest: /etc/nginx/nginx.conf
-    validate: nginx -t -c %s
+    dest: /etc/nginx/stream.d/gateway.conf
     mode: "0644"
   become: true
   register: nginx_config
 
-- name: Enable Nginx
+- name: Reload Nginx
   service:
     name: nginx
-    enabled: true
-  become: true
-
-- name: Restart Nginx
-  service:
-    name: nginx
-    state: restarted
+    state: reloaded
   become: true
   when: nginx_config.changed

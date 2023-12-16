@@ -4,10 +4,10 @@
     state: restarted
   become: true
 
-- name: restart nginx
+- name: reload nginx
   service:
     name: nginx
-    state: restarted
+    state: reloaded
   become: true
 
 - name: reload nftables

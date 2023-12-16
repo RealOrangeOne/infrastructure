@@ -1,0 +1,38 @@
+- name: Install nginx
+  import_role:
+    name: nginxinc.nginx
+  when: ansible_os_family != 'Archlinux'
+  become: true
+
+- name: Install nginx on Arch
+  package:
+    name: nginx
+  when: ansible_os_family == 'Archlinux'
+  become: true
+
+- name: Create config directories
+  file:
+    path: /etc/nginx/{{ item }}
+    state: directory
+    mode: "0755"
+  loop:
+    - http.d
+    - stream.d
+  become: true
+
+- name: Install config
+  template:
+    src: files/nginx.conf
+    dest: /etc/nginx/nginx.conf
+    validate: nginx -t -c %s
+    mode: "0644"
+  become: true
+  notify: reload nginx
+
+- name: Install HTTPS redirect
+  template:
+    src: files/nginx-https-redirect.conf
+    dest: /etc/nginx/http.d/https-redirect.conf
+    mode: "0644"
+  become: true
+  notify: reload nginx
