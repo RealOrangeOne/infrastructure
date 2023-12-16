@@ -10,6 +10,18 @@
   when: ansible_os_family == 'Archlinux'
   become: true
 
+- name: Install nginx-mod-http-headers-more
+  package:
+    name: libnginx-mod-http-headers-more-filter
+  when: ansible_os_family != 'Archlinux'
+  become: true
+
+- name: Install nginx-mod-http-headers-more on Arch
+  kewlfft.aur.aur:
+    name: nginx-mainline-mod-headers-more
+  when: ansible_os_family == 'Archlinux'
+  become: true
+
 - name: Create config directories
   file:
     path: /etc/nginx/{{ item }}

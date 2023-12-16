@@ -2,6 +2,7 @@ collections:
   - ansible.posix
   - community.general
   - community.docker
+  - kewlfft.aur
   - name: https://github.com/prometheus-community/ansible
     type: git
 
