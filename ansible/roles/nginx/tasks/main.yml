@@ -22,6 +22,18 @@
   when: ansible_os_family == 'Archlinux'
   become: true
 
+- name: Install nginx-mod-brotli
+  package:
+    name: libnginx-mod-http-brotli-filter
+  when: ansible_os_family != 'Archlinux'
+  become: true
+
+- name: Install nginx-mod-brotli on Arch
+  kewlfft.aur.aur:
+    name: nginx-mainline-mod-brotli
+  when: ansible_os_family == 'Archlinux'
+  become: true
+
 - name: Create config directories
   file:
     path: /etc/nginx/{{ item }}
