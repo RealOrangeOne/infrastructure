@@ -34,6 +34,10 @@
   when: ansible_os_family == 'Archlinux'
   become: true
 
+- name: Generate Diffie-Hellman parameters
+  community.crypto.openssl_dhparam:
+    path: /etc/nginx/dhparams.pem
+
 - name: Create config directories
   file:
     path: /etc/nginx/{{ item }}
@@ -42,6 +46,7 @@
   loop:
     - http.d
     - stream.d
+    - includes
   become: true
 
 - name: Install config
@@ -50,6 +55,15 @@
     dest: /etc/nginx/nginx.conf
     validate: nginx -t -c %s
     mode: "0644"
+  become: true
+  notify: reload nginx
+
+- name: Copy config files
+  template:
+    src: "{{ item }}"
+    dest: "/etc/nginx/includes/{{ item | basename }}"
+    mode: "0644"
+  with_fileglob: 'files/includes/*.conf'
   become: true
   notify: reload nginx
 
