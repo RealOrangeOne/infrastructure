@@ -10,27 +10,21 @@
   when: ansible_os_family == 'Archlinux'
   become: true
 
-- name: Install nginx-mod-http-headers-more
+- name: Install nginx modules
   package:
-    name: libnginx-mod-http-headers-more-filter
+    name: "{{ item }}"
+  loop:
+    - libnginx-mod-http-headers-more-filter
+    - libnginx-mod-http-brotli-filter
   when: ansible_os_family != 'Archlinux'
   become: true
 
-- name: Install nginx-mod-http-headers-more on Arch
+- name: Install nginx modules (on Arch)
   kewlfft.aur.aur:
-    name: nginx-mainline-mod-headers-more
-  when: ansible_os_family == 'Archlinux'
-  become: true
-
-- name: Install nginx-mod-brotli
-  package:
-    name: libnginx-mod-http-brotli-filter
-  when: ansible_os_family != 'Archlinux'
-  become: true
-
-- name: Install nginx-mod-brotli on Arch
-  kewlfft.aur.aur:
-    name: nginx-mainline-mod-brotli
+    name: "{{ item }}"
+  loop:
+    - nginx-mainline-mod-headers-more
+    - nginx-mainline-mod-brotli
   when: ansible_os_family == 'Archlinux'
   become: true
 
