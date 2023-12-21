@@ -6,6 +6,7 @@ skip_list:
   - name[casing]
   - name[play]
   - no-changed-when
+  - var-naming[no-role-prefix]
 
 exclude_paths:
   - galaxy_roles/
