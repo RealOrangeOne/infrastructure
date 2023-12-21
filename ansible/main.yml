@@ -99,6 +99,8 @@
 
 - hosts: walker
   roles:
+    - role: geerlingguy.certbot
+      become: true
     - nebula
     - coredns
     - nginx

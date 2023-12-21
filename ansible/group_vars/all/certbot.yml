@@ -1,0 +1,13 @@
+certbot_install_method: package
+certbot_auto_renew: true
+certbot_auto_renew_user: root
+certbot_auto_renew_hour: 23
+certbot_auto_renew_minute: 30
+certbot_auto_renew_options: --quiet --post-hook "systemctl reload nginx"
+certbot_admin_email: "{{ vault_certbot_admin_email }}"
+
+certbot_create_method: webroot
+
+certbot_webroot: /var/www/certbot-webroot
+
+certbot_create_if_missing: true

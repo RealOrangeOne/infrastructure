@@ -45,6 +45,6 @@
   vars:
     server_name: plausible.theorangeone.net elbisualp.theorangeone.net
     upstream: plausible-plausible-1.docker:8000
-    ssl_cert_path: /etc/nginx/ssl/theorangeone.net
+    ssl_cert_path: /etc/letsencrypt/live/plausible.theorangeone.net
     location_extra: |
       rewrite ^/js/index.js$ /js/plausible.js last;

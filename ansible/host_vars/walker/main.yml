@@ -2,3 +2,12 @@ restic_backup_locations:
   - /opt
 
 nginx_https_redirect: true
+
+certbot_certs:
+  - domains:
+      - theorangeone.net
+  - domains:
+      - commento.theorangeone.net
+  - domains:
+      - plausible.theorangeone.net
+      - elbisualp.theorangeone.net

@@ -20,3 +20,5 @@ roles:
     version: v2022.10.17
   - src: nginxinc.nginx
     version: 0.24.1
+  - src: geerlingguy.certbot
+    version: 5.1.0

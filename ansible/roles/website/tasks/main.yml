@@ -29,6 +29,6 @@
   vars:
     server_name: theorangeone.net
     upstream: website-nginx-1.docker:8000
-    ssl_cert_path: /etc/nginx/ssl/theorangeone.net
+    ssl_cert_path: /etc/letsencrypt/live/theorangeone.net
     location_extra: |
       more_set_headers "Server: $upstream_http_server";
