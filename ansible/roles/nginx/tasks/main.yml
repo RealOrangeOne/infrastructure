@@ -43,21 +43,20 @@
     - includes
   become: true
 
-- name: Install config
-  template:
-    src: files/nginx.conf
-    dest: /etc/nginx/nginx.conf
-    validate: nginx -t -c %s
-    mode: "0644"
-  become: true
-  notify: reload nginx
-
 - name: Copy config files
   template:
     src: "{{ item }}"
     dest: "/etc/nginx/includes/{{ item | basename }}"
     mode: "0644"
   with_fileglob: 'files/includes/*.conf'
+  become: true
+  notify: reload nginx
+
+- name: Install config
+  template:
+    src: files/nginx.conf
+    dest: /etc/nginx/nginx.conf
+    mode: "0644"
   become: true
   notify: reload nginx
 
