@@ -52,7 +52,6 @@
 
 - hosts:
     - pve-docker
-    - walker
   roles:
     - traefik
 
@@ -101,12 +100,13 @@
 - hosts: walker
   roles:
     - nebula
+    - coredns
+    - nginx
     - plausible
     - restic
     - commento
     - website
     - remark42
-    - coredns
 
 - hosts: jellyfin
   roles:

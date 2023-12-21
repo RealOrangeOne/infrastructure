@@ -9,8 +9,8 @@ services:
       - "{{ private_ip }}:5353:53/udp"
     networks:
       - default
-      - traefik
+      - coredns
 
 networks:
-  traefik:
+  coredns:
     external: true

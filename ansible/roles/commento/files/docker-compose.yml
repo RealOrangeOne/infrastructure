@@ -8,10 +8,7 @@ services:
       - db
     networks:
       - default
-      - traefik
-    labels:
-      - traefik.enable=true
-      - traefik.http.routers.commento.rule=Host(`commento.theorangeone.net`)
+      - coredns
     environment:
       - COMMENTO_POSTGRES=postgres://commento:commento@db:5432/commento?sslmode=disable
       - COMMENTO_ORIGIN=https://commento.theorangeone.net
@@ -37,5 +34,5 @@ services:
       - POSTGRES_USER=commento
 
 networks:
-  traefik:
+  coredns:
     external: true

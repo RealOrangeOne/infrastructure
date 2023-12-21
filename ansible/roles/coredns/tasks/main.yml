@@ -1,3 +1,9 @@
+- name: Create network
+  docker_network:
+    name: coredns
+    internal: true
+  become: true
+
 - name: Create install directory
   file:
     path: /opt/coredns

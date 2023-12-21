@@ -30,12 +30,9 @@ services:
     <<: *website
     user: root
     command: /app/etc/entrypoints/nginx
-    labels:
-      - traefik.enable=true
-      - traefik.http.routers.website.rule=Host(`theorangeone.net`) || Host(`jakehoward.tech`)
     networks:
       - default
-      - traefik
+      - coredns
     depends_on:
       - django
 
@@ -85,5 +82,5 @@ services:
       - SENTRY_DSN={{ vault_spotify_sentry_dsn }}
 
 networks:
-  traefik:
+  coredns:
     external: true

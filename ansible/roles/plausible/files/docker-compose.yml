@@ -10,20 +10,7 @@ services:
       - clickhouse
     networks:
       - default
-      - traefik
-    labels:
-      - traefik.enable=true
-      - traefik.http.routers.plausible.rule=Host(`plausible.theorangeone.net`)
-      - traefik.http.services.plausible-plausible.loadbalancer.server.port=8000  # https://github.com/plausible/analytics/pull/237
-
-      - traefik.http.routers.plausible-embed.rule=Host(`elbisualp.theorangeone.net`)
-      - traefik.http.routers.plausible-embed.service=plausible-plausible
-
-      # https://github.com/plausible/analytics/pull/340
-      - traefik.http.middlewares.plausible-index.replacepathregex.regex=/js/index.js
-      - traefik.http.middlewares.plausible-index.replacepathregex.replacement=/js/plausible.js
-      - traefik.http.routers.plausible-embed.middlewares=plausible-index
-
+      - coredns
     environment:
       - SECRET_KEY_BASE={{ vault_plausible_secret_key }}
       - SIGNING_SALT={{ vault_plausible_signing_salt }}
@@ -66,5 +53,5 @@ services:
       - POSTGRES_USER=plausible
 
 networks:
-  traefik:
+  coredns:
     external: true

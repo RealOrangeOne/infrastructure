@@ -18,3 +18,15 @@
     validate: docker-compose -f %s config
   notify: restart commento
   become: true
+
+- name: Install nginx config
+  template:
+    src: files/nginx-docker.conf
+    dest: /etc/nginx/http.d/commento.conf
+    mode: "0644"
+  notify: reload nginx
+  become: true
+  vars:
+    server_name: commento.theorangeone.net
+    upstream: commento-commento-1.docker:8080
+    ssl_cert_path: /etc/nginx/ssl/theorangeone.net

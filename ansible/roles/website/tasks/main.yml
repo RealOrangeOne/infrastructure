@@ -18,3 +18,17 @@
     validate: docker-compose -f %s config
   notify: restart website
   become: true
+
+- name: Install nginx config
+  template:
+    src: files/nginx-docker.conf
+    dest: /etc/nginx/http.d/website.conf
+    mode: "0644"
+  notify: reload nginx
+  become: true
+  vars:
+    server_name: theorangeone.net
+    upstream: website-nginx-1.docker:8000
+    ssl_cert_path: /etc/nginx/ssl/theorangeone.net
+    location_extra: |
+      more_set_headers "Server: $upstream_http_server";

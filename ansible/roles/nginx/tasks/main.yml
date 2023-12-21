@@ -46,9 +46,9 @@
 - name: Copy config files
   template:
     src: "{{ item }}"
-    dest: "/etc/nginx/includes/{{ item | basename }}"
+    dest: /etc/nginx/includes/{{ item | basename }}
     mode: "0644"
-  with_fileglob: 'files/includes/*.conf'
+  with_fileglob: files/includes/*.conf
   become: true
   notify: reload nginx
 
