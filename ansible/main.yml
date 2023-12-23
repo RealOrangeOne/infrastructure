@@ -68,6 +68,7 @@
     - vikunja
     - authentik
     - minio
+    - ntfy
 
 - hosts: ingress
   roles:

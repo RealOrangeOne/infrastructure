@@ -1,0 +1,4 @@
+- name: restart ntfy
+  shell:
+    chdir: /opt/ntfy
+    cmd: "{{ docker_update_command }}"

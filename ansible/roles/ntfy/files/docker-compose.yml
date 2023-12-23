@@ -1,0 +1,36 @@
+version: "2.3"
+
+services:
+  ntfy:
+    image: binwiederhier/ntfy:latest
+    command: serve
+    user: "{{ docker_user.id }}"
+    environment:
+      - TZ={{ timezone }}
+      - NTFY_BASE_URL=https://ntfy.jakehoward.tech
+      - NTFY_AUTH_FILE=/etc/ntfy/auth.db
+      - NTFY_CACHE_FILE=/etc/ntfy/cache.db
+      - NTFY_AUTH_DEFAULT_ACCESS=deny-all
+      - NTFY_CACHE_DURATION=24h
+      - NTFY_ATTACHMENT_CACHE_DIR=/etc/ntfy/attachments
+      - NTFY_ATTACHMENT_EXPIRY_DURATION=24h
+      - NTFY_WEB_PUSH_PUBLIC_KEY={{ vault_ntfy_web_push_public_key }}
+      - NTFY_WEB_PUSH_PRIVATE_KEY={{ vault_ntfy_web_push_private_key }}
+      - NTFY_WEB_PUSH_FILE=/etc/ntfy/webpush.db
+      - NTFY_WEB_PUSH_EMAIL_ADDRESS={{ vault_ntfy_web_push_email }}
+    restart: unless-stopped
+    volumes:
+      - "{{ app_data_dir }}/ntfy:/etc/ntfy"
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.ntfy.rule=Host(`ntfy.jakehoward.tech`)
+    tmpfs:
+      - /var/cache/ntfy
+      - /tmp
+    networks:
+      - default
+      - traefik
+
+networks:
+  traefik:
+    external: true

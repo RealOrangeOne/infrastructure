@@ -62,6 +62,7 @@ scrape_configs:
           - https://media.jakehoward.tech
           - https://minio.jakehoward.tech/minio/health/live
           - https://notes.theorangeone.net
+          - https://ntfy.jakehoward.tech/v1/health
           - https://plausible.theorangeone.net
           - https://recipes.jakehoward.tech
           - https://s3.jakehoward.tech/minio/health/live
