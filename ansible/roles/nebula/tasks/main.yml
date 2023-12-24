@@ -5,14 +5,29 @@
     mode: "0700"
   become: true
 
-- name: Install binaries
-  unarchive:
-    src: https://github.com/slackhq/nebula/releases/download/v{{ nebula_version }}/nebula-linux-amd64.tar.gz
-    dest: /usr/bin
-    remote_src: true
-    mode: "0755"
+- name: Install nebula
+  package:
+    name: nebula
+  when: ansible_os_family == 'Archlinux'
   become: true
+
+- name: Manually install nebula
+  block:
+    - name: Install binaries
+      unarchive:
+        src: https://github.com/slackhq/nebula/releases/download/v{{ nebula_version }}/nebula-linux-amd64.tar.gz
+        dest: /usr/bin
+        remote_src: true
+        mode: "0755"
+
+    - name: Install service
+      get_url:
+        url: https://raw.githubusercontent.com/slackhq/nebula/v{{ nebula_version }}/dist/arch/nebula.service
+        dest: /usr/lib/systemd/system/nebula.service
+        mode: "0644"
+  when: ansible_os_family != 'Archlinux'
   notify: restart nebula
+  become: true
 
 - name: Install config
   template:
@@ -40,13 +55,6 @@
     - "{{ ansible_hostname }}.crt"
   become: true
   notify: restart nebula
-
-- name: Install service
-  get_url:
-    url: https://raw.githubusercontent.com/slackhq/nebula/v{{ nebula_version }}/dist/arch/nebula.service
-    dest: /usr/lib/systemd/system/nebula.service
-    mode: "0644"
-  become: true
 
 - name: Enable service
   service:
