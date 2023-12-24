@@ -31,6 +31,7 @@
 - name: Generate Diffie-Hellman parameters
   community.crypto.openssl_dhparam:
     path: /etc/nginx/dhparams.pem
+  become: true
 
 - name: Create config directories
   file:
