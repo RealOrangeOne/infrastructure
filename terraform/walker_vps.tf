@@ -18,11 +18,11 @@ resource "vultr_instance" "walker" {
 resource "vultr_reverse_ipv4" "walker_reverse_ipv4" {
   instance_id = vultr_instance.walker.id
   ip          = vultr_instance.walker.main_ip
-  reverse     = "walker.sys.theorangeone.net"
+  reverse     = cloudflare_record.sys_domain_walker.hostname
 }
 
 resource "vultr_reverse_ipv6" "walker_reverse_ipv6" {
   instance_id = vultr_instance.walker.id
   ip          = vultr_instance.walker.v6_main_ip
-  reverse     = "walker.sys.theorangeone.net"
+  reverse     = cloudflare_record.sys_domain_walker.hostname
 }
