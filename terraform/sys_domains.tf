@@ -33,7 +33,7 @@ resource "cloudflare_record" "sys_domain_walker_v6" {
 resource "cloudflare_record" "sys_domain_pve" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "pve.sys"
-  value   = cloudflare_record.sys_domain_casey.hostname
-  type    = "CNAME"
+  value   = linode_instance.casey.ip_address
+  type    = "A"
   ttl     = 1
 }
