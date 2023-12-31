@@ -29,3 +29,11 @@ resource "cloudflare_record" "sys_domain_walker_v6" {
   type    = "AAAA"
   ttl     = 1
 }
+
+resource "cloudflare_record" "sys_domain_pve" {
+  zone_id = cloudflare_zone.theorangeonenet.id
+  name    = "pve.sys"
+  value   = cloudflare_record.sys_domain_casey.hostname
+  type    = "CNAME"
+  ttl     = 1
+}
