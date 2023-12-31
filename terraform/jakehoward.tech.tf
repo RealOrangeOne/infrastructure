@@ -63,96 +63,96 @@ resource "cloudflare_record" "jakehowardtech_dmarc" {
 resource "cloudflare_record" "jakehowardtech_wallabag" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "wallabag"
-  value   = linode_instance.casey.ip_address
-  type    = "A"
+  value   = cloudflare_record.sys_domain_pve.hostname
+  type    = "CNAME"
   ttl     = 1
 }
 
 resource "cloudflare_record" "jakehowardtech_ttrss" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "tt-rss"
-  value   = linode_instance.casey.ip_address
-  type    = "A"
+  value   = cloudflare_record.sys_domain_pve.hostname
+  type    = "CNAME"
   ttl     = 1
 }
 
 resource "cloudflare_record" "jakehowardtech_speed" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "speed"
-  value   = linode_instance.casey.ip_address
-  type    = "A"
+  value   = cloudflare_record.sys_domain_pve.hostname
+  type    = "CNAME"
   ttl     = 1
 }
 
 resource "cloudflare_record" "jakehowardtech_quassel" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "quassel"
-  value   = linode_instance.casey.ip_address
-  type    = "A"
+  value   = cloudflare_record.sys_domain_pve.hostname
+  type    = "CNAME"
   ttl     = 1
 }
 
 resource "cloudflare_record" "jakehowardtech_media" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "media"
-  value   = linode_instance.casey.ip_address
-  type    = "A"
+  value   = cloudflare_record.sys_domain_pve.hostname
+  type    = "CNAME"
   ttl     = 1
 }
 
 resource "cloudflare_record" "jakehowardtech_matrix" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "matrix"
-  value   = linode_instance.casey.ip_address
-  type    = "A"
+  value   = cloudflare_record.sys_domain_pve.hostname
+  type    = "CNAME"
   ttl     = 1
 }
 
 resource "cloudflare_record" "jakehowardtech_intersect" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "intersect"
-  value   = linode_instance.casey.ip_address
-  type    = "A"
+  value   = cloudflare_record.sys_domain_pve.hostname
+  type    = "CNAME"
   ttl     = 1
 }
 
 resource "cloudflare_record" "jakehowardtech_calibre" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "calibre"
-  value   = linode_instance.casey.ip_address
-  type    = "A"
+  value   = cloudflare_record.sys_domain_pve.hostname
+  type    = "CNAME"
   ttl     = 1
 }
 
 resource "cloudflare_record" "jakehowardtech_homeassistant" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "homeassistant"
-  value   = linode_instance.casey.ip_address
-  type    = "A"
+  value   = cloudflare_record.sys_domain_pve.hostname
+  type    = "CNAME"
   ttl     = 1
 }
 
 resource "cloudflare_record" "jakehowardtech_grafana" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "grafana"
-  value   = linode_instance.casey.ip_address
-  type    = "A"
+  value   = cloudflare_record.sys_domain_pve.hostname
+  type    = "CNAME"
   ttl     = 1
 }
 
 resource "cloudflare_record" "jakehowardtech_vaultwarden" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "vaultwarden"
-  value   = linode_instance.casey.ip_address
-  type    = "A"
+  value   = cloudflare_record.sys_domain_pve.hostname
+  type    = "CNAME"
   ttl     = 1
 }
 
 resource "cloudflare_record" "jakehowardtech_tandoor" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "recipes"
-  value   = linode_instance.casey.ip_address
-  type    = "A"
+  value   = cloudflare_record.sys_domain_pve.hostname
+  type    = "CNAME"
   ttl     = 1
 }
 
@@ -183,8 +183,8 @@ resource "cloudflare_record" "jakehowardtech_mailgun_dmarc" {
 resource "cloudflare_record" "jakehowardtech_matrix_admin" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "synapse-admin"
-  value   = linode_instance.casey.ip_address
-  type    = "A"
+  value   = cloudflare_record.sys_domain_pve.hostname
+  type    = "CNAME"
   ttl     = 1
 }
 
@@ -200,48 +200,48 @@ resource "cloudflare_record" "jakehowardtech_apex" {
 resource "cloudflare_record" "jakehowardtech_collabora" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "collabora"
-  value   = linode_instance.casey.ip_address
-  type    = "A"
+  value   = cloudflare_record.sys_domain_pve.hostname
+  type    = "CNAME"
   ttl     = 1
 }
 
 resource "cloudflare_record" "jakehowardtech_tasks" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "tasks"
-  value   = linode_instance.casey.ip_address
-  type    = "A"
+  value   = cloudflare_record.sys_domain_pve.hostname
+  type    = "CNAME"
   ttl     = 1
 }
 
 resource "cloudflare_record" "jakehowardtech_auth" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "auth"
-  value   = linode_instance.casey.ip_address
-  type    = "A"
+  value   = cloudflare_record.sys_domain_pve.hostname
+  type    = "CNAME"
   ttl     = 1
 }
 
 resource "cloudflare_record" "jakehowardtech_minio" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "minio"
-  value   = linode_instance.casey.ip_address
-  type    = "A"
+  value   = cloudflare_record.sys_domain_pve.hostname
+  type    = "CNAME"
   ttl     = 1
 }
 
 resource "cloudflare_record" "jakehowardtech_s3" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "s3"
-  value   = linode_instance.casey.ip_address
-  type    = "A"
+  value   = cloudflare_record.sys_domain_pve.hostname
+  type    = "CNAME"
   ttl     = 1
 }
 
 resource "cloudflare_record" "jakehowardtech_ntfy" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "ntfy"
-  value   = linode_instance.casey.ip_address
-  type    = "A"
+  value   = cloudflare_record.sys_domain_pve.hostname
+  type    = "CNAME"
   ttl     = 1
 }
 

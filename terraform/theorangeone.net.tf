@@ -5,16 +5,16 @@ resource "cloudflare_zone" "theorangeonenet" {
 resource "cloudflare_record" "theorangeonenet_git" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "git"
-  value   = linode_instance.casey.ip_address
-  type    = "A"
+  value   = cloudflare_record.sys_domain_pve.hostname
+  type    = "CNAME"
   ttl     = 1
 }
 
 resource "cloudflare_record" "theorangeonenet_whoami" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "whoami"
-  value   = linode_instance.casey.ip_address
-  type    = "A"
+  value   = cloudflare_record.sys_domain_pve.hostname
+  type    = "CNAME"
   ttl     = 1
 }
 
@@ -109,7 +109,7 @@ resource "cloudflare_record" "theorangeonenet_srv_matrix" {
   data = {
     service  = "_matrix"
     proto    = "_tcp"
-    name     = "theorangeone.net"
+    name     = cloudflare_zone.theorangeonenet.zone
     priority = 10
     weight   = 0
     port     = 8448
@@ -120,8 +120,8 @@ resource "cloudflare_record" "theorangeonenet_srv_matrix" {
 resource "cloudflare_record" "theorangeonenet_matrix" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "matrix"
-  value   = linode_instance.casey.ip_address
-  type    = "A"
+  value   = cloudflare_record.sys_domain_pve.hostname
+  type    = "CNAME"
   ttl     = 1
 }
 
@@ -152,16 +152,16 @@ resource "cloudflare_record" "theorangeonenet_notes" {
 resource "cloudflare_record" "theorangeonenet_privatebin" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "bin"
-  value   = linode_instance.casey.ip_address
-  type    = "A"
+  value   = cloudflare_record.sys_domain_pve.hostname
+  type    = "CNAME"
   ttl     = 1
 }
 
 resource "cloudflare_record" "theorangeonenet_dokku" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "d"
-  value   = linode_instance.casey.ip_address
-  type    = "A"
+  value   = cloudflare_record.sys_domain_pve.hostname
+  type    = "CNAME"
   ttl     = 1
 }
 
@@ -224,8 +224,8 @@ resource "cloudflare_record" "theorangeonenet_mailgun_dmarc" {
 resource "cloudflare_record" "theorangeonenet_mastodon" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "mastodon"
-  value   = linode_instance.casey.ip_address
-  type    = "A"
+  value   = cloudflare_record.sys_domain_pve.hostname
+  type    = "CNAME"
   ttl     = 1
 }
 

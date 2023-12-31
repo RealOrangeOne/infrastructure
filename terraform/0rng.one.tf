@@ -5,10 +5,10 @@ resource "gandi_livedns_domain" "orngone" {
 resource "gandi_livedns_record" "orngone_apex" {
   zone = gandi_livedns_domain.orngone.id
   name = "@"
-  type = "A"
+  type = "ALIAS" # Gandi doesn't support CNAME-flattening
   ttl  = 3600
   values = [
-    linode_instance.casey.ip_address
+    cloudflare_record.sys_domain_pve.hostname
   ]
 }
 
