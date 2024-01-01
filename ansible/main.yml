@@ -129,7 +129,7 @@
 
 - hosts: tang
   roles:
-    - pihole
+    - adguardhome
     - role: prometheus.prometheus.node_exporter
       become: true
 

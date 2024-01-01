@@ -141,7 +141,7 @@ scrape_configs:
     static_configs:
       - targets:
           - "{{ pve_hosts.pve.ip }}:9100"
-          - pi.hole:9100
+          - 192.168.1.53:9100  # adguardhome
     metric_relabel_configs:
       - source_labels: [__name__]
         regex: go_.+
