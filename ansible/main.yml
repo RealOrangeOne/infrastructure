@@ -103,7 +103,7 @@
     - role: geerlingguy.certbot
       become: true
     - nebula
-    - coredns
+    - coredns_docker_proxy
     - nginx
     - plausible
     - restic
