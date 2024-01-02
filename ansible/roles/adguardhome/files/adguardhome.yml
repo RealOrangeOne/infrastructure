@@ -24,6 +24,8 @@ dns:
   refuse_any: true
   upstream_dns:
     - tls://dns10.quad9.net
+    - '[/theorangeone.net/]127.0.0.53:5353'
+    - '[/jakehoward.tech/]127.0.0.53:5353'
   upstream_dns_file: ""
   bootstrap_dns:
     - 9.9.9.10
@@ -140,9 +142,7 @@ filtering:
   blocking_mode: default
   parental_block_host: family-block.dns.adguard.com
   safebrowsing_block_host: standard-block.dns.adguard.com
-  rewrites:
-    - domain: pve.sys.theorangeone.net
-      answer: "{{ pve_hosts.ingress.external_ip }}"
+  rewrites: []
   safebrowsing_cache_size: 1048576
   safesearch_cache_size: 1048576
   parental_cache_size: 1048576

@@ -1,0 +1,32 @@
+(alias) {
+    errors
+    cancel
+
+    forward . tls://9.9.9.10 {
+       tls_servername dns10.quad9.net
+    }
+
+    hosts {
+        {{ pve_hosts.ingress.external_ip }} pve.sys.theorangeone.net
+        fallthrough
+        ttl 300
+    }
+
+    # HACK: Rewrite the CNAME to itself so it's reprocessed
+    rewrite cname exact pve.sys.theorangeone.net. pve.sys.theorangeone.net.
+}
+
+
+theorangeone.net:5353 {
+    import alias
+}
+
+jakehoward.tech:5353 {
+    import alias
+}
+
+.:5353 {
+    acl {
+        block
+    }
+}

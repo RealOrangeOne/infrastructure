@@ -15,3 +15,17 @@
     mode: "0600"
   notify: restart adguardhome
   become: true
+
+- name: Install coredns
+  kewlfft.aur.aur:
+    name: coredns
+  become: true
+
+- name: Install coredns config file
+  template:
+    src: files/Corefile
+    dest: /etc/coredns/Corefile
+    owner: coredns
+    mode: "0644"
+  notify: restart coredns
+  become: true

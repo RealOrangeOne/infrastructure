@@ -2,4 +2,12 @@
   service:
     name: adguardhome
     state: restarted
+    enabled: true
+  become: true
+
+- name: restart coredns
+  service:
+    name: coredns
+    state: restarted
+    enabled: true
   become: true
