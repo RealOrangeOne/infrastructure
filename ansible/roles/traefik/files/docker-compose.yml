@@ -2,7 +2,7 @@ version: "2.3"
 
 services:
   traefik:
-    image: traefik:v2.10
+    image: traefik:v2.11
     user: "{{ docker_user.id }}"
     environment:
       - CF_DNS_API_TOKEN={{ vault_cloudflare_api_token }}
