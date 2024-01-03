@@ -8,55 +8,6 @@ export RESTIC_PASSWORD="{{ restic_key }}"
 export RESTIC_REPOSITORY="b2:{{ restic_b2_bucket }}"
 export GOGC=20  # HACK: Work around for restic's high memory usage https://github.com/restic/restic/issues/1988
 
-export RESTIC_LOG_DIR="$HOME/log"
-export RESTIC_LOG_FILE="$RESTIC_LOG_DIR/$1-$(date -Iseconds).log"
+set -x
 
-export FORGET_OPTIONS="--keep-daily 30 --keep-monthly 3 --group-by host"
-
-mkdir -p "$RESTIC_LOG_DIR"
-
-# Run backup, and capture logs to file
-cron_backup() {
-    curl -fsS -m 10 --retry 5 -o /dev/null {{ healthchecks_host }}/{{ vault_restic_healthchecks_id }}/start
-    restic --verbose backup --files-from=$HOME/restic-include.txt --exclude-file=$HOME/restic-excludes.txt | tee -a $RESTIC_LOG_FILE
-    exit_code=${PIPESTATUS[0]}
-    curl -fsS -m 10 --retry 5 -o /dev/null {{ healthchecks_host }}/{{ vault_restic_healthchecks_id }}/$exit_code --data-binary "@$RESTIC_LOG_FILE"
-    echo "Exit code: $exit_code"
-}
-
-# Run backup, but show all the progress
-backup() {
-    restic --verbose backup --files-from=$HOME/restic-include.txt --exclude-file=$HOME/restic-excludes.txt
-}
-
-{% if restic_forget %}
-# Run forget and prune, and capture logs to file
-cron_forget() {
-    curl -fsS -m 10 --retry 5 -o /dev/null {{ healthchecks_host }}/{{ vault_restic_forget_healthchecks_id }}/start
-    restic forget --prune $FORGET_OPTIONS | tee -a $RESTIC_LOG_FILE
-    exit_code=${PIPESTATUS[0]}
-    curl -fsS -m 10 --retry 5 -o /dev/null {{ healthchecks_host }}/{{ vault_restic_forget_healthchecks_id }}/$exit_code --data-binary "@$RESTIC_LOG_FILE"
-    echo "Exit code: $exit_code"
-}
-{% endif %}
-
-# Forget legacy snapshots
-forget() {
-    set -x
-    restic forget $FORGET_OPTIONS $@
-}
-
-# Prune orphaned files
-prune() {
-    set -x
-    restic --verbose prune $@
-}
-
-# Run restic, but with environment variables set
-exec () {
-    set -x
-    restic $@
-}
-
-# Run the things
-"$@"
+exec restic $@

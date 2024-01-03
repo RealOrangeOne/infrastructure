@@ -3,6 +3,11 @@
     name: restic
   become: true
 
+- name: Install runitor
+  kewlfft.aur.aur:
+    name: runitor-bin
+  become: true
+
 - name: Make user
   user:
     name: restic
@@ -10,12 +15,16 @@
     system: false
   become: true
 
-- name: Install backrest
+- name: Install scripts
   template:
-    src: files/backrest.sh
-    dest: /home/restic/backrest.sh
+    src: files/{{ item }}
+    dest: /home/restic/{{ item }}
     mode: "0700"
     owner: restic
+  loop:
+    - backrest.sh
+    - restic-backup.sh
+    - restic-forget.sh
   become: true
 
 - name: Install includes files
@@ -53,7 +62,7 @@
     name: restic backup
     hour: 0
     minute: 0
-    job: /home/restic/backrest.sh cron_backup
+    job: CHECK_UUID={{ vault_restic_healthchecks_id }} /usr/bin/runitor -- /home/restic/restic-backup.sh
     user: restic
   become: true
 
@@ -63,17 +72,10 @@
     hour: 2
     minute: 0
     weekday: 0
-    job: /home/restic/backrest.sh cron_forget
+    job: CHECK_UUID={{ vault_restic_forget_healthchecks_id }} /usr/bin/runitor -- /home/restic/restic-forget.sh
     user: restic
   become: true
   when: restic_forget
-
-- name: backrest fail2ban config
-  template:
-    src: files/backrest-logrotate
-    dest: /etc/logrotate.d/backrest
-    mode: "0600"
-  become: true
 
 - name: Install pacman post script
   template:
