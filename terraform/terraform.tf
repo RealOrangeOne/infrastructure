@@ -6,7 +6,7 @@ terraform {
     }
     vultr = {
       source  = "vultr/vultr"
-      version = "2.15.1"
+      version = "2.19.0"
     }
     aws = {
       source  = "hashicorp/aws"
