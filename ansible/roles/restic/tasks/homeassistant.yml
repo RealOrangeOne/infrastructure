@@ -22,7 +22,7 @@
   mount:
     path: /mnt/home-assistant/{{ item }}
     fstype: cifs
-    opts: username=homeassistant,password=homeassistant
+    opts: username=homeassistant,password={{ vault_homeassistant_smb_password }}
     src: //{{ pve_hosts.homeassistant.ip }}/{{ item }}
     state: mounted
   become: true
