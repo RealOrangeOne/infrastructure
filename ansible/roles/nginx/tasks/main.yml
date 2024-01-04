@@ -1,13 +1,6 @@
 - name: Install nginx
-  import_role:
-    name: nginxinc.nginx
-  when: ansible_os_family != 'Archlinux'
-  become: true
-
-- name: Install nginx (mainline) on Arch
   package:
-    name: nginx-mainline
-  when: ansible_os_family == 'Archlinux'
+    name: "{{ 'nginx-mainline' if ansible_os_family == 'Archlinux' else 'nginx' }}"
   become: true
 
 - name: Install nginx modules
@@ -16,6 +9,7 @@
   loop:
     - libnginx-mod-http-headers-more-filter
     - libnginx-mod-http-brotli-filter
+    - libnginx-mod-stream
   when: ansible_os_family != 'Archlinux'
   become: true
 
