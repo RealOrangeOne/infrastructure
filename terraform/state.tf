@@ -20,8 +20,8 @@ resource "aws_s3_bucket" "tfstate" {
 
 }
 
-resource "aws_iam_user_policy" "terraform" {
-  name = "terraform"
+resource "aws_iam_user_policy" "modify-terraform-user" {
+  name = "modify-terraform-user"
   user = aws_iam_user.terraform.name
 
   policy = <<EOF
@@ -29,13 +29,26 @@ resource "aws_iam_user_policy" "terraform" {
     "Version": "2012-10-17",
     "Statement": [
         {
-            "Sid": "VisualEditor0",
+            "Sid": "ModifyTerraformUser",
             "Effect": "Allow",
             "Action": "iam:*",
-            "Resource": "${aws_iam_user.terraform.arn}"
-        },
+            "Resource": "*"
+        }
+    ]
+}
+EOF
+}
+
+
+resource "aws_iam_policy" "terraform_state" {
+  name = "terraform-state"
+
+  policy = <<EOF
+{
+    "Version": "2012-10-17",
+    "Statement": [
         {
-            "Sid": "VisualEditor1",
+            "Sid": "TerraformState",
             "Effect": "Allow",
             "Action": "s3:*",
             "Resource": [
@@ -46,4 +59,13 @@ resource "aws_iam_user_policy" "terraform" {
     ]
 }
 EOF
+}
+
+resource "aws_iam_user_policy_attachment" "terraform-state" {
+  for_each = toset([
+    aws_iam_user.terraform.name
+  ])
+
+  user       = each.key
+  policy_arn = aws_iam_policy.terraform_state.arn
 }
