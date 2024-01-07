@@ -63,7 +63,8 @@ EOF
 
 resource "aws_iam_user_policy_attachment" "terraform-state" {
   for_each = toset([
-    aws_iam_user.terraform.name
+    aws_iam_user.terraform.name,
+    aws_iam_user.minio.name,
   ])
 
   user       = each.key
