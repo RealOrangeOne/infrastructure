@@ -17,8 +17,8 @@ dns:
     - 0.0.0.0
   port: 53
   anonymize_client_ip: false
-  ratelimit: 20
-  ratelimit_subnet_len_ipv4: 24
+  ratelimit: 50
+  ratelimit_subnet_len_ipv4: 22
   ratelimit_subnet_len_ipv6: 56
   ratelimit_whitelist: []
   refuse_any: true
@@ -87,7 +87,7 @@ tls:
   strict_sni_check: false
 querylog:
   ignored: []
-  interval: 720h
+  interval: 168h
   size_memory: 1000
   enabled: true
   file_enabled: true
@@ -148,7 +148,7 @@ filtering:
   parental_cache_size: 1048576
   cache_time: 30
   filters_update_interval: 24
-  blocked_response_ttl: 10
+  blocked_response_ttl: 30
   filtering_enabled: true
   parental_enabled: false
   safebrowsing_enabled: false
