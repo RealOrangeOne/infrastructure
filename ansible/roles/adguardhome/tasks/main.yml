@@ -1,19 +1,6 @@
-- name: Include vault
-  include_vars: vault.yml
-
 - name: Install adguardhome
   kewlfft.aur.aur:
     name: adguardhome-bin
-  become: true
-
-- name: Install config file
-  template:
-    src: files/adguardhome.yml
-    dest: /var/lib/adguardhome/AdGuardHome.yaml
-    validate: /var/lib/adguardhome/AdGuardHome --check-config --config %s
-    owner: root
-    mode: "0600"
-  notify: restart adguardhome
   become: true
 
 - name: Install coredns
