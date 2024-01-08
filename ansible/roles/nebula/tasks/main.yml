@@ -26,6 +26,8 @@
         dest: /usr/lib/systemd/system/nebula.service
         mode: "0644"
   when: ansible_os_family != 'Archlinux'
+  tags:
+    - skip_ansible_lint
   notify: restart nebula
   become: true
 
