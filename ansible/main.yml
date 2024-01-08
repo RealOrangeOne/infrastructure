@@ -132,6 +132,7 @@
     - adguardhome
     - role: prometheus.prometheus.node_exporter
       become: true
+    - restic
 
 - hosts: pve-dokku
   roles:
