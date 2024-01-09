@@ -118,6 +118,7 @@
 - hosts: restic
   roles:
     - restic
+    - s3_sync
 
 - hosts: gitea-runner
   roles:

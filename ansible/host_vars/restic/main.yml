@@ -3,5 +3,6 @@ restic_backup_locations:
   - /mnt/host/mnt/speed
   - /mnt/host/etc/pve
   - /mnt/home-assistant
+  - /home/rclone/sync
 
 restic_forget: true

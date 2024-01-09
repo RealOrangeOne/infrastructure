@@ -2,6 +2,10 @@ resource "aws_iam_user" "terraform" {
   name = "terraform"
 }
 
+resource "aws_iam_user" "minio" {
+  name = "minio"
+}
+
 resource "aws_s3_bucket" "tfstate" {
   bucket = "0rng-terraform"
 }
