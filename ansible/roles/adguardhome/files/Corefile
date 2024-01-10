@@ -17,15 +17,15 @@
 }
 
 
-theorangeone.net:5353 {
+theorangeone.net:53053 {
     import alias
 }
 
-jakehoward.tech:5353 {
+jakehoward.tech:53053 {
     import alias
 }
 
-.:5353 {
+.:53053 {
     acl {
         block
     }
