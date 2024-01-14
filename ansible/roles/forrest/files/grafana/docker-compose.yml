@@ -13,6 +13,11 @@ services:
       - GF_DEFAULT_FORCE_MIGRATION=true
       - GF_FEATURE_TOGGLES_ENABLE=publicDashboards
 
+      - GF_ANALYTICS_ENABLED=false
+      - GF_ANALYTICS_REPORTING_ENABLED=false
+      - GF_ANALYTICS_CHECK_FOR_UPDATES=false
+      - GF_ANALYTICS_CHECK_FOR_PLUGIN_UPDATES=false
+
       - GF_SMTP_ENABLED=true
       - GF_SMTP_HOST=smtp.eu.mailgun.org:465
       - GF_SMTP_USER={{ vault_grafana_smtp_user }}
