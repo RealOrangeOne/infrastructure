@@ -4,7 +4,7 @@
 
     # Only allow requests to `.docker` records
     view docker {
-        expr name() matches '^[a-zA-Z0-9-_]+\\.docker\\.$'
+        expr name() endsWith '.docker.'
     }
 
     # Strip the `.docker` suffix
