@@ -1,58 +1,33 @@
 version: "2.3"
 
-x-website: &website
-  image: registry.gitlab.com/realorangeone/website:latest
-  user: "{{ docker_user.id }}"
-  restart: unless-stopped
-  init: true
-  environment:
-    - TZ={{ timezone }}
-    - DEBUG=false
-    - SECRET_KEY={{ vault_website_secret_key }}
-    - DATABASE_URL=postgres://website:website@db/website?conn_max_age=600
-    - CACHE_URL=redis://redis/0
-    - QUEUE_STORE_URL=redis://redis/1
-    - RENDITION_CACHE_URL=redis://redis/2
-    - SPOTIFY_PROXY_URL=http://spotify_public_proxy
-    - UNSPLASH_CLIENT_ID={{ vault_unsplash_client_id }}
-    - SENTRY_DSN={{ vault_website_sentry_dsn }}
-    - BASE_HOSTNAME=theorangeone.net
-    - WEB_CONCURRENCY=3
-    - SEO_INDEX=true
-    - ACTIVITYPUB_HOST=mastodon.theorangeone.net
-  volumes:
-    - ./media:/app/media
-  tmpfs:
-    - /tmp
 
 services:
-  nginx:
-    <<: *website
-    user: root
-    command: /app/etc/entrypoints/nginx
+  website:
+    image: registry.gitlab.com/realorangeone/website:latest
+    restart: unless-stopped
+    environment:
+      - TZ={{ timezone }}
+      - DEBUG=false
+      - SECRET_KEY={{ vault_website_secret_key }}
+      - DATABASE_URL=postgres://website:website@db/website?conn_max_age=600
+      - CACHE_URL=redis://redis/0
+      - QUEUE_STORE_URL=redis://redis/1
+      - RENDITION_CACHE_URL=redis://redis/2
+      - SPOTIFY_PROXY_URL=http://spotify_public_proxy
+      - UNSPLASH_CLIENT_ID={{ vault_unsplash_client_id }}
+      - SENTRY_DSN={{ vault_website_sentry_dsn }}
+      - BASE_HOSTNAME=theorangeone.net
+      - WEB_CONCURRENCY=3
+      - SEO_INDEX=true
+      - ACTIVITYPUB_HOST=mastodon.theorangeone.net
+    volumes:
+      - ./media:/app/media
+      - ./cache:/tmp/nginx_cache
+    tmpfs:
+      - /tmp
     networks:
       - default
       - coredns
-    depends_on:
-      - django
-
-  worker:
-    <<: *website
-    command: /app/etc/entrypoints/worker
-    depends_on:
-      - db
-      - redis
-
-  cron:
-    <<: *website
-    command: /app/etc/entrypoints/cron
-    depends_on:
-      - db
-      - redis
-
-  django:
-    <<: *website
-    command: /app/etc/entrypoints/web
     depends_on:
       - db
       - redis
