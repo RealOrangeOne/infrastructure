@@ -2,8 +2,9 @@
     errors
     cancel
 
-    forward . tls://9.9.9.10 {
+    forward . tls://9.9.9.10 tls://149.112.112.10 tls://2620:fe::10 tls://2620:fe::fe:10 {
        tls_servername dns10.quad9.net
+       health_check 15s
     }
 
     hosts {
