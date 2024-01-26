@@ -2,6 +2,10 @@
     errors
     cancel
 
+    view nov6 {
+        expr type() != 'AAAA'
+    }
+
     forward . tls://9.9.9.9 tls://149.112.112.112 tls://2620:fe::fe tls://2620:fe::9 {
        tls_servername dns.quad9.net
        health_check 15s
@@ -16,7 +20,6 @@
     # HACK: Rewrite the CNAME to itself so it's reprocessed
     rewrite cname exact pve.sys.theorangeone.net. pve.sys.theorangeone.net.
 }
-
 
 theorangeone.net:53053 {
     import alias
