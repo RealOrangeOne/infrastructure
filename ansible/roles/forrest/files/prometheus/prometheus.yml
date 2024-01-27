@@ -53,6 +53,7 @@ scrape_configs:
           - https://bin.theorangeone.net
           - https://git.theorangeone.net/api/healthz
           - https://grafana.jakehoward.tech/api/health
+          - https://headscale.jakehoward.tech/health
           - https://homeassistant.jakehoward.tech
           - https://intersect.jakehoward.tech
           - https://mastodon.theorangeone.net/health

@@ -8,9 +8,12 @@
 
 - hosts: casey
   roles:
+    - role: geerlingguy.certbot
+      become: true
     - nginx
     - gateway
     - nebula
+    - headscale
     - fail2ban_ssh
 
 - hosts:

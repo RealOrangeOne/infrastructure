@@ -1,0 +1,6 @@
+- name: restart headscale
+  service:
+    name: headscale
+    state: restarted
+    enabled: true
+  become: true

@@ -245,6 +245,14 @@ resource "cloudflare_record" "jakehowardtech_ntfy" {
   ttl     = 1
 }
 
+resource "cloudflare_record" "jakehowardtech_headscale" {
+  zone_id = cloudflare_zone.jakehowardtech.id
+  name    = "headscale"
+  value   = cloudflare_record.sys_domain_casey.hostname
+  type    = "CNAME"
+  ttl     = 1
+}
+
 resource "cloudflare_record" "jakehowardtech_caa" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "@"

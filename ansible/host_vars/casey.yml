@@ -3,3 +3,7 @@ nebula_listen_port: "{{ nebula_lighthouse_port }}"
 ssh_extra_allowed_users: f2b@{{ nebula.cidr }} f2b@{{ pve_hosts.internal_cidr }}
 
 nginx_https_redirect: true
+
+certbot_certs:
+  - domains:
+      - headscale.jakehoward.tech
