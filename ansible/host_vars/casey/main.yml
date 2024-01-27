@@ -7,3 +7,6 @@ nginx_https_redirect: true
 certbot_certs:
   - domains:
       - headscale.jakehoward.tech
+
+restic_backup_locations:
+  - /var/lib/headscale/

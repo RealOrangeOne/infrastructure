@@ -15,6 +15,7 @@
     - nebula
     - headscale
     - fail2ban_ssh
+    - restic
 
 - hosts:
     - pve
