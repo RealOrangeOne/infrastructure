@@ -23,8 +23,6 @@ services:
     volumes:
       - ./media:/app/media
       - ./cache:/tmp/nginx_cache
-    tmpfs:
-      - /tmp
     networks:
       - default
       - coredns
