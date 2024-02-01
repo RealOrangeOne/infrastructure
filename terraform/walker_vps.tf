@@ -4,7 +4,8 @@ module "walker_firewall" {
   description = "walker"
   ports = [
     "80/tcp",
-    "443/tcp"
+    "443/tcp",
+    "41641/udp"
   ]
 }
 

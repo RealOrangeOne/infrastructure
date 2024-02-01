@@ -1,0 +1,6 @@
+# Just install for now, don't configure
+tailscale_up_skip: true
+
+tailscale_cidr: 100.64.0.0/24  # It's really /10, but I don't use that many IPs
+
+tailscale_port: 41641

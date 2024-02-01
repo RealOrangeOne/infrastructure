@@ -91,6 +91,15 @@ resource "linode_firewall" "casey" {
     ipv4     = ["0.0.0.0/0"]
     ipv6     = ["::/0"]
   }
+
+  inbound {
+    label    = "allow-inbound-tailscale"
+    action   = "ACCEPT"
+    protocol = "UDP"
+    ports    = "41641"
+    ipv4     = ["0.0.0.0/0"]
+    ipv6     = ["::/0"]
+  }
 }
 
 resource "linode_rdns" "casey_reverse_ipv4" {

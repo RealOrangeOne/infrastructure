@@ -16,6 +16,7 @@
     - headscale
     - fail2ban_ssh
     - restic
+    - artis3n.tailscale
 
 - hosts:
     - pve
@@ -79,6 +80,7 @@
     - nginx
     - ingress
     - nebula
+    - artis3n.tailscale
 
 - hosts: pve
   roles:
@@ -114,6 +116,7 @@
     - commento
     - website
     - remark42
+    - artis3n.tailscale
 
 - hosts: jellyfin
   roles:
