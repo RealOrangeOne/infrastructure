@@ -9,7 +9,7 @@
 #
 # https://myheadscale.example.com:443
 #
-server_url: https://headscale.jakehoward.tech:443
+server_url: https://headscale.jakehoward.tech
 
 # Address to listen to / bind to on the server
 #
