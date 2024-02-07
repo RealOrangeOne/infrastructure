@@ -97,6 +97,7 @@
   roles:
     - forrest
     - pve_nebula_route
+    - pve_tailscale_route
 
 - hosts: qbittorrent
   roles:

@@ -1,0 +1,22 @@
+- name: Get routes
+  command:
+    argv:
+      - ip
+      - route
+      - show
+      - "{{ tailscale_cidr }}"
+  register: routes
+  changed_when: false
+  become: true
+
+- name: Add route to tailscale hosts via ingress
+  command:
+    argv:
+      - ip
+      - route
+      - add
+      - "{{ tailscale_cidr }}"
+      - via
+      - "{{ pve_hosts.ingress.ip }}"
+  become: true
+  when: tailscale_cidr not in routes.stdout
