@@ -1,0 +1,1 @@
+private_ip: "{{ pve_hosts.qbittorrent.ip }}"

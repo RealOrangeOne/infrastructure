@@ -24,3 +24,5 @@ pve_hosts:
     ip: 10.23.1.110
   gitea_runner:
     ip: 10.23.1.114
+  pve_dokku:
+    ip: 10.23.1.102
