@@ -11,6 +11,7 @@ entryPoints:
         - "{{ wireguard.cidr }}"
         - "{{ pve_hosts.internal_cidr }}"
         - "{{ nebula.cidr }}"
+        - "{{ tailscale_cidr }}"
   web-secure:
     address: :443
     http:
@@ -33,6 +34,7 @@ entryPoints:
         - "{{ wireguard.cidr }}"
         - "{{ pve_hosts.internal_cidr }}"
         - "{{ nebula.cidr }}"
+        - "{{ tailscale_cidr }}"
   traefik:
     address: :8080
 
