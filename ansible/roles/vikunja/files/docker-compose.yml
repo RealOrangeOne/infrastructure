@@ -1,8 +1,8 @@
 version: "2.3"
 
 services:
-  api:
-    image: vikunja/api:latest
+  vikunja:
+    image: vikunja/vikunja:latest
     restart: unless-stopped
     environment:
       - VIKUNJA_DATABASE_HOST=db
@@ -23,13 +23,13 @@ services:
       - VIKUNJA_MAILER_USERNAME={{ vault_smtp_username }}
       - VIKUNJA_MAILER_PASSWORD={{ vault_smtp_password }}
       - VIKUNJA_MAILER_HOST=smtp.eu.mailgun.org
+      - VIKUNJA_SENTRY_DSN=
       - TZ={{ timezone }}
       - PUID={{ docker_user.id }}
       - PGID={{ docker_user.id }}
     labels:
       - traefik.enable=true
-      # yamllint disable-line rule:line-length
-      - traefik.http.routers.vikunja-api.rule=Host(`tasks.jakehoward.tech`) && (PathPrefix(`/api/v1`) || PathPrefix(`/dav/`) || PathPrefix(`/.well-known/`) || Path(`/health`))
+      - traefik.http.routers.vikunja.rule=Host(`tasks.jakehoward.tech`)
     volumes:
       - /mnt/tank/app-data/vikunja/files:/app/vikunja/files
     depends_on:
@@ -38,20 +38,6 @@ services:
     networks:
       - default
       - traefik
-
-  frontend:
-    image: vikunja/frontend:latest
-    restart: unless-stopped
-    labels:
-      - traefik.enable=true
-      - traefik.http.routers.vikunja-frontend.rule=Host(`tasks.jakehoward.tech`)
-    environment:
-      - VIKUNJA_SENTRY_DSN=
-    networks:
-      - default
-      - traefik
-    depends_on:
-      - api
 
   db:
     image: postgres:14-alpine
