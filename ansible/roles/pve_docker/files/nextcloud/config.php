@@ -56,4 +56,5 @@ $CONFIG = array (
   'upgrade.disable-web' => true,
   # Allow Nextcloud to talk to Authentik
   'allow_local_remote_servers' => true,
+  'maintenance_window_start' => 18,
 );
