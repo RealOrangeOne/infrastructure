@@ -70,6 +70,8 @@ scrape_configs:
           - https://theorangeone.net
           - https://tt-rss.jakehoward.tech
           - https://vaultwarden.jakehoward.tech/alive
+          - https://whoami-cdn.theorangeone.net
+          - https://whoami.theorangeone.net
     relabel_configs:
       - source_labels: [__address__]
         target_label: __param_target

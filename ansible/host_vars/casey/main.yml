@@ -7,6 +7,11 @@ nginx_https_redirect: true
 certbot_certs:
   - domains:
       - headscale.jakehoward.tech
+  - domains:
+      - whoami-cdn.theorangeone.net
+
+cdn_domains:
+  - whoami-cdn.theorangeone.net
 
 restic_backup_locations:
   - /var/lib/headscale/

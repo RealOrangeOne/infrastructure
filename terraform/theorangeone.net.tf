@@ -18,6 +18,14 @@ resource "cloudflare_record" "theorangeonenet_whoami" {
   ttl     = 1
 }
 
+resource "cloudflare_record" "theorangeonenet_whoami_cdn" {
+  zone_id = cloudflare_zone.theorangeonenet.id
+  name    = "whoami-cdn"
+  value   = cloudflare_record.sys_domain_casey.hostname
+  type    = "CNAME"
+  ttl     = 1
+}
+
 resource "cloudflare_record" "theorangeonenet_mx1" {
   zone_id  = cloudflare_zone.theorangeonenet.id
   name     = "@"

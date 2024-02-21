@@ -31,10 +31,10 @@ entryPoints:
           {% endif %}
     proxyProtocol:
       trustedIPs:
-        - "{{ wireguard.cidr }}"
-        - "{{ pve_hosts.internal_cidr }}"
-        - "{{ nebula.cidr }}"
-        - "{{ tailscale_cidr }}"
+        - "{{ pve_hosts.ingress.ip }}/32"
+    forwardedHeaders:
+      trustedIPs:
+        - "{{ wireguard.server.ip }}/32"  # This is obtained from the connecting `proxy_protocol`
   traefik:
     address: :8080
 
