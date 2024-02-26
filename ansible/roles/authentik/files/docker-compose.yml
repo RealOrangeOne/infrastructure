@@ -59,7 +59,7 @@ services:
       - server
 
   db:
-    image: postgres:15-alpine
+    image: postgres:16-alpine
     restart: unless-stopped
     volumes:
       - /mnt/speed/dbs/postgres/authentik:/var/lib/postgresql/data
