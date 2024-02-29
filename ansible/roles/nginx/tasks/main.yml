@@ -1,6 +1,6 @@
 - name: Install nginx
   package:
-    name: "{{ 'nginx-mainline' if ansible_os_family == 'Archlinux' else 'nginx' }}"
+    name: nginx
   become: true
 
 - name: Install nginx modules
@@ -17,8 +17,8 @@
   kewlfft.aur.aur:
     name: "{{ item }}"
   loop:
-    - nginx-mainline-mod-headers-more
-    - nginx-mainline-mod-brotli
+    - nginx-mod-headers-more
+    - nginx-mod-brotli
   when: ansible_os_family == 'Archlinux'
   become: true
 
