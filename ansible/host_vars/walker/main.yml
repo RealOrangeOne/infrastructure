@@ -11,3 +11,5 @@ certbot_certs:
   - domains:
       - plausible.theorangeone.net
       - elbisualp.theorangeone.net
+  - domains:
+      - slides.jakehoward.tech

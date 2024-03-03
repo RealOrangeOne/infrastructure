@@ -1,0 +1,19 @@
+version: "2.3"
+
+services:
+  slides:
+    image: ghcr.io/realorangeone/slides:latest
+    restart: unless-stopped
+    environment:
+      - TZ={{ timezone }}
+      - PUID={{ docker_user.id }}
+    volumes:
+      - ./htpasswd:/etc/nginx/.htpasswd:ro
+      - ./slides:/srv
+    networks:
+      - default
+      - coredns
+
+networks:
+  coredns:
+    external: true

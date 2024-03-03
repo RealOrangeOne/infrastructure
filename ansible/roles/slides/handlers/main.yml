@@ -1,0 +1,4 @@
+- name: restart slides
+  shell:
+    chdir: /opt/slides
+    cmd: "{{ docker_update_command }}"

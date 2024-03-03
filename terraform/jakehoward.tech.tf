@@ -253,6 +253,14 @@ resource "cloudflare_record" "jakehowardtech_headscale" {
   ttl     = 1
 }
 
+resource "cloudflare_record" "jakehowardtech_slides" {
+  zone_id = cloudflare_zone.jakehowardtech.id
+  name    = "slides"
+  value   = cloudflare_record.sys_domain_walker.hostname
+  type    = "CNAME"
+  ttl     = 1
+}
+
 resource "cloudflare_record" "jakehowardtech_caa" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "@"

@@ -1,0 +1,47 @@
+- name: Include vault
+  include_vars: vault.yml
+
+- name: Create install directory
+  file:
+    path: /opt/slides
+    state: directory
+    owner: "{{ docker_user.name }}"
+    mode: "{{ docker_compose_directory_mask }}"
+  become: true
+
+- name: Install compose file
+  template:
+    src: files/docker-compose.yml
+    dest: /opt/slides/docker-compose.yml
+    mode: "{{ docker_compose_file_mask }}"
+    owner: "{{ docker_user.name }}"
+    validate: docker-compose -f %s config
+  notify: restart slides
+  become: true
+
+- name: Create credentials
+  htpasswd:
+    path: /opt/slides/htpasswd
+    name: "{{ item.user }}"
+    password: "{{ item.password }}"
+    owner: "{{ docker_user.name }}"
+    mode: "0600"
+  loop: "{{ webdav_credentials }}"
+  loop_control:
+    label: "{{ item.user }}"
+  notify: restart slides
+  become: true
+
+- name: Install nginx config
+  template:
+    src: files/nginx-docker.conf
+    dest: /etc/nginx/http.d/slides.conf
+    mode: "0644"
+  notify: reload nginx
+  become: true
+  vars:
+    server_name: slides.jakehoward.tech
+    upstream: slides-slides-1.docker:80
+    ssl_cert_path: /etc/letsencrypt/live/slides.jakehoward.tech
+    location_extra: |
+      client_max_body_size 15m;
