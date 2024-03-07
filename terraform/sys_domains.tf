@@ -37,3 +37,11 @@ resource "cloudflare_record" "sys_domain_pve" {
   type    = "A"
   ttl     = 1
 }
+
+resource "cloudflare_record" "sys_domain_private" {
+  zone_id = cloudflare_zone.theorangeonenet.id
+  name    = "private.sys"
+  value   = local.private_ipv6_marker
+  type    = "AAAA"
+  ttl     = 1
+}

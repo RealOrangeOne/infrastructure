@@ -1,3 +1,5 @@
 "vps_hosts":
   "casey_ip": "213.219.38.11"
+  "private_ipv6_marker": "2a01:7e00:e000:7f7::1"
+  "private_ipv6_range": "2a01:7e00:e000:7f7::1/128"
   "walker_ip": "192.248.168.230"

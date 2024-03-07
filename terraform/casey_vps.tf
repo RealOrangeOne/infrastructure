@@ -6,6 +6,16 @@ resource "linode_instance" "casey" {
   private_ip = true
 }
 
+resource "linode_ipv6_range" "casey_extra" {
+  linode_id = linode_instance.casey.id
+  prefix_length = 64
+}
+
+locals {
+  private_ipv6_marker = cidrhost(linode_ipv6_range.casey_extra.id, 1)
+  private_ipv6_range  = cidrsubnet(linode_ipv6_range.casey_extra.id, 64, 1)
+}
+
 resource "linode_firewall" "casey" {
   label           = "casey"
   linodes         = [linode_instance.casey.id]

@@ -8,3 +8,9 @@ http:
       headers:
         customResponseHeaders:
           Permissions-Policy: interest-cohort=()
+
+    tailscale-only:
+      ipAllowList:
+        sourceRange:
+          - "{{ tailscale_cidr }}"
+          - "{{ tailscale_cidr_ipv6 }}"
