@@ -2,10 +2,6 @@
     errors
     cancel
 
-    view nov6 {
-        expr type() != 'AAAA'
-    }
-
     forward . tls://9.9.9.9 tls://149.112.112.112 tls://2620:fe::fe tls://2620:fe::9 {
        tls_servername dns.quad9.net
        health_check 15s
@@ -13,6 +9,7 @@
 
     hosts {
         {{ pve_hosts.ingress.external_ip }} pve.sys.theorangeone.net
+        {{ pve_hosts.ingress.external_ipv6 }} pve.sys.theorangeone.net
         fallthrough
         ttl 300
     }

@@ -16,6 +16,7 @@ pve_hosts:
   ingress:
     ip: 10.23.1.10
     external_ip: 192.168.2.201
+    external_ipv6: "{{ vault_ingress_ipv6 }}"
   homeassistant:
     ip: 192.168.2.203
   qbittorrent:
