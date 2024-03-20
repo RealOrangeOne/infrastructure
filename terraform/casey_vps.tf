@@ -7,7 +7,7 @@ resource "linode_instance" "casey" {
 }
 
 resource "linode_ipv6_range" "casey_extra" {
-  linode_id = linode_instance.casey.id
+  linode_id     = linode_instance.casey.id
   prefix_length = 64
 }
 
