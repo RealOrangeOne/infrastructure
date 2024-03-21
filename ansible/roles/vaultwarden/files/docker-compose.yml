@@ -22,7 +22,7 @@ services:
       - traefik.http.middlewares.vaultwarden-ratelimit.ratelimit.average=5
       - traefik.http.middlewares.vaultwarden-ratelimit.ratelimit.burst=200
 
-      - traefik.http.routers.vaultwarden.middlewares=vaultwarden-ratelimit
+      - traefik.http.routers.vaultwarden.middlewares=vaultwarden-ratelimit,tailscale-only@file
     environment:
       - SIGNUPS_ALLOWED=false
       - DOMAIN=https://vaultwarden.jakehoward.tech

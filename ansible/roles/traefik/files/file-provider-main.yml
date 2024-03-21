@@ -10,7 +10,15 @@ http:
           Permissions-Policy: interest-cohort=()
 
     tailscale-only:
-      ipAllowList:
+      ipWhiteList:
         sourceRange:
           - "{{ tailscale_cidr }}"
           - "{{ tailscale_cidr_ipv6 }}"
+
+    private-access:
+      ipWhiteList:
+        sourceRange:
+          - "{{ tailscale_cidr }}"
+          - "{{ tailscale_cidr_ipv6 }}"
+          - "{{ nebula.cidr }}"
+          - "{{ pve_hosts.internal_cidr }}"
