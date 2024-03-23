@@ -3,6 +3,8 @@ http:
     router-homeassistant:
       rule: Host(`homeassistant.jakehoward.tech`)
       service: service-homeassistant
+      middlewares:
+        - tailscale-only@file
   services:
     service-homeassistant:
       loadBalancer:
