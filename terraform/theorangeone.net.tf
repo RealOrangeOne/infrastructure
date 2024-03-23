@@ -29,7 +29,7 @@ resource "cloudflare_record" "theorangeonenet_whoami_cdn" {
 resource "cloudflare_record" "theorangeonenet_whoami_private" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "whoami-private"
-  value   = cloudflare_record.sys_domain_private.hostname
+  value   = cloudflare_record.sys_domain_pve_private.hostname
   type    = "CNAME"
   ttl     = 1
 }

@@ -127,7 +127,7 @@ resource "cloudflare_record" "jakehowardtech_calibre" {
 resource "cloudflare_record" "jakehowardtech_homeassistant" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "homeassistant"
-  value   = cloudflare_record.sys_domain_private.hostname
+  value   = cloudflare_record.sys_domain_pve_private.hostname
   type    = "CNAME"
   ttl     = 1
 }
@@ -143,7 +143,7 @@ resource "cloudflare_record" "jakehowardtech_grafana" {
 resource "cloudflare_record" "jakehowardtech_vaultwarden" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "vaultwarden"
-  value   = cloudflare_record.sys_domain_private.hostname
+  value   = cloudflare_record.sys_domain_pve_private.hostname
   type    = "CNAME"
   ttl     = 1
 }
