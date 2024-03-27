@@ -30,7 +30,7 @@ services:
       - SMTP_HOST_SSL_ENABLED=true
 
   clickhouse:
-    image: clickhouse/clickhouse-server:22.6-alpine
+    image: clickhouse/clickhouse-server:24.3-alpine
     restart: unless-stopped
     volumes:
       - ./clickhouse:/var/lib/clickhouse
