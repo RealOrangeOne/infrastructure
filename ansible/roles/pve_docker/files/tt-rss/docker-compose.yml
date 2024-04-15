@@ -7,7 +7,7 @@ x-app: &app
     - TTRSS_DB_USER=tt-rss
     - TTRSS_DB_NAME=tt-rss
     - TTRSS_DB_PASS=tt-rss
-    - TTRSS_SELF_URL_PATH=https://tt-rss.jakehoward.tech/tt-rss/
+    - TTRSS_SELF_URL_PATH=https://tt-rss.jakehoward.tech
     - TTRSS_ENABLE_REGISTRATION=false
     - TTRSS_CHECK_FOR_UPDATES=false
     - TTRSS_ENABLE_GZIP_OUTPUT=true
@@ -16,6 +16,8 @@ x-app: &app
     - OWNER_GID={{ docker_user.id }}
     - PHP_WORKER_MAX_CHILDREN=50
     - PHP_WORKER_MEMORY_LIMIT=512M
+    - APP_WEB_ROOT=/var/www/html/tt-rss
+    - APP_BASE=
   volumes:
     - ./tt-rss:/var/www/html
     - "{{ app_data_dir }}/tt-rss/feed-icons:/var/www/html/tt-rss/feed-icons"
