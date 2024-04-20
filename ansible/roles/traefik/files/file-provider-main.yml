@@ -15,6 +15,7 @@ http:
           - "{{ tailscale_cidr }}"
           - "{{ tailscale_cidr_ipv6 }}"
           - "{{ pve_hosts.forrest.ip }}"
+          - "{{ pve_hosts.forrest.ipv6 }}"
 
     private-access:
       ipWhiteList:
@@ -23,3 +24,4 @@ http:
           - "{{ tailscale_cidr_ipv6 }}"
           - "{{ nebula.cidr }}"
           - "{{ pve_hosts.internal_cidr }}"
+          - "{{ pve_hosts.internal_cidr_ipv6 }}"

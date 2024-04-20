@@ -28,7 +28,7 @@
       - add
       - "{{ vps_hosts.private_ipv6_range }}"
       - via
-      - "{{ pve_hosts.ingress.link_local }}"
+      - "{{ pve_hosts.ingress.ipv6 }}"
       - dev
       - eth0
   become: true

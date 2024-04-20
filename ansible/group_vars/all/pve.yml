@@ -1,5 +1,6 @@
 pve_hosts:
   internal_cidr: 10.23.1.0/24
+  internal_cidr_ipv6: fde3:15e9:e883::1/48
   pve:
     ip: 10.23.1.1
     external_ip: 192.168.2.200
@@ -7,17 +8,19 @@ pve_hosts:
     ip: 10.23.1.11
   forrest:
     ip: 10.23.1.13
+    ipv6: fde3:15e9:e883::103
   jellyfin:
     ip: 10.23.1.101
   dokku:
     ip: 10.23.1.102
   docker:
     ip: 10.23.1.103
+    ipv6: fde3:15e9:e883::203
   ingress:
     ip: 10.23.1.10
     external_ip: 192.168.2.201
     external_ipv6: "{{ vault_ingress_ipv6 }}"
-    link_local: fe80::d4e4:22ff:fe8b:429d
+    ipv6: fde3:15e9:e883::100
   homeassistant:
     ip: 192.168.2.203
   qbittorrent:
