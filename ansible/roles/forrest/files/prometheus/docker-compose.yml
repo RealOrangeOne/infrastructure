@@ -56,3 +56,5 @@ services:
 networks:
   grafana:
     external: true
+  default:
+    enable_ipv6: true
