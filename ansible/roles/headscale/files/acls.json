@@ -1,0 +1,13 @@
+{
+    "tagOwners": {
+        "tag:client": []
+
+    },
+    "acls": [
+        {
+            "action": "accept",
+            "src": ["tag:client"],
+            "dst": ["*:*"]
+        }
+    ]
+}

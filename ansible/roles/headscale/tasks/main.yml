@@ -11,7 +11,16 @@
     src: files/headscale.yml
     dest: /etc/headscale/config.yaml
     owner: headscale
-    mode: "0644"
+    mode: "0600"
+  notify: restart headscale
+  become: true
+
+- name: Install ACLs
+  template:
+    src: files/acls.json
+    dest: /etc/headscale/acls.json
+    owner: headscale
+    mode: "0600"
   notify: restart headscale
   become: true
 
