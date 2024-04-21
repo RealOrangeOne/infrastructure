@@ -261,6 +261,14 @@ resource "cloudflare_record" "jakehowardtech_slides" {
   ttl     = 1
 }
 
+resource "cloudflare_record" "jakehowardtech_uptime" {
+  zone_id = cloudflare_zone.jakehowardtech.id
+  name    = "uptime"
+  value   = cloudflare_record.sys_domain_pve.hostname
+  type    = "CNAME"
+  ttl     = 1
+}
+
 resource "cloudflare_record" "jakehowardtech_caa" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "@"

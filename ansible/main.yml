@@ -96,6 +96,7 @@
 - hosts: forrest
   roles:
     - forrest
+    - uptime_kuma
     - pve_nebula_route
     - pve_tailscale_route
 

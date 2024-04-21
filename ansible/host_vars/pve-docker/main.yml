@@ -4,6 +4,7 @@ traefik_provider_jellyfin: true
 traefik_provider_homeassistant: true
 traefik_provider_grafana: true
 traefik_provider_dokku: true
+traefik_provider_uptime_kuma: true
 
 with_fail2ban: true
 

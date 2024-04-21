@@ -101,6 +101,16 @@
   when: traefik_provider_dokku
   become: true
 
+- name: Install dokku provider
+  template:
+    src: files/file-provider-uptime-kuma.yml
+    dest: /opt/traefik/traefik/conf/uptime-kuma.yml
+    mode: "{{ docker_compose_file_mask }}"
+    owner: "{{ docker_user.name }}"
+  notify: restart traefik
+  when: traefik_provider_uptime_kuma
+  become: true
+
 - name: logrotate config
   template:
     src: files/logrotate.conf

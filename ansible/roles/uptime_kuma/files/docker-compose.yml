@@ -1,0 +1,18 @@
+version: "2.3"
+
+services:
+  uptime-kuma:
+    image: louislam/uptime-kuma:1.23.11-alpine
+    environment:
+      - TZ={{ timezone }}
+      - PUID={{ docker_user.id }}
+      - PGID={{ docker_user.id }}
+    ports:
+      - "{{ pve_hosts.forrest.ip }}:3001:3001"
+    volumes:
+      - "{{ app_data_dir }}/uptime-kuma:/app/data"
+    restart: unless-stopped
+
+networks:
+  default:
+    enable_ipv6: true

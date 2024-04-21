@@ -1,0 +1,10 @@
+http:
+  routers:
+    router-uptime-kuma:
+      rule: Host(`uptime.jakehoward.tech`)
+      service: service-uptime-kuma
+  services:
+    service-uptime-kuma:
+      loadBalancer:
+        servers:
+          - url: http://{{ pve_hosts.forrest.ip }}:3001
