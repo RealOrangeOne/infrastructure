@@ -188,7 +188,7 @@ log:
 # Path to a file containg ACL policies.
 # ACLs can be defined as YAML or HUJSON.
 # https://tailscale.com/kb/1018/acls/
-acl_policy_path: "/etc/headscale/acls.json"
+acl_policy_path: /etc/headscale/acls.json
 
 ## DNS
 #
