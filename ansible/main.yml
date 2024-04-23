@@ -17,6 +17,7 @@
     - fail2ban_ssh
     - restic
     - artis3n.tailscale
+    - glinet_vpn
 
 - hosts:
     - pve

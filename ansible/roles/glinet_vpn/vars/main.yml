@@ -1,0 +1,8 @@
+client_public_key: "{{ vault_client_public_key }}"
+client_private_key: "{{ vault_client_private_key }}"
+client_cidr: 10.23.4.2/24
+
+server_public_key: "{{ vault_server_public_key }}"
+server_private_key: "{{ vault_server_private_key }}"
+server_public_ip: "{{ ansible_default_ipv4.address }}"
+server_ip: 10.23.4.1
