@@ -23,7 +23,7 @@ services:
       - proxy_private
 
   docker_proxy:
-    image: tecnativa/docker-socket-proxy:latest
+    image: lscr.io/linuxserver/socket-proxy:latest
     restart: unless-stopped
     environment:
       - CONTAINERS=1
