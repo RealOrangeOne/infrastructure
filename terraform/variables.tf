@@ -25,3 +25,7 @@ variable "backblaze_application_key" {
 variable "backblaze_application_key_id" {
   sensitive = true
 }
+
+variable "hetzner_token" {
+  sensitive = true
+}
