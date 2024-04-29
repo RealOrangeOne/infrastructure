@@ -41,48 +41,6 @@ scrape_configs:
     static_configs:
       - targets: ["{{ pve_hosts.homeassistant.ip }}:8123"]
 
-  - job_name: blackbox_http_external
-    scrape_interval: 1m
-    metrics_path: /probe
-    params:
-      module: [http]
-    static_configs:
-      - targets:
-          - https://0rng.one
-          - https://auth.jakehoward.tech/-/health/ready/
-          - https://bin.theorangeone.net
-          - https://git.theorangeone.net/api/healthz
-          - https://grafana.jakehoward.tech/api/health
-          - https://headscale.jakehoward.tech/health
-          - https://homeassistant.jakehoward.tech
-          - https://intersect.jakehoward.tech
-          - https://mastodon.theorangeone.net/health
-          - https://matrix.jakehoward.tech:8448/_matrix/federation/v1/version
-          - https://matrix.jakehoward.tech/_matrix/federation/v1/version
-          - https://media.jakehoward.tech
-          - https://minio.jakehoward.tech/minio/health/live
-          - https://notes.theorangeone.net
-          - https://ntfy.jakehoward.tech/v1/health
-          - https://plausible.theorangeone.net
-          - https://recipes.jakehoward.tech
-          - https://s3.jakehoward.tech/minio/health/live
-          - https://tasks.jakehoward.tech/health
-          - https://theorangeone.net
-          - https://tt-rss.jakehoward.tech
-          - https://vaultwarden.jakehoward.tech/alive
-          - https://whoami-cdn.theorangeone.net
-          - https://whoami.theorangeone.net
-    relabel_configs:
-      - source_labels: [__address__]
-        target_label: __param_target
-      - source_labels: [__param_target]
-        target_label: instance
-      - target_label: __address__
-        replacement: blackbox-external:9115
-      - source_labels: [instance]
-        regex: https?://([^/]+)/?.*
-        target_label: hostname
-
   - job_name: blackbox_icmp
     scrape_interval: 10m
     metrics_path: /probe
@@ -115,7 +73,7 @@ scrape_configs:
       - source_labels: [__param_target]
         target_label: instance
       - target_label: __address__
-        replacement: blackbox-external:9115
+        replacement: blackbox:9115
 
   - job_name: blackbox_healthcheck
     scrape_interval: 10m
