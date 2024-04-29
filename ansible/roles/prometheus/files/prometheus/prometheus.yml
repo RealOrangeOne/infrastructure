@@ -125,3 +125,19 @@ scrape_configs:
       - source_labels: [__name__]
         regex: go_.+
         action: drop
+
+  - job_name: uptime_kuma
+    basic_auth:
+      username: ""
+      password: "{{ vault_uptime_kuma_token }}"
+    metrics_path: /metrics
+    static_configs:
+      - targets:
+          - uptime.jakehoward.tech
+    metric_relabel_configs:
+      - source_labels: [__name__]
+        regex: nodejs_.+
+        action: drop
+      - source_labels: [__name__]
+        regex: process_.+
+        action: drop
