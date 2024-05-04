@@ -8,9 +8,9 @@
 
 - hosts: casey
   roles:
+    - nginx
     - role: geerlingguy.certbot
       become: true
-    - nginx
     - gateway
     - nebula
     - headscale
@@ -110,11 +110,11 @@
 
 - hosts: walker
   roles:
+    - nginx
     - role: geerlingguy.certbot
       become: true
     - nebula
     - coredns_docker_proxy
-    - nginx
     - plausible
     - restic
     - commento
