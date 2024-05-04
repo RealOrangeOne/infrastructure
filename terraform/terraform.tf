@@ -24,9 +24,9 @@ terraform {
       source  = "Backblaze/b2"
       version = "0.8.9"
     }
-    hetzner = {
-      source = "hetznercloud/hcloud"
-      version = "1.46.1"
+    hcloud = {
+      source  = "hetznercloud/hcloud"
+      version = "1.47.0"
     }
   }
 }

@@ -25,3 +25,7 @@ provider "b2" {
   application_key    = var.backblaze_application_key
   application_key_id = var.backblaze_application_key_id
 }
+
+provider "hcloud" {
+  token = var.hetzner_token
+}

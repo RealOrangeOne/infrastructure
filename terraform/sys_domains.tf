@@ -9,7 +9,7 @@ resource "cloudflare_record" "sys_domain_casey" {
 resource "cloudflare_record" "sys_domain_walker" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "walker.sys"
-  value   = vultr_instance.walker.main_ip
+  value   = hcloud_server.walker.ipv4_address
   type    = "A"
   ttl     = 1
 }
@@ -25,7 +25,7 @@ resource "cloudflare_record" "sys_domain_casey_v6" {
 resource "cloudflare_record" "sys_domain_walker_v6" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "walker.sys"
-  value   = vultr_instance.walker.v6_main_ip
+  value   = hcloud_server.walker.ipv6_address
   type    = "AAAA"
   ttl     = 1
 }
