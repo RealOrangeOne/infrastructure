@@ -10,7 +10,7 @@ roles:
   - src: geerlingguy.docker
     version: 6.2.0
   - src: geerlingguy.ntp
-    version: 2.4.0
+    version: 2.5.0
   - src: realorangeone.reflector
   - src: ironicbadger.proxmox_nag_removal
     version: 1.0.2
