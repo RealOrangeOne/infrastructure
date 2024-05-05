@@ -17,7 +17,7 @@ services:
       - UNSPLASH_CLIENT_ID={{ vault_unsplash_client_id }}
       - SENTRY_DSN={{ vault_website_sentry_dsn }}
       - BASE_HOSTNAME=theorangeone.net
-      - WEB_CONCURRENCY=3
+      - WEB_CONCURRENCY=5
       - SEO_INDEX=true
       - ACTIVITYPUB_HOST=mastodon.theorangeone.net
     volumes:
