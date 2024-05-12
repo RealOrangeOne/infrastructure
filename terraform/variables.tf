@@ -1,7 +1,3 @@
-variable "vultr_api_key" {
-  sensitive = true
-}
-
 variable "cloudflare_api_key" {
   sensitive = true
 }

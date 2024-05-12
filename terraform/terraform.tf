@@ -4,10 +4,6 @@ terraform {
       source  = "cloudflare/cloudflare"
       version = "2.27.0"
     }
-    vultr = {
-      source  = "vultr/vultr"
-      version = "2.15.1"
-    }
     aws = {
       source  = "hashicorp/aws"
       version = "4.67.0"

@@ -1,2 +1,0 @@
-variable "ports" {}
-variable "description" {}
