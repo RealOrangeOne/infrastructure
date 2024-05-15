@@ -1,4 +1,4 @@
-ansible-lint==24.2.0
+ansible-lint==24.5.0
 yamllint==1.33.0
 ansible
 passlib
