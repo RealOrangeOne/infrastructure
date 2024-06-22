@@ -1,0 +1,6 @@
+comentario_secrets:
+  postgres:
+    host: db
+    database: comentario
+    username: comentario
+    password: comentario

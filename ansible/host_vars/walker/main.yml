@@ -13,3 +13,5 @@ certbot_certs:
       - elbisualp.theorangeone.net
   - domains:
       - slides.jakehoward.tech
+  - domains:
+      - comentario.theorangeone.net

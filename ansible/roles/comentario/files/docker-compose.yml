@@ -1,0 +1,29 @@
+version: "2.3"
+
+services:
+  comentario:
+    image: registry.gitlab.com/comentario/comentario:latest
+    restart: unless-stopped
+    user: "{{ docker_user.id }}:{{ docker_user.id }}"
+    depends_on:
+      - db
+    networks:
+      - default
+      - coredns
+    volumes:
+      - ./secrets.yml:/comentario/secrets.yaml
+    environment:
+      - BASE_URL=https://comentario.theorangeone.net
+
+  db:
+    image: postgres:14-alpine
+    restart: unless-stopped
+    volumes:
+      - ./postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=comentario
+      - POSTGRES_USER=comentario
+
+networks:
+  coredns:
+    external: true

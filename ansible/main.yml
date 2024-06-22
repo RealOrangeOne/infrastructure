@@ -121,6 +121,7 @@
     - website
     - artis3n.tailscale
     - slides
+    - comentario
 
 - hosts: jellyfin
   roles:

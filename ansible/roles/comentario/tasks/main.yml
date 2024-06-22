@@ -1,0 +1,38 @@
+- name: Create install directory
+  file:
+    path: /opt/comentario
+    state: directory
+    owner: "{{ docker_user.name }}"
+    mode: "{{ docker_compose_directory_mask }}"
+  become: true
+
+- name: Install compose file
+  template:
+    src: files/docker-compose.yml
+    dest: /opt/comentario/docker-compose.yml
+    mode: "{{ docker_compose_file_mask }}"
+    owner: "{{ docker_user.name }}"
+    validate: docker-compose -f %s config
+  notify: restart comentario
+  become: true
+
+- name: Install secrets
+  copy:
+    content: "{{ comentario_secrets | to_nice_yaml }}"
+    dest: /opt/comentario/secrets.yml
+    mode: "600"
+    owner: "{{ docker_user.name }}"
+  notify: restart comentario
+  become: true
+
+- name: Install nginx config
+  template:
+    src: files/nginx-docker.conf
+    dest: /etc/nginx/http.d/comentario.conf
+    mode: "0644"
+  notify: reload nginx
+  become: true
+  vars:
+    server_name: comentario.theorangeone.net
+    upstream: comentario-comentario-1.docker:80
+    ssl_cert_path: /etc/letsencrypt/live/comentario.theorangeone.net
