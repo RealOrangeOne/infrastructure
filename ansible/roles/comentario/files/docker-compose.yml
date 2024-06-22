@@ -16,7 +16,7 @@ services:
       - BASE_URL=https://comentario.theorangeone.net
 
   db:
-    image: postgres:14-alpine
+    image: postgres:16-alpine
     restart: unless-stopped
     volumes:
       - ./postgres:/var/lib/postgresql/data
