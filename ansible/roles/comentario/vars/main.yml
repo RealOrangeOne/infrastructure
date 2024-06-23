@@ -4,3 +4,15 @@ comentario_secrets:
     database: comentario
     username: comentario
     password: comentario
+  idp:
+    github:
+      key: "{{ vault_comentario_github_client_id }}"
+      secret: "{{ vault_comentario_github_client_secret }}"
+    gitlab:
+      key: "{{ vault_comentario_gitlab_application_id }}"
+      secret: "{{ vault_comentario_gitlab_application_secret }}"
+  smtpServer:
+    host: smtp.eu.mailgun.org
+    port: 587
+    username: "{{ vault_comentario_smtp_username }}"
+    password: "{{ vault_comentario_smtp_password }}"
