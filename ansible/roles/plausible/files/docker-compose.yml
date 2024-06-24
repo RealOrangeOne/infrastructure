@@ -2,7 +2,7 @@ version: "2.3"
 
 services:
   plausible:
-    image: plausible/analytics:v2.0
+    image: ghcr.io/plausible/community-edition:v2.1
     restart: unless-stopped
     command: sh -c "/entrypoint.sh db migrate && /entrypoint.sh run"
     depends_on:
@@ -14,6 +14,7 @@ services:
     environment:
       - SECRET_KEY_BASE={{ vault_plausible_secret_key }}
       - SIGNING_SALT={{ vault_plausible_signing_salt }}
+      - TOTP_VAULT_KEY={{ vault_plausible_totp_vault_key }}
       - DATABASE_URL=postgres://plausible:plausible@db:5432/plausible
       - DISABLE_REGISTRATION=true
       - DISABLE_SUBSCRIPTION=true
@@ -30,7 +31,7 @@ services:
       - SMTP_HOST_SSL_ENABLED=true
 
   clickhouse:
-    image: clickhouse/clickhouse-server:22.6-alpine
+    image: clickhouse/clickhouse-server:24.3.3.102-alpine
     restart: unless-stopped
     volumes:
       - ./clickhouse:/var/lib/clickhouse
