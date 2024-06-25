@@ -48,7 +48,3 @@
     ssl_cert_path: /etc/letsencrypt/live/plausible.theorangeone.net
     location_extra: |
       rewrite ^/js/index.js$ /js/plausible.js last;
-      if ($host = "plausible.theorangeone.net") {
-        # HACK: https://github.com/plausible/analytics/discussions/4272
-        rewrite ^/ https://elbisualp.theorangeone.net redirect;
-      }

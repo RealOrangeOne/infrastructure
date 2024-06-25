@@ -19,7 +19,7 @@ services:
       - DISABLE_REGISTRATION=true
       - DISABLE_SUBSCRIPTION=true
       - CLICKHOUSE_DATABASE_URL=http://clickhouse:8123/plausible
-      - BASE_URL=https://elbisualp.theorangeone.net
+      - BASE_URL=https://plausible.theorangeone.net
       - GOOGLE_CLIENT_ID={{ vault_plausible_google_client_id }}
       - GOOGLE_CLIENT_SECRET={{ vault_plausible_google_client_secret }}
       - RELEASE_DISTRIBUTION=none
