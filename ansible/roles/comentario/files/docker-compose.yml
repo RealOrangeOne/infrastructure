@@ -2,7 +2,7 @@ version: "2.3"
 
 services:
   comentario:
-    image: registry.gitlab.com/comentario/comentario:latest
+    image: registry.gitlab.com/comentario/comentario:v3.8.0
     restart: unless-stopped
     user: "{{ docker_user.id }}:{{ docker_user.id }}"
     depends_on:
