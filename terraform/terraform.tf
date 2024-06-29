@@ -6,7 +6,7 @@ terraform {
     }
     aws = {
       source  = "hashicorp/aws"
-      version = "4.67.0"
+      version = "5.56.1"
     }
     linode = {
       source  = "linode/linode"
