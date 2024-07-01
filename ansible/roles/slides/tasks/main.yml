@@ -44,4 +44,4 @@
     upstream: slides-slides-1.docker:80
     ssl_cert_path: /etc/letsencrypt/live/slides.jakehoward.tech
     location_extra: |
-      client_max_body_size 15m;
+      client_max_body_size 0;
