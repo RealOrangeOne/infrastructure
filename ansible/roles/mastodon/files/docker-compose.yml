@@ -16,7 +16,6 @@ services:
       - OTP_SECRET={{ vault_otp_secret }}
       - VAPID_PRIVATE_KEY={{ vault_vapid_private_key }}
       - VAPID_PUBLIC_KEY={{ vault_vapid_public_key }}
-      - TRUSTED_PROXY_IP=172.20.0.1
       - SINGLE_USER_MODE=true
       - DEFAULT_LOCALE=en
       - STREAMING_CLUSTER_NUM=1
