@@ -91,17 +91,7 @@
   when: traefik_provider_grafana
   become: true
 
-- name: Install dokku provider
-  template:
-    src: files/file-provider-dokku.yml
-    dest: /opt/traefik/traefik/conf/dokku.yml
-    mode: "{{ docker_compose_file_mask }}"
-    owner: "{{ docker_user.name }}"
-  notify: restart traefik
-  when: traefik_provider_dokku
-  become: true
-
-- name: Install dokku provider
+- name: Install uptime-kuma provider
   template:
     src: files/file-provider-uptime-kuma.yml
     dest: /opt/traefik/traefik/conf/uptime-kuma.yml

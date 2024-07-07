@@ -173,22 +173,6 @@ resource "cloudflare_record" "theorangeonenet_privatebin" {
   ttl     = 1
 }
 
-resource "cloudflare_record" "theorangeonenet_dokku" {
-  zone_id = cloudflare_zone.theorangeonenet.id
-  name    = "d"
-  value   = cloudflare_record.sys_domain_pve.hostname
-  type    = "CNAME"
-  ttl     = 1
-}
-
-resource "cloudflare_record" "theorangeonenet_dokku_wildcard" {
-  zone_id = cloudflare_zone.theorangeonenet.id
-  name    = "*.d"
-  value   = cloudflare_record.theorangeonenet_dokku.hostname
-  type    = "CNAME"
-  ttl     = 1
-}
-
 resource "cloudflare_record" "theorangeonenet_google_site_verification" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "@"

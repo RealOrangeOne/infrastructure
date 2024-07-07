@@ -11,8 +11,6 @@ pve_hosts:
     ipv6: fde3:15e9:e883::103
   jellyfin:
     ip: 10.23.1.101
-  dokku:
-    ip: 10.23.1.102
   docker:
     ip: 10.23.1.103
     ipv6: fde3:15e9:e883::203
@@ -29,5 +27,3 @@ pve_hosts:
     ip: 10.23.1.110
   gitea_runner:
     ip: 10.23.1.114
-  pve_dokku:
-    ip: 10.23.1.102

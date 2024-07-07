@@ -25,10 +25,6 @@ entryPoints:
             sans: "*.theorangeone.net"
           - main: jakehoward.tech
             sans: "*.jakehoward.tech"
-          {% if traefik_provider_dokku %}
-          - main: d.theorangeone.net
-            sans: "*.d.theorangeone.net"
-          {% endif %}
     proxyProtocol:
       trustedIPs:
         - "{{ pve_hosts.ingress.ip }}/32"

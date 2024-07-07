@@ -16,8 +16,6 @@ roles:
     version: 1.0.2
   - src: ironicbadger.snapraid
     version: 1.0.0
-  - src: dokku_bot.ansible_dokku
-    version: v2024.4.11
   - src: geerlingguy.certbot
     version: 5.1.0
   - src: artis3n.tailscale
