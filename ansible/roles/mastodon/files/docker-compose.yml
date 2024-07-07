@@ -21,7 +21,6 @@ services:
       - STREAMING_CLUSTER_NUM=1
       - WEB_CONCURRENCY=0  # 0 means 1, but not in clustered mode
       - SIDEKIQ_THREADS=1
-      - MAX_THREADS={{ ansible_processor_nproc }}
       - HTTP_PROXY={{ pve_hosts.qbittorrent.ip }}:3128
       - HTTPS_PROXY={{ pve_hosts.qbittorrent.ip }}:3128
     restart: unless-stopped
