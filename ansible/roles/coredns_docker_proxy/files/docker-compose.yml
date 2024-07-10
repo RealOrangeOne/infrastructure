@@ -3,6 +3,7 @@ version: "2.3"
 services:
   coredns:
     image: coredns/coredns:latest
+    restart: unless-stopped
     volumes:
       - ./Corefile:/home/nonroot/Corefile:ro
     ports:
