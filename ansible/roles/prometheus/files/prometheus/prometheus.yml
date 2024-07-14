@@ -120,7 +120,7 @@ scrape_configs:
     metrics_path: /metrics
     static_configs:
       - targets:
-          - "{{ nebula.clients.casey.ip }}:9090"
+          - "{{ tailscale_nodes.casey.ip }}:9090"
     metric_relabel_configs:
       - source_labels: [__name__]
         regex: go_.+

@@ -22,6 +22,5 @@ http:
         sourceRange:
           - "{{ tailscale_cidr }}"
           - "{{ tailscale_cidr_ipv6 }}"
-          - "{{ nebula.cidr }}"
           - "{{ pve_hosts.internal_cidr }}"
           - "{{ pve_hosts.internal_cidr_ipv6 }}"

@@ -12,5 +12,4 @@ exclude_paths:
   - galaxy_roles/
   - galaxy_collections/
   - ~/.ansible
-  - roles/nebula/files/nebula.yml
   - roles/traefik/files/traefik.yml

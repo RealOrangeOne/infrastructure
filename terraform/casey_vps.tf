@@ -67,15 +67,6 @@ resource "linode_firewall" "casey" {
   }
 
   inbound {
-    label    = "allow-inbound-nebula"
-    action   = "ACCEPT"
-    protocol = "UDP"
-    ports    = "6328"
-    ipv4     = ["0.0.0.0/0"]
-    ipv6     = ["::/0"]
-  }
-
-  inbound {
     label    = "allow-inbound-matrix"
     action   = "ACCEPT"
     protocol = "TCP"

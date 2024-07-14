@@ -1,9 +1,0 @@
-nebula:
-  cidr: 10.23.2.0/24
-  clients:
-    casey:
-      ip: 10.23.2.1
-    walker:
-      ip: 10.23.2.4
-    ingress:
-      ip: 10.23.2.5

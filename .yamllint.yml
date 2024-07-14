@@ -5,7 +5,6 @@ ignore: |
   ansible/galaxy_collections
   ansible/group_vars/all/vps-hosts.yml
   ansible/roles/traefik/files/traefik.yml
-  ansible/roles/nebula/files/nebula.yml
   env
 
 rules:
