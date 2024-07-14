@@ -10,6 +10,9 @@ ansible-setup:
     pip install -r ansible/dev-requirements.txt
     cd ansible/ && ansible-galaxy install -r galaxy-requirements.yml --force
 
+@ansible-facts HOST:
+    cd ansible/ && ansible -m setup {{ HOST }} --vault-password-file=vault-pass.sh
+
 # Run terraform with required environment
 terraform +ARGS:
     #!/usr/bin/env bash
