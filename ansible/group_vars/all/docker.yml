@@ -2,7 +2,17 @@ docker_user:
   id: 3000
   name: dockeruser
 
+docker_users:
+  - "{{ me.user }}"
+
 docker_compose_file_mask: "664"
 docker_compose_directory_mask: "775"
+
+# HACK: Use compose-switch as the install for compose, so the commands still work.
+# Run this task manually, as version comparisons usually fail
+docker_compose_url: https://github.com/docker/compose-switch/releases/latest/download/docker-compose-linux-{{ docker_apt_arch }}
+docker_install_compose: false
+
+docker_install_compose_plugin: "{{ ansible_os_family == 'Debian' }}"
 
 docker_update_command: docker-compose pull && docker-compose down --remove-orphans && docker-compose rm && docker-compose up -d

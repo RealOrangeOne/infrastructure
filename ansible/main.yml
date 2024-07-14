@@ -40,11 +40,6 @@
   roles:
     - role: geerlingguy.docker
       become: true
-      vars:
-        docker_install_compose_plugin: "{{ ansible_os_family == 'Debian' }}"
-        docker_install_compose: "{{ ansible_os_family == 'Debian' }}"
-        docker_users:
-          - "{{ me.user }}"
     - docker_cleanup
 
 - hosts:
