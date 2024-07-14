@@ -1,2 +1,1 @@
-private_ip: "{{ nebula.clients[hostname_slug].ip }}"
 ssh_port: 7743

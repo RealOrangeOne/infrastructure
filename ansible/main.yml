@@ -12,7 +12,6 @@
     - role: geerlingguy.certbot
       become: true
     - gateway
-    - nebula
     - headscale
     - restic
     - artis3n.tailscale
@@ -58,7 +57,6 @@
   roles:
     - pve_docker
     - yourls
-    - pve_nebula_route
     - privatebin
     - vaultwarden
     - tandoor
@@ -73,7 +71,6 @@
   roles:
     - nginx
     - ingress
-    - nebula
     - artis3n.tailscale
 
 - hosts: pve
@@ -81,7 +78,6 @@
     - role: ironicbadger.proxmox_nag_removal
       become: true
     - zfs
-    - pve_nebula_route
     - role: ironicbadger.snapraid
       become: true
     - role: prometheus.prometheus.node_exporter
@@ -91,7 +87,6 @@
   roles:
     - prometheus
     - uptime_kuma
-    - pve_nebula_route
     - pve_tailscale_route
 
 - hosts: qbittorrent
@@ -105,7 +100,6 @@
     - nginx
     - role: geerlingguy.certbot
       become: true
-    - nebula
     - coredns_docker_proxy
     - plausible
     - restic

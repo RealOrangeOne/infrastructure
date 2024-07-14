@@ -10,7 +10,6 @@ entryPoints:
       trustedIPs:
         - "{{ wireguard.cidr }}"
         - "{{ pve_hosts.internal_cidr }}"
-        - "{{ nebula.cidr }}"
         - "{{ tailscale_cidr }}"
   web-secure:
     address: :443

@@ -1,6 +1,3 @@
-nebula_is_lighthouse: true
-nebula_listen_port: "{{ nebula_lighthouse_port }}"
-
 nginx_https_redirect: true
 
 certbot_certs:
