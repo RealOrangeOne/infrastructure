@@ -100,14 +100,3 @@
   notify: restart traefik
   when: traefik_provider_uptime_kuma
   become: true
-
-- name: logrotate config
-  template:
-    src: files/logrotate.conf
-    dest: /etc/logrotate.d/traefik
-    mode: "0600"
-  become: true
-
-- name: fail2ban
-  include_tasks: fail2ban.yml
-  when: with_fail2ban
