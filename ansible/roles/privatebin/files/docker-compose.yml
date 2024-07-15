@@ -1,5 +1,3 @@
-version: "2.3"
-
 services:
   privatebin:
     image: privatebin/nginx-fpm-alpine:latest

@@ -1,6 +1,3 @@
-version: "2.3"
-
-
 services:
   website:
     image: registry.gitlab.com/realorangeone/website:latest

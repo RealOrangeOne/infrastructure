@@ -1,5 +1,3 @@
-version: "2.3"
-
 services:
   comentario:
     image: registry.gitlab.com/comentario/comentario:v3.8.0

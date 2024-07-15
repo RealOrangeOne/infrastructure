@@ -1,5 +1,3 @@
-version: "2.3"
-
 x-app: &app
   image: cthulhoo/ttrss-fpm-pgsql-static:latest
   restart: unless-stopped

@@ -1,5 +1,3 @@
-version: "2.3"
-
 services:
   backup:
     image: ghcr.io/realorangeone/db-auto-backup:latest

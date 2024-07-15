@@ -1,5 +1,3 @@
-version: "2.3"
-
 services:
   vikunja:
     image: vikunja/vikunja:latest

@@ -1,5 +1,3 @@
-version: "3.4"
-
 x-env: &env
   - TIMEZONE={{ timezone }}
   - AUTHENTIK_REDIS__HOST=redis
