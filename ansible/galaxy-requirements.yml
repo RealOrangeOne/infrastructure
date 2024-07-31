@@ -17,6 +17,6 @@ roles:
   - src: ironicbadger.snapraid
     version: 1.0.0
   - src: geerlingguy.certbot
-    version: 5.1.0
+    version: 5.2.0
   - src: artis3n.tailscale
     version: v4.5.0
