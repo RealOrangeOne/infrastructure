@@ -1,6 +1,6 @@
 services:
   vaultwarden:
-    image: vaultwarden/server:1.31.0-alpine
+    image: vaultwarden/server:1.32.0-alpine
     restart: unless-stopped
     user: "{{ docker_user.id }}:{{ docker_user.id }}"
     volumes:
