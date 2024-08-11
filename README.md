@@ -26,5 +26,3 @@ Terraform secrets are stored in `terraform/.env`, and provisioned using `just up
 ## External configuration
 
 This repository contains most of my infrastructure configuration, but not everything is configured here. Some things are external, for various reasons.
-
-- [AdGuardHome](https://git.theorangeone.net/systems/adguardhome)
