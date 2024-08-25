@@ -262,12 +262,12 @@ unix_socket_permission: "0770"
 # headscale supports experimental OpenID connect support,
 # it is still being tested and might have some bugs, please
 # help us test it.
-oidc:
-  only_start_if_oidc_is_available: true
-  issuer: "{{ vault_oidc_issuer }}"
-  client_id: "{{ vault_oidc_client_id }}"
-  client_secret: "{{ vault_oidc_client_secret }}"
-  expiry: 0
+# oidc:
+#   only_start_if_oidc_is_available: true
+#   issuer: "{{ vault_oidc_issuer }}"
+#   client_id: "{{ vault_oidc_client_id }}"
+#   client_secret: "{{ vault_oidc_client_secret }}"
+#   expiry: 0
 
 # Logtail configuration
 # Logtail is Tailscales logging and auditing infrastructure, it allows the control panel
