@@ -109,7 +109,6 @@
     - coredns_docker_proxy
     - plausible
     - restic
-    - commento
     - website
     - artis3n.tailscale
     - slides

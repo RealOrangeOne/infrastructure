@@ -7,8 +7,6 @@ certbot_certs:
   - domains:
       - theorangeone.net
   - domains:
-      - commento.theorangeone.net
-  - domains:
       - plausible.theorangeone.net
       - elbisualp.theorangeone.net
   - domains:

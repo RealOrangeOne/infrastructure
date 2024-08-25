@@ -181,14 +181,6 @@ resource "cloudflare_record" "theorangeonenet_google_site_verification" {
   ttl     = 1
 }
 
-resource "cloudflare_record" "theorangeonenet_commento" {
-  zone_id = cloudflare_zone.theorangeonenet.id
-  name    = "commento"
-  value   = cloudflare_record.sys_domain_walker.hostname
-  type    = "CNAME"
-  ttl     = 1
-}
-
 resource "cloudflare_record" "theorangeonenet_mailgun_spf" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "mg"
