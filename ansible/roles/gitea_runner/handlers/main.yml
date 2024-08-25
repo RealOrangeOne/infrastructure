@@ -1,4 +1,0 @@
-- name: restart act-runner
-  shell:
-    chdir: /opt/act-runner
-    cmd: "{{ docker_update_command }}"

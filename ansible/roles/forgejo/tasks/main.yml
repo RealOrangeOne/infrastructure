@@ -28,14 +28,6 @@
   notify: restart gitea
   become: true
 
-- name: Create public images directory
-  file:
-    path: "{{ app_data_dir }}/gitea/data/custom/public/assets/img"
-    state: directory
-    owner: "{{ docker_user.name }}"
-    mode: "{{ docker_compose_directory_mask }}"
-  become: true
-
 - name: Create custom templates directory
   file:
     path: "{{ app_data_dir }}/gitea/data/custom/templates/custom"
@@ -43,14 +35,6 @@
     owner: "{{ docker_user.name }}"
     mode: "{{ docker_compose_directory_mask }}"
     recurse: true
-  become: true
-
-- name: Install custom branding
-  unarchive:
-    src: https://git.theorangeone.net/api/packages/sys/generic/gitea-branding/latest/branding.zip
-    dest: "{{ app_data_dir }}/gitea/data/custom/public/assets/img"
-    remote_src: true
-    owner: "{{ docker_user.name }}"
   become: true
 
 - name: Install custom footer

@@ -1,0 +1,4 @@
+- name: restart forgejo-runner
+  shell:
+    chdir: /opt/forgejo-runner
+    cmd: "{{ docker_update_command }}"

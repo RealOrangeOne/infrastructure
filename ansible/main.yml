@@ -63,7 +63,7 @@
     - vaultwarden
     - tandoor
     - mastodon
-    - gitea
+    - forgejo
     - vikunja
     - authentik
     - minio
@@ -126,7 +126,7 @@
 
 - hosts: gitea-runner
   roles:
-    - gitea_runner
+    - forgejo_runner
 
 - hosts: renovate
   roles:

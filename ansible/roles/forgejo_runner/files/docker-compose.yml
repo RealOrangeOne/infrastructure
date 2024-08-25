@@ -1,0 +1,20 @@
+services:
+  forgejo-runner:
+    image: code.forgejo.org/forgejo/runner:3.5.1
+    user: "{{ docker_user.id }}"
+    volumes:
+      - /mnt/data:/data
+    environment:
+      - TZ={{ timezone }}
+      - DOCKER_HOST=tcp://dind:2375
+    restart: unless-stopped
+    command: forgejo-runner daemon
+    depends_on:
+      dind:
+        condition: service_started
+
+  dind:
+    image: docker:dind
+    privileged: true
+    command: [dockerd, -H, tcp://0.0.0.0:2375, --tls=false]
+    restart: unless-stopped

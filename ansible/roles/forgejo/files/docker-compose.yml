@@ -1,6 +1,6 @@
 services:
-  gitea:
-    image: gitea/gitea:1.22-rootless
+  forgejo:
+    image: code.forgejo.org/forgejo/forgejo:8-rootless
     user: "{{ docker_user.id }}:{{ docker_user.id }}"
     environment:
       - TZ={{ timezone }}
@@ -22,8 +22,8 @@ services:
       - redis
     labels:
       - traefik.enable=true
-      - traefik.http.routers.gitea.rule=Host(`git.theorangeone.net`)
-      - traefik.http.services.gitea-gitea.loadbalancer.server.port=3000
+      - traefik.http.routers.forgejo.rule=Host(`git.theorangeone.net`)
+      - traefik.http.services.forgejo-forgejo.loadbalancer.server.port=3000
     networks:
       - default
       - traefik
