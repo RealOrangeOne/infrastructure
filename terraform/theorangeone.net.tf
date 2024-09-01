@@ -129,7 +129,7 @@ resource "cloudflare_record" "theorangeonenet_srv_matrix" {
     priority = 10
     weight   = 0
     port     = 8448
-    target   = cloudflare_record.jakehowardtech_matrix.hostname
+    target   = cloudflare_record.theorangeonenet_matrix.hostname
   }
 }
 
