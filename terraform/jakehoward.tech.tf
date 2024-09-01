@@ -1,3 +1,9 @@
+resource "gandi_livedns_domain" "jakehowardtech" {
+  name = "jakehoward.tech"
+}
+
+###
+
 resource "cloudflare_zone" "jakehowardtech" {
   zone = "jakehoward.tech"
 }

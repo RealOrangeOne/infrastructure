@@ -1,3 +1,9 @@
+resource "gandi_livedns_domain" "theorangeonenet" {
+  name = "theorangeone.net"
+}
+
+###
+
 resource "cloudflare_zone" "theorangeonenet" {
   zone = "theorangeone.net"
 }
