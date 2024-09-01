@@ -10,7 +10,7 @@ variable "linode_personal_access_token" {
   sensitive = true
 }
 
-variable "gandi_api_key" {
+variable "gandi_personal_access_token" {
   sensitive = true
 }
 

@@ -12,7 +12,7 @@ provider "linode" {
 }
 
 provider "gandi" {
-  key = var.gandi_api_key
+  personal_access_token = var.gandi_personal_access_token
 }
 
 provider "b2" {
