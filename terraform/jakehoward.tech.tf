@@ -2,6 +2,67 @@ resource "gandi_livedns_domain" "jakehowardtech" {
   name = "jakehoward.tech"
 }
 
+resource "gandi_livedns_record" "jakehowardtech_mx" {
+  zone = gandi_livedns_domain.jakehowardtech.id
+  name = "@"
+  type = "MX"
+  ttl  = 3600
+  values = [
+    "10 in1-smtp.messagingengine.com",
+    "20 in2-smtp.messagingengine.com",
+  ]
+}
+
+resource "gandi_livedns_record" "jakehowardtech_spf" {
+  zone = gandi_livedns_domain.jakehowardtech.id
+  name = "@"
+  type = "TXT"
+  ttl  = 3600
+  values = [
+    "\"v=spf1 include:spf.messagingengine.com -all\""
+  ]
+}
+
+resource "gandi_livedns_record" "jakehowardtech_dkim_fm1" {
+  zone = gandi_livedns_domain.jakehowardtech.id
+  name = "fm1._domainkey"
+  type = "CNAME"
+  ttl  = 3600
+  values = [
+    "fm1.jakehoward.tech.dkim.fmhosted.com"
+  ]
+}
+
+resource "gandi_livedns_record" "jakehowardtech_dkim_fm2" {
+  zone = gandi_livedns_domain.jakehowardtech.id
+  name = "fm2._domainkey"
+  type = "CNAME"
+  ttl  = 3600
+  values = [
+    "fm2.jakehoward.tech.dkim.fmhosted.com"
+  ]
+}
+
+resource "gandi_livedns_record" "jakehowardtech_dkim_fm3" {
+  zone = gandi_livedns_domain.jakehowardtech.id
+  name = "fm3._domainkey"
+  type = "CNAME"
+  ttl  = 3600
+  values = [
+    "fm3.jakehoward.tech.dkim.fmhosted.com"
+  ]
+}
+
+resource "gandi_livedns_record" "jakehowardtech_dmarc" {
+  zone = gandi_livedns_domain.jakehowardtech.id
+  name = "_dmarc"
+  type = "TXT"
+  ttl  = 3600
+  values = [
+    "\"v=DMARC1; p=quarantine; ruf=mailto:dmarc-report@jakehoward.tech;\""
+  ]
+}
+
 ###
 
 resource "cloudflare_zone" "jakehowardtech" {
