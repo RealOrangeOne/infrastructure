@@ -9,8 +9,7 @@
 - hosts: casey
   roles:
     - nginx
-    - role: geerlingguy.certbot
-      become: true
+    - geerlingguy.certbot
     - gateway
     - headscale
     - restic
@@ -25,7 +24,6 @@
     - tang
   roles:
     - role: geerlingguy.ntp
-      become: true
       vars:
         ntp_timezone: "{{ timezone }}"
         ntp_manage_config: true
@@ -37,8 +35,7 @@
     - renovate
     - gitea-runner
   roles:
-    - role: geerlingguy.docker
-      become: true
+    - geerlingguy.docker
     - docker_cleanup
 
 - hosts:
@@ -75,13 +72,10 @@
 
 - hosts: pve
   roles:
-    - role: ironicbadger.proxmox_nag_removal
-      become: true
+    - ironicbadger.proxmox_nag_removal
     - zfs
-    - role: ironicbadger.snapraid
-      become: true
-    - role: prometheus.prometheus.node_exporter
-      become: true
+    - ironicbadger.snapraid
+    - prometheus.prometheus.node_exporter
 
 - hosts: forrest
   roles:
@@ -98,8 +92,7 @@
 - hosts: walker
   roles:
     - nginx
-    - role: geerlingguy.certbot
-      become: true
+    - geerlingguy.certbot
     - coredns_docker_proxy
     - plausible
     - restic
@@ -128,6 +121,5 @@
 - hosts: tang
   roles:
     - adguardhome
-    - role: prometheus.prometheus.node_exporter
-      become: true
+    - prometheus.prometheus.node_exporter
     - restic

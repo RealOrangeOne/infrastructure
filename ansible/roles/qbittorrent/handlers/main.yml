@@ -2,10 +2,8 @@
   service:
     name: nginx
     state: reloaded
-  become: true
 
 - name: restart qbittorrent
   service:
     name: qbittorrent-nox@{{ qbittorrent_user.name }}
     state: restarted
-  become: true

@@ -2,4 +2,3 @@
   service:
     name: squid
     state: restarted
-  become: true

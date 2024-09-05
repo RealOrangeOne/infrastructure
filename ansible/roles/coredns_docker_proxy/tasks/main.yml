@@ -2,7 +2,6 @@
   docker_network:
     name: coredns
     internal: true
-  become: true
 
 - name: Create install directory
   file:
@@ -10,7 +9,6 @@
     state: directory
     owner: "{{ docker_user.name }}"
     mode: "{{ docker_compose_directory_mask }}"
-  become: true
 
 - name: Install compose file
   template:
@@ -20,4 +18,3 @@
     owner: "{{ docker_user.name }}"
     validate: docker-compose -f %s config
   notify: restart coredns
-  become: true

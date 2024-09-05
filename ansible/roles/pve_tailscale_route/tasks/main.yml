@@ -7,7 +7,6 @@
       - "{{ tailscale_cidr }}"
   register: routes
   changed_when: false
-  become: true
 
 - name: Add route to tailscale hosts via ingress
   command:
@@ -18,5 +17,4 @@
       - "{{ tailscale_cidr }}"
       - via
       - "{{ pve_hosts.ingress.ip }}"
-  become: true
   when: tailscale_cidr not in routes.stdout

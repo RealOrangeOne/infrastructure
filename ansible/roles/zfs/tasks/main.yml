@@ -3,7 +3,6 @@
     src: files/zfs-modprobe.conf
     dest: /etc/modprobe.d/zfs.conf
     mode: "0644"
-  become: true
 
 - name: ZFS Scrub
   cron:
@@ -12,14 +11,12 @@
     minute: 0
     weekday: 5
     job: zpool scrub {{ item }}
-  become: true
   loop: "{{ zpools_to_scrub }}"
 
 - name: Give user passwordless access to ZFS commands
   lineinfile:
     path: /etc/sudoers
     line: "{{ me.user }} ALL=(ALL) NOPASSWD: /usr/sbin/zfs,/usr/sbin/zpool"
-  become: true
 
 - name: Sanoid
   include_tasks: sanoid.yml

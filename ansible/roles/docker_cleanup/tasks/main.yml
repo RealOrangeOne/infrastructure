@@ -1,7 +1,6 @@
 - name: Install docker-compose
   package:
     name: docker-compose
-  become: true
   when: ansible_os_family != 'Debian'
 
 - name: Install compose-switch
@@ -9,7 +8,6 @@
     url: "{{ docker_compose_url }}"
     dest: "{{ docker_compose_path }}"
     mode: "0755"
-  become: true
   when: ansible_os_family == 'Debian'
 
 - name: Create docker group
@@ -17,7 +15,6 @@
     name: "{{ docker_user.name }}"
     state: present
     gid: "{{ docker_user.id }}"
-  become: true
 
 - name: Create docker user
   user:
@@ -25,21 +22,18 @@
     uid: "{{ docker_user.id }}"
     group: "{{ docker_user.name }}"
     create_home: false
-  become: true
 
 - name: Add user to docker user group
   user:
     name: "{{ me.user }}"
     groups: "{{ docker_user.name }}"
     append: true
-  become: true
 
 - name: Add user to docker group
   user:
     name: "{{ me.user }}"
     groups: docker
     append: true
-  become: true
 
 - name: Clean up docker containers
   cron:
@@ -47,6 +41,7 @@
     hour: 1
     minute: 0
     job: docker system prune -af --volumes
+    user: "{{ docker_user.name }}"
 
 - name: Install util scripts
   copy:
@@ -54,6 +49,7 @@
     dest: "{{ me.home }}"
     mode: "755"
     directory_mode: "755"
+    owner: "{{ me.user }}"
 
 - name: override docker service for zfs dependencies
   include_tasks: zfs-override.yml

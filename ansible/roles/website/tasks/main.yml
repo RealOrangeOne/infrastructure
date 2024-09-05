@@ -7,7 +7,6 @@
     state: directory
     owner: "{{ docker_user.name }}"
     mode: "{{ docker_compose_directory_mask }}"
-  become: true
 
 - name: Install compose file
   template:
@@ -17,7 +16,6 @@
     owner: "{{ docker_user.name }}"
     validate: docker-compose -f %s config
   notify: restart website
-  become: true
 
 - name: Install nginx config
   template:
@@ -25,7 +23,6 @@
     dest: /etc/nginx/http.d/website.conf
     mode: "0644"
   notify: reload nginx
-  become: true
   vars:
     server_name: theorangeone.net
     upstream: website-website-1.docker:8000

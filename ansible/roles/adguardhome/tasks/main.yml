@@ -1,7 +1,6 @@
 - name: Install adguardhome
   kewlfft.aur.aur:
     name: adguardhome-bin
-  become: true
 
 - name: Disable resolved stub
   template:
@@ -10,7 +9,6 @@
     owner: root
     mode: "0644"
   notify: restart systemd-resolved
-  become: true
 
 - name: Use resolved resolv.conf
   file:
@@ -18,12 +16,10 @@
     dest: /etc/resolv.conf
     state: link
   notify: restart systemd-resolved
-  become: true
 
 - name: Install coredns
   kewlfft.aur.aur:
     name: coredns
-  become: true
 
 - name: Install coredns config file
   template:
@@ -32,4 +28,3 @@
     owner: coredns
     mode: "0644"
   notify: restart coredns
-  become: true

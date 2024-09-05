@@ -1,18 +1,15 @@
 - name: Install squid
   package:
     name: squid
-  become: true
 
 - name: Squid config
   template:
     src: files/squid.conf
     dest: /etc/squid/squid.conf
     mode: "0600"
-  become: true
   notify: restart squid
 
 - name: Enable squid
   service:
     name: squid
     enabled: true
-  become: true

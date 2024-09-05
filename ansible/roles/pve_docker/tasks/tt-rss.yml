@@ -4,7 +4,6 @@
     state: directory
     owner: "{{ docker_user.name }}"
     mode: "{{ docker_compose_directory_mask }}"
-  become: true
 
 - name: Create tt-rss plugins directory
   file:
@@ -13,7 +12,6 @@
     owner: "{{ docker_user.name }}"
     mode: "{{ docker_compose_directory_mask }}"
   register: plugins_dir
-  become: true
 
 - name: Install tt-rss compose file
   template:
@@ -23,7 +21,6 @@
     owner: "{{ docker_user.name }}"
     validate: docker-compose -f %s config
   register: compose_file
-  become: true
 
 - name: Install fever plugin
   git:
@@ -41,7 +38,6 @@
     owner: "{{ docker_user.name }}"
     mode: u=rwX,g=rwX,o=rX
     recurse: true
-  become: true
   when: fever_plugin.changed
 
 - name: restart tt-rss

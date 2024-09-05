@@ -3,7 +3,6 @@
     src: files/nginx.conf
     dest: /etc/nginx/stream.d/gateway.conf
     mode: "0644"
-  become: true
   register: nginx_config
 
 - name: Install CDN config
@@ -11,12 +10,10 @@
     src: files/nginx-cdn.conf
     dest: /etc/nginx/http.d/cdn.conf
     mode: "0644"
-  become: true
   register: nginx_config
 
 - name: Reload Nginx
   service:
     name: nginx
     state: reloaded
-  become: true
   when: nginx_config.changed

@@ -5,7 +5,6 @@
   docker_network:
     name: traefik
     internal: true
-  become: true
 
 - name: Create install directory
   file:
@@ -13,7 +12,6 @@
     state: directory
     owner: "{{ docker_user.name }}"
     mode: "{{ docker_compose_directory_mask }}"
-  become: true
 
 - name: Create config directory
   file:
@@ -21,7 +19,6 @@
     state: directory
     mode: "{{ docker_compose_directory_mask }}"
     owner: "{{ docker_user.name }}"
-  become: true
 
 - name: Create file provider directory
   file:
@@ -29,7 +26,6 @@
     state: directory
     mode: "{{ docker_compose_directory_mask }}"
     owner: "{{ docker_user.name }}"
-  become: true
 
 - name: Install compose file
   template:
@@ -39,7 +35,6 @@
     owner: "{{ docker_user.name }}"
     validate: docker-compose -f %s config
   notify: restart traefik
-  become: true
 
 - name: Install config
   template:
@@ -50,7 +45,6 @@
     lstrip_blocks: true
     trim_blocks: true
   notify: restart traefik
-  become: true
 
 - name: Install file provider
   template:
@@ -59,7 +53,6 @@
     mode: "{{ docker_compose_file_mask }}"
     owner: "{{ docker_user.name }}"
   notify: restart traefik
-  become: true
 
 - name: Install homeassistant provider
   template:
@@ -69,7 +62,6 @@
     owner: "{{ docker_user.name }}"
   notify: restart traefik
   when: traefik_provider_homeassistant
-  become: true
 
 - name: Install jellyfin provider
   template:
@@ -79,7 +71,6 @@
     owner: "{{ docker_user.name }}"
   notify: restart traefik
   when: traefik_provider_jellyfin
-  become: true
 
 - name: Install grafana provider
   template:
@@ -89,7 +80,6 @@
     owner: "{{ docker_user.name }}"
   notify: restart traefik
   when: traefik_provider_grafana
-  become: true
 
 - name: Install uptime-kuma provider
   template:
@@ -99,4 +89,3 @@
     owner: "{{ docker_user.name }}"
   notify: restart traefik
   when: traefik_provider_uptime_kuma
-  become: true

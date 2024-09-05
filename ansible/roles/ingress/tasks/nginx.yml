@@ -3,5 +3,4 @@
     src: files/nginx.conf
     dest: /etc/nginx/stream.d/ingress.conf
     mode: "0644"
-  become: true
   notify: reload nginx

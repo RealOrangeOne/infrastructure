@@ -4,7 +4,6 @@
     state: directory
     owner: "{{ docker_user.name }}"
     mode: "{{ docker_compose_directory_mask }}"
-  become: true
 
 - name: Install config file
   template:
@@ -13,7 +12,6 @@
     mode: "600"
     owner: "{{ docker_user.name }}"
   notify: restart forgejo-runner
-  become: true
 
 - name: Install compose file
   template:
@@ -23,4 +21,3 @@
     owner: "{{ docker_user.name }}"
     validate: docker-compose -f %s config
   notify: restart forgejo-runner
-  become: true

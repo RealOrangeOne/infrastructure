@@ -4,7 +4,6 @@
 - name: Install Headscale
   package:
     name: headscale
-  become: true
 
 - name: Install headscale config file
   template:
@@ -13,7 +12,6 @@
     owner: headscale
     mode: "0600"
   notify: restart headscale
-  become: true
 
 - name: Install ACLs
   template:
@@ -22,12 +20,10 @@
     owner: headscale
     mode: "0600"
   notify: restart headscale
-  become: true
 
 - name: Install nginx config
   template:
     src: files/nginx.conf
     dest: /etc/nginx/http.d/headscale.conf
     mode: "0644"
-  become: true
   notify: reload nginx

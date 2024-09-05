@@ -4,7 +4,6 @@
     state: directory
     owner: "{{ docker_user.name }}"
     mode: "{{ docker_compose_directory_mask }}"
-  become: true
 
 - name: Install whoami compose file
   template:
@@ -14,7 +13,6 @@
     owner: "{{ docker_user.name }}"
     validate: docker-compose -f %s config
   register: compose_file
-  become: true
 
 - name: restart whoami
   shell:

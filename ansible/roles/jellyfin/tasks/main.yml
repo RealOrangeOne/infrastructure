@@ -2,23 +2,19 @@
   ansible.builtin.apt_key:
     url: https://repo.jellyfin.org/jellyfin_team.gpg.key
     state: present
-  become: true
 
 - name: Add Jellyfin repository
   apt_repository:
     repo: deb [arch=amd64] https://repo.jellyfin.org/debian {{ ansible_distribution_release }} main
     filename: jellyfin
     state: present
-  become: true
 
 - name: Install jellyfin
   package:
     name: jellyfin
-  become: true
 
 - name: Set media dir permissions
   cron:
     name: Set media permissions
     special_time: daily
     job: chown -R jellyfin:jellyfin /mnt/media
-  become: true

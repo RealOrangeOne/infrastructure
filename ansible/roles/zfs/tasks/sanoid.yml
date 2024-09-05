@@ -8,7 +8,6 @@
     - pv
     - lzop
   when: ansible_os_family == 'Archlinux'
-  become: true
 
 - name: Install dependencies for Debian-based distros
   package:
@@ -20,28 +19,24 @@
     - lzop
     - mbuffer
   when: ansible_os_family == 'Debian'
-  become: true
 
 - name: Download
   git:
     repo: https://github.com/jimsalterjrs/sanoid.git
     dest: /opt/sanoid
     version: v2.1.0
-  become: true
 
 - name: Create config directory
   file:
     path: /etc/sanoid
     state: directory
     mode: "0755"
-  become: true
 
 - name: Install default config
   file:
     src: /opt/sanoid/sanoid.defaults.conf
     dest: /etc/sanoid/sanoid.defaults.conf
     state: link
-  become: true
 
 - name: Install executables
   file:
@@ -53,14 +48,12 @@
     - syncoid
     - findoid
     - sleepymutex
-  become: true
 
 - name: Install config
   template:
     src: files/sanoid.conf
     dest: /etc/sanoid/sanoid.conf
     mode: "0755"
-  become: true
 
 - name: Install systemd services
   file:
@@ -68,7 +61,6 @@
     dest: /lib/systemd/system/{{ item }}
     state: link
   loop: "{{ sanoid_services }}"
-  become: true
 
 - name: Enable systemd services
   systemd:
@@ -76,10 +68,8 @@
     enabled: true
     masked: false
   loop: "{{ sanoid_services }}"
-  become: true
 
 - name: Start sanoid timer
   systemd:
     name: sanoid.timer
     state: started
-  become: true

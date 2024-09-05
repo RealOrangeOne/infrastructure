@@ -7,7 +7,6 @@
     state: directory
     owner: "{{ docker_user.name }}"
     mode: "{{ docker_compose_directory_mask }}"
-  become: true
 
 - name: Install compose file
   template:
@@ -17,7 +16,6 @@
     owner: "{{ docker_user.name }}"
     validate: docker-compose -f %s config
   notify: restart mastodon
-  become: true
 
 - name: Install media cleanup script
   template:
@@ -25,7 +23,6 @@
     dest: /opt/mastodon/purge-media.sh
     mode: "0755"
     owner: "{{ docker_user.name }}"
-  become: true
 
 - name: Schedule media cleanup
   cron:
@@ -35,4 +32,3 @@
     weekday: 1
     job: /opt/mastodon/purge-media.sh
     user: "{{ me.user }}"
-  become: true

@@ -3,4 +3,3 @@
     name: headscale
     state: restarted
     enabled: true
-  become: true

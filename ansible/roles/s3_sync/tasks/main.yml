@@ -4,12 +4,10 @@
 - name: Install rclone
   package:
     name: rclone
-  become: true
 
 - name: Install runitor
   kewlfft.aur.aur:
     name: runitor-bin
-  become: true
 
 - name: Make user
   user:
@@ -17,7 +15,6 @@
     shell: /bin/nologin
     system: false
   register: rclone_user
-  become: true
 
 - name: Create config directory
   file:
@@ -25,7 +22,6 @@
     state: directory
     owner: rclone
     mode: "0700"
-  become: true
 
 - name: Install rclone config
   template:
@@ -33,7 +29,6 @@
     dest: "{{ rclone_user.home }}/.config/rclone/rclone.conf"
     owner: rclone
     mode: "0600"
-  become: true
 
 - name: Create config directory
   file:
@@ -41,7 +36,6 @@
     state: directory
     owner: rclone
     mode: "0700"
-  become: true
 
 - name: Schedule sync
   cron:
@@ -50,4 +44,3 @@
     minute: 0
     job: CHECK_UUID={{ vault_healthchecks_id }} /usr/bin/runitor -- /usr/bin/rclone sync s3:0rng-terraform {{ rclone_user.home }}/sync/0rng-terraform
     user: rclone
-  become: true

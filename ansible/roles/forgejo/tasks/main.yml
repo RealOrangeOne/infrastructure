@@ -7,7 +7,6 @@
     state: directory
     owner: "{{ docker_user.name }}"
     mode: "{{ docker_compose_directory_mask }}"
-  become: true
 
 - name: Install compose file
   template:
@@ -17,7 +16,6 @@
     owner: "{{ docker_user.name }}"
     validate: docker-compose -f %s config
   notify: restart gitea
-  become: true
 
 - name: Install config file
   template:
@@ -26,7 +24,6 @@
     mode: "{{ docker_compose_file_mask }}"
     owner: "{{ docker_user.name }}"
   notify: restart gitea
-  become: true
 
 - name: Create custom templates directory
   file:
@@ -35,7 +32,6 @@
     owner: "{{ docker_user.name }}"
     mode: "{{ docker_compose_directory_mask }}"
     recurse: true
-  become: true
 
 - name: Install custom footer
   copy:
@@ -44,4 +40,3 @@
     owner: "{{ docker_user.name }}"
     mode: "{{ docker_compose_file_mask }}"
   notify: restart gitea
-  become: true

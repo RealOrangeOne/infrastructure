@@ -1,7 +1,6 @@
 - name: Install nftables
   package:
     name: nftables
-  become: true
 
 - name: Copy firewall config
   template:
@@ -9,7 +8,6 @@
     dest: /etc/nftables.conf
     validate: nft -c -f %s
     mode: "644"
-  become: true
   notify: reload nftables
 
 - name: Enable nftables
@@ -17,4 +15,3 @@
     name: nftables
     enabled: true
     state: started
-  become: true

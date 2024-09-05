@@ -7,7 +7,6 @@
     state: directory
     owner: "{{ docker_user.name }}"
     mode: "{{ docker_compose_directory_mask }}"
-  become: true
 
 - name: Install clickhouse config
   template:
@@ -15,7 +14,6 @@
     dest: /opt/plausible/docker_related_config.xml
     mode: "0644"
   notify: restart plausible
-  become: true
 
 - name: Install clickhouse user config
   template:
@@ -23,7 +21,6 @@
     dest: /opt/plausible/docker_related_user_config.xml
     mode: "0644"
   notify: restart plausible
-  become: true
 
 - name: Install compose file
   template:
@@ -33,7 +30,6 @@
     owner: "{{ docker_user.name }}"
     validate: docker-compose -f %s config
   notify: restart plausible
-  become: true
 
 - name: Install nginx config
   template:
@@ -41,7 +37,6 @@
     dest: /etc/nginx/http.d/plausible.conf
     mode: "0644"
   notify: reload nginx
-  become: true
   vars:
     server_name: plausible.theorangeone.net elbisualp.theorangeone.net
     upstream: plausible-plausible-1.docker:8000

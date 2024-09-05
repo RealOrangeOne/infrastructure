@@ -17,7 +17,6 @@
       - "{{ vps_hosts.private_ipv6_range }}"
   register: routes
   changed_when: false
-  become: true
 
 - name: Add route to private services via ingress
   command:
@@ -31,5 +30,4 @@
       - "{{ pve_hosts.ingress.ipv6 }}"
       - dev
       - eth0
-  become: true
   when: vps_hosts.private_ipv6_marker not in routes.stdout

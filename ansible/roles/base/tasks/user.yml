@@ -5,11 +5,9 @@
     comment: "{{ me.name }}"
     shell: /bin/bash
     system: true
-  become: true
 
 - name: Give user sudo access
   user:
     name: "{{ me.user }}"
     groups: "{{ 'sudo' if ansible_os_family == 'Debian' else 'wheel' }}"
     append: true
-  become: true

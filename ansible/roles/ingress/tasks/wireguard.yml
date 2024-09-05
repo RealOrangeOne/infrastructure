@@ -1,8 +1,6 @@
 - name: Install Wireguard
   package:
-    name:
-      - wireguard
-  become: true
+    name: wireguard
 
 - name: Get wireguard credentials
   set_fact:
@@ -14,14 +12,12 @@
     dest: /etc/wireguard/wg0.conf
     mode: "0600"
     backup: true
-  become: true
   notify: restart wireguard
 
 - name: Enable wireguard
   service:
     name: wg-quick@wg0
     enabled: true
-  become: true
 
 - name: Enable p2p communication
   sysctl:
@@ -31,4 +27,3 @@
     state: present
     reload: true
     sysctl_file: /etc/sysctl.d/99-sysctl.conf
-  become: true

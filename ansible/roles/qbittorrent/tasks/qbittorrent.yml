@@ -1,20 +1,17 @@
 - name: Install qbittorrent
   package:
     name: qbittorrent-nox
-  become: true
 
 - name: Create user
   user:
     name: qbittorrent
     system: true
-  become: true
   register: qbittorrent_user
 
 - name: Enable service
   service:
     name: qbittorrent-nox@{{ qbittorrent_user.name }}
     enabled: true
-  become: true
 
 - name: Set configuration
   ini_file:
@@ -42,5 +39,4 @@
     - {section: Preferences, option: Bittorrent\MaxConnecsPerTorrent, value: -1"}
     - {section: Preferences, option: Bittorrent\MaxUploads, value: -1"}
     - {section: Preferences, option: Bittorrent\MaxUploadsPerTorrent, value: -1"}
-  become: true
   notify: restart qbittorrent

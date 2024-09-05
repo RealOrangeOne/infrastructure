@@ -7,7 +7,6 @@
     state: directory
     owner: "{{ docker_user.name }}"
     mode: "{{ docker_compose_directory_mask }}"
-  become: true
 
 - name: Install compose file
   template:
@@ -17,7 +16,6 @@
     owner: "{{ docker_user.name }}"
     validate: docker-compose -f %s config
   notify: restart slides
-  become: true
 
 - name: Create credentials
   htpasswd:
@@ -30,7 +28,6 @@
   loop_control:
     label: "{{ item.user }}"
   notify: restart slides
-  become: true
 
 - name: Install nginx config
   template:
@@ -38,7 +35,6 @@
     dest: /etc/nginx/http.d/slides.conf
     mode: "0644"
   notify: reload nginx
-  become: true
   vars:
     server_name: slides.jakehoward.tech
     upstream: slides-slides-1.docker:80

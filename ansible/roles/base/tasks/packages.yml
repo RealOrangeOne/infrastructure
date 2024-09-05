@@ -1,7 +1,6 @@
 - name: Install Base Packages
   package:
     name: "{{ item }}"
-  become: true
   loop:
     - htop
     - neofetch

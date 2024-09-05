@@ -2,4 +2,3 @@
   service:
     name: wg-quick@glinet
     state: restarted
-  become: true

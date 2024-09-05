@@ -1,7 +1,6 @@
 - name: Install wireguard tools
   package:
     name: "{{ item }}"
-  become: true
   loop:
     - wireguard-tools
     - qrencode
@@ -12,21 +11,18 @@
     dest: /etc/wireguard/wg0.conf
     mode: "0600"
     backup: true
-  become: true
   register: wireguard_conf
 
 - name: Enable wireguard
   service:
     name: wg-quick@wg0
     enabled: true
-  become: true
 
 - name: Restart wireguard
   service:
     name: wg-quick@wg0
     state: restarted
   when: wireguard_conf.changed
-  become: true
 
 - name: Create wireguard client directory
   file:

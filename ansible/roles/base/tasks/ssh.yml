@@ -1,13 +1,11 @@
 - name: Install OpenSSH for Debian
   package:
     name: openssh-server
-  become: true
   when: ansible_os_family == 'Debian'
 
 - name: Install OpenSSH for Arch
   package:
     name: openssh
-  become: true
   when: ansible_os_family == 'Archlinux'
 
 - name: Define context
@@ -22,7 +20,6 @@
     validate: /usr/sbin/sshd -t -f %s
     backup: true
     mode: "644"
-  become: true
   register: sshd_config
 
 - name: Set up authorized keys
@@ -38,11 +35,9 @@
   service:
     name: sshd
     enabled: true
-  become: true
 
 - name: Restart SSH Daemon
   service:
     name: sshd
     state: reloaded
   when: sshd_config.changed
-  become: true

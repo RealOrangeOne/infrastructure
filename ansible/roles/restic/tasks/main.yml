@@ -1,19 +1,16 @@
 - name: Install restic
   package:
     name: restic
-  become: true
 
 - name: Install runitor
   kewlfft.aur.aur:
     name: runitor-bin
-  become: true
 
 - name: Make user
   user:
     name: restic
     shell: /bin/nologin
     system: false
-  become: true
 
 - name: Install scripts
   template:
@@ -25,7 +22,6 @@
     - backrest.sh
     - restic-backup.sh
     - restic-forget.sh
-  become: true
 
 - name: Install includes files
   copy:
@@ -33,7 +29,6 @@
     dest: /home/restic/restic-include.txt
     mode: "0644"
     owner: restic
-  become: true
 
 - name: Install excludes files
   copy:
@@ -41,7 +36,6 @@
     dest: /home/restic/restic-excludes.txt
     mode: "0644"
     owner: restic
-  become: true
 
 - name: Set restic binary permissions
   file:
@@ -49,13 +43,11 @@
     mode: "0750"
     owner: root
     group: restic
-  become: true
 
 - name: Set cap_sys_chroot=+ep on restic
   community.general.capabilities:
     path: /usr/bin/restic
     capability: cap_dac_read_search=+ep
-  become: true
 
 - name: Schedule backup
   cron:
@@ -64,7 +56,6 @@
     minute: 0
     job: CHECK_UUID={{ vault_restic_healthchecks_id }} /usr/bin/runitor -- /home/restic/restic-backup.sh
     user: restic
-  become: true
 
 - name: Schedule forget
   cron:
@@ -74,7 +65,6 @@
     weekday: 0
     job: CHECK_UUID={{ vault_restic_forget_healthchecks_id }} /usr/bin/runitor -- /home/restic/restic-forget.sh
     user: restic
-  become: true
   when: restic_forget
 
 - name: Install pacman post script
@@ -82,7 +72,6 @@
     src: files/restic-post.sh
     dest: /usr/share/libalpm/scripts/restic-post.sh
     mode: "0700"
-  become: true
   when: ansible_os_family == 'Archlinux'
 
 - name: Install pacman post hook
@@ -90,7 +79,6 @@
     src: files/restic-post.hook
     dest: /usr/share/libalpm/hooks/restic-post.hook
     mode: "0600"
-  become: true
   when: ansible_os_family == 'Archlinux'
 
 - name: Install HomeAssistant mounts

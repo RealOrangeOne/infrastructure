@@ -1,7 +1,6 @@
 - name: Install nginx
   package:
     name: nginx
-  become: true
 
 - name: Install nginx modules
   package:
@@ -11,7 +10,6 @@
     - libnginx-mod-http-brotli-filter
     - libnginx-mod-stream
   when: ansible_os_family != 'Archlinux'
-  become: true
 
 - name: Install nginx modules (on Arch)
   kewlfft.aur.aur:
@@ -20,12 +18,10 @@
     - nginx-mod-headers-more
     - nginx-mod-brotli
   when: ansible_os_family == 'Archlinux'
-  become: true
 
 - name: Generate Diffie-Hellman parameters
   community.crypto.openssl_dhparam:
     path: /etc/nginx/dhparams.pem
-  become: true
 
 - name: Create config directories
   file:
@@ -36,7 +32,6 @@
     - http.d
     - stream.d
     - includes
-  become: true
 
 - name: Copy config files
   template:
@@ -44,7 +39,6 @@
     dest: /etc/nginx/includes/{{ item | basename }}
     mode: "0644"
   with_fileglob: files/includes/*.conf
-  become: true
   notify: reload nginx
 
 - name: Install config
@@ -52,7 +46,6 @@
     src: files/nginx.conf
     dest: /etc/nginx/nginx.conf
     mode: "0644"
-  become: true
   notify: reload nginx
 
 - name: Install HTTPS redirect
@@ -60,6 +53,5 @@
     src: files/nginx-https-redirect.conf
     dest: /etc/nginx/http.d/https-redirect.conf
     mode: "0644"
-  become: true
   notify: reload nginx
   when: nginx_https_redirect

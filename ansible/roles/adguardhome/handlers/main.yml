@@ -3,11 +3,9 @@
     name: coredns
     state: restarted
     enabled: true
-  become: true
 
 - name: restart systemd-resolved
   service:
     name: systemd-resolved
     state: restarted
     enabled: true
-  become: true

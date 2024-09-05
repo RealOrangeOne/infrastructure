@@ -4,7 +4,6 @@
 - name: Install wireguard tools
   package:
     name: "{{ item }}"
-  become: true
   loop:
     - wireguard-tools
     - qrencode
@@ -15,7 +14,6 @@
     dest: /etc/wireguard/glinet.conf
     mode: "0600"
     backup: true
-  become: true
   notify: restart wireguard
 
 - name: Wireguard client config
@@ -24,11 +22,9 @@
     dest: "{{ me.home }}/glinet-vpn.conf"
     mode: "0600"
     owner: "{{ me.user }}"
-  become: true
   notify: restart wireguard
 
 - name: Enable wireguard
   service:
     name: wg-quick@glinet
     enabled: true
-  become: true

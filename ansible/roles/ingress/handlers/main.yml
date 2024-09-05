@@ -2,13 +2,11 @@
   service:
     name: wg-quick@wg0
     state: restarted
-  become: true
 
 - name: reload nginx
   service:
     name: nginx
     state: reloaded
-  become: true
 
 - name: reload nftables
   command:
@@ -16,4 +14,3 @@
       - nft
       - -f
       - /etc/nftables.conf
-  become: true
