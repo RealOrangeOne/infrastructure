@@ -6,18 +6,10 @@
     mode: "{{ docker_compose_directory_mask }}"
   become: true
 
-- name: Create data directory
-  file:
-    path: /opt/forgejo-runner/data
-    state: directory
-    mode: "700"
-    owner: "{{ docker_user.name }}"
-  become: true
-
 - name: Install config file
   template:
     src: files/config.yml
-    dest: /opt/forgejo-runner/data/config.yml
+    dest: /opt/forgejo-runner/config.yml
     mode: "600"
     owner: "{{ docker_user.name }}"
   notify: restart forgejo-runner
