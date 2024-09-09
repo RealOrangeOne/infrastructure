@@ -5,9 +5,13 @@ export PATH := justfile_directory() + "/env/bin:" + env_var("PATH")
 @default:
   just --list
 
-ansible-setup:
+ansible-setup: ansible-install ansible-galaxy-install
+
+ansible-install:
     python -m venv env
     pip install -r ansible/dev-requirements.txt
+
+ansible-galaxy-install: ansible-install
     cd ansible/ && ansible-galaxy install -r galaxy-requirements.yml --force
 
 @ansible-facts HOST:
@@ -30,7 +34,7 @@ update-secrets:
     bw sync
     cd terraform/ && bw get attachment .env --itemid c4f8b44e-ae62-442d-a9e0-02d0621c2454
 
-ansible-deploy *ARGS:
+ansible-deploy *ARGS: ansible-galaxy-install
     cd ansible/ && ansible-playbook main.yml --vault-password-file=vault-pass.sh -K --diff {{ ARGS }}
 
 ansible-vault ACTION *ARGS:
