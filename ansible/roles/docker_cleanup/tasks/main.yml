@@ -41,7 +41,8 @@
     hour: 1
     minute: 0
     job: docker system prune -af --volumes
-    user: "{{ docker_user.name }}"
+    cron_file: docker_cleanup
+    user: root
 
 - name: Install util scripts
   copy:
