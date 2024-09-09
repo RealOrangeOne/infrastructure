@@ -1,4 +1,4 @@
-private_ip: "{{ tailscale_nodes.casey.ip }}"
+private_ip: "{{ ansible_tailscale0.ipv4.address }}"
 nginx_https_redirect: true
 
 certbot_certs:

@@ -8,4 +8,4 @@ tailscale_port: 41641
 
 tailscale_nodes:
   casey:
-    ip: 100.64.0.1
+    ip: 100.64.0.6
