@@ -13,7 +13,6 @@
     - gateway
     - headscale
     - restic
-    - artis3n.tailscale
     - glinet_vpn
 
 - hosts:
@@ -50,6 +49,14 @@
   roles:
     - traefik
 
+- hosts:
+    - ingress
+    - walker
+    - casey
+  become: false  # Forcefully run as current user
+  roles:
+    - artis3n.tailscale
+
 - hosts: pve-docker
   roles:
     - pve_docker
@@ -68,7 +75,6 @@
   roles:
     - nginx
     - ingress
-    - artis3n.tailscale
 
 - hosts: pve
   roles:
@@ -97,7 +103,6 @@
     - plausible
     - restic
     - website
-    - artis3n.tailscale
     - slides
     - comentario
 
