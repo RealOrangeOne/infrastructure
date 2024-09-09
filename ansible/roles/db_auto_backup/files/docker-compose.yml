@@ -9,6 +9,9 @@ services:
       - HEALTHCHECKS_ID={{ vault_db_auto_backup_healthchecks_id }}
     depends_on:
       - docker_proxy
+    networks:
+      - default
+      - backup_private
 
   docker_proxy:
     image: lscr.io/linuxserver/socket-proxy:latest
@@ -20,5 +23,13 @@ services:
       - EXEC=1
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - backup_private
+    tmpfs:
+      - /run
     logging:
       driver: none
+
+networks:
+  backup_private:
+    internal: true

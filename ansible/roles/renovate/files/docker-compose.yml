@@ -9,6 +9,9 @@ services:
       - DOCKER_HOST=tcp://docker_proxy:2375
       - LOG_LEVEL=debug  # Noisy, but required for debugging
     restart: unless-stopped
+    networks:
+      - default
+      - renovate_private
     depends_on:
       - redis
       - docker_proxy
@@ -33,5 +36,13 @@ services:
       - IMAGES=1
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - renovate_private
+    tmpfs:
+      - /run
     logging:
       driver: none
+
+networks:
+  renovate_private:
+    internal: true

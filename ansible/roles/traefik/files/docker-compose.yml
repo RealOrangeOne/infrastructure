@@ -29,6 +29,8 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
     networks:
       - proxy_private
+    tmpfs:
+      - /run
     logging:
       driver: none
 

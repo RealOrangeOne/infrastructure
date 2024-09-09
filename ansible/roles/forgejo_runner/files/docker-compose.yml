@@ -10,6 +10,9 @@ services:
       - DOCKER_HOST=tcp://docker_proxy:2375
     restart: unless-stopped
     command: forgejo-runner daemon
+    networks:
+      - default
+      - forgejo_private
     depends_on:
       - docker_proxy
 
@@ -31,5 +34,11 @@ services:
       - /run
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
+    networks:
+      - forgejo_private
     logging:
       driver: none
+
+networks:
+  forgejo_private:
+    internal: true
