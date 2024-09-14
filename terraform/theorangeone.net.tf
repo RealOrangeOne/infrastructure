@@ -108,7 +108,7 @@ resource "gandi_livedns_record" "theorangeonenet_dmarc_report" {
     gandi_livedns_domain.theorangeonenet.name,
     gandi_livedns_domain.jakehowardtech.name,
     gandi_livedns_record.theorangeonenet_mailgun_spf.href,
-    cloudflare_record.jakehowardtech_mailgun_spf.hostname,
+    gandi_livedns_record.jakehowardtech_mailgun_spf.href,
   ])
 
   zone = gandi_livedns_domain.theorangeonenet.id

@@ -63,288 +63,273 @@ resource "gandi_livedns_record" "jakehowardtech_dmarc" {
   ]
 }
 
-###
-
-resource "cloudflare_zone" "jakehowardtech" {
-  zone = "jakehoward.tech"
+resource "gandi_livedns_record" "jakehowardtech_wallabag" {
+  zone = gandi_livedns_domain.jakehowardtech.id
+  name = "wallabag"
+  type = "CNAME"
+  ttl  = 3600
+  values = [
+    gandi_livedns_record.sys_domain_pve.href
+  ]
 }
 
-resource "cloudflare_record" "jakehowardtech_mx1" {
-  zone_id  = cloudflare_zone.jakehowardtech.id
-  name     = "@"
-  value    = "in1-smtp.messagingengine.com"
-  type     = "MX"
-  priority = 10
-  ttl      = 1
+resource "gandi_livedns_record" "jakehowardtech_ttrss" {
+  zone = gandi_livedns_domain.jakehowardtech.id
+  name = "tt-rss"
+  type = "CNAME"
+  ttl  = 3600
+  values = [
+    gandi_livedns_record.sys_domain_pve.href
+  ]
 }
 
-resource "cloudflare_record" "jakehowardtech_mx2" {
-  zone_id  = cloudflare_zone.jakehowardtech.id
-  name     = "@"
-  value    = "in2-smtp.messagingengine.com"
-  type     = "MX"
-  priority = 20
-  ttl      = 1
+resource "gandi_livedns_record" "jakehowardtech_speed" {
+  zone = gandi_livedns_domain.jakehowardtech.id
+  name = "speed"
+  type = "CNAME"
+  ttl  = 3600
+  values = [
+    gandi_livedns_record.sys_domain_pve.href
+  ]
 }
 
-resource "cloudflare_record" "jakehowardtech_txt" {
-  zone_id = cloudflare_zone.jakehowardtech.id
-  name    = "@"
-  value   = "v=spf1 include:spf.messagingengine.com -all"
-  type    = "TXT"
-  ttl     = 1
+resource "gandi_livedns_record" "jakehowardtech_quassel" {
+  zone = gandi_livedns_domain.jakehowardtech.id
+  name = "quassel"
+  type = "CNAME"
+  ttl  = 3600
+  values = [
+    gandi_livedns_record.sys_domain_pve.href
+  ]
 }
 
-resource "cloudflare_record" "jakehowardtech_dkim_fm1" {
-  zone_id = cloudflare_zone.jakehowardtech.id
-  name    = "fm1._domainkey"
-  value   = "fm1.jakehoward.tech.dkim.fmhosted.com"
-  type    = "CNAME"
-  ttl     = 1
+resource "gandi_livedns_record" "jakehowardtech_media" {
+  zone = gandi_livedns_domain.jakehowardtech.id
+  name = "media"
+  type = "CNAME"
+  ttl  = 3600
+  values = [
+    gandi_livedns_record.sys_domain_pve.href
+  ]
 }
 
-resource "cloudflare_record" "jakehowardtech_dkim_fm2" {
-  zone_id = cloudflare_zone.jakehowardtech.id
-  name    = "fm2._domainkey"
-  value   = "fm2.jakehoward.tech.dkim.fmhosted.com"
-  type    = "CNAME"
-  ttl     = 1
+resource "gandi_livedns_record" "jakehowardtech_matrix" {
+  zone = gandi_livedns_domain.jakehowardtech.id
+  name = "matrix"
+  type = "CNAME"
+  ttl  = 3600
+  values = [
+    gandi_livedns_record.sys_domain_pve.href
+  ]
 }
 
-resource "cloudflare_record" "jakehowardtech_dkim_fm3" {
-  zone_id = cloudflare_zone.jakehowardtech.id
-  name    = "fm3._domainkey"
-  value   = "fm3.jakehoward.tech.dkim.fmhosted.com"
-  type    = "CNAME"
-  ttl     = 1
+resource "gandi_livedns_record" "jakehowardtech_intersect" {
+  zone = gandi_livedns_domain.jakehowardtech.id
+  name = "intersect"
+  type = "CNAME"
+  ttl  = 3600
+  values = [
+    gandi_livedns_record.sys_domain_pve.href
+  ]
 }
 
-resource "cloudflare_record" "jakehowardtech_dmarc" {
-  zone_id = cloudflare_zone.jakehowardtech.id
-  name    = "_dmarc"
-  value   = "v=DMARC1; p=quarantine; ruf=mailto:dmarc-report@jakehoward.tech;"
-  type    = "TXT"
-  ttl     = 1
+resource "gandi_livedns_record" "jakehowardtech_calibre" {
+  zone = gandi_livedns_domain.jakehowardtech.id
+  name = "calibre"
+  type = "CNAME"
+  ttl  = 3600
+  values = [
+    gandi_livedns_record.sys_domain_pve.href
+  ]
 }
 
-resource "cloudflare_record" "jakehowardtech_wallabag" {
-  zone_id = cloudflare_zone.jakehowardtech.id
-  name    = "wallabag"
-  value   = gandi_livedns_record.sys_domain_pve.href
-  type    = "CNAME"
-  ttl     = 1
+resource "gandi_livedns_record" "jakehowardtech_homeassistant" {
+  zone = gandi_livedns_domain.jakehowardtech.id
+  name = "homeassistant"
+  type = "CNAME"
+  ttl  = 3600
+  values = [
+    gandi_livedns_record.sys_domain_pve_private.href
+  ]
 }
 
-resource "cloudflare_record" "jakehowardtech_ttrss" {
-  zone_id = cloudflare_zone.jakehowardtech.id
-  name    = "tt-rss"
-  value   = gandi_livedns_record.sys_domain_pve.href
-  type    = "CNAME"
-  ttl     = 1
+resource "gandi_livedns_record" "jakehowardtech_grafana" {
+  zone = gandi_livedns_domain.jakehowardtech.id
+  name = "grafana"
+  type = "CNAME"
+  ttl  = 3600
+  values = [
+    gandi_livedns_record.sys_domain_pve.href
+  ]
 }
 
-resource "cloudflare_record" "jakehowardtech_speed" {
-  zone_id = cloudflare_zone.jakehowardtech.id
-  name    = "speed"
-  value   = gandi_livedns_record.sys_domain_pve.href
-  type    = "CNAME"
-  ttl     = 1
+resource "gandi_livedns_record" "jakehowardtech_vaultwarden" {
+  zone = gandi_livedns_domain.jakehowardtech.id
+  name = "vaultwarden"
+  type = "CNAME"
+  ttl  = 3600
+  values = [
+    gandi_livedns_record.sys_domain_pve_private.href
+  ]
 }
 
-resource "cloudflare_record" "jakehowardtech_quassel" {
-  zone_id = cloudflare_zone.jakehowardtech.id
-  name    = "quassel"
-  value   = gandi_livedns_record.sys_domain_pve.href
-  type    = "CNAME"
-  ttl     = 1
+resource "gandi_livedns_record" "jakehowardtech_recipes" {
+  zone = gandi_livedns_domain.jakehowardtech.id
+  name = "recipes"
+  type = "CNAME"
+  ttl  = 3600
+  values = [
+    gandi_livedns_record.sys_domain_pve.href
+  ]
 }
 
-resource "cloudflare_record" "jakehowardtech_media" {
-  zone_id = cloudflare_zone.jakehowardtech.id
-  name    = "media"
-  value   = gandi_livedns_record.sys_domain_pve.href
-  type    = "CNAME"
-  ttl     = 1
+resource "gandi_livedns_record" "jakehowardtech_mailgun_spf" {
+  zone = gandi_livedns_domain.jakehowardtech.id
+  name = "mg"
+  type = "TXT"
+  ttl  = 3600
+  values = [
+    "\"v=spf1 include:mailgun.org -all\""
+  ]
 }
 
-resource "cloudflare_record" "jakehowardtech_matrix" {
-  zone_id = cloudflare_zone.jakehowardtech.id
-  name    = "matrix"
-  value   = gandi_livedns_record.sys_domain_pve.href
-  type    = "CNAME"
-  ttl     = 1
+resource "gandi_livedns_record" "jakehowardtech_mailgun_dkim" {
+  zone = gandi_livedns_domain.jakehowardtech.id
+  name = "s1._domainkey.mg"
+  type = "TXT"
+  ttl  = 3600
+  values = [
+    "\"k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4E4cv86U+sFUjgLys26ZLccTghzGfHiFpitWdFg68lGXG63aoG2/+9bgKVT0ZBG7bjPvj6Kyj4N3TIe4oCJo2saVvtsNK1pvZkOadaBPgjzKeRvBaw48ZatUGKoV7q1NCa0kXAfiJleF7bMvbt8rYDmBljr/BG6TtZYPt6XgoZyh8HHXjv/1L6WT3JBVQ8q5UtqVRVujXNHf57FmJTOJpvs0bKn/6TUaXYZmt5z3jpDhc/HfmkzVV22AwRf9jn7kgKkgaKpkvfSL8gtYNn5oyfS0Y9W9x9ntqb4g72RCbynMppQb1uwxbIuWRVOp0un0koQDm3C8ZzhOOYAwe58BYQIDAQAB\""
+  ]
 }
 
-resource "cloudflare_record" "jakehowardtech_intersect" {
-  zone_id = cloudflare_zone.jakehowardtech.id
-  name    = "intersect"
-  value   = gandi_livedns_record.sys_domain_pve.href
-  type    = "CNAME"
-  ttl     = 1
+resource "gandi_livedns_record" "jakehowardtech_mailgun_dmarc" {
+  zone = gandi_livedns_domain.jakehowardtech.id
+  name = "_dmarc.mg"
+  type = "TXT"
+  ttl  = 3600
+  values = [
+    "\"v=DMARC1; p=quarantine; ruf=mailto:dmarc-report@jakehoward.tech;\""
+  ]
 }
 
-resource "cloudflare_record" "jakehowardtech_calibre" {
-  zone_id = cloudflare_zone.jakehowardtech.id
-  name    = "calibre"
-  value   = gandi_livedns_record.sys_domain_pve.href
-  type    = "CNAME"
-  ttl     = 1
+resource "gandi_livedns_record" "jakehowardtech_synapse_admin" {
+  zone = gandi_livedns_domain.jakehowardtech.id
+  name = "synapse-admin"
+  type = "CNAME"
+  ttl  = 3600
+  values = [
+    gandi_livedns_record.sys_domain_pve.href
+  ]
 }
 
-resource "cloudflare_record" "jakehowardtech_homeassistant" {
-  zone_id = cloudflare_zone.jakehowardtech.id
-  name    = "homeassistant"
-  value   = gandi_livedns_record.sys_domain_pve_private.href
-  type    = "CNAME"
-  ttl     = 1
+resource "gandi_livedns_record" "jakehowardtech_apex" {
+  zone = gandi_livedns_domain.jakehowardtech.id
+  name = "@"
+  type = "ALIAS"
+  ttl  = 3600
+  values = [
+    gandi_livedns_record.sys_domain_walker.href
+  ]
 }
 
-resource "cloudflare_record" "jakehowardtech_grafana" {
-  zone_id = cloudflare_zone.jakehowardtech.id
-  name    = "grafana"
-  value   = gandi_livedns_record.sys_domain_pve.href
-  type    = "CNAME"
-  ttl     = 1
+resource "gandi_livedns_record" "jakehowardtech_collabora" {
+  zone = gandi_livedns_domain.jakehowardtech.id
+  name = "collabora"
+  type = "CNAME"
+  ttl  = 3600
+  values = [
+    gandi_livedns_record.sys_domain_pve.href
+  ]
 }
 
-resource "cloudflare_record" "jakehowardtech_vaultwarden" {
-  zone_id = cloudflare_zone.jakehowardtech.id
-  name    = "vaultwarden"
-  value   = gandi_livedns_record.sys_domain_pve_private.href
-  type    = "CNAME"
-  ttl     = 1
+resource "gandi_livedns_record" "jakehowardtech_tasks" {
+  zone = gandi_livedns_domain.jakehowardtech.id
+  name = "tasks"
+  type = "CNAME"
+  ttl  = 3600
+  values = [
+    gandi_livedns_record.sys_domain_pve.href
+  ]
 }
 
-resource "cloudflare_record" "jakehowardtech_tandoor" {
-  zone_id = cloudflare_zone.jakehowardtech.id
-  name    = "recipes"
-  value   = gandi_livedns_record.sys_domain_pve.href
-  type    = "CNAME"
-  ttl     = 1
+resource "gandi_livedns_record" "jakehowardtech_auth" {
+  zone = gandi_livedns_domain.jakehowardtech.id
+  name = "auth"
+  type = "CNAME"
+  ttl  = 3600
+  values = [
+    gandi_livedns_record.sys_domain_pve.href
+  ]
 }
 
-resource "cloudflare_record" "jakehowardtech_mailgun_spf" {
-  zone_id = cloudflare_zone.jakehowardtech.id
-  name    = "mg"
-  value   = "v=spf1 include:mailgun.org -all"
-  type    = "TXT"
-  ttl     = 1
+resource "gandi_livedns_record" "jakehowardtech_minio" {
+  zone = gandi_livedns_domain.jakehowardtech.id
+  name = "minio"
+  type = "CNAME"
+  ttl  = 3600
+  values = [
+    gandi_livedns_record.sys_domain_pve.href
+  ]
 }
 
-resource "cloudflare_record" "jakehowardtech_mailgun_dkim" {
-  zone_id = cloudflare_zone.jakehowardtech.id
-  name    = "s1._domainkey.mg"
-  value   = "k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA4E4cv86U+sFUjgLys26ZLccTghzGfHiFpitWdFg68lGXG63aoG2/+9bgKVT0ZBG7bjPvj6Kyj4N3TIe4oCJo2saVvtsNK1pvZkOadaBPgjzKeRvBaw48ZatUGKoV7q1NCa0kXAfiJleF7bMvbt8rYDmBljr/BG6TtZYPt6XgoZyh8HHXjv/1L6WT3JBVQ8q5UtqVRVujXNHf57FmJTOJpvs0bKn/6TUaXYZmt5z3jpDhc/HfmkzVV22AwRf9jn7kgKkgaKpkvfSL8gtYNn5oyfS0Y9W9x9ntqb4g72RCbynMppQb1uwxbIuWRVOp0un0koQDm3C8ZzhOOYAwe58BYQIDAQAB"
-  type    = "TXT"
-  ttl     = 1
+resource "gandi_livedns_record" "jakehowardtech_s3" {
+  zone = gandi_livedns_domain.jakehowardtech.id
+  name = "s3"
+  type = "CNAME"
+  ttl  = 3600
+  values = [
+    gandi_livedns_record.sys_domain_pve.href
+  ]
 }
 
-resource "cloudflare_record" "jakehowardtech_mailgun_dmarc" {
-  zone_id = cloudflare_zone.jakehowardtech.id
-  name    = "_dmarc.mg"
-  value   = "v=DMARC1; p=quarantine; ruf=mailto:dmarc-report@jakehoward.tech;"
-  type    = "TXT"
-  ttl     = 1
+resource "gandi_livedns_record" "jakehowardtech_ntfy" {
+  zone = gandi_livedns_domain.jakehowardtech.id
+  name = "ntfy"
+  type = "CNAME"
+  ttl  = 3600
+  values = [
+    gandi_livedns_record.sys_domain_pve.href
+  ]
 }
 
-resource "cloudflare_record" "jakehowardtech_matrix_admin" {
-  zone_id = cloudflare_zone.jakehowardtech.id
-  name    = "synapse-admin"
-  value   = gandi_livedns_record.sys_domain_pve.href
-  type    = "CNAME"
-  ttl     = 1
+resource "gandi_livedns_record" "jakehowardtech_headscale" {
+  zone = gandi_livedns_domain.jakehowardtech.id
+  name = "headscale"
+  type = "CNAME"
+  ttl  = 3600
+  values = [
+    gandi_livedns_record.sys_domain_casey.href
+  ]
 }
 
-# Cloudflare supports CNAME flattening - so this is ok
-resource "cloudflare_record" "jakehowardtech_apex" {
-  zone_id = cloudflare_zone.jakehowardtech.id
-  name    = "@"
-  value   = gandi_livedns_record.sys_domain_walker.href
-  type    = "CNAME"
-  ttl     = 1
+resource "gandi_livedns_record" "jakehowardtech_slides" {
+  zone = gandi_livedns_domain.jakehowardtech.id
+  name = "slides"
+  type = "CNAME"
+  ttl  = 3600
+  values = [
+    gandi_livedns_record.sys_domain_walker.href
+  ]
 }
 
-resource "cloudflare_record" "jakehowardtech_collabora" {
-  zone_id = cloudflare_zone.jakehowardtech.id
-  name    = "collabora"
-  value   = gandi_livedns_record.sys_domain_pve.href
-  type    = "CNAME"
-  ttl     = 1
+resource "gandi_livedns_record" "jakehowardtech_uptime" {
+  zone = gandi_livedns_domain.jakehowardtech.id
+  name = "uptime"
+  type = "CNAME"
+  ttl  = 3600
+  values = [
+    gandi_livedns_record.sys_domain_pve.href
+  ]
 }
 
-resource "cloudflare_record" "jakehowardtech_tasks" {
-  zone_id = cloudflare_zone.jakehowardtech.id
-  name    = "tasks"
-  value   = gandi_livedns_record.sys_domain_pve.href
-  type    = "CNAME"
-  ttl     = 1
-}
-
-resource "cloudflare_record" "jakehowardtech_auth" {
-  zone_id = cloudflare_zone.jakehowardtech.id
-  name    = "auth"
-  value   = gandi_livedns_record.sys_domain_pve.href
-  type    = "CNAME"
-  ttl     = 1
-}
-
-resource "cloudflare_record" "jakehowardtech_minio" {
-  zone_id = cloudflare_zone.jakehowardtech.id
-  name    = "minio"
-  value   = gandi_livedns_record.sys_domain_pve.href
-  type    = "CNAME"
-  ttl     = 1
-}
-
-resource "cloudflare_record" "jakehowardtech_s3" {
-  zone_id = cloudflare_zone.jakehowardtech.id
-  name    = "s3"
-  value   = gandi_livedns_record.sys_domain_pve.href
-  type    = "CNAME"
-  ttl     = 1
-}
-
-resource "cloudflare_record" "jakehowardtech_ntfy" {
-  zone_id = cloudflare_zone.jakehowardtech.id
-  name    = "ntfy"
-  value   = gandi_livedns_record.sys_domain_pve.href
-  type    = "CNAME"
-  ttl     = 1
-}
-
-resource "cloudflare_record" "jakehowardtech_headscale" {
-  zone_id = cloudflare_zone.jakehowardtech.id
-  name    = "headscale"
-  value   = gandi_livedns_record.sys_domain_casey.href
-  type    = "CNAME"
-  ttl     = 1
-}
-
-resource "cloudflare_record" "jakehowardtech_slides" {
-  zone_id = cloudflare_zone.jakehowardtech.id
-  name    = "slides"
-  value   = gandi_livedns_record.sys_domain_walker.href
-  type    = "CNAME"
-  ttl     = 1
-}
-
-resource "cloudflare_record" "jakehowardtech_uptime" {
-  zone_id = cloudflare_zone.jakehowardtech.id
-  name    = "uptime"
-  value   = gandi_livedns_record.sys_domain_pve.href
-  type    = "CNAME"
-  ttl     = 1
-}
-
-resource "cloudflare_record" "jakehowardtech_caa" {
-  zone_id = cloudflare_zone.jakehowardtech.id
-  name    = "@"
-  type    = "CAA"
-  ttl     = 1
-
-  data = {
-    tag   = "issue"
-    flags = 0
-    value = "letsencrypt.org"
-  }
+resource "gandi_livedns_record" "jakehowardtech_caa" {
+  zone = gandi_livedns_domain.jakehowardtech.id
+  name = "@"
+  type = "CAA"
+  ttl  = 3600
+  values = [
+    "0 issue \"letsencrypt.org\"",
+    "0 wildissue \"letsencrypt.org\"",
+  ]
 }
