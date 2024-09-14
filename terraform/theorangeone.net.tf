@@ -216,8 +216,8 @@ resource "cloudflare_record" "theorangeonenet_mastodon" {
 resource "cloudflare_record" "theorangeonenet_comentario" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "comentario"
-  value   = cloudflare_record.sys_domain_walker.value
-  type    = "A"
+  value   = cloudflare_record.sys_domain_walker.hostname
+  type    = "CNAME"
   ttl     = 1
 }
 
