@@ -130,7 +130,7 @@ resource "cloudflare_record" "jakehowardtech_dmarc" {
 resource "cloudflare_record" "jakehowardtech_wallabag" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "wallabag"
-  value   = cloudflare_record.sys_domain_pve.hostname
+  value   = gandi_livedns_record.sys_domain_pve.href
   type    = "CNAME"
   ttl     = 1
 }
@@ -138,7 +138,7 @@ resource "cloudflare_record" "jakehowardtech_wallabag" {
 resource "cloudflare_record" "jakehowardtech_ttrss" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "tt-rss"
-  value   = cloudflare_record.sys_domain_pve.hostname
+  value   = gandi_livedns_record.sys_domain_pve.href
   type    = "CNAME"
   ttl     = 1
 }
@@ -146,7 +146,7 @@ resource "cloudflare_record" "jakehowardtech_ttrss" {
 resource "cloudflare_record" "jakehowardtech_speed" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "speed"
-  value   = cloudflare_record.sys_domain_pve.hostname
+  value   = gandi_livedns_record.sys_domain_pve.href
   type    = "CNAME"
   ttl     = 1
 }
@@ -154,7 +154,7 @@ resource "cloudflare_record" "jakehowardtech_speed" {
 resource "cloudflare_record" "jakehowardtech_quassel" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "quassel"
-  value   = cloudflare_record.sys_domain_pve.hostname
+  value   = gandi_livedns_record.sys_domain_pve.href
   type    = "CNAME"
   ttl     = 1
 }
@@ -162,7 +162,7 @@ resource "cloudflare_record" "jakehowardtech_quassel" {
 resource "cloudflare_record" "jakehowardtech_media" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "media"
-  value   = cloudflare_record.sys_domain_pve.hostname
+  value   = gandi_livedns_record.sys_domain_pve.href
   type    = "CNAME"
   ttl     = 1
 }
@@ -170,7 +170,7 @@ resource "cloudflare_record" "jakehowardtech_media" {
 resource "cloudflare_record" "jakehowardtech_matrix" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "matrix"
-  value   = cloudflare_record.sys_domain_pve.hostname
+  value   = gandi_livedns_record.sys_domain_pve.href
   type    = "CNAME"
   ttl     = 1
 }
@@ -178,7 +178,7 @@ resource "cloudflare_record" "jakehowardtech_matrix" {
 resource "cloudflare_record" "jakehowardtech_intersect" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "intersect"
-  value   = cloudflare_record.sys_domain_pve.hostname
+  value   = gandi_livedns_record.sys_domain_pve.href
   type    = "CNAME"
   ttl     = 1
 }
@@ -186,7 +186,7 @@ resource "cloudflare_record" "jakehowardtech_intersect" {
 resource "cloudflare_record" "jakehowardtech_calibre" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "calibre"
-  value   = cloudflare_record.sys_domain_pve.hostname
+  value   = gandi_livedns_record.sys_domain_pve.href
   type    = "CNAME"
   ttl     = 1
 }
@@ -194,7 +194,7 @@ resource "cloudflare_record" "jakehowardtech_calibre" {
 resource "cloudflare_record" "jakehowardtech_homeassistant" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "homeassistant"
-  value   = cloudflare_record.sys_domain_pve_private.hostname
+  value   = gandi_livedns_record.sys_domain_pve_private.href
   type    = "CNAME"
   ttl     = 1
 }
@@ -202,7 +202,7 @@ resource "cloudflare_record" "jakehowardtech_homeassistant" {
 resource "cloudflare_record" "jakehowardtech_grafana" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "grafana"
-  value   = cloudflare_record.sys_domain_pve.hostname
+  value   = gandi_livedns_record.sys_domain_pve.href
   type    = "CNAME"
   ttl     = 1
 }
@@ -210,7 +210,7 @@ resource "cloudflare_record" "jakehowardtech_grafana" {
 resource "cloudflare_record" "jakehowardtech_vaultwarden" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "vaultwarden"
-  value   = cloudflare_record.sys_domain_pve_private.hostname
+  value   = gandi_livedns_record.sys_domain_pve_private.href
   type    = "CNAME"
   ttl     = 1
 }
@@ -218,7 +218,7 @@ resource "cloudflare_record" "jakehowardtech_vaultwarden" {
 resource "cloudflare_record" "jakehowardtech_tandoor" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "recipes"
-  value   = cloudflare_record.sys_domain_pve.hostname
+  value   = gandi_livedns_record.sys_domain_pve.href
   type    = "CNAME"
   ttl     = 1
 }
@@ -250,7 +250,7 @@ resource "cloudflare_record" "jakehowardtech_mailgun_dmarc" {
 resource "cloudflare_record" "jakehowardtech_matrix_admin" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "synapse-admin"
-  value   = cloudflare_record.sys_domain_pve.hostname
+  value   = gandi_livedns_record.sys_domain_pve.href
   type    = "CNAME"
   ttl     = 1
 }
@@ -259,7 +259,7 @@ resource "cloudflare_record" "jakehowardtech_matrix_admin" {
 resource "cloudflare_record" "jakehowardtech_apex" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "@"
-  value   = cloudflare_record.sys_domain_walker.hostname
+  value   = gandi_livedns_record.sys_domain_walker.href
   type    = "CNAME"
   ttl     = 1
 }
@@ -267,7 +267,7 @@ resource "cloudflare_record" "jakehowardtech_apex" {
 resource "cloudflare_record" "jakehowardtech_collabora" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "collabora"
-  value   = cloudflare_record.sys_domain_pve.hostname
+  value   = gandi_livedns_record.sys_domain_pve.href
   type    = "CNAME"
   ttl     = 1
 }
@@ -275,7 +275,7 @@ resource "cloudflare_record" "jakehowardtech_collabora" {
 resource "cloudflare_record" "jakehowardtech_tasks" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "tasks"
-  value   = cloudflare_record.sys_domain_pve.hostname
+  value   = gandi_livedns_record.sys_domain_pve.href
   type    = "CNAME"
   ttl     = 1
 }
@@ -283,7 +283,7 @@ resource "cloudflare_record" "jakehowardtech_tasks" {
 resource "cloudflare_record" "jakehowardtech_auth" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "auth"
-  value   = cloudflare_record.sys_domain_pve.hostname
+  value   = gandi_livedns_record.sys_domain_pve.href
   type    = "CNAME"
   ttl     = 1
 }
@@ -291,7 +291,7 @@ resource "cloudflare_record" "jakehowardtech_auth" {
 resource "cloudflare_record" "jakehowardtech_minio" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "minio"
-  value   = cloudflare_record.sys_domain_pve.hostname
+  value   = gandi_livedns_record.sys_domain_pve.href
   type    = "CNAME"
   ttl     = 1
 }
@@ -299,7 +299,7 @@ resource "cloudflare_record" "jakehowardtech_minio" {
 resource "cloudflare_record" "jakehowardtech_s3" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "s3"
-  value   = cloudflare_record.sys_domain_pve.hostname
+  value   = gandi_livedns_record.sys_domain_pve.href
   type    = "CNAME"
   ttl     = 1
 }
@@ -307,7 +307,7 @@ resource "cloudflare_record" "jakehowardtech_s3" {
 resource "cloudflare_record" "jakehowardtech_ntfy" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "ntfy"
-  value   = cloudflare_record.sys_domain_pve.hostname
+  value   = gandi_livedns_record.sys_domain_pve.href
   type    = "CNAME"
   ttl     = 1
 }
@@ -315,7 +315,7 @@ resource "cloudflare_record" "jakehowardtech_ntfy" {
 resource "cloudflare_record" "jakehowardtech_headscale" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "headscale"
-  value   = cloudflare_record.sys_domain_casey.hostname
+  value   = gandi_livedns_record.sys_domain_casey.href
   type    = "CNAME"
   ttl     = 1
 }
@@ -323,7 +323,7 @@ resource "cloudflare_record" "jakehowardtech_headscale" {
 resource "cloudflare_record" "jakehowardtech_slides" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "slides"
-  value   = cloudflare_record.sys_domain_walker.hostname
+  value   = gandi_livedns_record.sys_domain_walker.href
   type    = "CNAME"
   ttl     = 1
 }
@@ -331,7 +331,7 @@ resource "cloudflare_record" "jakehowardtech_slides" {
 resource "cloudflare_record" "jakehowardtech_uptime" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "uptime"
-  value   = cloudflare_record.sys_domain_pve.hostname
+  value   = gandi_livedns_record.sys_domain_pve.href
   type    = "CNAME"
   ttl     = 1
 }
