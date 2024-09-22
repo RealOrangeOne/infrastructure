@@ -8,7 +8,7 @@ resource "gandi_livedns_record" "theorangeonenet_git" {
   type = "CNAME"
   ttl  = 3600
   values = [
-    gandi_livedns_record.sys_domain_pve.href
+    "${gandi_livedns_record.sys_domain_pve.href}."
   ]
 }
 
@@ -18,7 +18,7 @@ resource "gandi_livedns_record" "theorangeonenet_whoami" {
   type = "CNAME"
   ttl  = 3600
   values = [
-    gandi_livedns_record.sys_domain_pve.href
+    "${gandi_livedns_record.sys_domain_pve.href}."
   ]
 }
 
@@ -28,7 +28,7 @@ resource "gandi_livedns_record" "theorangeonenet_whoami_cdn" {
   type = "CNAME"
   ttl  = 3600
   values = [
-    gandi_livedns_record.sys_domain_pve.href
+    "${gandi_livedns_record.sys_domain_pve.href}."
   ]
 }
 
@@ -38,7 +38,7 @@ resource "gandi_livedns_record" "theorangeonenet_whoami_private" {
   type = "CNAME"
   ttl  = 3600
   values = [
-    gandi_livedns_record.sys_domain_pve.href
+    "${gandi_livedns_record.sys_domain_pve.href}."
   ]
 }
 
@@ -48,8 +48,8 @@ resource "gandi_livedns_record" "theorangeonenet_mx" {
   type = "MX"
   ttl  = 3600
   values = [
-    "10 in1-smtp.messagingengine.com",
-    "20 in2-smtp.messagingengine.com",
+    "10 in1-smtp.messagingengine.com.",
+    "20 in2-smtp.messagingengine.com.",
   ]
 }
 
@@ -69,7 +69,7 @@ resource "gandi_livedns_record" "theorangeonenet_dkim_fm1" {
   type = "CNAME"
   ttl  = 3600
   values = [
-    "fm1.theorangeone.net.dkim.fmhosted.com"
+    "fm1.theorangeone.net.dkim.fmhosted.com."
   ]
 }
 
@@ -79,7 +79,7 @@ resource "gandi_livedns_record" "theorangeonenet_dkim_fm2" {
   type = "CNAME"
   ttl  = 3600
   values = [
-    "fm2.theorangeone.net.dkim.fmhosted.com"
+    "fm2.theorangeone.net.dkim.fmhosted.com."
   ]
 }
 
@@ -89,7 +89,7 @@ resource "gandi_livedns_record" "theorangeonenet_dkim_fm3" {
   type = "CNAME"
   ttl  = 3600
   values = [
-    "fm3.theorangeone.net.dkim.fmhosted.com"
+    "fm3.theorangeone.net.dkim.fmhosted.com."
   ]
 }
 
@@ -126,7 +126,7 @@ resource "gandi_livedns_record" "theorangeonenet_apex" {
   type = "ALIAS"
   ttl  = 3600
   values = [
-    gandi_livedns_record.sys_domain_walker.href
+    "${gandi_livedns_record.sys_domain_walker.href}."
   ]
 }
 
@@ -146,7 +146,7 @@ resource "gandi_livedns_record" "theorangeonenet_matrix" {
   type = "CNAME"
   ttl  = 3600
   values = [
-    gandi_livedns_record.sys_domain_pve.href
+    "${gandi_livedns_record.sys_domain_pve.href}."
   ]
 }
 
@@ -156,7 +156,7 @@ resource "gandi_livedns_record" "theorangeonenet_plausible" {
   type = "CNAME"
   ttl  = 3600
   values = [
-    gandi_livedns_record.sys_domain_walker.href
+    "${gandi_livedns_record.sys_domain_walker.href}."
   ]
 }
 
@@ -166,7 +166,7 @@ resource "gandi_livedns_record" "theorangeonenet_plausible_bare" {
   type = "CNAME"
   ttl  = 3600
   values = [
-    gandi_livedns_record.sys_domain_walker.href
+    "${gandi_livedns_record.sys_domain_walker.href}."
   ]
 }
 
@@ -176,7 +176,7 @@ resource "gandi_livedns_record" "theorangeonenet_notes" {
   type = "CNAME"
   ttl  = 3600
   values = [
-    "realorangeone.github.io"
+    "realorangeone.github.io."
   ]
 }
 
@@ -186,7 +186,7 @@ resource "gandi_livedns_record" "theorangeonenet_bin" {
   type = "CNAME"
   ttl  = 3600
   values = [
-    gandi_livedns_record.sys_domain_pve.href
+    "${gandi_livedns_record.sys_domain_pve.href}."
   ]
 }
 
@@ -236,7 +236,7 @@ resource "gandi_livedns_record" "theorangeonenet_mastodon" {
   type = "CNAME"
   ttl  = 3600
   values = [
-    gandi_livedns_record.sys_domain_pve.href
+    "${gandi_livedns_record.sys_domain_pve.href}."
   ]
 }
 
@@ -246,7 +246,7 @@ resource "gandi_livedns_record" "theorangeonenet_comentario" {
   type = "CNAME"
   ttl  = 3600
   values = [
-    gandi_livedns_record.sys_domain_walker.href
+    "${gandi_livedns_record.sys_domain_walker.href}."
   ]
 }
 

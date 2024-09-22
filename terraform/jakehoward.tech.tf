@@ -8,8 +8,8 @@ resource "gandi_livedns_record" "jakehowardtech_mx" {
   type = "MX"
   ttl  = 3600
   values = [
-    "10 in1-smtp.messagingengine.com",
-    "20 in2-smtp.messagingengine.com",
+    "10 in1-smtp.messagingengine.com.",
+    "20 in2-smtp.messagingengine.com.",
   ]
 }
 
@@ -29,7 +29,7 @@ resource "gandi_livedns_record" "jakehowardtech_dkim_fm1" {
   type = "CNAME"
   ttl  = 3600
   values = [
-    "fm1.jakehoward.tech.dkim.fmhosted.com"
+    "fm1.jakehoward.tech.dkim.fmhosted.com."
   ]
 }
 
@@ -39,7 +39,7 @@ resource "gandi_livedns_record" "jakehowardtech_dkim_fm2" {
   type = "CNAME"
   ttl  = 3600
   values = [
-    "fm2.jakehoward.tech.dkim.fmhosted.com"
+    "fm2.jakehoward.tech.dkim.fmhosted.com."
   ]
 }
 
@@ -49,7 +49,7 @@ resource "gandi_livedns_record" "jakehowardtech_dkim_fm3" {
   type = "CNAME"
   ttl  = 3600
   values = [
-    "fm3.jakehoward.tech.dkim.fmhosted.com"
+    "fm3.jakehoward.tech.dkim.fmhosted.com."
   ]
 }
 
@@ -69,7 +69,7 @@ resource "gandi_livedns_record" "jakehowardtech_wallabag" {
   type = "CNAME"
   ttl  = 3600
   values = [
-    gandi_livedns_record.sys_domain_pve.href
+    "${gandi_livedns_record.sys_domain_pve.href}."
   ]
 }
 
@@ -79,7 +79,7 @@ resource "gandi_livedns_record" "jakehowardtech_ttrss" {
   type = "CNAME"
   ttl  = 3600
   values = [
-    gandi_livedns_record.sys_domain_pve.href
+    "${gandi_livedns_record.sys_domain_pve.href}."
   ]
 }
 
@@ -89,7 +89,7 @@ resource "gandi_livedns_record" "jakehowardtech_speed" {
   type = "CNAME"
   ttl  = 3600
   values = [
-    gandi_livedns_record.sys_domain_pve.href
+    "${gandi_livedns_record.sys_domain_pve.href}."
   ]
 }
 
@@ -99,7 +99,7 @@ resource "gandi_livedns_record" "jakehowardtech_quassel" {
   type = "CNAME"
   ttl  = 3600
   values = [
-    gandi_livedns_record.sys_domain_pve.href
+    "${gandi_livedns_record.sys_domain_pve.href}."
   ]
 }
 
@@ -109,7 +109,7 @@ resource "gandi_livedns_record" "jakehowardtech_media" {
   type = "CNAME"
   ttl  = 3600
   values = [
-    gandi_livedns_record.sys_domain_pve.href
+    "${gandi_livedns_record.sys_domain_pve.href}."
   ]
 }
 
@@ -119,7 +119,7 @@ resource "gandi_livedns_record" "jakehowardtech_matrix" {
   type = "CNAME"
   ttl  = 3600
   values = [
-    gandi_livedns_record.sys_domain_pve.href
+    "${gandi_livedns_record.sys_domain_pve.href}."
   ]
 }
 
@@ -129,7 +129,7 @@ resource "gandi_livedns_record" "jakehowardtech_intersect" {
   type = "CNAME"
   ttl  = 3600
   values = [
-    gandi_livedns_record.sys_domain_pve.href
+    "${gandi_livedns_record.sys_domain_pve.href}."
   ]
 }
 
@@ -139,7 +139,7 @@ resource "gandi_livedns_record" "jakehowardtech_calibre" {
   type = "CNAME"
   ttl  = 3600
   values = [
-    gandi_livedns_record.sys_domain_pve.href
+    "${gandi_livedns_record.sys_domain_pve.href}."
   ]
 }
 
@@ -149,7 +149,7 @@ resource "gandi_livedns_record" "jakehowardtech_homeassistant" {
   type = "CNAME"
   ttl  = 3600
   values = [
-    gandi_livedns_record.sys_domain_pve_private.href
+    "${gandi_livedns_record.sys_domain_pve_private.href}."
   ]
 }
 
@@ -159,7 +159,7 @@ resource "gandi_livedns_record" "jakehowardtech_grafana" {
   type = "CNAME"
   ttl  = 3600
   values = [
-    gandi_livedns_record.sys_domain_pve.href
+    "${gandi_livedns_record.sys_domain_pve.href}."
   ]
 }
 
@@ -169,7 +169,7 @@ resource "gandi_livedns_record" "jakehowardtech_vaultwarden" {
   type = "CNAME"
   ttl  = 3600
   values = [
-    gandi_livedns_record.sys_domain_pve_private.href
+    "${gandi_livedns_record.sys_domain_pve_private.href}."
   ]
 }
 
@@ -179,7 +179,7 @@ resource "gandi_livedns_record" "jakehowardtech_recipes" {
   type = "CNAME"
   ttl  = 3600
   values = [
-    gandi_livedns_record.sys_domain_pve.href
+    "${gandi_livedns_record.sys_domain_pve.href}."
   ]
 }
 
@@ -219,7 +219,7 @@ resource "gandi_livedns_record" "jakehowardtech_synapse_admin" {
   type = "CNAME"
   ttl  = 3600
   values = [
-    gandi_livedns_record.sys_domain_pve.href
+    "${gandi_livedns_record.sys_domain_pve.href}."
   ]
 }
 
@@ -229,7 +229,7 @@ resource "gandi_livedns_record" "jakehowardtech_apex" {
   type = "ALIAS"
   ttl  = 3600
   values = [
-    gandi_livedns_record.sys_domain_walker.href
+    "${gandi_livedns_record.sys_domain_walker.href}."
   ]
 }
 
@@ -239,7 +239,7 @@ resource "gandi_livedns_record" "jakehowardtech_collabora" {
   type = "CNAME"
   ttl  = 3600
   values = [
-    gandi_livedns_record.sys_domain_pve.href
+    "${gandi_livedns_record.sys_domain_pve.href}."
   ]
 }
 
@@ -249,7 +249,7 @@ resource "gandi_livedns_record" "jakehowardtech_tasks" {
   type = "CNAME"
   ttl  = 3600
   values = [
-    gandi_livedns_record.sys_domain_pve.href
+    "${gandi_livedns_record.sys_domain_pve.href}."
   ]
 }
 
@@ -259,7 +259,7 @@ resource "gandi_livedns_record" "jakehowardtech_auth" {
   type = "CNAME"
   ttl  = 3600
   values = [
-    gandi_livedns_record.sys_domain_pve.href
+    "${gandi_livedns_record.sys_domain_pve.href}."
   ]
 }
 
@@ -269,7 +269,7 @@ resource "gandi_livedns_record" "jakehowardtech_minio" {
   type = "CNAME"
   ttl  = 3600
   values = [
-    gandi_livedns_record.sys_domain_pve.href
+    "${gandi_livedns_record.sys_domain_pve.href}."
   ]
 }
 
@@ -279,7 +279,7 @@ resource "gandi_livedns_record" "jakehowardtech_s3" {
   type = "CNAME"
   ttl  = 3600
   values = [
-    gandi_livedns_record.sys_domain_pve.href
+    "${gandi_livedns_record.sys_domain_pve.href}."
   ]
 }
 
@@ -289,7 +289,7 @@ resource "gandi_livedns_record" "jakehowardtech_ntfy" {
   type = "CNAME"
   ttl  = 3600
   values = [
-    gandi_livedns_record.sys_domain_pve.href
+    "${gandi_livedns_record.sys_domain_pve.href}."
   ]
 }
 
@@ -299,7 +299,7 @@ resource "gandi_livedns_record" "jakehowardtech_headscale" {
   type = "CNAME"
   ttl  = 3600
   values = [
-    gandi_livedns_record.sys_domain_casey.href
+    "${gandi_livedns_record.sys_domain_casey.href}."
   ]
 }
 
@@ -309,7 +309,7 @@ resource "gandi_livedns_record" "jakehowardtech_slides" {
   type = "CNAME"
   ttl  = 3600
   values = [
-    gandi_livedns_record.sys_domain_walker.href
+    "${gandi_livedns_record.sys_domain_walker.href}."
   ]
 }
 
@@ -319,7 +319,7 @@ resource "gandi_livedns_record" "jakehowardtech_uptime" {
   type = "CNAME"
   ttl  = 3600
   values = [
-    gandi_livedns_record.sys_domain_pve.href
+    "${gandi_livedns_record.sys_domain_pve.href}."
   ]
 }
 
