@@ -1,6 +1,6 @@
 services:
   mastodon:
-    image: lscr.io/linuxserver/mastodon:4.2.13
+    image: lscr.io/linuxserver/mastodon:4.3.0
     environment:
       - TZ={{ timezone }}
       - PUID={{ docker_user.id }}
