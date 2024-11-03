@@ -1,6 +1,7 @@
 {
     "tagOwners": {
-        "tag:client": []
+        "tag:client": [],
+        "tag:private-svcs": []
 
     },
     "acls": [
@@ -8,6 +9,11 @@
             "action": "accept",
             "src": ["tag:client"],
             "dst": ["*:*"]
+        },
+        {
+            "action": "accept",
+            "src": ["tag:private-svcs"],
+            "dst": ["{{ vps_hosts.private_ipv6_marker }}:80,443"]
         }
     ]
 }
