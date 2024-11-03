@@ -37,6 +37,9 @@ update-secrets:
 ansible-deploy *ARGS: ansible-galaxy-install
     cd ansible/ && ansible-playbook main.yml --vault-password-file=vault-pass.sh -K --diff {{ ARGS }}
 
+ansible-deploy-fast *ARGS:
+    cd ansible/ && ansible-playbook main.yml --vault-password-file=vault-pass.sh -K --diff {{ ARGS }}
+
 ansible-vault ACTION *ARGS:
     cd ansible/ && ansible-vault {{ ACTION }} --vault-password-file=vault-pass.sh {{ ARGS }}
 
