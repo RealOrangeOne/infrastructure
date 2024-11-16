@@ -269,6 +269,14 @@ resource "cloudflare_record" "jakehowardtech_uptime" {
   ttl     = 1
 }
 
+resource "cloudflare_record" "jakehowardtech_baby-buddy" {
+  zone_id = cloudflare_zone.jakehowardtech.id
+  name    = "baby-buddy"
+  value   = cloudflare_record.sys_domain_pve_private.hostname
+  type    = "CNAME"
+  ttl     = 1
+}
+
 resource "cloudflare_record" "jakehowardtech_caa" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "@"

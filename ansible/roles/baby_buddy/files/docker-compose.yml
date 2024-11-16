@@ -1,0 +1,38 @@
+services:
+  baby-buddy:
+    image: lscr.io/linuxserver/babybuddy:latest
+    restart: unless-stopped
+    environment:
+      - PUID={{ docker_user.id }}
+      - PGID={{ docker_user.id }}
+      - TZ={{ timezone }}
+      - DATABASE_URL=postgres://baby-buddy:baby-buddy@db/baby-buddy
+      - ALLOWED_HOSTS=baby-buddy.jakehoward.tech
+      - CSRF_COOKIE_SECURE=True
+      - SECRET_KEY={{ vault_secret_key }}
+      - SECURE_PROXY_SSL_HEADER=True
+      - SESSION_COOKIE_SECURE=True
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.baby-buddy.rule=Host(`baby-buddy.jakehoward.tech`)
+      - traefik.http.routers.baby-buddy.middlewares=tailscale-only@file
+    volumes:
+      - "{{ app_data_dir }}/baby-buddy:/config"
+    depends_on:
+      - db
+    networks:
+      - default
+      - traefik
+
+  db:
+    image: postgres:14-alpine
+    restart: unless-stopped
+    volumes:
+      - /mnt/speed/dbs/postgres/baby-buddy:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=baby-buddy
+      - POSTGRES_USER=baby-buddy
+
+networks:
+  traefik:
+    external: true

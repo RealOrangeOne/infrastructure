@@ -70,6 +70,7 @@
     - authentik
     - minio
     - ntfy
+    - baby_buddy
 
 - hosts: ingress
   roles:

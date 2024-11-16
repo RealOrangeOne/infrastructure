@@ -1,0 +1,4 @@
+- name: restart baby-buddy
+  shell:
+    chdir: /opt/baby-buddy
+    cmd: "{{ docker_update_command }}"
