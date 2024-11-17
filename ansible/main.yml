@@ -71,6 +71,7 @@
     - minio
     - ntfy
     - baby_buddy
+    - bsky
 
 - hosts: ingress
   roles:

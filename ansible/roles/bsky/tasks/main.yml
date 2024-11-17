@@ -1,0 +1,26 @@
+- name: Include vault
+  include_vars: vault.yml
+
+- name: Create install directory
+  file:
+    path: /opt/bsky
+    state: directory
+    owner: "{{ docker_user.name }}"
+    mode: "{{ docker_compose_directory_mask }}"
+
+- name: Install environment variables
+  template:
+    src: files/pds.env
+    dest: /opt/bsky/pds.env
+    mode: "660"
+    owner: "{{ docker_user.name }}"
+  notify: restart bsky
+
+- name: Install compose file
+  template:
+    src: files/docker-compose.yml
+    dest: /opt/bsky/docker-compose.yml
+    mode: "{{ docker_compose_file_mask }}"
+    owner: "{{ docker_user.name }}"
+    validate: docker-compose -f %s config
+  notify: restart bsky

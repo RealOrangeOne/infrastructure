@@ -1,0 +1,4 @@
+- name: restart bsky
+  shell:
+    chdir: /opt/bsky
+    cmd: "{{ docker_update_command }}"

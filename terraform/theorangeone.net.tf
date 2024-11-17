@@ -221,6 +221,22 @@ resource "cloudflare_record" "theorangeonenet_comentario" {
   ttl     = 1
 }
 
+resource "cloudflare_record" "theorangeonenet_bsky" {
+  zone_id = cloudflare_zone.theorangeonenet.id
+  name    = "bsky"
+  value   = cloudflare_record.sys_domain_pve.hostname
+  type    = "CNAME"
+  ttl     = 1
+}
+
+resource "cloudflare_record" "theorangeonenet_atproto" {
+  zone_id = cloudflare_zone.theorangeonenet.id
+  name    = "_atproto"
+  value   = "did=did:plc:pgyg4ih7zsqkwdon34jqkbuz"
+  type    = "TXT"
+  ttl     = 1
+}
+
 resource "cloudflare_record" "theorangeonenet_caa" {
   zone_id = cloudflare_zone.theorangeonenet.id
   name    = "@"

@@ -1,0 +1,19 @@
+services:
+  pds:
+    image: ghcr.io/bluesky-social/pds:latest
+    user: "{{ docker_user.id }}"
+    restart: unless-stopped
+    env_file:
+      - /opt/bsky/pds.env
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.bsky.rule=Host(`bsky.theorangeone.net`)
+    volumes:
+      - "{{ app_data_dir }}/bsky:/pds"
+    networks:
+      - default
+      - traefik
+
+networks:
+  traefik:
+    external: true
