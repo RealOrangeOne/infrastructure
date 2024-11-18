@@ -1,6 +1,6 @@
 services:
   coredns:
-    image: coredns/coredns:latest
+    image: coredns/coredns:1.11.3
     restart: unless-stopped
     volumes:
       - ./Corefile:/home/nonroot/Corefile:ro
