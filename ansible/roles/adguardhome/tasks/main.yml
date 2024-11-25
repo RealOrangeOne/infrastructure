@@ -1,6 +1,6 @@
 - name: Install adguardhome
-  kewlfft.aur.aur:
-    name: adguardhome-bin
+  package:
+    name: adguardhome
 
 - name: Disable resolved stub
   template:
