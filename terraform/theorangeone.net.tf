@@ -250,6 +250,26 @@ resource "gandi_livedns_record" "theorangeonenet_comentario" {
   ]
 }
 
+resource "gandi_livedns_record" "theorangeonenet_bsky" {
+  zone = gandi_livedns_domain.theorangeonenet.id
+  name = "bsky"
+  type = "CNAME"
+  ttl  = 3600
+  values = [
+    "${gandi_livedns_record.sys_domain_pve.href}."
+  ]
+}
+
+resource "gandi_livedns_record" "theorangeonenet_atproto" {
+  zone = gandi_livedns_domain.theorangeonenet.id
+  name = "_atproto"
+  type = "TXT"
+  ttl  = 3600
+  values = [
+    "did=did:plc:pgyg4ih7zsqkwdon34jqkbuz"
+  ]
+}
+
 resource "gandi_livedns_record" "theorangeonenet_caa" {
   zone = gandi_livedns_domain.theorangeonenet.id
   name = "@"

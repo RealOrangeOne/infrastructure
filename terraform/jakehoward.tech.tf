@@ -323,6 +323,16 @@ resource "gandi_livedns_record" "jakehowardtech_uptime" {
   ]
 }
 
+resource "gandi_livedns_record" "jakehowardtech_baby-buddy" {
+  zone = gandi_livedns_domain.jakehowardtech.id
+  name = "baby-buddy"
+  type = "CNAME"
+  ttl  = 3600
+  values = [
+    "${gandi_livedns_record.sys_domain_pve_private.href}."
+  ]
+}
+
 resource "gandi_livedns_record" "jakehowardtech_caa" {
   zone = gandi_livedns_domain.jakehowardtech.id
   name = "@"
