@@ -2,4 +2,4 @@ ssh_extra_allowed_users: jake
 private_ip: "{{ ansible_default_ipv4.address }}"
 
 restic_backup_locations:
-  - /var/lib/adguardhome/
+  - /var/lib/private/adguardhome/
