@@ -5,4 +5,4 @@ restic_backup_locations:
   - /mnt/home-assistant
   - /home/rclone/sync
 
-restic_forget: true
+restic_dir: ""

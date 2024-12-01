@@ -21,7 +21,6 @@
   loop:
     - backrest.sh
     - restic-backup.sh
-    - restic-forget.sh
 
 - name: Install includes files
   copy:
@@ -56,16 +55,6 @@
     minute: 0
     job: CHECK_UUID={{ vault_restic_healthchecks_id }} /usr/bin/runitor -- /home/restic/restic-backup.sh
     user: restic
-
-- name: Schedule forget
-  cron:
-    name: restic forget
-    hour: 2
-    minute: 0
-    weekday: 0
-    job: CHECK_UUID={{ vault_restic_forget_healthchecks_id }} /usr/bin/runitor -- /home/restic/restic-forget.sh
-    user: restic
-  when: restic_forget
 
 - name: Install pacman post script
   template:

@@ -12,3 +12,4 @@ cdn_domains:
 
 restic_backup_locations:
   - /var/lib/headscale/
+restic_key: "{{ vault_restic_key }}"
