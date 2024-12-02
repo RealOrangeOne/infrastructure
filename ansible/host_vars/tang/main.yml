@@ -3,4 +3,3 @@ private_ip: "{{ ansible_default_ipv4.address }}"
 
 restic_backup_locations:
   - /var/lib/private/adguardhome/
-restic_key: "{{ vault_restic_key }}"

@@ -2,7 +2,6 @@ private_ip: "{{ ansible_tailscale0.ipv4.address }}"
 
 restic_backup_locations:
   - /opt
-restic_key: "{{ vault_restic_key }}"
 
 nginx_https_redirect: true
 
