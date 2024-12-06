@@ -76,10 +76,19 @@ resource "linode_firewall" "casey" {
   }
 
   inbound {
-    label    = "allow-inbound-tailscale"
+    label    = "allow-inbound-headscale"
     action   = "ACCEPT"
     protocol = "UDP"
     ports    = "41641"
+    ipv4     = ["0.0.0.0/0"]
+    ipv6     = ["::/0"]
+  }
+
+  inbound {
+    label    = "allow-inbound-stun"
+    action   = "ACCEPT"
+    protocol = "UDP"
+    ports    = "3478"
     ipv4     = ["0.0.0.0/0"]
     ipv6     = ["::/0"]
   }
