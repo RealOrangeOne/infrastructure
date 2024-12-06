@@ -100,6 +100,9 @@ derp:
 
     private_key_path: /var/lib/headscale/derp_server_private.key
 
+    ipv4: "{{ ansible_default_ipv4.address }}"
+    ipv6: "{{ ansible_default_ipv6.address }}"
+
   # List of externally available DERP maps encoded in JSON
   urls: []
 
