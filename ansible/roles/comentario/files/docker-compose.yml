@@ -1,6 +1,6 @@
 services:
   comentario:
-    image: registry.gitlab.com/comentario/comentario:v3.11.0
+    image: registry.gitlab.com/comentario/comentario:v3.12.0
     restart: unless-stopped
     user: "{{ docker_user.id }}:{{ docker_user.id }}"
     depends_on:
