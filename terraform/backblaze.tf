@@ -67,8 +67,8 @@ resource "b2_application_key" "restic" {
 resource "b2_application_key" "restic_repos" {
   for_each = toset(["walker", "tang", "casey"])
 
-  key_name  = "restic-${each.key}"
-  bucket_id = b2_bucket.restic.id
+  key_name    = "restic-${each.key}"
+  bucket_id   = b2_bucket.restic.id
   name_prefix = "${each.key}/"
   capabilities = [
     "readFiles",
