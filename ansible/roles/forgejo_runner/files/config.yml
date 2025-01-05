@@ -8,7 +8,7 @@ runner:
   # Where to store the registration result.
   file: /data/.runner
   # Execute how many tasks concurrently at the same time.
-  capacity: "{{ ansible_processor_nproc }}"
+  capacity: {{ ansible_processor_nproc }}
   # Extra environment variables to run jobs.
   envs: {}
   # Extra environment variables to run jobs from a file.

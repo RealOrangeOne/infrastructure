@@ -5,6 +5,7 @@ ignore: |
   ansible/galaxy_collections
   ansible/group_vars/all/vps-hosts.yml
   ansible/roles/traefik/files/traefik.yml
+  ansible/roles/forgejo_runner/files/config.yml
   env
 
 rules:
