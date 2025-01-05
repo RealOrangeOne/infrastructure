@@ -9,12 +9,14 @@ services:
       - TZ={{ timezone }}
       - DOCKER_HOST=tcp://docker_proxy:2375
     restart: unless-stopped
-    command: forgejo-runner daemon
+    command: forgejo-runner --config config.yml daemon
     networks:
       - default
       - forgejo_private
     depends_on:
       - docker_proxy
+    ports:
+      - "{{ ansible_default_ipv4.address }}:4000:4000"
 
   docker_proxy:
     image: lscr.io/linuxserver/socket-proxy:latest

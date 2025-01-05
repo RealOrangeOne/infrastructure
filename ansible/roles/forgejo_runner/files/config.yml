@@ -39,10 +39,10 @@ cache:
   # The host of the cache server.
   # It's not for the address to listen, but the address to connect from job containers.
   # So 0.0.0.0 is a bad choice, leave it empty to detect automatically.
-  host: ""
+  host: "{{ ansible_default_ipv4.address }}"
   # The port of the cache server.
   # 0 means to use a random available port.
-  port: 0
+  port: 4000
   # The external cache server URL. Valid only when enable is true.
   # If it's specified, act_runner will use this URL as the ACTIONS_CACHE_URL rather than start a server by itself.
   # The URL should generally end with "/".
