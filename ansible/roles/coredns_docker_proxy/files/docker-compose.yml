@@ -1,9 +1,9 @@
 services:
   coredns:
-    image: coredns/coredns:1.11.3
+    image: coredns/coredns:latest
     restart: unless-stopped
     volumes:
-      - ./Corefile:/home/nonroot/Corefile:ro
+      - ./Corefile:/Corefile:ro
     ports:
       - "{{ private_ip }}:53053:53/udp"
     networks:
