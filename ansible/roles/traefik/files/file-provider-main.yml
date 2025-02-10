@@ -10,7 +10,7 @@ http:
           Permissions-Policy: interest-cohort=()
 
     tailscale-only:
-      ipWhiteList:
+      ipAllowList:
         sourceRange:
           - "{{ tailscale_cidr }}"
           - "{{ tailscale_cidr_ipv6 }}"
@@ -18,7 +18,7 @@ http:
           - "{{ pve_hosts.forrest.ipv6 }}"
 
     private-access:
-      ipWhiteList:
+      ipAllowList:
         sourceRange:
           - "{{ tailscale_cidr }}"
           - "{{ tailscale_cidr_ipv6 }}"

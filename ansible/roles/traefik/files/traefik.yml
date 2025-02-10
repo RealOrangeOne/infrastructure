@@ -18,12 +18,12 @@ entryPoints:
         - floc-block@file
         - compress@file
       tls:
-        certresolver: le
+        certResolver: le
         domains:
           - main: theorangeone.net
-            sans: "*.theorangeone.net"
+            sans: ["*.theorangeone.net"]
           - main: jakehoward.tech
-            sans: "*.jakehoward.tech"
+            sans: ["*.jakehoward.tech"]
     proxyProtocol:
       trustedIPs:
         - "{{ pve_hosts.ingress.ip }}/32"
@@ -47,6 +47,7 @@ providers:
 api:
   dashboard: true
   insecure: true
+  disableDashboardAd: true
 
 certificatesResolvers:
   le:
@@ -55,7 +56,7 @@ certificatesResolvers:
       storage: /etc/traefik/acme.json
       dnsChallenge:
         provider: cloudflare
-        delayBeforeCheck: 0
+        delayBeforeCheck: 0s
         resolvers:
           - 1.1.1.1:53
           - 1.0.0.1:53
@@ -66,7 +67,7 @@ certificatesResolvers:
       storage: /etc/traefik/acme.json
       dnsChallenge:
         provider: gandiv5
-        delayBeforeCheck: 0
+        delayBeforeCheck: 0s
         resolvers:
           - 1.1.1.1:53
           - 1.0.0.1:53
