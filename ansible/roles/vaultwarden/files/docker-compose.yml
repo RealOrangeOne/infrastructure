@@ -30,6 +30,9 @@ services:
       - ROCKET_WORKERS=2
       - EMERGENCY_ACCESS_ALLOWED=false
       - AUTHENTICATOR_DISABLE_TIME_DRIFT=true
+      - SENDS_ALLOWED=false
+      - PASSWORD_HINTS_ALLOWED=false
+      - EXPERIMENTAL_CLIENT_FEATURE_FLAGS=autofill-overlay,autofill-v2,extension-refresh,inline-menu-positioning-improvements,ssh-key-vault-item,ssh-agent
     networks:
       - default
       - traefik
