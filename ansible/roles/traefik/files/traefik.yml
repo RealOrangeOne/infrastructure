@@ -30,6 +30,9 @@ entryPoints:
     forwardedHeaders:
       trustedIPs:
         - "{{ wireguard.server.ip }}/32"  # This is obtained from the connecting `proxy_protocol`
+    transport:
+      respondingTimeouts:
+        readTimeout: 180s
   traefik:
     address: :8080
 
