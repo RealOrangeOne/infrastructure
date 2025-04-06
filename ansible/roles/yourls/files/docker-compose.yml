@@ -16,7 +16,6 @@ services:
     labels:
       - traefik.enable=true
       - traefik.http.routers.yourls.rule=Host(`0rng.one`)
-      - traefik.http.routers.yourls.tls.certresolver=gandi
     networks:
       - default
       - traefik

@@ -3,7 +3,6 @@ services:
     image: traefik:v3
     user: "{{ docker_user.id }}"
     environment:
-      - CF_DNS_API_TOKEN={{ vault_cloudflare_api_token }}
       - GANDIV5_PERSONAL_ACCESS_TOKEN={{ vault_gandi_personal_access_token }}
     volumes:
       - ./traefik:/etc/traefik

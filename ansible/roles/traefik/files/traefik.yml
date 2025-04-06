@@ -58,22 +58,11 @@ certificatesResolvers:
       email: "{{ vault_letsencrypt_email }}"
       storage: /etc/traefik/acme.json
       dnsChallenge:
-        provider: cloudflare
-        delayBeforeCheck: 0s
-        resolvers:
-          - 1.1.1.1:53
-          - 1.0.0.1:53
-
-  gandi:
-    acme:
-      email: "{{ vault_letsencrypt_email }}"
-      storage: /etc/traefik/acme.json
-      dnsChallenge:
         provider: gandiv5
         delayBeforeCheck: 0s
         resolvers:
-          - 1.1.1.1:53
-          - 1.0.0.1:53
+          - 9.9.9.9:53
+          - 149.112.112.112:53
 
 serversTransport:
   insecureSkipVerify: true
