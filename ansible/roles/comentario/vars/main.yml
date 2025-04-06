@@ -13,7 +13,7 @@ comentario_secrets:
       secret: "{{ vault_comentario_gitlab_application_secret }}"
     twitter:
       key: "{{ vault_comentario_twitter_api_key }}"
-      secret: "{{ vault_comentario_twitter_api_secret  }}"
+      secret: "{{ vault_comentario_twitter_api_secret }}"
   smtpServer:
     host: smtp.eu.mailgun.org
     port: 587

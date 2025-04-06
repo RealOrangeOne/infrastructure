@@ -13,3 +13,4 @@ exclude_paths:
   - galaxy_collections/
   - ~/.ansible
   - roles/traefik/files/traefik.yml
+  - roles/forgejo_runner/files/config.yml
