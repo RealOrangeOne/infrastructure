@@ -1,5 +1,3 @@
-
-
 services:
   immich-server:
     container_name: immich_server
@@ -58,11 +56,28 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_USER: postgres
       POSTGRES_DB: immich
-      POSTGRES_INITDB_ARGS: '--data-checksums'
+      POSTGRES_INITDB_ARGS: --data-checksums
     volumes:
       - /mnt/speed/dbs/postgres/immich:/var/lib/postgresql/data
     restart: unless-stopped
-    command: ["postgres", "-c" ,"shared_preload_libraries=vectors.so", "-c", 'search_path="$$user", public, vectors', "-c", "logging_collector=on", "-c", "max_wal_size=2GB", "-c", "shared_buffers=512MB", "-c", "wal_compression=on"]
+    # yamllint disable-line rule:quoted-strings rule:line-length
+    command: [postgres, -c, shared_preload_libraries=vectors.so, -c, 'search_path="$$user", public, vectors', -c, logging_collector=on, -c, max_wal_size=2GB, -c, shared_buffers=512MB, -c, wal_compression=on]
+
+  immich-public-proxy:
+    image: alangrainger/immich-public-proxy:latest
+    user: "{{ docker_user.id }}"
+    restart: unless-stopped
+    environment:
+      - IMMICH_URL=http://immich-server:2283
+    volumes:
+      - ./ipp-config.json:/app/config.json:ro
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.immich-public-proxy.rule=Host(`photos.jakehoward.tech`)
+      - traefik.http.services.immich-public-proxy-immich.loadbalancer.server.port=3000
+    networks:
+      - default
+      - traefik
 
 networks:
   traefik:

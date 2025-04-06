@@ -13,3 +13,11 @@
     owner: "{{ docker_user.name }}"
     validate: docker-compose -f %s config
   notify: restart immich
+
+- name: Install IPP config
+  template:
+    src: files/ipp-config.json
+    dest: /opt/immich/ipp-config.json
+    mode: "{{ docker_compose_file_mask }}"
+    owner: "{{ docker_user.name }}"
+  notify: restart immich

@@ -285,6 +285,14 @@ resource "cloudflare_record" "jakehowardtech_immich" {
   ttl     = 1
 }
 
+resource "cloudflare_record" "jakehowardtech_photos" {
+  zone_id = cloudflare_zone.jakehowardtech.id
+  name    = "photos"
+  value   = cloudflare_record.sys_domain_pve.hostname
+  type    = "CNAME"
+  ttl     = 1
+}
+
 resource "cloudflare_record" "jakehowardtech_caa" {
   zone_id = cloudflare_zone.jakehowardtech.id
   name    = "@"
