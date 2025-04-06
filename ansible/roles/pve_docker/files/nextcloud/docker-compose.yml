@@ -45,7 +45,7 @@ services:
       - /tmp
 
   mariadb:
-    image: mariadb:10.6
+    image: mariadb:10.11
     restart: unless-stopped
     volumes:
       - /mnt/speed/dbs/mariadb/nextcloud:/var/lib/mysql
