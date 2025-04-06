@@ -1,0 +1,69 @@
+
+
+services:
+  immich-server:
+    container_name: immich_server
+    image: ghcr.io/immich-app/immich-server:release
+    user: "{{ docker_user.id }}"
+    volumes:
+      - /mnt/tank/files/immich:/usr/src/app/upload
+      - /etc/localtime:/etc/localtime:ro
+      - /mnt/tank/files/photos:/mnt/photos:ro
+    depends_on:
+      - redis
+      - database
+      - immich-machine-learning
+    restart: unless-stopped
+    environment:
+      - DATABASE_URL=postgres://postgres:postgres@database/immich
+      - TZ={{ timezone }}
+    devices:
+      - /dev/dri:/dev/dri
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.immich.rule=Host(`immich.jakehoward.tech`)
+      - traefik.http.routers.immich.middlewares=tailscale-only@file
+    networks:
+      - default
+      - traefik
+
+  immich-machine-learning:
+    container_name: immich_machine_learning
+    image: ghcr.io/immich-app/immich-machine-learning:release
+    user: "{{ docker_user.id }}"
+    volumes:
+      - /mnt/scratch/immich-model-cache:/cache
+      - /mnt/scratch/immich-ml-cache:/.cache
+      - /mnt/scratch/immich-ml-config:/.config
+    environment:
+      - DATABASE_URL=postgres://postgres:postgres@database/immich
+      - MACHINE_LEARNING_WORKER_TIMEOUT=240
+    restart: unless-stopped
+    devices:
+      - /dev/dri:/dev/dri
+    depends_on:
+      - database
+      - redis
+
+  redis:
+    image: redis:7-alpine
+    restart: unless-stopped
+    volumes:
+      - /mnt/speed/dbs/redis/immich:/data
+
+  database:
+    container_name: immich_postgres
+    image: tensorchord/pgvecto-rs:pg14-v0.2.0
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: immich
+      POSTGRES_INITDB_ARGS: '--data-checksums'
+    volumes:
+      - /mnt/speed/dbs/postgres/immich:/var/lib/postgresql/data
+    restart: unless-stopped
+    command: ["postgres", "-c" ,"shared_preload_libraries=vectors.so", "-c", 'search_path="$$user", public, vectors', "-c", "logging_collector=on", "-c", "max_wal_size=2GB", "-c", "shared_buffers=512MB", "-c", "wal_compression=on"]
+
+networks:
+  traefik:
+    external: true

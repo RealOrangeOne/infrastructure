@@ -1,0 +1,4 @@
+- name: restart immich
+  shell:
+    chdir: /opt/immich
+    cmd: "{{ docker_update_command }}"
