@@ -17,6 +17,7 @@
   loop:
     - nginx-mod-headers-more
     - nginx-mod-brotli
+    - nginx-mod-stream
   when: ansible_os_family == 'Archlinux'
 
 - name: Generate Diffie-Hellman parameters
