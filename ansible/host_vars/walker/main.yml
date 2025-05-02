@@ -8,6 +8,7 @@ nginx_https_redirect: true
 certbot_certs:
   - domains:
       - theorangeone.net
+      - jakehoward.tech
   - domains:
       - plausible.theorangeone.net
       - elbisualp.theorangeone.net

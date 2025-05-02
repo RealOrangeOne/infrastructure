@@ -24,7 +24,7 @@
     mode: "0644"
   notify: reload nginx
   vars:
-    server_name: theorangeone.net
+    server_name: theorangeone.net jakehoward.tech
     upstream: website-website-1.docker:8000
     ssl_cert_path: /etc/letsencrypt/live/theorangeone.net
     location_extra: |
