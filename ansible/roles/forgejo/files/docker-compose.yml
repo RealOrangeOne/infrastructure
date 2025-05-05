@@ -38,7 +38,7 @@ services:
       - POSTGRES_USER=gitea
 
   redis:
-    image: redis:7-alpine
+    image: redis:8-alpine
     restart: unless-stopped
     volumes:
       - /mnt/speed/dbs/redis/gitea:/data
