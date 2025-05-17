@@ -3,6 +3,14 @@ http:
     compress:
       compress: {}
 
+    secure-headers:
+      headers:
+        stsSeconds: 2592000
+        contentTypeNosniff: true
+        browserXssFilter: true
+        customResponseHeaders:
+          Server: ''
+
     # https://paramdeo.com/blog/opting-your-website-out-of-googles-floc-network
     floc-block:
       headers:
