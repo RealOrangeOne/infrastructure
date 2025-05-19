@@ -9,7 +9,7 @@ http:
         contentTypeNosniff: true
         browserXssFilter: true
         customResponseHeaders:
-          Server: ''
+          Server: ""
 
     # https://paramdeo.com/blog/opting-your-website-out-of-googles-floc-network
     floc-block:
