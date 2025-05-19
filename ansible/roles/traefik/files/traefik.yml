@@ -25,6 +25,8 @@ entryPoints:
             sans: ["*.theorangeone.net"]
           - main: jakehoward.tech
             sans: ["*.jakehoward.tech"]
+          - main: 0rng.one
+            sans: ["*.0rng.one"]
     proxyProtocol:
       trustedIPs:
         - "{{ pve_hosts.ingress.ip }}/32"
