@@ -33,16 +33,6 @@ services:
     logging:
       driver: none
 
-  certs:
-    image: slocomptech/traefik-cert-extract:latest
-    restart: unless-stopped
-    networks: []
-    volumes:
-      - ./traefik:/data:ro
-      - ./certs:/config/certs
-    logging:
-      driver: none
-
 networks:
   traefik:
     external: true
