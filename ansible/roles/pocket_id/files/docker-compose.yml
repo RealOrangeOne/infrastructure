@@ -10,6 +10,7 @@ services:
       - DB_CONNECTION_STRING=postgres://pocketid:{{ vault_pocket_id_db_password }}@db/pocketid
       - UPDATE_CHECK_DISABLED=true
       - PUBLIC_UI_CONFIG_DISABLED=true
+      - BACKGROUND_IMAGE_TYPE=png
       - APP_NAME=Orange ID
       - SESSION_DURATION=30
       - SMTP_HOST=smtp.eu.mailgun.org
