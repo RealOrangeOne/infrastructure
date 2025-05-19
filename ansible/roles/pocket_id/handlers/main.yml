@@ -1,0 +1,4 @@
+- name: restart pocket-id
+  shell:
+    chdir: /opt/pocket-id
+    cmd: "{{ docker_update_command }}"

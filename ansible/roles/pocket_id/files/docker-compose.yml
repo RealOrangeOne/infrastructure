@@ -1,0 +1,47 @@
+services:
+  pocket-id:
+    image: ghcr.io/pocket-id/pocket-id
+    restart: unless-stopped
+    user: "{{ docker_user.id }}"
+    environment:
+      - PUBLIC_APP_URL=https://auth.jakehoward.tech
+      - TRUST_PROXY=true
+      - DB_PROVIDER=postgres
+      - DB_CONNECTION_STRING=postgres://pocketid:{{ vault_pocket_id_db_password }}@db/pocketid
+      - UPDATE_CHECK_DISABLED=true
+      - PUBLIC_UI_CONFIG_DISABLED=true
+      - APP_NAME=Orange ID
+      - SESSION_DURATION=30
+      - SMTP_HOST=smtp.eu.mailgun.org
+      - SMTP_PORT=465
+      - SMTP_FROM={{ vault_pocket_id_from_address }}
+      - SMTP_USER={{ vault_pocket_id_smtp_user }}
+      - SMTP_PASSWORD={{ vault_pocket_id_smtp_password }}
+      - SMTP_TLS=tls
+      - EMAIL_LOGIN_NOTIFICATION_ENABLED=true
+    volumes:
+      - "{{ app_data_dir }}/pocket-id:/app/backend/data"
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.pocket-id.rule=Host(`auth.jakehoward.tech`)
+      - traefik.http.middlewares.pocket-id-ratelimit.ratelimit.average=5
+      - traefik.http.middlewares.pocket-id-ratelimit.ratelimit.burst=200
+      - traefik.http.routers.pocket-id.middlewares=pocket-id-ratelimit
+    depends_on:
+      - db
+    networks:
+      - default
+      - traefik
+
+  db:
+    image: postgres:15-alpine
+    restart: unless-stopped
+    volumes:
+      - /mnt/speed/dbs/postgres/pocket-id:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD={{ vault_pocket_id_db_password }}
+      - POSTGRES_USER=pocketid
+
+networks:
+  traefik:
+    external: true
