@@ -18,6 +18,7 @@ services:
       - GRANIAN_BLOCKING_THREADS=2
       - SEO_INDEX=true
       - ACTIVITYPUB_HOST=mastodon.theorangeone.net
+      - S6_CMD_WAIT_FOR_SERVICES_MAXTIME=60000
     volumes:
       - ./media:/app/media
       - ./cache:/tmp/nginx_cache
