@@ -1,6 +1,6 @@
 services:
   plausible:
-    image: ghcr.io/plausible/community-edition:v2.1
+    image: ghcr.io/plausible/community-edition:v3.0
     restart: unless-stopped
     command: sh -c "/entrypoint.sh db migrate && /entrypoint.sh run"
     depends_on:
@@ -29,8 +29,10 @@ services:
       - SMTP_HOST_SSL_ENABLED=true
 
   clickhouse:
-    image: clickhouse/clickhouse-server:24.3.3.102-alpine
+    image: clickhouse/clickhouse-server:24.12-alpine
     restart: unless-stopped
+    environment:
+      - CLICKHOUSE_SKIP_USER_SETUP=1
     volumes:
       - ./clickhouse:/var/lib/clickhouse
       - ./docker_related_config.xml:/etc/clickhouse-server/config.d/docker_related_config.xml:ro
