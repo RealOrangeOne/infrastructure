@@ -35,7 +35,7 @@ services:
       - traefik
 
   db:
-    image: postgres:15-alpine
+    image: postgres:17-alpine
     restart: unless-stopped
     volumes:
       - /mnt/speed/dbs/postgres/pocket-id:/var/lib/postgresql/data
