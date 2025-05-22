@@ -29,7 +29,7 @@ services:
       - SMTP_HOST_SSL_ENABLED=true
 
   clickhouse:
-    image: clickhouse/clickhouse-server:24.12-alpine
+    image: clickhouse/clickhouse-server:25.5-alpine
     restart: unless-stopped
     environment:
       - CLICKHOUSE_SKIP_USER_SETUP=1
