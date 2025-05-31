@@ -73,6 +73,7 @@
     - baby_buddy
     - bsky
     - immich
+    - freshrss
 
 - hosts: ingress
   roles:

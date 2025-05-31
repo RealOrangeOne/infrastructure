@@ -1,0 +1,38 @@
+services:
+  freshrss:
+    image: freshrss/freshrss:latest
+    restart: unless-stopped
+    environment:
+      - TZ=Europe/London
+      - OIDC_ENABLED=1
+      - OIDC_PROVIDER_METADATA_URL=https://auth.jakehoward.tech/.well-known/openid-configuration
+      - OIDC_CLIENT_ID={{ vault_oidc_client_id }}
+      - OIDC_CLIENT_SECRET={{ vault_oidc_client_secret }}
+      - OIDC_SCOPES=openid profile email
+      - OIDC_X_FORWARDED_HEADERS=X-Forwarded-Proto X-Forwarded-Host
+      - CRON_MIN=*/15
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.freshrss.rule=Host(`freshrss.jakehoward.tech`)
+      - traefik.http.routers.freshrss.middlewares=tailscale-only@file
+    volumes:
+      - "{{ app_data_dir }}/freshrss:/var/www/FreshRSS/data"
+      - ./extensions:/var/www/FreshRSS/extensions
+    depends_on:
+      - db
+    networks:
+      - default
+      - traefik
+
+  db:
+    image: postgres:14-alpine
+    restart: unless-stopped
+    volumes:
+      - /mnt/speed/dbs/postgres/freshrss:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=freshrss
+      - POSTGRES_USER=freshrss
+
+networks:
+  traefik:
+    external: true

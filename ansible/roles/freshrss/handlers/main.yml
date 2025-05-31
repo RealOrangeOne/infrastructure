@@ -1,0 +1,4 @@
+- name: restart freshrss
+  shell:
+    chdir: /opt/freshrss
+    cmd: "{{ docker_update_command }}"

@@ -13,9 +13,6 @@
 - name: Install synapse
   include_tasks: synapse.yml
 
-- name: Install tt-rss
-  include_tasks: tt-rss.yml
-
 - name: Install wallabag
   include_tasks: wallabag.yml
 

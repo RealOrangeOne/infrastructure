@@ -73,16 +73,6 @@ resource "gandi_livedns_record" "jakehowardtech_wallabag" {
   ]
 }
 
-resource "gandi_livedns_record" "jakehowardtech_ttrss" {
-  zone = data.gandi_livedns_domain.jakehowardtech.id
-  name = "tt-rss"
-  type = "CNAME"
-  ttl  = 3600
-  values = [
-    "${gandi_livedns_record.sys_domain_pve.name}.${gandi_livedns_record.sys_domain_pve.zone}."
-  ]
-}
-
 resource "gandi_livedns_record" "jakehowardtech_speed" {
   zone = data.gandi_livedns_domain.jakehowardtech.id
   name = "speed"
@@ -350,6 +340,16 @@ resource "gandi_livedns_record" "jakehowardtech_photos" {
   ttl  = 3600
   values = [
     "${gandi_livedns_record.sys_domain_pve.name}.${gandi_livedns_record.sys_domain_pve.zone}."
+  ]
+}
+
+resource "gandi_livedns_record" "jakehowardtech_freshrss" {
+  zone = data.gandi_livedns_domain.jakehowardtech.id
+  name = "freshrss"
+  type = "CNAME"
+  ttl  = 3600
+  values = [
+    "${gandi_livedns_record.sys_domain_pve_private.name}.${gandi_livedns_record.sys_domain_pve_private.zone}."
   ]
 }
 

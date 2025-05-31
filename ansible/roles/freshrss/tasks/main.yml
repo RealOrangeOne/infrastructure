@@ -1,0 +1,35 @@
+- name: Include vault
+  include_vars: vault.yml
+
+- name: Create install directory
+  file:
+    path: /opt/freshrss
+    state: directory
+    owner: "{{ docker_user.name }}"
+    mode: "{{ docker_compose_directory_mask }}"
+
+- name: Create extensions directory
+  file:
+    path: /opt/freshrss/extensions
+    state: directory
+    owner: www-data
+    mode: "{{ docker_compose_directory_mask }}"
+  register: extensions_dir
+
+- name: Install compose file
+  template:
+    src: files/docker-compose.yml
+    dest: /opt/freshrss/docker-compose.yml
+    mode: "{{ docker_compose_file_mask }}"
+    owner: "{{ docker_user.name }}"
+    validate: docker-compose -f %s config
+  notify: restart freshrss
+
+- name: Install three panes extension
+  git:
+    repo: https://framagit.org/nicofrand/xextension-threepanesview
+    dest: "{{ extensions_dir.path }}/xextension-threepanesview"
+    depth: 1
+  become: true
+  become_user: www-data
+  notify: restart freshrss
