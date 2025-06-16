@@ -1,6 +1,6 @@
 services:
   renovate:
-    image: renovate/renovate:37-slim
+    image: renovate/renovate:latest
     command: /entrypoint.sh
     user: "{{ docker_user.id }}"
     environment:
