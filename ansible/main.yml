@@ -21,6 +21,7 @@
     - ingress
     - walker
     - tang
+    - grimes
   roles:
     - role: geerlingguy.ntp
       vars:
@@ -33,6 +34,7 @@
     - walker
     - renovate
     - gitea-runner
+    - grimes
   roles:
     - geerlingguy.docker
     - docker_cleanup
@@ -41,6 +43,7 @@
     - pve-docker
     - forrest
     - walker
+    - grimes
   roles:
     - db_auto_backup
 
@@ -53,6 +56,7 @@
     - ingress
     - walker
     - casey
+    - grimes
   become: false  # Forcefully run as current user
   roles:
     - artis3n.tailscale
@@ -132,3 +136,7 @@
     - adguardhome
     - prometheus.prometheus.node_exporter
     - restic
+
+- hosts: grimes
+  roles:
+    - prometheus.prometheus.node_exporter

@@ -6,11 +6,11 @@ resource "hcloud_server" "grimes" {
   delete_protection  = true
   rebuild_protection = true
 
-  # firewall_ids = [
-  #   hcloud_firewall.base.id,
-  #   hcloud_firewall.tailscale.id,
-  #   hcloud_firewall.web.id,
-  # ]
+  firewall_ids = [
+    hcloud_firewall.base.id,
+    hcloud_firewall.tailscale.id,
+    hcloud_firewall.web.id,
+  ]
 }
 
 resource "hcloud_rdns" "grimes_reverse_ipv4" {
