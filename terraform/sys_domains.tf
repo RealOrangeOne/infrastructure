@@ -57,3 +57,23 @@ resource "gandi_livedns_record" "sys_domain_pve_private" {
     local.private_ipv6_marker
   ]
 }
+
+resource "gandi_livedns_record" "sys_domain_grimes" {
+  zone = data.gandi_livedns_domain.theorangeonenet.id
+  name = "grimes.sys"
+  type = "A"
+  ttl  = 3600
+  values = [
+    hcloud_server.grimes.ipv4_address
+  ]
+}
+
+resource "gandi_livedns_record" "sys_domain_grimes_v6" {
+  zone = data.gandi_livedns_domain.theorangeonenet.id
+  name = "grimes.sys"
+  type = "AAAA"
+  ttl  = 3600
+  values = [
+    hcloud_server.grimes.ipv6_address
+  ]
+}
