@@ -1,5 +1,6 @@
 "vps_hosts":
   "casey_ip": "213.219.38.11"
+  "grimes_ip": "49.12.235.6"
   "private_ipv6_marker": "2a01:7e00:e000:7f7::1"
   "private_ipv6_range": "2a01:7e00:e000:7f7::1/128"
   "walker_ip": "162.55.181.67"
