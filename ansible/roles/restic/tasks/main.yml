@@ -2,9 +2,24 @@
   package:
     name: restic
 
-- name: Install runitor
+- name: Install runitor on arch
   kewlfft.aur.aur:
     name: runitor-bin
+  when: ansible_os_family == 'Archlinux'
+
+- name: Get latest runitor release
+  uri:
+    url: https://api.github.com/repos/bdd/runitor/releases/latest
+    return_content: true
+  register: runitor_release
+  when: ansible_os_family != 'Archlinux'
+
+- name: Install runitor
+  get_url:
+    url: https://github.com/bdd/runitor/releases/download/{{ runitor_release.json.tag_name }}/runitor-{{ runitor_release.json.tag_name }}-linux-amd64
+    dest: /usr/bin/runitor
+    mode: "0755"
+  when: ansible_os_family != 'Archlinux'
 
 - name: Make user
   user:

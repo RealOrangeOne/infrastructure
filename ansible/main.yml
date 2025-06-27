@@ -139,4 +139,5 @@
 
 - hosts: grimes
   roles:
+    - restic
     - prometheus.prometheus.node_exporter

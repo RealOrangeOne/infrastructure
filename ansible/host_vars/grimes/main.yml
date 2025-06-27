@@ -1,1 +1,4 @@
 private_ip: "{{ ansible_tailscale0.ipv4.address }}"
+
+restic_backup_locations:
+  - /opt
