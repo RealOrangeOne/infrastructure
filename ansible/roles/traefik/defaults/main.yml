@@ -2,3 +2,4 @@ traefik_provider_jellyfin: false
 traefik_provider_homeassistant: false
 traefik_provider_grafana: false
 traefik_provider_uptime_kuma: false
+traefik_tls_challenge: false

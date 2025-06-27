@@ -6,11 +6,11 @@ entryPoints:
         entryPoint:
           to: web-secure
           scheme: https
+    {% if ansible_hostname == "docker" %}
     proxyProtocol:
       trustedIPs:
-        - "{{ wireguard.cidr }}"
-        - "{{ pve_hosts.internal_cidr }}"
-        - "{{ tailscale_cidr }}"
+        - "{{ pve_hosts.ingress.ip }}/32"
+    {% endif %}
   web-secure:
     address: :443
     http:
@@ -19,7 +19,8 @@ entryPoints:
         - compress@file
         - secure-headers@file
       tls:
-        certResolver: le
+        certResolver: "{{ 'acme-tls' if traefik_tls_challenge else 'acme-http' }}"
+        {% if traefik_tls_challenge %}
         domains:
           - main: theorangeone.net
             sans: ["*.theorangeone.net"]
@@ -27,12 +28,15 @@ entryPoints:
             sans: ["*.jakehoward.tech"]
           - main: 0rng.one
             sans: ["*.0rng.one"]
+        {% endif %}
+    {% if ansible_hostname == "docker" %}
     proxyProtocol:
       trustedIPs:
         - "{{ pve_hosts.ingress.ip }}/32"
     forwardedHeaders:
       trustedIPs:
         - "{{ wireguard.server.ip }}/32"  # This is obtained from the connecting `proxy_protocol`
+    {% endif %}
     transport:
       respondingTimeouts:
         readTimeout: 180s
@@ -56,7 +60,7 @@ api:
   disableDashboardAd: true
 
 certificatesResolvers:
-  le:
+  acme-tls:
     acme:
       email: "{{ vault_letsencrypt_email }}"
       storage: /etc/traefik/acme.json
@@ -66,6 +70,13 @@ certificatesResolvers:
         resolvers:
           - 9.9.9.9:53
           - 149.112.112.112:53
+  acme-http:
+    acme:
+      email: "{{ vault_letsencrypt_email }}"
+      storage: /etc/traefik/acme.json
+      httpChallenge:
+        entryPoint: web
+
 
 serversTransport:
   insecureSkipVerify: true
