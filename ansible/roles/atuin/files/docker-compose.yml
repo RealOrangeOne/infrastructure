@@ -1,0 +1,34 @@
+services:
+  atuin:
+    image: ghcr.io/atuinsh/atuin:latest
+    restart: unless-stopped
+    command: server start
+    environment:
+      - TZ={{ timezone }}
+      - ATUIN_DB_URI=postgres://atuin:atuin@db/atuin
+      - ATUIN_HOST=0.0.0.0
+      - RUST_LOG=info
+      - ATUIN_OPEN_REGISTRATION=false
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.atuin.rule=Host(`atuin.jakehoward.tech`)
+      - traefik.http.services.atuin-atuin.loadbalancer.server.port=8888
+      - traefik.http.routers.atuin.middlewares=tailscale-only@file
+    depends_on:
+      - db
+    networks:
+      - default
+      - traefik
+
+  db:
+    image: postgres:14-alpine
+    restart: unless-stopped
+    volumes:
+      - /mnt/speed/dbs/postgres/atuin:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=atuin
+      - POSTGRES_USER=atuin
+
+networks:
+  traefik:
+    external: true

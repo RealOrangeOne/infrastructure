@@ -1,0 +1,4 @@
+- name: restart atuin
+  shell:
+    chdir: /opt/atuin
+    cmd: "{{ docker_update_command }}"

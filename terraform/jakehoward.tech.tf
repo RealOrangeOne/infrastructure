@@ -353,6 +353,16 @@ resource "gandi_livedns_record" "jakehowardtech_freshrss" {
   ]
 }
 
+resource "gandi_livedns_record" "jakehowardtech_atuin" {
+  zone = data.gandi_livedns_domain.jakehowardtech.id
+  name = "atuin"
+  type = "CNAME"
+  ttl  = 3600
+  values = [
+    "${gandi_livedns_record.sys_domain_pve_private.name}.${gandi_livedns_record.sys_domain_pve_private.zone}."
+  ]
+}
+
 resource "gandi_livedns_record" "jakehowardtech_caa" {
   zone = data.gandi_livedns_domain.jakehowardtech.id
   name = "@"
