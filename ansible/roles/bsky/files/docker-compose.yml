@@ -9,7 +9,7 @@ services:
       - traefik.enable=true
       - traefik.http.routers.bsky.rule=Host(`bsky.theorangeone.net`)
     volumes:
-      - "{{ app_data_dir }}/bsky:/pds"
+      - ./data:/pds
     networks:
       - default
       - traefik

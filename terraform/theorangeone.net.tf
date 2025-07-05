@@ -256,7 +256,7 @@ resource "gandi_livedns_record" "theorangeonenet_bsky" {
   type = "CNAME"
   ttl  = 3600
   values = [
-    "${gandi_livedns_record.sys_domain_pve.name}.${gandi_livedns_record.sys_domain_pve.zone}."
+    "${gandi_livedns_record.sys_domain_grimes.name}.${gandi_livedns_record.sys_domain_grimes.zone}."
   ]
 }
 

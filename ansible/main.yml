@@ -76,7 +76,6 @@
     - minio
     - ntfy
     - baby_buddy
-    - bsky
     - immich
     - freshrss
     - atuin
@@ -143,3 +142,4 @@
   roles:
     - restic
     - prometheus.prometheus.node_exporter
+    - bsky
