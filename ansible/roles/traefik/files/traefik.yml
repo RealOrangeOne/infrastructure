@@ -40,6 +40,9 @@ entryPoints:
     transport:
       respondingTimeouts:
         readTimeout: 180s
+    {% if traefik_http3 %}
+    http3: {}
+    {% end %}
   traefik:
     address: :8080
 

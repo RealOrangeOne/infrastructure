@@ -10,6 +10,7 @@ services:
     ports:
       - 80:80
       - 443:443
+      - 443:443/udp
       - "{{ private_ip }}:8080:8080"
     depends_on:
       - docker_proxy

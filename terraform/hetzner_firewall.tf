@@ -49,4 +49,15 @@ resource "hcloud_firewall" "web" {
       "::/0"
     ]
   }
+
+  # HTTP/3
+  rule {
+    direction = "in"
+    protocol  = "udp"
+    port      = "443"
+    source_ips = [
+      "0.0.0.0/0",
+      "::/0"
+    ]
+  }
 }
