@@ -23,11 +23,9 @@ services:
       - WEB_CONCURRENCY=0  # 0 means 1, but not in clustered mode
       - SIDEKIQ_THREADS=1
       - SIDEKIQ_CONCURRENCY=1
-      - HTTP_PROXY={{ pve_hosts.qbittorrent.ip }}:3128
-      - HTTPS_PROXY={{ pve_hosts.qbittorrent.ip }}:3128
     restart: unless-stopped
     volumes:
-      - "{{ app_data_dir }}/mastodon:/config/mastodon"
+      - ./config:/config/mastodon
     depends_on:
       - db
       - redis
@@ -47,7 +45,7 @@ services:
     image: postgres:14-alpine
     restart: unless-stopped
     volumes:
-      - /mnt/speed/dbs/postgres/mastodon:/var/lib/postgresql/data
+      - ./db:/var/lib/postgresql/data
     environment:
       - POSTGRES_PASSWORD=mastodon
       - POSTGRES_USER=mastodon
@@ -56,7 +54,7 @@ services:
     image: redis:7-alpine
     restart: unless-stopped
     volumes:
-      - /mnt/speed/dbs/redis/mastodon:/data
+      - ./redis:/data
 
 networks:
   traefik:

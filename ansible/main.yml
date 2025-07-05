@@ -1,145 +1,145 @@
-- hosts: all
-  roles:
-    - base
-    - role: realorangeone.reflector
-      when: ansible_os_family == 'Archlinux'
-    - role: paccache
-      when: ansible_os_family == 'Archlinux'
+# - hosts: all
+#   roles:
+#     - base
+#     - role: realorangeone.reflector
+#       when: ansible_os_family == 'Archlinux'
+#     - role: paccache
+#       when: ansible_os_family == 'Archlinux'
 
-- hosts: casey
-  roles:
-    - nginx
-    - geerlingguy.certbot
-    - gateway
-    - headscale
-    - restic
-    - glinet_vpn
+# - hosts: casey
+#   roles:
+#     - nginx
+#     - geerlingguy.certbot
+#     - gateway
+#     - headscale
+#     - restic
+#     - glinet_vpn
 
-- hosts:
-    - pve
-    - casey
-    - ingress
-    - walker
-    - tang
-    - grimes
-  roles:
-    - role: geerlingguy.ntp
-      vars:
-        ntp_timezone: "{{ timezone }}"
-        ntp_manage_config: true
+# - hosts:
+#     - pve
+#     - casey
+#     - ingress
+#     - walker
+#     - tang
+#     - grimes
+#   roles:
+#     - role: geerlingguy.ntp
+#       vars:
+#         ntp_timezone: "{{ timezone }}"
+#         ntp_manage_config: true
 
-- hosts:
-    - pve-docker
-    - forrest
-    - walker
-    - renovate
-    - gitea-runner
-    - grimes
-  roles:
-    - geerlingguy.docker
-    - docker_cleanup
+# - hosts:
+#     - pve-docker
+#     - forrest
+#     - walker
+#     - renovate
+#     - gitea-runner
+#     - grimes
+#   roles:
+#     - geerlingguy.docker
+#     - docker_cleanup
 
-- hosts:
-    - pve-docker
-    - forrest
-    - walker
-    - grimes
-  roles:
-    - db_auto_backup
+# - hosts:
+#     - pve-docker
+#     - forrest
+#     - walker
+#     - grimes
+#   roles:
+#     - db_auto_backup
 
-- hosts:
-    - pve-docker
-    - grimes
-  roles:
-    - traefik
+# - hosts:
+#     - pve-docker
+#     - grimes
+#   roles:
+#     - traefik
 
-- hosts:
-    - ingress
-    - walker
-    - casey
-    - grimes
-  become: false  # Forcefully run as current user
-  roles:
-    - artis3n.tailscale
+# - hosts:
+#     - ingress
+#     - walker
+#     - casey
+#     - grimes
+#   become: false  # Forcefully run as current user
+#   roles:
+#     - artis3n.tailscale
 
-- hosts: pve-docker
-  roles:
-    - pve_docker
-    - yourls
-    - privatebin
-    - vaultwarden
-    - tandoor
-    - mastodon
-    - forgejo
-    - vikunja
-    - pocket_id
-    - minio
-    - ntfy
-    - baby_buddy
-    - immich
-    - freshrss
-    - atuin
+# - hosts: pve-docker
+#   roles:
+#     - pve_docker
+#     - yourls
+#     - privatebin
+#     - vaultwarden
+#     - tandoor
+#     - forgejo
+#     - vikunja
+#     - pocket_id
+#     - minio
+#     - ntfy
+#     - baby_buddy
+#     - immich
+#     - freshrss
+#     - atuin
 
-- hosts: ingress
-  roles:
-    - nginx
-    - ingress
+# - hosts: ingress
+#   roles:
+#     - nginx
+#     - ingress
 
-- hosts: pve
-  roles:
-    - ironicbadger.proxmox_nag_removal
-    - zfs
-    - ironicbadger.snapraid
-    - prometheus.prometheus.node_exporter
+# - hosts: pve
+#   roles:
+#     - ironicbadger.proxmox_nag_removal
+#     - zfs
+#     - ironicbadger.snapraid
+#     - prometheus.prometheus.node_exporter
 
-- hosts: forrest
-  roles:
-    - prometheus
-    - uptime_kuma
-    - pve_tailscale_route
+# - hosts: forrest
+#   roles:
+#     - prometheus
+#     - uptime_kuma
+#     - pve_tailscale_route
 
-- hosts: qbittorrent
-  roles:
-    - nginx
-    - qbittorrent
-    - http_proxy
+# - hosts: qbittorrent
+#   roles:
+#     - nginx
+#     - qbittorrent
+#     - http_proxy
 
-- hosts: walker
-  roles:
-    - nginx
-    - geerlingguy.certbot
-    - coredns_docker_proxy
-    - plausible
-    - restic
-    - website
-    - slides
-    - comentario
+# - hosts: walker
+#   roles:
+#     - nginx
+#     - geerlingguy.certbot
+#     - coredns_docker_proxy
+#     - plausible
+#     - restic
+#     - website
+#     - slides
+#     - comentario
 
-- hosts: jellyfin
-  roles:
-    - jellyfin
+# - hosts: jellyfin
+#   roles:
+#     - jellyfin
 
-- hosts: restic
-  roles:
-    - restic
-    - s3_sync
+# - hosts: restic
+#   roles:
+#     - restic
+#     - s3_sync
 
-- hosts: gitea-runner
-  roles:
-    - forgejo_runner
+# - hosts: gitea-runner
+#   roles:
+#     - forgejo_runner
 
-- hosts: renovate
-  roles:
-    - renovate
+# - hosts: renovate
+#   roles:
+#     - renovate
 
-- hosts: tang
-  roles:
-    - adguardhome
-    - prometheus.prometheus.node_exporter
-    - restic
+# - hosts: tang
+#   roles:
+#     - adguardhome
+#     - prometheus.prometheus.node_exporter
+#     - restic
 
 - hosts: grimes
   roles:
     - restic
     - prometheus.prometheus.node_exporter
     - bsky
+    - mastodon
