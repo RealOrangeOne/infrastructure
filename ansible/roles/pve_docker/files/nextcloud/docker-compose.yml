@@ -1,6 +1,6 @@
 services:
   nextcloud:
-    image: lscr.io/linuxserver/nextcloud:31.0.5
+    image: lscr.io/linuxserver/nextcloud:31.0.7
     environment:
       - PUID={{ docker_user.id }}
       - PGID={{ docker_user.id }}
