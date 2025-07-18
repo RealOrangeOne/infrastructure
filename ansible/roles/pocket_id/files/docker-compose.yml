@@ -12,14 +12,12 @@ services:
       - PUBLIC_UI_CONFIG_DISABLED=true
       - BACKGROUND_IMAGE_TYPE=png
       - APP_NAME=Orange ID
-      - SESSION_DURATION=30
       - SMTP_HOST=smtp.eu.mailgun.org
       - SMTP_PORT=465
       - SMTP_FROM={{ vault_pocket_id_from_address }}
       - SMTP_USER={{ vault_pocket_id_smtp_user }}
       - SMTP_PASSWORD={{ vault_pocket_id_smtp_password }}
       - SMTP_TLS=tls
-      - EMAIL_LOGIN_NOTIFICATION_ENABLED=true
     volumes:
       - "{{ app_data_dir }}/pocket-id:/app/backend/data"
     labels:
