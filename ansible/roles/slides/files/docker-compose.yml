@@ -10,8 +10,11 @@ services:
       - ./slides:/srv
     networks:
       - default
-      - coredns
+      - traefik
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.slides.rule=Host(`slides.jakehoward.tech`)
 
 networks:
-  coredns:
+  traefik:
     external: true

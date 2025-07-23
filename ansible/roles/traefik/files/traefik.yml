@@ -42,7 +42,7 @@ entryPoints:
         readTimeout: 180s
     {% if traefik_http3 %}
     http3: {}
-    {% end %}
+    {% endif %}
   traefik:
     address: :8080
 
@@ -95,3 +95,6 @@ tls:
 
 pilot:
   dashboard: false
+
+log:
+  level: INFO

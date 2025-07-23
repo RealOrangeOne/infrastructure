@@ -50,6 +50,7 @@
 - hosts:
     - pve-docker
     - grimes
+    - walker
   roles:
     - traefik
 
@@ -105,9 +106,6 @@
 
 - hosts: walker
   roles:
-    - nginx
-    - geerlingguy.certbot
-    - coredns_docker_proxy
     - plausible
     - restic
     - website

@@ -24,10 +24,13 @@ services:
       - ./cache:/tmp/nginx_cache
     networks:
       - default
-      - coredns
+      - traefik
     depends_on:
       - db
       - redis
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.website.rule=Host(`theorangeone.net`) || Host(`jakehoward.tech`)
 
   db:
     image: postgres:14-alpine
@@ -54,5 +57,5 @@ services:
       - SENTRY_DSN={{ vault_spotify_sentry_dsn }}
 
 networks:
-  coredns:
+  traefik:
     external: true

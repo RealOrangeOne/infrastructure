@@ -7,7 +7,11 @@ services:
       - db
     networks:
       - default
-      - coredns
+      - traefik
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.comentario.rule=Host(`comentario.theorangeone.net`)
+      - traefik.http.services.comentario-comentario.loadbalancer.server.port=80
     volumes:
       - ./secrets.yml:/comentario/secrets.yaml
     environment:
@@ -25,5 +29,5 @@ services:
       - POSTGRES_USER=comentario
 
 networks:
-  coredns:
+  traefik:
     external: true

@@ -24,14 +24,3 @@
     mode: "600"
     owner: "{{ docker_user.name }}"
   notify: restart comentario
-
-- name: Install nginx config
-  template:
-    src: files/nginx-docker.conf
-    dest: /etc/nginx/http.d/comentario.conf
-    mode: "0644"
-  notify: reload nginx
-  vars:
-    server_name: comentario.theorangeone.net
-    upstream: comentario-comentario-1.docker:80
-    ssl_cert_path: /etc/letsencrypt/live/comentario.theorangeone.net

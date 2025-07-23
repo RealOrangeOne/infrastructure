@@ -1,2 +1,1 @@
 nginx_https_redirect: false
-docker_resolver_address: "{{ private_ip }}:53053"

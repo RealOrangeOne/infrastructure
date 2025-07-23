@@ -28,16 +28,3 @@
   loop_control:
     label: "{{ item.user }}"
   notify: restart slides
-
-- name: Install nginx config
-  template:
-    src: files/nginx-docker.conf
-    dest: /etc/nginx/http.d/slides.conf
-    mode: "0644"
-  notify: reload nginx
-  vars:
-    server_name: slides.jakehoward.tech
-    upstream: slides-slides-1.docker:80
-    ssl_cert_path: /etc/letsencrypt/live/slides.jakehoward.tech
-    location_extra: |
-      client_max_body_size 0;

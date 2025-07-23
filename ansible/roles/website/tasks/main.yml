@@ -16,16 +16,3 @@
     owner: "{{ docker_user.name }}"
     validate: docker-compose -f %s config
   notify: restart website
-
-- name: Install nginx config
-  template:
-    src: files/nginx-docker.conf
-    dest: /etc/nginx/http.d/website.conf
-    mode: "0644"
-  notify: reload nginx
-  vars:
-    server_name: theorangeone.net jakehoward.tech
-    upstream: website-website-1.docker:8000
-    ssl_cert_path: /etc/letsencrypt/live/theorangeone.net
-    location_extra: |
-      more_set_headers "Server: $upstream_http_server";

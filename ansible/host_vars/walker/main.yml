@@ -3,16 +3,4 @@ private_ip: "{{ ansible_tailscale0.ipv4.address }}"
 restic_backup_locations:
   - /opt
 
-nginx_https_redirect: true
-
-certbot_certs:
-  - domains:
-      - theorangeone.net
-      - jakehoward.tech
-  - domains:
-      - plausible.theorangeone.net
-      - elbisualp.theorangeone.net
-  - domains:
-      - slides.jakehoward.tech
-  - domains:
-      - comentario.theorangeone.net
+traefik_http3: true

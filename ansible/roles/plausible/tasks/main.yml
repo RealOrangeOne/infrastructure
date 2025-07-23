@@ -30,16 +30,3 @@
     owner: "{{ docker_user.name }}"
     validate: docker-compose -f %s config
   notify: restart plausible
-
-- name: Install nginx config
-  template:
-    src: files/nginx-docker.conf
-    dest: /etc/nginx/http.d/plausible.conf
-    mode: "0644"
-  notify: reload nginx
-  vars:
-    server_name: plausible.theorangeone.net elbisualp.theorangeone.net
-    upstream: plausible-plausible-1.docker:8000
-    ssl_cert_path: /etc/letsencrypt/live/plausible.theorangeone.net
-    location_extra: |
-      rewrite ^/js/index.js$ /js/plausible.js last;
