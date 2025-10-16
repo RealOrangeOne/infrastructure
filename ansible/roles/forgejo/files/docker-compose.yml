@@ -1,6 +1,6 @@
 services:
   forgejo:
-    image: code.forgejo.org/forgejo/forgejo:12-rootless
+    image: code.forgejo.org/forgejo/forgejo:13-rootless
     user: "{{ docker_user.id }}:{{ docker_user.id }}"
     environment:
       - TZ={{ timezone }}
