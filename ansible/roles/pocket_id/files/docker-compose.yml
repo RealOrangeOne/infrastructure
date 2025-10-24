@@ -4,12 +4,12 @@ services:
     restart: unless-stopped
     user: "{{ docker_user.id }}"
     environment:
-      - PUBLIC_APP_URL=https://auth.jakehoward.tech
+      - APP_URL=https://auth.jakehoward.tech
       - TRUST_PROXY=true
       - DB_PROVIDER=postgres
       - DB_CONNECTION_STRING=postgres://pocketid:{{ vault_pocket_id_db_password }}@db/pocketid
       - UPDATE_CHECK_DISABLED=true
-      - PUBLIC_UI_CONFIG_DISABLED=true
+      - UI_CONFIG_DISABLED=true
       - BACKGROUND_IMAGE_TYPE=png
       - APP_NAME=Orange ID
       - SMTP_HOST=smtp.eu.mailgun.org
@@ -19,7 +19,7 @@ services:
       - SMTP_PASSWORD={{ vault_pocket_id_smtp_password }}
       - SMTP_TLS=tls
     volumes:
-      - "{{ app_data_dir }}/pocket-id:/app/backend/data"
+      - "{{ app_data_dir }}/pocket-id:/app/data"
     labels:
       - traefik.enable=true
       - traefik.http.routers.pocket-id.rule=Host(`auth.jakehoward.tech`)
