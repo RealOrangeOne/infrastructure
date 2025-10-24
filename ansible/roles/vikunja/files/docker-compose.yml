@@ -8,7 +8,7 @@ services:
       - VIKUNJA_DATABASE_TYPE=postgres
       - VIKUNJA_DATABASE_USER=vikunja
       - VIKUNJA_DATABASE_DATABASE=vikunja
-      - VIKUNJA_SERVICE_FRONTENDURL=https://tasks.jakehoward.tech
+      - VIKUNJA_SERVICE_PUBLICURL=https://tasks.jakehoward.tech
       - VIKUNJA_SERVICE_JWTSECRET="{{ vault_jwt_secret }}"
       - VIKUNJA_SERVICE_ENABLEREGISTRATION=false
       - VIKUNJA_SERVICE_TIMEZONE={{ timezone }}
@@ -28,6 +28,7 @@ services:
     labels:
       - traefik.enable=true
       - traefik.http.routers.vikunja.rule=Host(`tasks.jakehoward.tech`)
+      - traefik.http.services.vikunja-vikunja.loadbalancer.server.port=3456
     volumes:
       - /mnt/tank/app-data/vikunja/files:/app/vikunja/files
     depends_on:
