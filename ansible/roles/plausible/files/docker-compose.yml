@@ -57,7 +57,7 @@ services:
         hard: 262144
 
   db:
-    image: postgres:14-alpine
+    image: pgautoupgrade/pgautoupgrade:17-alpine
     restart: unless-stopped
     volumes:
       - ./postgres:/var/lib/postgresql/data

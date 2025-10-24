@@ -35,7 +35,7 @@ services:
       - /mnt/speed/dbs/redis/wallabag:/data
 
   db:
-    image: postgres:14-alpine
+    image: pgautoupgrade/pgautoupgrade:17-alpine
     restart: unless-stopped
     volumes:
       - /mnt/speed/dbs/postgres/wallabag/:/var/lib/postgresql/data

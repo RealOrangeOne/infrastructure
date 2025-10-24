@@ -34,7 +34,7 @@ services:
       - /opt/recipes/staticfiles
 
   db:
-    image: postgres:14-alpine
+    image: pgautoupgrade/pgautoupgrade:17-alpine
     restart: unless-stopped
     volumes:
       - /mnt/speed/dbs/postgres/tandoor/:/var/lib/postgresql/data

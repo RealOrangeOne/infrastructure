@@ -20,7 +20,7 @@ services:
       - LOG_FULL_IPS=true
 
   db:
-    image: postgres:14-alpine
+    image: pgautoupgrade/pgautoupgrade:17-alpine
     restart: unless-stopped
     volumes:
       - ./postgres:/var/lib/postgresql/data
