@@ -83,16 +83,6 @@ resource "gandi_livedns_record" "jakehowardtech_speed" {
   ]
 }
 
-resource "gandi_livedns_record" "jakehowardtech_quassel" {
-  zone = data.gandi_livedns_domain.jakehowardtech.id
-  name = "quassel"
-  type = "CNAME"
-  ttl  = 3600
-  values = [
-    "${gandi_livedns_record.sys_domain_pve.name}.${gandi_livedns_record.sys_domain_pve.zone}."
-  ]
-}
-
 resource "gandi_livedns_record" "jakehowardtech_media" {
   zone = data.gandi_livedns_domain.jakehowardtech.id
   name = "media"

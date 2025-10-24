@@ -7,9 +7,6 @@
 - name: Install nextcloud
   include_tasks: nextcloud.yml
 
-- name: Install quassel
-  include_tasks: quassel.yml
-
 - name: Install synapse
   include_tasks: synapse.yml
 
