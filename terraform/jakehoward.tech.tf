@@ -259,7 +259,7 @@ resource "gandi_livedns_record" "jakehowardtech_minio" {
   type = "CNAME"
   ttl  = 3600
   values = [
-    "${gandi_livedns_record.sys_domain_pve.name}.${gandi_livedns_record.sys_domain_pve.zone}."
+    "${gandi_livedns_record.sys_domain_pve_private.name}.${gandi_livedns_record.sys_domain_pve_private.zone}."
   ]
 }
 
@@ -269,7 +269,7 @@ resource "gandi_livedns_record" "jakehowardtech_s3" {
   type = "CNAME"
   ttl  = 3600
   values = [
-    "${gandi_livedns_record.sys_domain_pve.name}.${gandi_livedns_record.sys_domain_pve.zone}."
+    "${gandi_livedns_record.sys_domain_pve_private.name}.${gandi_livedns_record.sys_domain_pve_private.zone}."
   ]
 }
 

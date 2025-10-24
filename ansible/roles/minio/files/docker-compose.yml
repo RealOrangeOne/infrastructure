@@ -14,10 +14,12 @@ services:
       - traefik.http.routers.minio-console.rule=Host(`minio.jakehoward.tech`)
       - traefik.http.routers.minio-console.service=minio-console
       - traefik.http.services.minio-console.loadbalancer.server.port=9090
+      - traefik.http.routers.minio-console.middlewares=tailscale-only@file
 
       - traefik.http.routers.minio-s3.rule=Host(`s3.jakehoward.tech`)
       - traefik.http.routers.minio-s3.service=minio-s3
       - traefik.http.services.minio-s3.loadbalancer.server.port=9000
+      - traefik.http.routers.minio-s3.middlewares=tailscale-only@file
     volumes:
       - /mnt/tank/files/minio:/data
     networks:
