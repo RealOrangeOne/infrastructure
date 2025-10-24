@@ -1,7 +1,7 @@
 resource "hcloud_server" "walker" {
   name               = "walker"
   image              = "debian-12" # Not true - that was just the initial install.
-  server_type        = "cx22"
+  server_type        = "cx23"
   location           = "nbg1"
   delete_protection  = true
   rebuild_protection = true

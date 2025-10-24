@@ -1,7 +1,7 @@
 resource "hcloud_server" "grimes" {
   name               = "grimes"
   image              = "debian-12"
-  server_type        = "cx22"
+  server_type        = "cx23"
   location           = "nbg1"
   delete_protection  = true
   rebuild_protection = true
