@@ -1,0 +1,29 @@
+services:
+  macau:
+    image: ghcr.io/realorangeone/macau:latest
+    restart: unless-stopped
+    environment:
+      - TZ=Europe/London
+      - SECRET_KEY="{{ vault_secret_key }}"
+      - DATABASE_URL=postgres://macau:macau@db/macau
+    networks:
+      - default
+      - traefik
+    depends_on:
+      - db
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.macau.rule=Host(`0rng.one`)
+
+  db:
+    image: pgautoupgrade/pgautoupgrade:17-alpine
+    restart: unless-stopped
+    volumes:
+      - ./postgres:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=macau
+      - POSTGRES_USER=macau
+
+networks:
+  traefik:
+    external: true

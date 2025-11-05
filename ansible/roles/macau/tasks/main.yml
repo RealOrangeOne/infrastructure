@@ -1,6 +1,9 @@
+- name: Include vault
+  include_vars: vault.yml
+
 - name: Create install directory
   file:
-    path: /opt/yourls
+    path: /opt/macau
     state: directory
     owner: "{{ docker_user.name }}"
     mode: "{{ docker_compose_directory_mask }}"
@@ -8,16 +11,8 @@
 - name: Install compose file
   template:
     src: files/docker-compose.yml
-    dest: /opt/yourls/docker-compose.yml
+    dest: /opt/macau/docker-compose.yml
     mode: "{{ docker_compose_file_mask }}"
     owner: "{{ docker_user.name }}"
     validate: docker-compose -f %s config
-  notify: restart yourls
-
-- name: Install redirect file
-  template:
-    src: files/index.html
-    dest: /opt/yourls/index.html
-    mode: "{{ docker_compose_file_mask }}"
-    owner: "{{ docker_user.name }}"
-  notify: restart yourls
+  notify: restart macau

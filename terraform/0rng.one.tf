@@ -8,7 +8,7 @@ resource "gandi_livedns_record" "orngone_apex" {
   type = "ALIAS" # Gandi doesn't support CNAME-flattening
   ttl  = 3600
   values = [
-    "${gandi_livedns_record.sys_domain_pve.name}.${gandi_livedns_record.sys_domain_pve.zone}."
+    "${gandi_livedns_record.sys_domain_walker.name}.${gandi_livedns_record.sys_domain_walker.zone}."
   ]
 }
 

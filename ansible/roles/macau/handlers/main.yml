@@ -1,4 +1,4 @@
-- name: restart yourls
+- name: restart macau
   shell:
-    chdir: /opt/yourls
+    chdir: /opt/macau
     cmd: "{{ docker_update_command }}"
