@@ -4,7 +4,7 @@ services:
     command: server /data --console-address ":9090"
     user: "{{ docker_user.id }}"
     environment:
-      - TZ=Europe/London
+      - TZ={{ timezone }}
       - MINIO_ROOT_USER=jake
       - MINIO_ROOT_PASSWORD={{ vault_minio_root_password }}
     restart: unless-stopped

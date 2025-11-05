@@ -3,7 +3,7 @@ services:
     image: freshrss/freshrss:latest
     restart: unless-stopped
     environment:
-      - TZ=Europe/London
+      - TZ={{ timezone }}
       - OIDC_ENABLED=1
       - OIDC_PROVIDER_METADATA_URL=https://auth.jakehoward.tech/.well-known/openid-configuration
       - OIDC_CLIENT_ID={{ vault_oidc_client_id }}
