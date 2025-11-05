@@ -78,6 +78,7 @@
     - immich
     - freshrss
     - atuin
+    - karakeep
 
 - hosts: ingress
   roles:

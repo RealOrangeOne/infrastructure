@@ -10,8 +10,5 @@
 - name: Install synapse
   include_tasks: synapse.yml
 
-- name: Install wallabag
-  include_tasks: wallabag.yml
-
 - name: Install whoami
   include_tasks: whoami.yml

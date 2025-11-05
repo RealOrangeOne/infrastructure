@@ -1,0 +1,4 @@
+- name: restart karakeep
+  shell:
+    chdir: /opt/karakeep
+    cmd: "{{ docker_update_command }}"
