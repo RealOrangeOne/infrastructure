@@ -12,6 +12,7 @@ services:
       - UI_CONFIG_DISABLED=true
       - BACKGROUND_IMAGE_TYPE=png
       - APP_NAME=Orange ID
+      - ENCRYPTION_KEY={{ vault_pocket_id_encryption_key }}
       - SMTP_HOST=smtp.eu.mailgun.org
       - SMTP_PORT=465
       - SMTP_FROM={{ vault_pocket_id_from_address }}
