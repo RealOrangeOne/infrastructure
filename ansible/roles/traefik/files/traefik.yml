@@ -93,8 +93,5 @@ tls:
     default:
       minVersion: VersionTLS12
 
-pilot:
-  dashboard: false
-
 log:
   level: INFO
