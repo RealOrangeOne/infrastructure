@@ -233,26 +233,6 @@ resource "gandi_livedns_record" "jakehowardtech_auth" {
   ]
 }
 
-resource "gandi_livedns_record" "jakehowardtech_minio" {
-  zone = data.gandi_livedns_domain.jakehowardtech.id
-  name = "minio"
-  type = "CNAME"
-  ttl  = 3600
-  values = [
-    "${gandi_livedns_record.sys_domain_pve_private.name}.${gandi_livedns_record.sys_domain_pve_private.zone}."
-  ]
-}
-
-resource "gandi_livedns_record" "jakehowardtech_s3" {
-  zone = data.gandi_livedns_domain.jakehowardtech.id
-  name = "s3"
-  type = "CNAME"
-  ttl  = 3600
-  values = [
-    "${gandi_livedns_record.sys_domain_pve_private.name}.${gandi_livedns_record.sys_domain_pve_private.zone}."
-  ]
-}
-
 resource "gandi_livedns_record" "jakehowardtech_ntfy" {
   zone = data.gandi_livedns_domain.jakehowardtech.id
   name = "ntfy"
