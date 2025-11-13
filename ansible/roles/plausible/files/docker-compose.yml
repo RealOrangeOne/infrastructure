@@ -1,6 +1,6 @@
 services:
   plausible:
-    image: ghcr.io/plausible/community-edition:v3.0
+    image: ghcr.io/plausible/community-edition:v3.1
     restart: unless-stopped
     command: sh -c "/entrypoint.sh db migrate && /entrypoint.sh run"
     depends_on:
