@@ -13,16 +13,6 @@ resource "gandi_livedns_record" "jakehowardtech_mx" {
   ]
 }
 
-resource "gandi_livedns_record" "jakehowardtech_spf" {
-  zone = data.gandi_livedns_domain.jakehowardtech.id
-  name = "@"
-  type = "SPF"
-  ttl  = 3600
-  values = [
-    "\"v=spf1 include:spf.messagingengine.com -all\""
-  ]
-}
-
 resource "gandi_livedns_record" "jakehowardtech_dkim_fm1" {
   zone = data.gandi_livedns_domain.jakehowardtech.id
   name = "fm1._domainkey"
@@ -60,6 +50,16 @@ resource "gandi_livedns_record" "jakehowardtech_dmarc" {
   ttl  = 3600
   values = [
     "\"v=DMARC1; p=quarantine; ruf=mailto:dmarc-report@jakehoward.tech;\""
+  ]
+}
+
+resource "gandi_livedns_record" "jakehowardtech_txt" {
+  zone = data.gandi_livedns_domain.jakehowardtech.id
+  name = "@"
+  type = "TXT"
+  ttl  = 3600
+  values = [
+    "\"v=spf1 include:spf.messagingengine.com -all\""
   ]
 }
 
@@ -156,7 +156,7 @@ resource "gandi_livedns_record" "jakehowardtech_recipes" {
 resource "gandi_livedns_record" "jakehowardtech_mailgun_spf" {
   zone = data.gandi_livedns_domain.jakehowardtech.id
   name = "mg"
-  type = "SPF"
+  type = "TXT"
   ttl  = 3600
   values = [
     "\"v=spf1 include:mailgun.org -all\""

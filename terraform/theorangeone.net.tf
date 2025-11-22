@@ -53,16 +53,6 @@ resource "gandi_livedns_record" "theorangeonenet_mx" {
   ]
 }
 
-resource "gandi_livedns_record" "theorangeonenet_spf" {
-  zone = data.gandi_livedns_domain.theorangeonenet.id
-  name = "@"
-  type = "SPF"
-  ttl  = 3600
-  values = [
-    "\"v=spf1 include:spf.messagingengine.com -all\""
-  ]
-}
-
 resource "gandi_livedns_record" "theorangeonenet_dkim_fm1" {
   zone = data.gandi_livedns_domain.theorangeonenet.id
   name = "fm1._domainkey"
@@ -119,6 +109,18 @@ resource "gandi_livedns_record" "theorangeonenet_dmarc_report" {
     "\"v=DMARC1\""
   ]
 }
+
+resource "gandi_livedns_record" "theorangeonenet_txt" {
+  zone = data.gandi_livedns_domain.theorangeonenet.id
+  name = "@"
+  type = "TXT"
+  ttl  = 3600
+  values = [
+    "\"google-site-verification=IXY4iSBN_vOcM3cp_f-BgVvEI_shz1GzXuY_8dqY61o\"",
+    "\"v=spf1 include:spf.messagingengine.com -all\""
+  ]
+}
+
 
 resource "gandi_livedns_record" "theorangeonenet_apex" {
   zone = data.gandi_livedns_domain.theorangeonenet.id
@@ -190,20 +192,10 @@ resource "gandi_livedns_record" "theorangeonenet_bin" {
   ]
 }
 
-resource "gandi_livedns_record" "theorangeonenet_google_site_verification" {
-  zone = data.gandi_livedns_domain.theorangeonenet.id
-  name = "@"
-  type = "TXT"
-  ttl  = 3600
-  values = [
-    "\"google-site-verification=IXY4iSBN_vOcM3cp_f-BgVvEI_shz1GzXuY_8dqY61o\""
-  ]
-}
-
 resource "gandi_livedns_record" "theorangeonenet_mailgun_spf" {
   zone = data.gandi_livedns_domain.theorangeonenet.id
   name = "mg"
-  type = "SPF"
+  type = "TXT"
   ttl  = 3600
   values = [
     "\"v=spf1 include:mailgun.org -all\""
