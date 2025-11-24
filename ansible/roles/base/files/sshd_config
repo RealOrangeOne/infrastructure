@@ -1,10 +1,9 @@
 # TCP port to bind to
-# Change to a high/odd port if this server is exposed to the internet directly
 Port {{ ssh_port }}
 
 AllowUsers {% if hostname_slug in pve_hosts %}{{ me.user }}@{{ pve_hosts.internal_cidr }}{% endif %} {{ me.user }}@{{ tailscale_cidr }} {{ ssh_extra_allowed_users }}
 
-# Bind to all interfaces (change to specific interface if needed)
+# Bind to all interfaces
 ListenAddress 0.0.0.0
 
 # Force SSHv2 Protocol
@@ -13,7 +12,6 @@ Protocol 2
 HostKey /etc/ssh/ssh_host_ed25519_key
 
 # Public key authentication + Password authentication
-# Two-Factor Authentication in OpenSSH v6.2+
 PubkeyAuthentication yes
 AuthenticationMethods publickey
 
@@ -22,7 +20,7 @@ PermitRootLogin no
 
 # Client timeout
 ClientAliveInterval 60
-ClientAliveCountMax 100
+ClientAliveCountMax 60
 
 # Compression (only after authentication)
 Compression delayed
@@ -31,31 +29,21 @@ Compression delayed
 SyslogFacility AUTH
 LogLevel INFO
 
-# Authentication must happen within 30 seconds
-LoginGraceTime 30
+# Authentication must happen within 10 seconds
+LoginGraceTime 10
 
+MaxAuthTries 3
 PermitEmptyPasswords no
 
 # Check user folder permissions before allowing access
 StrictModes yes
-
-# Message Authentication Code (Hash, only SHA2-512)
-# SHA-256 included for compat with PuTTY-WinCrypt clients
-MACs hmac-sha2-256-etm@openssh.com,hmac-sha2-512-etm@openssh.com,umac-128-etm@openssh.com
-
-# Ciphers (only secure AES-256)
-Ciphers aes256-ctr,aes128-gcm@openssh.com,aes128-ctr,aes192-ctr,aes256-gcm@openssh.com,chacha20-poly1305@openssh.com
-
-# Key Exchange algorithms (Elliptic Curve Diffie-Hellman)
-# DH-SHA-256 included for compat with PuTTY-WinCrypt clients
-KexAlgorithms diffie-hellman-group18-sha512,curve25519-sha256,curve25519-sha256@libssh.org,diffie-hellman-group-exchange-sha256,diffie-hellman-group14-sha256,diffie-hellman-group16-sha512
 
 # Don't read the user's ~/.rhosts and ~/.shosts files
 IgnoreRhosts yes
 
 # Disable unused authentication schemes
 HostbasedAuthentication no
-ChallengeResponseAuthentication no
+KbdInteractiveAuthentication no
 KerberosAuthentication no
 GSSAPIAuthentication no
 UsePAM no
@@ -63,13 +51,30 @@ UsePAM no
 # X11 support
 X11Forwarding no
 
-# Don't show Message of the Day
 PrintMotd yes
-
-# TCPKeepAlive (non-tunneled, disabled)
-TCPKeepAlive no
+PrintLastLog yes
 
 # Allow client to pass locale environment variables
 AcceptEnv LANG LC_*
 
 Subsystem sftp internal-sftp
+
+# Restrict key exchange, cipher, and MAC algorithms, as per sshaudit.com
+# hardening guide.
+KexAlgorithms sntrup761x25519-sha512@openssh.com,gss-curve25519-sha256-,curve25519-sha256,curve25519-sha256@libssh.org,diffie-hellman-group18-sha512,diffie-hellman-group-exchange-sha256,gss-group16-sha512-,diffie-hellman-group16-sha512
+
+Ciphers chacha20-poly1305@openssh.com,aes256-gcm@openssh.com,aes256-ctr,aes192-ctr,aes128-gcm@openssh.com,aes128-ctr
+
+MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@openssh.com
+
+RequiredRSASize 3072
+
+HostKeyAlgorithms sk-ssh-ed25519-cert-v01@openssh.com,ssh-ed25519-cert-v01@openssh.com,rsa-sha2-512-cert-v01@openssh.com,rsa-sha2-256-cert-v01@openssh.com,sk-ssh-ed25519@openssh.com,ssh-ed25519,rsa-sha2-512,rsa-sha2-256
+
+CASignatureAlgorithms sk-ssh-ed25519@openssh.com,ssh-ed25519,rsa-sha2-512,rsa-sha2-256
+
+GSSAPIKexAlgorithms gss-curve25519-sha256-,gss-group16-sha512-
+
+HostbasedAcceptedAlgorithms sk-ssh-ed25519-cert-v01@openssh.com,ssh-ed25519-cert-v01@openssh.com,rsa-sha2-512-cert-v01@openssh.com,rsa-sha2-256-cert-v01@openssh.com,sk-ssh-ed25519@openssh.com,ssh-ed25519,rsa-sha2-512,rsa-sha2-256
+
+PubkeyAcceptedAlgorithms sk-ssh-ed25519-cert-v01@openssh.com,ssh-ed25519-cert-v01@openssh.com,rsa-sha2-512-cert-v01@openssh.com,rsa-sha2-256-cert-v01@openssh.com,sk-ssh-ed25519@openssh.com,ssh-ed25519,rsa-sha2-512,rsa-sha2-256
