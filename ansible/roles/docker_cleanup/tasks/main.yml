@@ -3,13 +3,6 @@
     name: docker-compose
   when: ansible_os_family != 'Debian'
 
-- name: Install compose-switch
-  get_url:
-    url: "{{ docker_compose_url }}"
-    dest: "{{ docker_compose_path }}"
-    mode: "0755"
-  when: ansible_os_family == 'Debian'
-
 - name: Create docker group
   group:
     name: "{{ docker_user.name }}"

@@ -19,7 +19,7 @@
     dest: /opt/prometheus/docker-compose.yml
     mode: "{{ docker_compose_file_mask }}"
     owner: "{{ docker_user.name }}"
-    validate: docker-compose -f %s config
+    validate: docker compose -f %s config
   notify: restart prometheus
 
 - name: Install blackbox config

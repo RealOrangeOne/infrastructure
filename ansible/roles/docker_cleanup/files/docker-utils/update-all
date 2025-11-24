@@ -3,10 +3,10 @@
 set -e
 
 for compose_file in /opt/**/docker-compose.yml; do
-    if [[ $(docker-compose -f "$compose_file" ps -q) ]]; then
+    if [[ $(docker compose -f "$compose_file" ps -q) ]]; then
         echo "> Updating $compose_file"
-        docker-compose -f "$compose_file" pull
-        docker-compose -f "$compose_file" up -d --remove-orphans
+        docker compose -f "$compose_file" pull
+        docker compose -f "$compose_file" up -d --remove-orphans
     else
         echo "> Skipping $compose_file as it's not running."
     fi

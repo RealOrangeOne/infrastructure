@@ -11,4 +11,4 @@
 - name: reload prometheus
   shell:
     chdir: /opt/prometheus
-    cmd: docker-compose exec prometheus kill -HUP 1
+    cmd: docker compose exec prometheus kill -HUP 1

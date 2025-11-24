@@ -2,4 +2,4 @@
 
 set -e
 
-exec docker-compose -f "/opt/$1/docker-compose.yml" "${@:2}"
+exec docker compose -f "/opt/$1/docker-compose.yml" "${@:2}"
