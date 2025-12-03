@@ -5,9 +5,6 @@ services:
     labels:
       - traefik.enable=true
       - traefik.http.routers.whoami.rule=Host(`whoami.theorangeone.net`) || Host(`whoami-cdn.theorangeone.net`) || Host(`who.0rng.one`)
-
-      - traefik.http.routers.whoami-private.rule=Host(`whoami-private.theorangeone.net`)
-      - traefik.http.routers.whoami-private.middlewares=tailscale-only@file
     networks:
       - default
       - traefik

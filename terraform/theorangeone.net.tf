@@ -32,16 +32,6 @@ resource "gandi_livedns_record" "theorangeonenet_whoami_cdn" {
   ]
 }
 
-resource "gandi_livedns_record" "theorangeonenet_whoami_private" {
-  zone = data.gandi_livedns_domain.theorangeonenet.id
-  name = "whoami-private"
-  type = "CNAME"
-  ttl  = 3600
-  values = [
-    "${gandi_livedns_record.sys_domain_pve.name}.${gandi_livedns_record.sys_domain_pve.zone}."
-  ]
-}
-
 resource "gandi_livedns_record" "theorangeonenet_mx" {
   zone = data.gandi_livedns_domain.theorangeonenet.id
   name = "@"
