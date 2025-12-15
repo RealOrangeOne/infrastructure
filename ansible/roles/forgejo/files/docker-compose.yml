@@ -8,7 +8,7 @@ services:
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
       - "{{ app_data_dir }}/gitea/data:/var/lib/gitea"
-      - "{{ app_data_dir }}/gitea/config:/etc/gitea"
+      - "{{ app_data_dir }}/gitea/config:/var/lib/gitea/custom/conf"
       - /mnt/tank/files/gitea-repositories/repositories:/mnt/repositories
       - /mnt/tank/files/gitea-repositories/lfs:/mnt/lfs
       - /mnt/tank/files/gitea-repositories/archive:/mnt/repo-archive
