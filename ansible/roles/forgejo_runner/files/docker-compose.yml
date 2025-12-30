@@ -1,6 +1,6 @@
 services:
   forgejo-runner:
-    image: code.forgejo.org/forgejo/runner:10.0.1
+    image: code.forgejo.org/forgejo/runner:12
     user: "{{ docker_user.id }}"
     volumes:
       - /mnt/data:/data
