@@ -16,7 +16,7 @@ services:
       - ./secrets.yml:/comentario/secrets.yaml
     environment:
       - BASE_URL=https://comentario.theorangeone.net
-      - NO_PAGE_VIEW_STATS=true
+      - STATS_DISABLE_PAGE_VIEWS=true
       - LOG_FULL_IPS=true
 
   db:
