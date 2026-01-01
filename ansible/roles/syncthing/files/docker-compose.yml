@@ -1,0 +1,12 @@
+services:
+  syncthing:
+    image: syncthing/syncthing:latest
+    restart: unless-stopped
+    network_mode: host
+    hostname: "{{ ansible_hostname }}"
+    environment:
+      - TZ={{ timezone }}
+      - PUID={{ docker_user.id }}
+      - PGID={{ docker_user.id }}
+    volumes:
+      - /mnt/tank/files:/var/syncthing
