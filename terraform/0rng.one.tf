@@ -1,34 +1,35 @@
-resource "gandi_livedns_domain" "orngone" {
+resource "desec_domain" "orngone" {
   name = "0rng.one"
 }
 
-resource "gandi_livedns_record" "orngone_apex" {
-  zone = gandi_livedns_domain.orngone.id
-  name = "@"
-  type = "ALIAS" # Gandi doesn't support CNAME-flattening
-  ttl  = 3600
-  values = [
-    "${gandi_livedns_record.sys_domain_walker.name}.${gandi_livedns_record.sys_domain_walker.zone}."
-  ]
+resource "desec_rrset" "orngone_apex" {
+  domain  = desec_domain.orngone.name
+  subname = ""
+  type    = "A"
+  records = gandi_livedns_record.sys_domain_walker.values
+  ttl     = 3600
 }
 
-resource "gandi_livedns_record" "orngone_caa" {
-  zone = gandi_livedns_domain.orngone.id
-  name = "@"
-  type = "CAA"
-  ttl  = 3600
-  values = [
-    "0 issue \"letsencrypt.org\""
-  ]
+resource "desec_rrset" "orngone_apex_v6" {
+  domain  = desec_domain.orngone.name
+  subname = ""
+  type    = "AAAA"
+  records = gandi_livedns_record.sys_domain_walker_v6.values
+  ttl     = 3600
 }
 
+resource "desec_rrset" "orngone_caa" {
+  domain  = desec_domain.orngone.name
+  subname = ""
+  type    = "CAA"
+  records = ["0 issue \"letsencrypt.org\""]
+  ttl     = 3600
+}
 
-resource "gandi_livedns_record" "orngone_who" {
-  zone = gandi_livedns_domain.orngone.id
-  name = "who"
-  type = "CNAME"
-  ttl  = 3600
-  values = [
-    "${gandi_livedns_record.sys_domain_pve.name}.${gandi_livedns_record.sys_domain_pve.zone}."
-  ]
+resource "desec_rrset" "orngone_who" {
+  domain  = desec_domain.orngone.name
+  subname = "who"
+  type    = "CNAME"
+  records = ["${gandi_livedns_record.sys_domain_pve.name}.${gandi_livedns_record.sys_domain_pve.zone}."]
+  ttl     = 3600
 }

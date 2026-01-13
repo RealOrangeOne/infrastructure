@@ -18,3 +18,7 @@ provider "b2" {
 provider "hcloud" {
   token = var.hetzner_token
 }
+
+provider "desec" {
+  api_token = var.desec_api_token
+}
