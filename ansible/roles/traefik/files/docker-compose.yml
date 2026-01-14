@@ -4,6 +4,7 @@ services:
     user: "{{ docker_user.id }}"
     environment:
       - GANDIV5_PERSONAL_ACCESS_TOKEN={{ vault_gandi_personal_access_token if traefik_tls_challenge else "" }}
+      - DESEC_TOKEN={{ vault_desec_api_token if traefik_tls_challenge else "" }}
     volumes:
       - ./traefik:/etc/traefik
     restart: unless-stopped
