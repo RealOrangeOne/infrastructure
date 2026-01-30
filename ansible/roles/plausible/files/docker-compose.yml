@@ -41,7 +41,7 @@ services:
       - traefik.http.routers.plausible-embed.middlewares=plausible-index
 
   clickhouse:
-    image: clickhouse/clickhouse-server:24.12-alpine
+    image: clickhouse/clickhouse-server:26.1-alpine
     restart: unless-stopped
     environment:
       - CLICKHOUSE_SKIP_USER_SETUP=1
