@@ -7,8 +7,5 @@
 - name: Install nextcloud
   include_tasks: nextcloud.yml
 
-- name: Install synapse
-  include_tasks: synapse.yml
-
 - name: Install whoami
   include_tasks: whoami.yml

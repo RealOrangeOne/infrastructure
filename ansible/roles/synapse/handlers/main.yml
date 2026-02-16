@@ -1,0 +1,4 @@
+- name: restart synapse
+  shell:
+    chdir: /opt/synapse
+    cmd: "{{ docker_update_command }}"

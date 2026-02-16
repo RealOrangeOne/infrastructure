@@ -142,3 +142,4 @@
     - prometheus.prometheus.node_exporter
     - bsky
     - mastodon
+    - synapse

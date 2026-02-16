@@ -1,6 +1,3 @@
-- name: Include synapse variables
-  include_vars: synapse.yml
-
 - name: Create synapse directory
   file:
     path: /opt/synapse
@@ -10,23 +7,17 @@
 
 - name: Install synapse compose file
   template:
-    src: files/synapse/docker-compose.yml
+    src: files/docker-compose.yml
     dest: /opt/synapse/docker-compose.yml
     mode: "{{ docker_compose_file_mask }}"
     owner: "{{ docker_user.name }}"
     validate: docker compose -f %s config
-  register: compose_file
+  notify: restart synapse
 
 - name: Install synapse config
   template:
-    src: files/synapse/homeserver.yml
-    dest: "{{ app_data_dir }}/synapse/homeserver.yaml"
+    src: files/homeserver.yml
+    dest: /opt/synapse/homeserver.yaml
     mode: "{{ docker_compose_file_mask }}"
     owner: "{{ docker_user.name }}"
-  register: homeserver_config
-
-- name: restart synapse
-  shell:
-    chdir: /opt/synapse
-    cmd: "{{ docker_update_command }}"
-  when: compose_file.changed or homeserver_config.changed
+  notify: restart synapse
