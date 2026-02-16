@@ -56,7 +56,7 @@ services:
       - MYSQL_PASSWORD=nextcloud
 
   redis:
-    image: redis:7-alpine
+    image: redis:8-alpine
     restart: unless-stopped
     volumes:
       - /mnt/speed/dbs/redis/nextcloud:/data
