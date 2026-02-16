@@ -21,7 +21,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v6
         with:
-          python-version: 3.11
+          python-version: 3.14
       - uses: taiki-e/install-action@just
 
       # HACK: https://docs.ansible.com/ansible/devel/reference_appendices/config.html#cfg-in-world-writable-dir
