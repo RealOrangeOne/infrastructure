@@ -16,7 +16,7 @@ services:
       - traefik.http.routers.macau.rule=Host(`0rng.one`)
 
   db:
-    image: pgautoupgrade/pgautoupgrade:17-alpine
+    image: pgautoupgrade/pgautoupgrade:18-alpine
     restart: unless-stopped
     volumes:
       - ./postgres:/var/lib/postgresql/data

@@ -42,7 +42,7 @@ services:
       - traefik.http.services.mastodon-mastodon.loadbalancer.server.scheme=https
 
   db:
-    image: pgautoupgrade/pgautoupgrade:17-alpine
+    image: pgautoupgrade/pgautoupgrade:18-alpine
     restart: unless-stopped
     volumes:
       - ./db:/var/lib/postgresql/data
