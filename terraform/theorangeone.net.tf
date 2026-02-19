@@ -104,11 +104,17 @@ resource "desec_rrset" "theorangeonenet_txt" {
 resource "desec_rrset" "theorangeonenet_apex" {
   domain  = desec_domain.theorangeonenet.name
   subname = ""
-  type    = "ALIAS"
+  type    = "A"
   ttl     = 3600
-  records = [
-    "${desec_rrset.sys_domain_walker.subname}.${desec_rrset.sys_domain_walker.domain}."
-  ]
+  records = desec_rrset.sys_domain_walker.records
+}
+
+resource "desec_rrset" "theorangeonenet_apex_v6" {
+  domain  = desec_domain.theorangeonenet.name
+  subname = ""
+  type    = "AAAA"
+  ttl     = 3600
+  records = desec_rrset.sys_domain_walker_v6.records
 }
 
 resource "desec_rrset" "theorangeonenet_srv_matrix" {
