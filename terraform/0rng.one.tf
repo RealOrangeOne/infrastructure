@@ -6,7 +6,7 @@ resource "desec_rrset" "orngone_apex" {
   domain  = desec_domain.orngone.name
   subname = ""
   type    = "A"
-  records = gandi_livedns_record.sys_domain_walker.values
+  records = desec_rrset.sys_domain_walker.records
   ttl     = 3600
 }
 
@@ -14,7 +14,7 @@ resource "desec_rrset" "orngone_apex_v6" {
   domain  = desec_domain.orngone.name
   subname = ""
   type    = "AAAA"
-  records = gandi_livedns_record.sys_domain_walker_v6.values
+  records = desec_rrset.sys_domain_walker_v6.records
   ttl     = 3600
 }
 
@@ -30,6 +30,6 @@ resource "desec_rrset" "orngone_who" {
   domain  = desec_domain.orngone.name
   subname = "who"
   type    = "CNAME"
-  records = ["${gandi_livedns_record.sys_domain_pve.name}.${gandi_livedns_record.sys_domain_pve.zone}."]
+  records = ["${desec_rrset.sys_domain_pve.subname}.${desec_rrset.sys_domain_pve.domain}."]
   ttl     = 3600
 }

@@ -69,7 +69,7 @@ resource "desec_rrset" "jakehowardtech_speed" {
   type    = "CNAME"
   ttl     = 3600
   records = [
-    "${gandi_livedns_record.sys_domain_pve.name}.${gandi_livedns_record.sys_domain_pve.zone}."
+    "${desec_rrset.sys_domain_pve.subname}.${desec_rrset.sys_domain_pve.domain}."
   ]
 }
 
@@ -79,7 +79,7 @@ resource "desec_rrset" "jakehowardtech_media" {
   type    = "CNAME"
   ttl     = 3600
   records = [
-    "${gandi_livedns_record.sys_domain_pve.name}.${gandi_livedns_record.sys_domain_pve.zone}."
+    "${desec_rrset.sys_domain_pve.subname}.${desec_rrset.sys_domain_pve.domain}."
   ]
 }
 
@@ -89,7 +89,7 @@ resource "desec_rrset" "jakehowardtech_matrix" {
   type    = "CNAME"
   ttl     = 3600
   records = [
-    "${gandi_livedns_record.sys_domain_pve.name}.${gandi_livedns_record.sys_domain_pve.zone}."
+    "${desec_rrset.sys_domain_pve.subname}.${desec_rrset.sys_domain_pve.domain}."
   ]
 }
 
@@ -99,7 +99,7 @@ resource "desec_rrset" "jakehowardtech_intersect" {
   type    = "CNAME"
   ttl     = 3600
   records = [
-    "${gandi_livedns_record.sys_domain_pve.name}.${gandi_livedns_record.sys_domain_pve.zone}."
+    "${desec_rrset.sys_domain_pve.subname}.${desec_rrset.sys_domain_pve.domain}."
   ]
 }
 
@@ -109,7 +109,7 @@ resource "desec_rrset" "jakehowardtech_calibre" {
   type    = "CNAME"
   ttl     = 3600
   records = [
-    "${gandi_livedns_record.sys_domain_pve.name}.${gandi_livedns_record.sys_domain_pve.zone}."
+    "${desec_rrset.sys_domain_pve.subname}.${desec_rrset.sys_domain_pve.domain}."
   ]
 }
 
@@ -119,7 +119,7 @@ resource "desec_rrset" "jakehowardtech_homeassistant" {
   type    = "CNAME"
   ttl     = 3600
   records = [
-    "${gandi_livedns_record.sys_domain_pve_private.name}.${gandi_livedns_record.sys_domain_pve_private.zone}."
+    "${desec_rrset.sys_domain_pve_private.subname}.${desec_rrset.sys_domain_pve_private.domain}."
   ]
 }
 
@@ -129,7 +129,7 @@ resource "desec_rrset" "jakehowardtech_grafana" {
   type    = "CNAME"
   ttl     = 3600
   records = [
-    "${gandi_livedns_record.sys_domain_pve.name}.${gandi_livedns_record.sys_domain_pve.zone}."
+    "${desec_rrset.sys_domain_pve.subname}.${desec_rrset.sys_domain_pve.domain}."
   ]
 }
 
@@ -139,7 +139,7 @@ resource "desec_rrset" "jakehowardtech_vaultwarden" {
   type    = "CNAME"
   ttl     = 3600
   records = [
-    "${gandi_livedns_record.sys_domain_pve_private.name}.${gandi_livedns_record.sys_domain_pve_private.zone}."
+    "${desec_rrset.sys_domain_pve_private.subname}.${desec_rrset.sys_domain_pve_private.domain}."
   ]
 }
 
@@ -149,7 +149,7 @@ resource "desec_rrset" "jakehowardtech_recipes" {
   type    = "CNAME"
   ttl     = 3600
   records = [
-    "${gandi_livedns_record.sys_domain_pve.name}.${gandi_livedns_record.sys_domain_pve.zone}."
+    "${desec_rrset.sys_domain_pve.subname}.${desec_rrset.sys_domain_pve.domain}."
   ]
 }
 
@@ -189,7 +189,7 @@ resource "desec_rrset" "jakehowardtech_synapse_admin" {
   type    = "CNAME"
   ttl     = 3600
   records = [
-    "${gandi_livedns_record.sys_domain_pve.name}.${gandi_livedns_record.sys_domain_pve.zone}."
+    "${desec_rrset.sys_domain_pve.subname}.${desec_rrset.sys_domain_pve.domain}."
   ]
 }
 
@@ -199,7 +199,7 @@ resource "desec_rrset" "jakehowardtech_apex" {
   type    = "ALIAS"
   ttl     = 3600
   records = [
-    "${gandi_livedns_record.sys_domain_walker.name}.${gandi_livedns_record.sys_domain_walker.zone}."
+    "${desec_rrset.sys_domain_walker.subname}.${desec_rrset.sys_domain_walker.domain}."
   ]
 }
 
@@ -209,7 +209,7 @@ resource "desec_rrset" "jakehowardtech_collabora" {
   type    = "CNAME"
   ttl     = 3600
   records = [
-    "${gandi_livedns_record.sys_domain_pve.name}.${gandi_livedns_record.sys_domain_pve.zone}."
+    "${desec_rrset.sys_domain_pve.subname}.${desec_rrset.sys_domain_pve.domain}."
   ]
 }
 
@@ -219,7 +219,7 @@ resource "desec_rrset" "jakehowardtech_tasks" {
   type    = "CNAME"
   ttl     = 3600
   records = [
-    "${gandi_livedns_record.sys_domain_pve.name}.${gandi_livedns_record.sys_domain_pve.zone}."
+    "${desec_rrset.sys_domain_pve.subname}.${desec_rrset.sys_domain_pve.domain}."
   ]
 }
 
@@ -229,7 +229,7 @@ resource "desec_rrset" "jakehowardtech_auth" {
   type    = "CNAME"
   ttl     = 3600
   records = [
-    "${gandi_livedns_record.sys_domain_pve.name}.${gandi_livedns_record.sys_domain_pve.zone}."
+    "${desec_rrset.sys_domain_pve.subname}.${desec_rrset.sys_domain_pve.domain}."
   ]
 }
 
@@ -239,7 +239,7 @@ resource "desec_rrset" "jakehowardtech_ntfy" {
   type    = "CNAME"
   ttl     = 3600
   records = [
-    "${gandi_livedns_record.sys_domain_pve.name}.${gandi_livedns_record.sys_domain_pve.zone}."
+    "${desec_rrset.sys_domain_pve.subname}.${desec_rrset.sys_domain_pve.domain}."
   ]
 }
 
@@ -249,7 +249,7 @@ resource "desec_rrset" "jakehowardtech_headscale" {
   type    = "CNAME"
   ttl     = 3600
   records = [
-    "${gandi_livedns_record.sys_domain_casey.name}.${gandi_livedns_record.sys_domain_casey.zone}."
+    "${desec_rrset.sys_domain_casey.subname}.${desec_rrset.sys_domain_casey.domain}."
   ]
 }
 
@@ -259,7 +259,7 @@ resource "desec_rrset" "jakehowardtech_slides" {
   type    = "CNAME"
   ttl     = 3600
   records = [
-    "${gandi_livedns_record.sys_domain_walker.name}.${gandi_livedns_record.sys_domain_walker.zone}."
+    "${desec_rrset.sys_domain_walker.subname}.${desec_rrset.sys_domain_walker.domain}."
   ]
 }
 
@@ -269,7 +269,7 @@ resource "desec_rrset" "jakehowardtech_uptime" {
   type    = "CNAME"
   ttl     = 3600
   records = [
-    "${gandi_livedns_record.sys_domain_pve.name}.${gandi_livedns_record.sys_domain_pve.zone}."
+    "${desec_rrset.sys_domain_pve.subname}.${desec_rrset.sys_domain_pve.domain}."
   ]
 }
 
@@ -279,7 +279,7 @@ resource "desec_rrset" "jakehowardtech_baby-buddy" {
   type    = "CNAME"
   ttl     = 3600
   records = [
-    "${gandi_livedns_record.sys_domain_pve_private.name}.${gandi_livedns_record.sys_domain_pve_private.zone}."
+    "${desec_rrset.sys_domain_pve_private.subname}.${desec_rrset.sys_domain_pve_private.domain}."
   ]
 }
 
@@ -289,7 +289,7 @@ resource "desec_rrset" "jakehowardtech_immich" {
   type    = "CNAME"
   ttl     = 3600
   records = [
-    "${gandi_livedns_record.sys_domain_pve_private.name}.${gandi_livedns_record.sys_domain_pve_private.zone}."
+    "${desec_rrset.sys_domain_pve_private.subname}.${desec_rrset.sys_domain_pve_private.domain}."
   ]
 }
 
@@ -299,7 +299,7 @@ resource "desec_rrset" "jakehowardtech_photos" {
   type    = "CNAME"
   ttl     = 3600
   records = [
-    "${gandi_livedns_record.sys_domain_pve.name}.${gandi_livedns_record.sys_domain_pve.zone}."
+    "${desec_rrset.sys_domain_pve.subname}.${desec_rrset.sys_domain_pve.domain}."
   ]
 }
 
@@ -309,7 +309,7 @@ resource "desec_rrset" "jakehowardtech_freshrss" {
   type    = "CNAME"
   ttl     = 3600
   records = [
-    "${gandi_livedns_record.sys_domain_pve_private.name}.${gandi_livedns_record.sys_domain_pve_private.zone}."
+    "${desec_rrset.sys_domain_pve_private.subname}.${desec_rrset.sys_domain_pve_private.domain}."
   ]
 }
 
@@ -319,7 +319,7 @@ resource "desec_rrset" "jakehowardtech_atuin" {
   type    = "CNAME"
   ttl     = 3600
   records = [
-    "${gandi_livedns_record.sys_domain_pve_private.name}.${gandi_livedns_record.sys_domain_pve_private.zone}."
+    "${desec_rrset.sys_domain_pve_private.subname}.${desec_rrset.sys_domain_pve_private.domain}."
   ]
 }
 
@@ -329,7 +329,7 @@ resource "desec_rrset" "jakehowardtech_karakeep" {
   type    = "CNAME"
   ttl     = 3600
   records = [
-    "${gandi_livedns_record.sys_domain_pve_private.name}.${gandi_livedns_record.sys_domain_pve_private.zone}."
+    "${desec_rrset.sys_domain_pve_private.subname}.${desec_rrset.sys_domain_pve_private.domain}."
   ]
 }
 

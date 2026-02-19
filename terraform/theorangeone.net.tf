@@ -8,7 +8,7 @@ resource "desec_rrset" "theorangeonenet_git" {
   type    = "CNAME"
   ttl     = 3600
   records = [
-    "${gandi_livedns_record.sys_domain_pve.name}.${gandi_livedns_record.sys_domain_pve.zone}."
+    "${desec_rrset.sys_domain_pve.subname}.${desec_rrset.sys_domain_pve.domain}."
   ]
 }
 
@@ -18,7 +18,7 @@ resource "desec_rrset" "theorangeonenet_whoami" {
   type    = "CNAME"
   ttl     = 3600
   records = [
-    "${gandi_livedns_record.sys_domain_pve.name}.${gandi_livedns_record.sys_domain_pve.zone}."
+    "${desec_rrset.sys_domain_pve.subname}.${desec_rrset.sys_domain_pve.domain}."
   ]
 }
 
@@ -107,7 +107,7 @@ resource "desec_rrset" "theorangeonenet_apex" {
   type    = "ALIAS"
   ttl     = 3600
   records = [
-    "${gandi_livedns_record.sys_domain_walker.name}.${gandi_livedns_record.sys_domain_walker.zone}."
+    "${desec_rrset.sys_domain_walker.subname}.${desec_rrset.sys_domain_walker.domain}."
   ]
 }
 
@@ -127,7 +127,7 @@ resource "desec_rrset" "theorangeonenet_matrix" {
   type    = "CNAME"
   ttl     = 3600
   records = [
-    "${gandi_livedns_record.sys_domain_pve.name}.${gandi_livedns_record.sys_domain_pve.zone}."
+    "${desec_rrset.sys_domain_pve.subname}.${desec_rrset.sys_domain_pve.domain}."
   ]
 }
 
@@ -137,7 +137,7 @@ resource "desec_rrset" "theorangeonenet_plausible" {
   type    = "CNAME"
   ttl     = 3600
   records = [
-    "${gandi_livedns_record.sys_domain_walker.name}.${gandi_livedns_record.sys_domain_walker.zone}."
+    "${desec_rrset.sys_domain_walker.subname}.${desec_rrset.sys_domain_walker.domain}."
   ]
 }
 
@@ -147,7 +147,7 @@ resource "desec_rrset" "theorangeonenet_plausible_bare" {
   type    = "CNAME"
   ttl     = 3600
   records = [
-    "${gandi_livedns_record.sys_domain_walker.name}.${gandi_livedns_record.sys_domain_walker.zone}."
+    "${desec_rrset.sys_domain_walker.subname}.${desec_rrset.sys_domain_walker.domain}."
   ]
 }
 
@@ -167,7 +167,7 @@ resource "desec_rrset" "theorangeonenet_bin" {
   type    = "CNAME"
   ttl     = 3600
   records = [
-    "${gandi_livedns_record.sys_domain_pve.name}.${gandi_livedns_record.sys_domain_pve.zone}."
+    "${desec_rrset.sys_domain_pve.subname}.${desec_rrset.sys_domain_pve.domain}."
   ]
 }
 
@@ -207,7 +207,7 @@ resource "desec_rrset" "theorangeonenet_mastodon" {
   type    = "CNAME"
   ttl     = 3600
   records = [
-    "${gandi_livedns_record.sys_domain_grimes.name}.${gandi_livedns_record.sys_domain_grimes.zone}."
+    "${desec_rrset.sys_domain_grimes.subname}.${desec_rrset.sys_domain_grimes.domain}."
   ]
 }
 
@@ -217,7 +217,7 @@ resource "desec_rrset" "theorangeonenet_comentario" {
   type    = "CNAME"
   ttl     = 3600
   records = [
-    "${gandi_livedns_record.sys_domain_walker.name}.${gandi_livedns_record.sys_domain_walker.zone}."
+    "${desec_rrset.sys_domain_walker.subname}.${desec_rrset.sys_domain_walker.domain}."
   ]
 }
 
@@ -227,7 +227,7 @@ resource "desec_rrset" "theorangeonenet_bsky" {
   type    = "CNAME"
   ttl     = 3600
   records = [
-    "${gandi_livedns_record.sys_domain_grimes.name}.${gandi_livedns_record.sys_domain_grimes.zone}."
+    "${desec_rrset.sys_domain_grimes.subname}.${desec_rrset.sys_domain_grimes.domain}."
   ]
 }
 

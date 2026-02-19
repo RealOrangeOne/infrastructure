@@ -16,11 +16,11 @@ resource "hcloud_server" "grimes" {
 resource "hcloud_rdns" "grimes_reverse_ipv4" {
   server_id  = hcloud_server.grimes.id
   ip_address = hcloud_server.grimes.ipv4_address
-  dns_ptr    = "${gandi_livedns_record.sys_domain_grimes.name}.${gandi_livedns_record.sys_domain_grimes.zone}"
+  dns_ptr    = "${desec_rrset.sys_domain_grimes.subname}.${desec_rrset.sys_domain_grimes.domain}"
 }
 
 resource "hcloud_rdns" "grimes_reverse_ipv6" {
   server_id  = hcloud_server.grimes.id
   ip_address = hcloud_server.grimes.ipv6_address
-  dns_ptr    = "${gandi_livedns_record.sys_domain_grimes.name}.${gandi_livedns_record.sys_domain_grimes.zone}"
+  dns_ptr    = "${desec_rrset.sys_domain_grimes.subname}.${desec_rrset.sys_domain_grimes.domain}"
 }
