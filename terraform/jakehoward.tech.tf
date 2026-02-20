@@ -83,16 +83,6 @@ resource "desec_rrset" "jakehowardtech_media" {
   ]
 }
 
-resource "desec_rrset" "jakehowardtech_matrix" {
-  domain  = desec_domain.jakehowardtech.name
-  subname = "matrix"
-  type    = "CNAME"
-  ttl     = local.dns_ttl_default
-  records = [
-    "${desec_rrset.sys_domain_grimes.subname}.${desec_rrset.sys_domain_grimes.domain}."
-  ]
-}
-
 resource "desec_rrset" "jakehowardtech_intersect" {
   domain  = desec_domain.jakehowardtech.name
   subname = "intersect"

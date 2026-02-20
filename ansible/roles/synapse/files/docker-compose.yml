@@ -14,7 +14,7 @@ services:
       - db
     labels:
       - traefik.enable=true
-      - traefik.http.routers.synapse.rule=Host(`matrix.jakehoward.tech`) || Host(`matrix.theorangeone.net`)
+      - traefik.http.routers.synapse.rule=Host(`matrix.theorangeone.net`)
     networks:
       - default
       - traefik
