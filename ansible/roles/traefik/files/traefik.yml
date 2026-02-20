@@ -68,7 +68,7 @@ certificatesResolvers:
       email: "{{ vault_letsencrypt_email }}"
       storage: /etc/traefik/acme.json
       dnsChallenge:
-        provider: gandiv5
+        provider: desec
         delayBeforeCheck: 0s
         resolvers:
           - 9.9.9.9:53
