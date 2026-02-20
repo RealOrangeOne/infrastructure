@@ -8,10 +8,6 @@ terraform {
       source  = "linode/linode"
       version = "1.30.0"
     }
-    gandi = {
-      source  = "go-gandi/gandi"
-      version = "2.3.0"
-    }
     b2 = {
       source  = "Backblaze/b2"
       version = "0.10.0"
