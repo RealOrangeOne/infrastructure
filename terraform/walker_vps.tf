@@ -16,11 +16,11 @@ resource "hcloud_server" "walker" {
 resource "hcloud_rdns" "walker_reverse_ipv4" {
   server_id  = hcloud_server.walker.id
   ip_address = hcloud_server.walker.ipv4_address
-  dns_ptr    = "${gandi_livedns_record.sys_domain_walker.name}.${gandi_livedns_record.sys_domain_walker.zone}"
+  dns_ptr    = "${desec_rrset.sys_domain_walker.subname}.${desec_rrset.sys_domain_walker.domain}"
 }
 
 resource "hcloud_rdns" "walker_reverse_ipv6" {
   server_id  = hcloud_server.walker.id
   ip_address = hcloud_server.walker.ipv6_address
-  dns_ptr    = "${gandi_livedns_record.sys_domain_walker.name}.${gandi_livedns_record.sys_domain_walker.zone}"
+  dns_ptr    = "${desec_rrset.sys_domain_walker.subname}.${desec_rrset.sys_domain_walker.domain}"
 }
