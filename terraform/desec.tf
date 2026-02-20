@@ -8,7 +8,7 @@ resource "desec_token" "traefik" {
 
 resource "desec_token" "terraform" {
   name               = "Terraform"
-  perm_create_domain = false
+  perm_create_domain = true
   perm_delete_domain = false
   perm_manage_tokens = true
 }
