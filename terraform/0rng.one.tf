@@ -7,7 +7,7 @@ resource "desec_rrset" "orngone_apex" {
   subname = ""
   type    = "A"
   records = desec_rrset.sys_domain_walker.records
-  ttl     = 3600
+  ttl     = local.dns_ttl_default
 }
 
 resource "desec_rrset" "orngone_apex_v6" {
@@ -15,7 +15,7 @@ resource "desec_rrset" "orngone_apex_v6" {
   subname = ""
   type    = "AAAA"
   records = desec_rrset.sys_domain_walker_v6.records
-  ttl     = 3600
+  ttl     = local.dns_ttl_default
 }
 
 resource "desec_rrset" "orngone_caa" {
@@ -23,7 +23,7 @@ resource "desec_rrset" "orngone_caa" {
   subname = ""
   type    = "CAA"
   records = ["0 issue \"letsencrypt.org\""]
-  ttl     = 3600
+  ttl     = local.dns_ttl_default
 }
 
 resource "desec_rrset" "orngone_who" {
@@ -31,5 +31,5 @@ resource "desec_rrset" "orngone_who" {
   subname = "who"
   type    = "CNAME"
   records = ["${desec_rrset.sys_domain_pve.subname}.${desec_rrset.sys_domain_pve.domain}."]
-  ttl     = 3600
+  ttl     = local.dns_ttl_default
 }

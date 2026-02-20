@@ -1,3 +1,7 @@
+locals {
+  dns_ttl_default = 60 * 60
+}
+
 variable "linode_personal_access_token" {
   sensitive = true
 }
