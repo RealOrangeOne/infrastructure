@@ -336,6 +336,6 @@ resource "desec_rrset" "jakehowardtech_caa" {
   ttl     = local.dns_ttl_default
   records = [
     "0 issue \"letsencrypt.org\"",
-    "0 wildissue \"letsencrypt.org\"",
+    "0 issuewild \"letsencrypt.org\"",
   ]
 }
