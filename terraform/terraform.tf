@@ -6,7 +6,7 @@ terraform {
     }
     linode = {
       source  = "linode/linode"
-      version = "1.30.0"
+      version = "3.10.0"
     }
     b2 = {
       source  = "Backblaze/b2"
