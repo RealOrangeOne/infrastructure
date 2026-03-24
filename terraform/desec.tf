@@ -18,10 +18,10 @@ resource "desec_token_policy" "traefik_default" {
   perm_write = false
 }
 
-resource "desec_token_policy" "traefik" {
+resource "desec_token_policy" "traefik_acme_challenge" {
   token_id   = desec_token.traefik.id
   perm_write = true
-  subname    = "_acme_challenge"
+  subname    = "_acme-challenge"
   type       = "TXT"
 
   depends_on = [desec_token_policy.traefik_default]
