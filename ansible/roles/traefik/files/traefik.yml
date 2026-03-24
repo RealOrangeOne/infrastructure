@@ -69,7 +69,7 @@ certificatesResolvers:
       storage: /etc/traefik/acme.json
       dnsChallenge:
         provider: desec
-        delayBeforeCheck: 0s
+        delayBeforeCheck: 120s
         resolvers:
           - 9.9.9.9:53
           - 149.112.112.112:53
