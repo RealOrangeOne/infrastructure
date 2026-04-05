@@ -7,40 +7,17 @@ services:
       - ./config.yml:/data/config.yml
     environment:
       - TZ={{ timezone }}
-      - DOCKER_HOST=tcp://docker_proxy:2375
     restart: unless-stopped
     command: forgejo-runner --config config.yml daemon
-    networks:
-      - default
-      - forgejo_private
     depends_on:
-      - docker_proxy
+      - dind
     ports:
       - "{{ ansible_default_ipv4.address }}:4000:4000"
 
-  docker_proxy:
-    image: lscr.io/linuxserver/socket-proxy:latest
-    restart: unless-stopped
+  dind:
+    image: docker:dind
     environment:
-      - POST=1
-      - CONTAINERS=1
-      - INFO=1
-      - IMAGES=1
-      - VOLUMES=1
-      - NETWORKS=1
-      - ALLOW_START=1
-      - ALLOW_STOP=1
-      - ALLOW_RESTARTS=1
-      - EXEC=1
-    tmpfs:
-      - /run
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-    networks:
-      - forgejo_private
-    logging:
-      driver: none
-
-networks:
-  forgejo_private:
-    internal: true
+      - TZ={{ timezone }}
+    privileged: true
+    restart: unless-stopped
+    command: dockerd -H tcp://0.0.0.0:2375 --tls=false

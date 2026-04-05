@@ -10,7 +10,8 @@ runner:
   # Execute how many tasks concurrently at the same time.
   capacity: {{ ansible_processor_nproc }}
   # Extra environment variables to run jobs.
-  envs: {}
+  envs:
+    DOCKER_HOST: tcp://dind.docker.internal:2375
   # Extra environment variables to run jobs from a file.
   # It will be ignored if it's empty or the file doesn't exist.
   env_file: /data/.env
@@ -56,7 +57,7 @@ container:
   # Whether to use privileged mode or not when launching task containers (privileged mode is required for Docker-in-Docker).
   privileged: false
   # And other options to be used when the container is started (eg, --add-host=my.gitea.url:host-gateway).
-  options: ""
+  options: '--add-host=dind.docker.internal:host-gateway'
   # The parent directory of a job's working directory.
   # If it's empty, /workspace will be used.
   workdir_parent: /workspace
@@ -73,7 +74,7 @@ container:
   # If it's empty, act_runner will find an available docker host automatically.
   # If it's "-", act_runner will find an available docker host automatically, but the docker host won't be mounted to the job containers and service containers.
   # If it's not empty or "-", the specified docker host will be used. An error will be returned if it doesn't work.
-  docker_host: ""
+  docker_host: "tcp://dind:2375"
   force_pull: false
 
 host:
