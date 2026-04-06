@@ -18,6 +18,9 @@ services:
     image: docker:dind
     environment:
       - TZ={{ timezone }}
+      - DOCKER_HOST=tcp://0.0.0.0:2375
+    volumes:
+      - /mnt/ci-runner-docker:/var/lib/docker
     privileged: true
     restart: unless-stopped
     command: dockerd -H tcp://0.0.0.0:2375 --tls=false

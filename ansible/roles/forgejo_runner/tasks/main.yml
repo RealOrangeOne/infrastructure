@@ -21,3 +21,10 @@
     owner: "{{ docker_user.name }}"
     validate: docker compose -f %s config
   notify: restart forgejo-runner
+
+- name: Clean up runner docker containers
+  cron:
+    name: clean up runner docker containers
+    special_time: monthly
+    job: docker compose -f /opt/forgejo-runner/docker-compose.yml exec dind docker system prune -af --volumes
+    user: "{{ docker_user.name }}"
