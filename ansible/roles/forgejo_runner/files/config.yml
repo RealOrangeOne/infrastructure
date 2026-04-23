@@ -48,6 +48,9 @@ cache:
   # If it's specified, act_runner will use this URL as the ACTIONS_CACHE_URL rather than start a server by itself.
   # The URL should generally end with "/".
   external_server: ""
+  # The port bound by the internal cache proxy.
+  # 0 means to use a random available port.
+  proxy_port: 4001
 
 container:
   # Specifies the network to which the container will connect.

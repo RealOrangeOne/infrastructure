@@ -13,6 +13,7 @@ services:
       - dind
     ports:
       - "{{ ansible_default_ipv4.address }}:4000:4000"
+      - "{{ ansible_default_ipv4.address }}:4001:4001"
 
   dind:
     image: docker:dind
