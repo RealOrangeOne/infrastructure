@@ -5,4 +5,7 @@ restic_backup_locations:
   - /mnt/home-assistant
   - /home/rclone/sync
 
+restic_backup_excludes:
+  - /mnt/host/mnt/speed/ci-runner-docker
+
 restic_dir: ""
