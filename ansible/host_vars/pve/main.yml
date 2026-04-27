@@ -23,11 +23,16 @@ sanoid_datasets:
     use_template: production
     recursive: true
 
+  rpool/data:
+    use_template: replaceable
+    recursive: true
+
 sanoid_templates:
   production:
-    frequently: 4
+    frequently: 0
     hourly: 48
-    daily: 28
+    daily: 14
+    weekly: 4
     monthly: 3
     yearly: 0
     autosnap: true
@@ -37,6 +42,7 @@ sanoid_templates:
     frequently: 0
     hourly: 24
     daily: 7
+    weekly: 3
     monthly: 0
     yearly: 0
     autosnap: true
