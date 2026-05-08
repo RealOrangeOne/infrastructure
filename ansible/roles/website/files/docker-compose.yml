@@ -1,60 +1,27 @@
 services:
   website:
-    image: registry.gitlab.com/realorangeone/website:latest
+    image: git.theorangeone.net/private-packages/theorangeone.net:latest
     restart: unless-stopped
     environment:
       - TZ={{ timezone }}
       - DEBUG=false
       - SECRET_KEY={{ vault_website_secret_key }}
-      - DATABASE_URL=postgres://website:website@db/website?conn_max_age=600
-      - CACHE_URL=redis://redis/0
-      - QUEUE_STORE_URL=redis://redis/1
-      - RENDITION_CACHE_URL=redis://redis/2
-      - SPOTIFY_PROXY_URL=http://spotify_public_proxy
       - UNSPLASH_CLIENT_ID={{ vault_unsplash_client_id }}
       - SENTRY_DSN={{ vault_website_sentry_dsn }}
-      - BASE_HOSTNAME=theorangeone.net
-      - GRANIAN_WORKERS=2
-      - GRANIAN_BLOCKING_THREADS=2
-      - SEO_INDEX=true
-      - ACTIVITYPUB_HOST=mastodon.theorangeone.net
-      - S6_CMD_WAIT_FOR_SERVICES_MAXTIME=60000
+      - FLICKR_API_KEY={{ vault_flickr_api_key }}
+      - PLAUSIBLE_API_KEY={{ vault_plausible_api_key }}
+      - GRANIAN_WORKERS={{ ansible_processor_nproc * 2 + 1 }}
     volumes:
-      - ./media:/app/media
-      - ./cache:/tmp/nginx_cache
+      - ./cache:/app/.cache/persistent
     networks:
       - default
       - traefik
-    depends_on:
-      - db
-      - redis
     labels:
       - traefik.enable=true
       - traefik.http.routers.website.rule=Host(`theorangeone.net`) || Host(`jakehoward.tech`)
-
-  db:
-    image: pgautoupgrade/pgautoupgrade:17-alpine
-    restart: unless-stopped
-    volumes:
-      - ./postgres:/var/lib/postgresql/data
-    environment:
-      - POSTGRES_PASSWORD=website
-      - POSTGRES_USER=website
-
-  redis:
-    image: redis:7-alpine
-    restart: unless-stopped
-    volumes:
-      - ./redis:/data
-
-  spotify_public_proxy:
-    image: ghcr.io/realorangeone/spotify-public-proxy:latest
-    restart: unless-stopped
-    environment:
-      - PORT=80
-      - SPOTIFY_CLIENT_ID={{ vault_spotify_client_id }}
-      - SPOTIFY_CLIENT_SECRET={{ vault_spotify_client_secret }}
-      - SENTRY_DSN={{ vault_spotify_sentry_dsn }}
+      - traefik.http.middlewares.website-redirect.redirectregex.regex=^https://jakehoward.tech/(.*)
+      - traefik.http.middlewares.website-redirect.redirectregex.replacement=https://theorangeone.net/$${1}
+      - traefik.http.routers.website.middlewares=website-redirect@docker
 
 networks:
   traefik:
