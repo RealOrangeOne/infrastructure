@@ -16,3 +16,10 @@
     owner: "{{ docker_user.name }}"
     validate: docker compose -f %s config
   notify: restart website
+
+- name: Schedule update
+  cron:
+    name: Update website
+    minute: "*/5"
+    job: "docker compose -f /opt/website/docker-compose.yml up -d --pull=always"
+    user: "{{ me.user }}"
