@@ -21,7 +21,7 @@ services:
       - /mnt/data:/mnt/data  # These must be the same
 
   redis:
-    image: redis:7-alpine
+    image: redis:8-alpine
     restart: unless-stopped
     volumes:
       - ./redis:/data
