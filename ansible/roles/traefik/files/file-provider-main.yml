@@ -17,6 +17,11 @@ http:
         customResponseHeaders:
           Permissions-Policy: interest-cohort=()
 
+    request-limit:
+      buffering:
+        maxRequestBodyBytes: 2000000
+        memResponseBodyBytes: 10000000
+
     tailscale-only:
       ipAllowList:
         sourceRange:

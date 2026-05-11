@@ -18,6 +18,7 @@ entryPoints:
         - floc-block@file
         - compress@file
         - secure-headers@file
+        - request-limit@file
       tls:
         certResolver: "{{ 'acme-tls' if traefik_tls_challenge else 'acme-http' }}"
         {% if traefik_tls_challenge %}
