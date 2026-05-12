@@ -10,7 +10,8 @@ services:
       - SENTRY_DSN={{ vault_website_sentry_dsn }}
       - FLICKR_API_KEY={{ vault_flickr_api_key }}
       - PLAUSIBLE_API_KEY={{ vault_plausible_api_key }}
-      - GRANIAN_WORKERS={{ ansible_processor_nproc * 2 + 1 }}
+      - GRANIAN_WORKERS=1
+    scale: "{{ ansible_processor_nproc }}"
     volumes:
       - ./cache:/app/.cache/persistent
     networks:
