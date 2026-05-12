@@ -23,8 +23,7 @@ services:
       - traefik.http.services.nextcloud-nextcloud.loadbalancer.server.port=443
       - traefik.http.services.nextcloud-nextcloud.loadbalancer.server.scheme=https
       - traefik.http.middlewares.nextcloud-hsts.headers.stsseconds=15552000
-      - traefik.http.middlewares.nextcloud-limit.buffering.maxRequestBodyBytes=0
-      - traefik.http.routers.nextcloud.middlewares=nextcloud-hsts@docker,nextcloud-limit@docker
+      - traefik.http.routers.nextcloud.middlewares=nextcloud-hsts@docker
     networks:
       - default
       - traefik
