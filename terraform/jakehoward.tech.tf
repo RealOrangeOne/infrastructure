@@ -329,6 +329,16 @@ resource "desec_rrset" "jakehowardtech_karakeep" {
   ]
 }
 
+resource "desec_rrset" "jakehowardtech_lab" {
+  domain  = desec_domain.jakehowardtech.name
+  subname = "*.lab"
+  type    = "CNAME"
+  ttl     = local.dns_ttl_default
+  records = [
+    "${desec_rrset.sys_domain_pve_private.subname}.${desec_rrset.sys_domain_pve_private.domain}."
+  ]
+}
+
 resource "desec_rrset" "jakehowardtech_caa" {
   domain  = desec_domain.jakehowardtech.name
   subname = ""

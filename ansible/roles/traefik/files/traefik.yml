@@ -28,6 +28,7 @@ entryPoints:
             sans: ["*.jakehoward.tech"]
           - main: 0rng.one
             sans: ["*.0rng.one"]
+          - main: "*.lab.jakehoward.tech"
         {% endif %}
     {% if ansible_hostname == "docker" %}
     proxyProtocol:
