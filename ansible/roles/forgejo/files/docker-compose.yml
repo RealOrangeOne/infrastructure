@@ -21,10 +21,6 @@ services:
     depends_on:
       - db
       - redis
-    labels:
-      - traefik.enable=true
-      - traefik.http.routers.forgejo.rule=Host(`git.theorangeone.net`)
-      - traefik.http.services.forgejo-forgejo.loadbalancer.server.port=3000
     networks:
       - default
       - traefik
@@ -43,6 +39,26 @@ services:
     restart: unless-stopped
     volumes:
       - /mnt/speed/dbs/redis/gitea:/data
+
+  anubis:
+      image: ghcr.io/techarohq/anubis:latest
+      user: "{{ docker_user.id }}:{{ docker_user.id }}"
+      restart: unless-stopped
+      environment:
+        - TARGET=http://forgejo:3000
+        - OG_PASSTHROUGH=true
+        - POLICY_FNAME=/anubis.yml
+      volumes:
+        - ./anubis.yml:/anubis.yml
+      networks:
+        - default
+        - traefik
+      depends_on:
+        - forgejo
+      labels:
+        - traefik.enable=true
+        - traefik.http.routers.forgejo.rule=Host(`git.theorangeone.net`)
+        - traefik.http.services.forgejo-forgejo.loadbalancer.server.port=3000
 
 networks:
   traefik:
