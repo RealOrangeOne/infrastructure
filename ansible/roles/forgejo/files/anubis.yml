@@ -2,3 +2,10 @@ bots:
   - import: (data)/meta/default-config.yaml
   - import: (data)/clients/docker-client.yaml
   - import: (data)/clients/git.yaml
+  - name: allow-internal-network
+    action: ALLOW
+    remote_addresses:
+      - "{{ tailscale_cidr }}"
+      - "{{ tailscale_cidr_ipv6 }}"
+      - "{{ pve_hosts.internal_cidr }}"
+      - 192.168.0.0/16
