@@ -9,3 +9,4 @@ bots:
       - "{{ tailscale_cidr_ipv6 }}"
       - "{{ pve_hosts.internal_cidr }}"
       - 192.168.0.0/16
+      - "{{ vault_lan_ipv6_cidr }}"
