@@ -5,7 +5,7 @@ jobs:
   terraform:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v4
       - uses: taiki-e/install-action@just
@@ -17,7 +17,7 @@ jobs:
   ansible:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
       - name: Set up Python
         uses: actions/setup-python@v6
         with:
