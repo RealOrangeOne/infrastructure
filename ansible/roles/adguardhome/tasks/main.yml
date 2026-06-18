@@ -19,7 +19,7 @@
 
 - name: Install coredns
   kewlfft.aur.aur:
-    name: coredns
+    name: coredns-bin
 
 - name: Install coredns config file
   template:
