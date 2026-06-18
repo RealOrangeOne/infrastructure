@@ -58,32 +58,22 @@
     owner: root
     group: restic
 
-- name: Set cap_sys_chroot=+ep on restic
-  community.general.capabilities:
-    path: /usr/bin/restic
-    capability: cap_dac_read_search=+ep
-
-- name: Schedule backup
-  cron:
-    name: restic backup
-    hour: 0
-    minute: 0
-    job: CHECK_UUID={{ vault_restic_healthchecks_id }} /usr/bin/runitor -- /home/restic/restic-backup.sh
-    user: restic
-
-- name: Install pacman post script
+- name: Install Systemd service
   template:
-    src: files/restic-post.sh
-    dest: /usr/share/libalpm/scripts/restic-post.sh
-    mode: "0700"
-  when: ansible_os_family == 'Archlinux'
-
-- name: Install pacman post hook
-  template:
-    src: files/restic-post.hook
-    dest: /usr/share/libalpm/hooks/restic-post.hook
+    src: files/{{ item }}
+    dest: /etc/systemd/system/{{ item }}
     mode: "0600"
-  when: ansible_os_family == 'Archlinux'
+  loop:
+    - restic.service
+    - restic.timer
+  notify:
+    - reload systemd
+
+- name: Enable backups
+  systemd_service:
+    name: restic.timer
+    enabled: true
+    state: started
 
 - name: Install HomeAssistant mounts
   include_tasks: homeassistant.yml
