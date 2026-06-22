@@ -2,7 +2,7 @@ services:
   atuin:
     image: ghcr.io/atuinsh/atuin:latest
     restart: unless-stopped
-    command: server start
+    command: start
     environment:
       - TZ={{ timezone }}
       - ATUIN_DB_URI=postgres://atuin:atuin@db/atuin
