@@ -10,7 +10,7 @@ terraform {
     }
     b2 = {
       source  = "Backblaze/b2"
-      version = "0.10.0"
+      version = "0.13.0"
     }
     hcloud = {
       source  = "hetznercloud/hcloud"
