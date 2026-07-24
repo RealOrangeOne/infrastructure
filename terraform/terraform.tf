@@ -14,7 +14,7 @@ terraform {
     }
     hcloud = {
       source  = "hetznercloud/hcloud"
-      version = "1.48.1"
+      version = "1.67.0"
     }
     desec = {
       source  = "Valodim/desec"
