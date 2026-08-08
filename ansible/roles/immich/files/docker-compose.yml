@@ -51,7 +51,7 @@ services:
 
   database:
     container_name: immich_postgres
-    image: tensorchord/pgvecto-rs:pg14-v0.2.0
+    image: ghcr.io/immich-app/postgres:14-vectorchord1.1.1
     environment:
       POSTGRES_PASSWORD: postgres
       POSTGRES_USER: postgres
@@ -60,8 +60,6 @@ services:
     volumes:
       - /mnt/speed/dbs/postgres/immich:/var/lib/postgresql/data
     restart: unless-stopped
-    # yamllint disable-line rule:quoted-strings rule:line-length
-    command: [postgres, -c, shared_preload_libraries=vectors.so, -c, 'search_path="$$user", public, vectors', -c, logging_collector=on, -c, max_wal_size=2GB, -c, shared_buffers=512MB, -c, wal_compression=on]
 
   immich-public-proxy:
     image: alangrainger/immich-public-proxy:latest
