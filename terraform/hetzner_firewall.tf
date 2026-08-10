@@ -61,3 +61,19 @@ resource "hcloud_firewall" "web" {
     ]
   }
 }
+
+
+resource "hcloud_firewall" "matrix" {
+  name = "matrix"
+
+  # HTTP
+  rule {
+    direction = "in"
+    protocol  = "tcp"
+    port      = "8448"
+    source_ips = [
+      "0.0.0.0/0",
+      "::/0"
+    ]
+  }
+}

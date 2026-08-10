@@ -10,6 +10,7 @@ resource "hcloud_server" "grimes" {
     hcloud_firewall.base.id,
     hcloud_firewall.tailscale.id,
     hcloud_firewall.web.id,
+    hcloud_firewall.matrix.id,
   ]
 }
 
