@@ -229,11 +229,12 @@ policy:
 #
 dns:
   # Whether to prefer using Headscale provided DNS or use local.
-  override_local_dns: false
+  override_local_dns: true
 
   # List of DNS servers to expose to clients.
   nameservers:
-    global: []
+    global:
+      - "{{ tailscale_nodes.tang.ip }}"
 
   # NextDNS (see https://tailscale.com/kb/1218/nextdns/).
   # "abc123" is example NextDNS ID, replace with yours.
@@ -273,7 +274,7 @@ dns:
 
   # Whether to use [MagicDNS](https://tailscale.com/kb/1081/magicdns/).
   # Only works if there is at least a nameserver defined.
-  magic_dns: false
+  magic_dns: true
 
   # Defines the base domain to create the hostnames for MagicDNS.
   # `base_domain` must be a FQDNs, without the trailing dot.
