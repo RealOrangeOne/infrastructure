@@ -23,7 +23,7 @@ listen_addr: 127.0.0.1:8416
 #
 # Listens on all interfaces to prevent race condition with tailscale interface.
 # Blocked by firewall.
-metrics_listen_addr: "0.0.0.0:9090"
+metrics_listen_addr: 0.0.0.0:9090
 
 # Address to listen for gRPC.
 # gRPC is used for controlling a headscale server
