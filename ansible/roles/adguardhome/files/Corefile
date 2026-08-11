@@ -12,7 +12,7 @@
         {{ pve_hosts.ingress.external_ip }} pve.sys.theorangeone.net
         {{ pve_hosts.ingress.external_ipv6 }} pve.sys.theorangeone.net
         fallthrough
-        ttl 300
+        ttl 3600
     }
 
     # HACK: Rewrite the CNAME to itself so it's reprocessed
