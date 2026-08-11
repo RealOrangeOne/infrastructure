@@ -109,7 +109,7 @@ resource "desec_rrset" "jakehowardtech_homeassistant" {
   type    = "CNAME"
   ttl     = local.dns_ttl_default
   records = [
-    "${desec_rrset.sys_domain_pve_private.subname}.${desec_rrset.sys_domain_pve_private.domain}."
+    "${desec_rrset.sys_domain_pve.subname}.${desec_rrset.sys_domain_pve.domain}."
   ]
 }
 
@@ -129,7 +129,7 @@ resource "desec_rrset" "jakehowardtech_vaultwarden" {
   type    = "CNAME"
   ttl     = local.dns_ttl_default
   records = [
-    "${desec_rrset.sys_domain_pve_private.subname}.${desec_rrset.sys_domain_pve_private.domain}."
+    "${desec_rrset.sys_domain_pve.subname}.${desec_rrset.sys_domain_pve.domain}."
   ]
 }
 
@@ -275,7 +275,7 @@ resource "desec_rrset" "jakehowardtech_baby-buddy" {
   type    = "CNAME"
   ttl     = local.dns_ttl_default
   records = [
-    "${desec_rrset.sys_domain_pve_private.subname}.${desec_rrset.sys_domain_pve_private.domain}."
+    "${desec_rrset.sys_domain_pve.subname}.${desec_rrset.sys_domain_pve.domain}."
   ]
 }
 
@@ -285,7 +285,7 @@ resource "desec_rrset" "jakehowardtech_immich" {
   type    = "CNAME"
   ttl     = local.dns_ttl_default
   records = [
-    "${desec_rrset.sys_domain_pve_private.subname}.${desec_rrset.sys_domain_pve_private.domain}."
+    "${desec_rrset.sys_domain_pve.subname}.${desec_rrset.sys_domain_pve.domain}."
   ]
 }
 
@@ -305,7 +305,7 @@ resource "desec_rrset" "jakehowardtech_freshrss" {
   type    = "CNAME"
   ttl     = local.dns_ttl_default
   records = [
-    "${desec_rrset.sys_domain_pve_private.subname}.${desec_rrset.sys_domain_pve_private.domain}."
+    "${desec_rrset.sys_domain_pve.subname}.${desec_rrset.sys_domain_pve.domain}."
   ]
 }
 
@@ -315,7 +315,7 @@ resource "desec_rrset" "jakehowardtech_atuin" {
   type    = "CNAME"
   ttl     = local.dns_ttl_default
   records = [
-    "${desec_rrset.sys_domain_pve_private.subname}.${desec_rrset.sys_domain_pve_private.domain}."
+    "${desec_rrset.sys_domain_pve.subname}.${desec_rrset.sys_domain_pve.domain}."
   ]
 }
 
@@ -325,7 +325,7 @@ resource "desec_rrset" "jakehowardtech_karakeep" {
   type    = "CNAME"
   ttl     = local.dns_ttl_default
   records = [
-    "${desec_rrset.sys_domain_pve_private.subname}.${desec_rrset.sys_domain_pve_private.domain}."
+    "${desec_rrset.sys_domain_pve.subname}.${desec_rrset.sys_domain_pve.domain}."
   ]
 }
 
@@ -335,7 +335,7 @@ resource "desec_rrset" "jakehowardtech_lab" {
   type    = "CNAME"
   ttl     = local.dns_ttl_default
   records = [
-    "${desec_rrset.sys_domain_pve_private.subname}.${desec_rrset.sys_domain_pve_private.domain}."
+    "${desec_rrset.sys_domain_pve.subname}.${desec_rrset.sys_domain_pve.domain}."
   ]
 }
 

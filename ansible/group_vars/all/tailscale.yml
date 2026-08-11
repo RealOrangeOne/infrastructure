@@ -7,7 +7,9 @@ tailscale_cidr_ipv6: fd7a:115c:a1e0::/120  # It's really /48, but I don't use th
 tailscale_port: 41641
 
 tailscale_nodes:
-  casey:
-    ip: 100.64.0.6
   tang:
     ip: 100.64.0.3
+  casey:
+    ip: 100.64.0.6
+  ingress:
+    ip: 100.64.0.7

@@ -6,28 +6,3 @@
 
 - name: Prometheus
   include_tasks: prometheus.yml
-
-- name: Get routes
-  command:
-    argv:
-      - ip
-      - -6
-      - route
-      - show
-      - "{{ vps_hosts.private_ipv6_range }}"
-  register: routes
-  changed_when: false
-
-- name: Add route to private services via ingress
-  command:
-    argv:
-      - ip
-      - -6
-      - route
-      - add
-      - "{{ vps_hosts.private_ipv6_range }}"
-      - via
-      - "{{ pve_hosts.ingress.ipv6 }}"
-      - dev
-      - eth0
-  when: vps_hosts.private_ipv6_marker not in routes.stdout

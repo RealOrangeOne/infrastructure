@@ -48,16 +48,6 @@ resource "desec_rrset" "sys_domain_pve" {
   ]
 }
 
-resource "desec_rrset" "sys_domain_pve_private" {
-  domain  = desec_domain.theorangeonenet.name
-  subname = "pve-private.sys"
-  type    = "AAAA"
-  ttl     = local.dns_ttl_default
-  records = [
-    local.private_ipv6_marker
-  ]
-}
-
 resource "desec_rrset" "sys_domain_grimes" {
   domain  = desec_domain.theorangeonenet.name
   subname = "grimes.sys"
