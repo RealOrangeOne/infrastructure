@@ -339,6 +339,21 @@ resource "desec_rrset" "jakehowardtech_lab" {
   ]
 }
 
+
+resource "desec_rrset" "jakehowardtech_lab_acme_challenge" {
+  domain  = desec_domain.jakehowardtech.name
+  subname = "_acme-challenge.lab"
+  type    = "TXT"
+  ttl     = local.dns_ttl_default
+  records = ["placeholder"]
+
+  lifecycle {
+    ignore_changes = [
+      records
+    ]
+  }
+}
+
 resource "desec_rrset" "jakehowardtech_caa" {
   domain  = desec_domain.jakehowardtech.name
   subname = ""
