@@ -1,1 +1,2 @@
 db_backups_dir: ./backups
+db_backups_compression: zstd
