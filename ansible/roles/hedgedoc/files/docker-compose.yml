@@ -1,0 +1,42 @@
+services:
+  hedgedoc:
+    image: quay.io/hedgedoc/hedgedoc:alpine
+    restart: unless-stopped
+    user: "{{ docker_user.id }}"
+    environment:
+      - CMD_DB_URL=postgres://hedgedoc:hedgedoc@db:5432/hedgedoc
+      - CMD_DOMAIN=md.jakehoward.tech
+      - CMD_PROTOCOL_USESSL=true
+      - CMD_ALLOW_ORIGIN=md.jakehoward.tech
+      - CMD_ALLOW_EMAIL_REGISTER=false
+      - CMD_ALLOW_ANONYMOUS=false
+      - CMD_ALLOW_ANONYMOUS_EDITS=true
+      - CMD_EMAIL=true
+      - CMD_ALLOW_FREEURL=true
+      - CMD_DEFAULT_PERMISSION=private
+      - CMD_ALLOW_GRAVATAR=false
+      - CMD_SESSION_SECRET={{ vault_session_secret }}
+    volumes:
+      - /mnt/tank/app-data/hedgedoc/uploads:/hedgedoc/public/uploads
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.hedgedoc.rule=Host(`md.jakehoward.tech`)
+      - traefik.http.routers.hedgedoc.middlewares=no-index@file
+    depends_on:
+      - db
+    networks:
+      - default
+      - traefik
+
+  db:
+    image: pgautoupgrade/pgautoupgrade:17-alpine
+    restart: unless-stopped
+    volumes:
+      - /mnt/speed/dbs/postgres/hedgedoc:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=hedgedoc
+      - POSTGRES_USER=hedgedoc
+
+networks:
+  traefik:
+    external: true

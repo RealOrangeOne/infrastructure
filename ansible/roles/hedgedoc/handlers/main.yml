@@ -1,0 +1,4 @@
+- name: restart hedgedoc
+  shell:
+    chdir: /opt/hedgedoc
+    cmd: "{{ docker_update_command }}"

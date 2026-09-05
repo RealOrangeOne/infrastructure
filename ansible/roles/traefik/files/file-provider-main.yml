@@ -32,3 +32,8 @@ http:
           - "{{ tailscale_cidr_ipv6 }}"
           - "{{ pve_hosts.internal_cidr }}"
           - "{{ pve_hosts.internal_cidr_ipv6 }}"
+
+    no-index:
+      headers:
+        customResponseHeaders:
+          X-Robots-Tag: noindex, noodp, noarchive, nofollow

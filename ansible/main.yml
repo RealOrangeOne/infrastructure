@@ -79,6 +79,7 @@
     - atuin
     - karakeep
     - syncthing
+    - hedgedoc
 
 - hosts: ingress
   roles:
