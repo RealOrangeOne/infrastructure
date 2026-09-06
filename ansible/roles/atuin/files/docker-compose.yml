@@ -21,7 +21,7 @@ services:
       - traefik
 
   db:
-    image: pgautoupgrade/pgautoupgrade:17-alpine
+    image: pgautoupgrade/pgautoupgrade:18-alpine
     restart: unless-stopped
     volumes:
       - /mnt/speed/dbs/postgres/atuin:/var/lib/postgresql/data
