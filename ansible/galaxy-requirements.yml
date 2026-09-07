@@ -19,4 +19,4 @@ roles:
   - src: geerlingguy.certbot
     version: 5.2.1
   - src: artis3n.tailscale
-    version: v4.5.0
+    version: v4.6.0
