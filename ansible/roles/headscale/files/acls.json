@@ -18,7 +18,7 @@
         {
             "action": "accept",
             "src": ["tag:private-svcs"],
-            "dst": ["{{ tailscale_nodes.ingress.ip }}:80,443"]
+            "dst": ["{{ tailscale_nodes.ingress.ip }}:80,443", "{{ pve_hosts.ingress.external_ip }}:80,443", "{{ pve_hosts.ingress.external_ipv6 }}:80,443"]
         }
     ]
 }
