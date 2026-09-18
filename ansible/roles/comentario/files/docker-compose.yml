@@ -18,6 +18,7 @@ services:
       - BASE_URL=https://comentario.theorangeone.net
       - STATS_DISABLE_PAGE_VIEWS=true
       - LOG_FULL_IPS=true
+      - SECRETS_FILE=/comentario/secrets.yaml
 
   db:
     image: pgautoupgrade/pgautoupgrade:17-alpine
