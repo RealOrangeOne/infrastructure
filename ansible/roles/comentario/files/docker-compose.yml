@@ -21,7 +21,7 @@ services:
       - SECRETS_FILE=/comentario/secrets.yaml
 
   db:
-    image: pgautoupgrade/pgautoupgrade:17-alpine
+    image: pgautoupgrade/pgautoupgrade:18-alpine
     restart: unless-stopped
     volumes:
       - ./postgres:/var/lib/postgresql/data

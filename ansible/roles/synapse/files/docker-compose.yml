@@ -20,7 +20,7 @@ services:
       - traefik
 
   db:
-    image: pgautoupgrade/pgautoupgrade:17-alpine
+    image: pgautoupgrade/pgautoupgrade:18-alpine
     restart: unless-stopped
     environment:
       - POSTGRES_USER=synapse
