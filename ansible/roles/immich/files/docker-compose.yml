@@ -51,7 +51,7 @@ services:
 
   database:
     container_name: immich_postgres
-    image: ghcr.io/immich-app/postgres:14-vectorchord1.1.1
+    image: ghcr.io/immich-app/postgres:18-vectorchord1.1.1
     environment:
       POSTGRES_PASSWORD: postgres
       POSTGRES_USER: postgres
