@@ -163,7 +163,17 @@ resource "desec_rrset" "theorangeonenet_notes" {
   type    = "CNAME"
   ttl     = local.dns_ttl_default
   records = [
-    "realorangeone.github.io."
+    "grebedoc.dev."
+  ]
+}
+
+resource "desec_rrset" "theorangeonenet_notes_repository" {
+  domain  = desec_domain.theorangeonenet.name
+  subname = "_git-pages-forge-allowlist.notes"
+  type    = "TXT"
+  ttl     = local.dns_ttl_default
+  records = [
+    "https://git.theorangeone.net/repos/notes"
   ]
 }
 
