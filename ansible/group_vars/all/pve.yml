@@ -14,6 +14,7 @@ pve_hosts:
   docker:
     ip: 10.23.1.103
     ipv6: fde3:15e9:e883::203
+    external_ip: 192.168.2.205
   ingress:
     ip: 10.23.1.10
     external_ip: 192.168.2.201

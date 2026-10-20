@@ -23,7 +23,7 @@ services:
       - traefik.http.services.nextcloud-nextcloud.loadbalancer.server.port=443
       - traefik.http.services.nextcloud-nextcloud.loadbalancer.server.scheme=https
       - traefik.http.middlewares.nextcloud-hsts.headers.stsseconds=15552000
-      - traefik.http.routers.nextcloud.middlewares=nextcloud-hsts@docker
+      - traefik.http.routers.nextcloud.middlewares=nextcloud-hsts@docker,private-access@file
     networks:
       - default
       - traefik
@@ -38,6 +38,7 @@ services:
       - traefik.enable=true
       - traefik.http.routers.collabora.rule=Host(`collabora.jakehoward.tech`)
       - traefik.http.services.collabora-nextcloud.loadbalancer.server.scheme=https
+      - traefik.http.routers.collabora.middlewares=private-access@file
     networks:
       - default
       - traefik

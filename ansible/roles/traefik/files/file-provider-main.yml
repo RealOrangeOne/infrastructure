@@ -32,6 +32,7 @@ http:
           - "{{ tailscale_cidr_ipv6 }}"
           - "{{ pve_hosts.internal_cidr }}"
           - "{{ pve_hosts.internal_cidr_ipv6 }}"
+          - "{{ pve_hosts.docker.external_ip }}"
 
     no-index:
       headers:
