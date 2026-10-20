@@ -24,4 +24,4 @@ services:
       - /mnt/ci-runner-docker:/var/lib/docker
     privileged: true
     restart: unless-stopped
-    command: dockerd -H tcp://0.0.0.0:2375 --tls=false
+    command: dockerd -H tcp://0.0.0.0:2375 --tls=false --bip=172.17.0.1/16
