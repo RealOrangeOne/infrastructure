@@ -10,3 +10,48 @@ bots:
       - "{{ pve_hosts.internal_cidr }}"
       - 192.168.0.0/16
       - "{{ vault_lan_ipv6_cidr }}"
+  - name: deter-archive
+    path_regex: ^/archive/.*$
+    action: WEIGH
+    weight:
+      adjust: 10
+  - name: deter-lab
+    path_regex: ^/lab/.*$
+    action: WEIGH
+    weight:
+      adjust: 5
+  - name: deter-old-macos
+    user_agent_regex: Intel Mac
+    action: WEIGH
+    weight:
+      adjust: 10
+
+thresholds:
+  - name: minimal-suspicion
+    expression: weight <= 0
+    action: ALLOW
+  - name: mild-suspicion
+    expression:
+      all:
+        - weight > 0
+        - weight <= 10
+    action: CHALLENGE
+    challenge:
+      algorithm: fast
+      difficulty: 2
+  - name: suspicion
+    expression: weight > 11
+    action: CHALLENGE
+    challenge:
+      algorithm: fast
+      difficulty: 4
+  - name: hard
+    expression: weight >=20
+    action: CHALLENGE
+    challenge:
+      algorithm: slow
+      difficulty: 5
+
+status_codes:
+  CHALLENGE: 402
+  DENY: 402
