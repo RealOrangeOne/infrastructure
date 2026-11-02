@@ -2,7 +2,6 @@ services:
   davis:
     image: ghcr.io/tchapi/davis-standalone:latest
     restart: unless-stopped
-    user: "{{ docker_user.id }}:{{ docker_user.id }}"
     depends_on:
       - db
     labels:
