@@ -22,6 +22,7 @@ pve_hosts:
     ipv6: fde3:15e9:e883::100
   homeassistant:
     ip: 192.168.2.203
+    ipv6: "{{ vault_homeassistant_ipv6 }}"
   qbittorrent:
     ip: 10.23.1.105
   renovate:
