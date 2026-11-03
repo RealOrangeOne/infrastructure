@@ -1,0 +1,55 @@
+services:
+  davis:
+    image: ghcr.io/tchapi/davis-standalone:latest
+    restart: unless-stopped
+    user: "{{ docker_user.id }}:{{ docker_user.id }}"
+    depends_on:
+      - db
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.davis.rule=Host(`davis.jakehoward.tech`)
+      - traefik.http.routers.davis.middlewares=private-access@file
+    environment:
+      - TZ={{ timezone }}
+      - APP_TIMEZONE={{ timezone }}
+      - DATABASE_DRIVER=postgresql
+      - DATABASE_URL=postgres://davis:davis@db/davis
+      - APP_SECRET={{ vault_davis_app_secret }}
+      - ADMIN_PASSWORD={{ vault_davis_admin_password }}
+    networks:
+      - default
+      - traefik
+    healthcheck:
+      disable: true
+
+  db:
+    image: pgautoupgrade/pgautoupgrade:17-alpine
+    restart: unless-stopped
+    volumes:
+      - /mnt/speed/dbs/postgres/davis/:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=davis
+      - POSTGRES_USER=davis
+
+  yourdav:
+    image: ghcr.io/fuzzymistborn/yourdav:latest
+    restart: unless-stopped
+    user: "{{ docker_user.id }}:{{ docker_user.id }}"
+    depends_on:
+      - davis
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.yourdav.rule=Host(`calendar.jakehoward.tech`)
+      - traefik.http.routers.yourdav.middlewares=private-access@file
+    environment:
+      - TZ={{ timezone }}
+      - DAV_SERVER_URL=http://davis:9000
+      - TRUST_PROXY=true
+      - SESSION_SECRET={{ vault_yourdav_session_secret }}
+    networks:
+      - default
+      - traefik
+
+networks:
+  traefik:
+    external: true

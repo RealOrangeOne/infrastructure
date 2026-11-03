@@ -1,0 +1,4 @@
+- name: restart davis
+  shell:
+    chdir: /opt/davis
+    cmd: "{{ docker_update_command }}"

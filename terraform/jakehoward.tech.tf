@@ -339,6 +339,26 @@ resource "desec_rrset" "jakehowardtech_md" {
   ]
 }
 
+resource "desec_rrset" "jakehowardtech_davis" {
+  domain  = desec_domain.jakehowardtech.name
+  subname = "davis"
+  type    = "CNAME"
+  ttl     = local.dns_ttl_default
+  records = [
+    "${desec_rrset.sys_domain_pve.subname}.${desec_rrset.sys_domain_pve.domain}."
+  ]
+}
+
+resource "desec_rrset" "jakehowardtech_calendar" {
+  domain  = desec_domain.jakehowardtech.name
+  subname = "calendar"
+  type    = "CNAME"
+  ttl     = local.dns_ttl_default
+  records = [
+    "${desec_rrset.sys_domain_pve.subname}.${desec_rrset.sys_domain_pve.domain}."
+  ]
+}
+
 resource "desec_rrset" "jakehowardtech_lab" {
   domain  = desec_domain.jakehowardtech.name
   subname = "*.lab"

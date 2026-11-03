@@ -80,6 +80,7 @@
     - karakeep
     - syncthing
     - hedgedoc
+    - davis
 
 - hosts: ingress
   roles:
