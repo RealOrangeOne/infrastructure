@@ -15,6 +15,7 @@ services:
       - DATABASE_URL=postgres://davis:davis@db/davis
       - APP_SECRET={{ vault_davis_app_secret }}
       - ADMIN_PASSWORD={{ vault_davis_admin_password }}
+      - APP_KEYS_ENABLED=true
     networks:
       - default
       - traefik
