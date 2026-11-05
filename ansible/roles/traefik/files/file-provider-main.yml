@@ -32,9 +32,8 @@ http:
           - "{{ tailscale_cidr_ipv6 }}"
           - "{{ pve_hosts.internal_cidr }}"
           - "{{ pve_hosts.internal_cidr_ipv6 }}"
-          - "{{ pve_hosts.docker.external_ip }}"
-          - "{{ pve_hosts.homeassistant.ip }}"
-          - "{{ pve_hosts.homeassistant.ipv6 }}"
+          - 192.168.0.0/16
+          - "{{ vault_lan_ipv6_cidr }}"
 
     no-index:
       headers:
