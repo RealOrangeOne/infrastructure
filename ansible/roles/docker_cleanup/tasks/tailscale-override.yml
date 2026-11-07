@@ -1,0 +1,17 @@
+- name: Create dir for docker service Tailscale override
+  file:
+    path: /etc/systemd/system/docker.service.d
+    state: directory
+    mode: "0755"
+
+- name: Create tailscale-override.conf
+  copy:
+    src: files/tailscale-override.conf
+    dest: /etc/systemd/system/docker.service.d/tailscale-override.conf
+    owner: root
+    group: root
+    mode: "0644"
+
+- name: Reload systemd to pick up docker service override
+  systemd:
+    daemon_reload: true

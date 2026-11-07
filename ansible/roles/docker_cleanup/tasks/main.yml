@@ -48,3 +48,6 @@
 - name: override docker service for zfs dependencies
   include_tasks: zfs-override.yml
   when: docker_zfs_override
+
+- name: override docker service for tailscale dependencies
+  include_tasks: tailscale-override.yml
