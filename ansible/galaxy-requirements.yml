@@ -3,6 +3,8 @@ collections:
   - community.general
   - community.docker
   - kewlfft.aur
+  - name: artis3n.tailscale
+    version: 1.2.1
   - name: https://github.com/prometheus-community/ansible
     type: git
 
@@ -18,5 +20,3 @@ roles:
     version: 1.0.0
   - src: geerlingguy.certbot
     version: 5.2.1
-  - src: artis3n.tailscale
-    version: v4.5.0

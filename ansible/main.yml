@@ -61,7 +61,7 @@
     - grimes
   become: false  # Forcefully run as current user
   roles:
-    - artis3n.tailscale
+    - artis3n.tailscale.machine
 
 - hosts: pve-docker
   roles:
