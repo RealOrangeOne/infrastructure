@@ -48,7 +48,7 @@ services:
       - POSTGRES_USER=vikunja
 
   redis:
-    image: redis:7-alpine
+    image: redis:8-alpine
     restart: unless-stopped
     volumes:
       - /mnt/speed/dbs/redis/vikunja/:/data
