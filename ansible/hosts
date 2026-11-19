@@ -8,7 +8,6 @@ tang
 # PVE VMs
 ingress
 pve-docker
-jellyfin
 forrest
 qbittorrent
 restic

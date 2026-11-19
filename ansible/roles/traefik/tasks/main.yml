@@ -63,15 +63,6 @@
   notify: restart traefik
   when: traefik_provider_homeassistant
 
-- name: Install jellyfin provider
-  template:
-    src: files/file-provider-jellyfin.yml
-    dest: /opt/traefik/traefik/conf/jellyfin.yml
-    mode: "{{ docker_compose_file_mask }}"
-    owner: "{{ docker_user.name }}"
-  notify: restart traefik
-  when: traefik_provider_jellyfin
-
 - name: Install grafana provider
   template:
     src: files/file-provider-grafana.yml

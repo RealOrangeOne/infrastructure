@@ -114,10 +114,6 @@
     - comentario
     - macau
 
-- hosts: jellyfin
-  roles:
-    - jellyfin
-
 - hosts: restic
   roles:
     - restic

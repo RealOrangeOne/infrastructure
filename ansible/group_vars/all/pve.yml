@@ -9,8 +9,6 @@ pve_hosts:
   forrest:
     ip: 10.23.1.13
     ipv6: fde3:15e9:e883::103
-  jellyfin:
-    ip: 10.23.1.101
   docker:
     ip: 10.23.1.103
     ipv6: fde3:15e9:e883::203

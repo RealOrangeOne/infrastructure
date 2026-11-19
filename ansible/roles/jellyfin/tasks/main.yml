@@ -1,20 +1,15 @@
-- name: Add Jellyfin apt key
-  ansible.builtin.apt_key:
-    url: https://repo.jellyfin.org/jellyfin_team.gpg.key
-    state: present
+- name: Create install directory
+  file:
+    path: /opt/jellyfin
+    state: directory
+    owner: "{{ docker_user.name }}"
+    mode: "{{ docker_compose_directory_mask }}"
 
-- name: Add Jellyfin repository
-  apt_repository:
-    repo: deb [arch=amd64] https://repo.jellyfin.org/debian {{ ansible_distribution_release }} main
-    filename: jellyfin
-    state: present
-
-- name: Install jellyfin
-  package:
-    name: jellyfin
-
-- name: Set media dir permissions
-  cron:
-    name: Set media permissions
-    special_time: daily
-    job: chown -R jellyfin:jellyfin /mnt/media
+- name: Install compose file
+  template:
+    src: files/docker-compose.yml
+    dest: /opt/jellyfin/docker-compose.yml
+    mode: "{{ docker_compose_file_mask }}"
+    owner: "{{ docker_user.name }}"
+    validate: docker compose -f %s config
+  notify: restart jellyfin

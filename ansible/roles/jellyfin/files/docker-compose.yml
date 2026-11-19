@@ -1,0 +1,29 @@
+services:
+  jellyfin:
+    image: ghcr.io/jellyfin/jellyfin:12
+    user: "{{ docker_user.id }}"
+    restart: unless-stopped
+    group_add:
+      - "108"  # render group id
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.jellyfin.rule=Host(`media.jakehoward.tech`)
+    environment:
+      - JELLYFIN_PublishedServerUrl=https://media.jakehoward.tech
+    volumes:
+      - /mnt/tank/app-data/jellyfin:/config
+      - /mnt/bulk/media:/mnt/media
+      - /mnt/speed/jellyfin-cache:/cache
+    tmpfs:
+      - /config/log:uid={{ docker_user.id }}
+      - /tmp:uid={{ docker_user.id }}
+      - /config/transcodes:uid={{ docker_user.id }}
+    networks:
+      - default
+      - traefik
+    devices:
+      - /dev/dri/renderD128:/dev/dri/renderD128
+
+networks:
+  traefik:
+    external: true
