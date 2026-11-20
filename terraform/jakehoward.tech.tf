@@ -199,16 +199,6 @@ resource "desec_rrset" "jakehowardtech_apex_v6" {
   records = desec_rrset.sys_domain_walker_v6.records
 }
 
-resource "desec_rrset" "jakehowardtech_collabora" {
-  domain  = desec_domain.jakehowardtech.name
-  subname = "collabora"
-  type    = "CNAME"
-  ttl     = local.dns_ttl_default
-  records = [
-    "${desec_rrset.sys_domain_pve.subname}.${desec_rrset.sys_domain_pve.domain}."
-  ]
-}
-
 resource "desec_rrset" "jakehowardtech_tasks" {
   domain  = desec_domain.jakehowardtech.name
   subname = "tasks"
